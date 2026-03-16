@@ -25,6 +25,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("City pages built only where the local signal is real.")))
 			.andExpect(content().string(containsString("Philadelphia, PA")))
 			.andExpect(content().string(containsString("Buffalo Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Philadelphia Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Chicago Sewer Line Repair vs Replacement")))
 			.andExpect(content().string(containsString("Milwaukee, WI")))
 			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")))
 			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
@@ -118,6 +120,34 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/cities/detroit/sewer-line-repair-vs-replacement/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Detroit Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Quote comparison lens")));
+	}
+
+	@Test
+	void tierOneLocalRepairVsReplacementPagesRenderSuccessfully() throws Exception {
+		mockMvc.perform(get("/cities/philadelphia/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Philadelphia Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Official responsibility boundary")));
+
+		mockMvc.perform(get("/cities/pittsburgh/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Pittsburgh Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Official responsibility boundary")));
+
+		mockMvc.perform(get("/cities/cleveland/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Cleveland Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Quote comparison lens")));
+
+		mockMvc.perform(get("/cities/chicago/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Chicago Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Quote comparison lens")));
+
+		mockMvc.perform(get("/cities/buffalo/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Buffalo Sewer Line Repair vs Replacement")))
 			.andExpect(content().string(containsString("Quote comparison lens")));
 	}
 }
