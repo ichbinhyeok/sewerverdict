@@ -4,6 +4,8 @@ This file is the project anchor for AI coding sessions in this repository.
 Use it as the working execution brief.
 Visual and UX direction is fixed in `DESIGN.md`.
 Pre-deploy judgment and prioritization are fixed in `PREDEPLOY_PERSONA_COUNCIL.md`.
+6-month success pressure and anti-failure logic are fixed in `SUCCESS_COUNCIL.md`.
+execution triage is fixed in `SUCCESS_BACKLOG.md`.
 
 ## Mission
 
@@ -68,6 +70,21 @@ Before deployment, prefer the change that improves one of these fastest:
 5. inspection-first versus quote-first routing accuracy
 
 If a pre-deploy change is visually clever but does not improve one of the five items above, it is usually a delay item.
+
+## Success Filter
+
+Before building, keep `SUCCESS_COUNCIL.md` in mind.
+
+For the next 6 months, prefer the change that improves at least one of these:
+
+1. buyer-intent or defect-intent search capture
+2. first-screen trust
+3. estimator completion
+4. shareability of pages or summaries
+5. qualified lead submission
+6. honest inspection-first or quote-first routing
+
+If a change does not help one of the six, it is probably not urgent.
 
 ## Keyword And Route Rules
 
