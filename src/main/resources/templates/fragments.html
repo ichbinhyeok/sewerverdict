@@ -21,9 +21,23 @@
 </head>
 <body>
 <header class="site-header" th:fragment="header">
+	<div class="container header-meta">
+		<div class="header-meta-copy">Reviewed guidance for buyers, sellers, and owners. Educational only.</div>
+		<div class="header-meta-links">
+			<a th:href="@{/methodology/}">Methodology</a>
+			<a th:href="@{/about-how-this-site-is-researched/}">Research</a>
+			<a th:href="@{/disclaimer/}">Disclaimer</a>
+		</div>
+	</div>
 	<div class="container nav-shell">
 		<a class="brand" th:href="@{/}">SewerVerdict</a>
-		<nav class="nav-links">
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span class="sr-only">Toggle navigation</span>
+		</button>
+		<nav class="nav-links" id="site-nav" data-nav-menu>
 			<a th:href="@{/estimator/}">Estimate Risk</a>
 			<a th:href="@{/sewer-scope-before-buying-house/}">Buying a House</a>
 			<a th:href="@{/sewer-line-replacement-cost/}">Costs</a>
@@ -38,6 +52,11 @@
 		<div>
 			<div class="footer-title">SewerVerdict</div>
 			<p class="footer-copy">Buyer-first sewer scope risk and next-step guidance for buyers, sellers, and owners.</p>
+			<div class="footer-trust">
+				<div>Reviewed by homeowner research editor and plumbing-risk content reviewer.</div>
+				<div>Ranges are methodology-backed and kept wide on purpose.</div>
+				<div>Educational guidance only. Not engineering, legal, or insurance advice.</div>
+			</div>
 		</div>
 		<div class="footer-links">
 			<a th:href="@{/methodology/}">Methodology</a>
