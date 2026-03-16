@@ -105,6 +105,27 @@
 						<li th:each="item : ${page.questions}" th:text="${item}">Question</li>
 					</ol>
 				</article>
+				<article class="section-card section-card-accent">
+					<h2>Choose the next move</h2>
+					<p>Use this page to decide whether you should estimate the situation first, line up inspection options, or move into quote comparison now.</p>
+					<div class="inline-cta-group">
+						<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
+						   data-event-type="page_cta_click" th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'}">Primary CTA</a>
+						<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
+						   data-event-type="page_cta_click" th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'}">Secondary CTA</a>
+					</div>
+				</article>
+				<article class="section-card" th:if="${!#lists.isEmpty(relatedPages)}">
+					<h2>Keep moving with the right follow-up page</h2>
+					<p>These pages usually answer the next decision users have after this one.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="related : ${relatedPages}" th:href="${related.slug}">
+							<span class="card-kicker">Related page</span>
+							<strong th:text="${related.title}">Related title</strong>
+							<span class="related-page-card-text" th:text="${related.summary}">Related summary</span>
+						</a>
+					</div>
+				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(page.faq)}">
 					<h2>FAQ</h2>
 					<div class="faq-list">

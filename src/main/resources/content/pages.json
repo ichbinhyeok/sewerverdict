@@ -205,7 +205,7 @@
         "answer": "Not automatically. The next move depends on severity, repair path, negotiation leverage, and whether the finding looks isolated or systemic."
       }
     ],
-    "relatedSlugs": ["/sewer-scope-red-flags/", "/sewer-scope-negotiation-with-seller/"]
+    "relatedSlugs": ["/sewer-scope-red-flags/", "/who-pays-for-sewer-line-repair-buyer-or-seller/"]
   },
   {
     "slug": "/trenchless-sewer-replacement-cost/",
@@ -442,7 +442,7 @@
         "answer": "No. Buyers need to rank findings by likely impact on the deal, cost, and uncertainty, not by scary wording alone."
       }
     ],
-    "relatedSlugs": ["/root-intrusion-sewer-line-what-to-do/", "/offset-joint-sewer-line-meaning/"]
+    "relatedSlugs": ["/sewer-scope-before-buying-house/", "/who-pays-for-sewer-line-repair-buyer-or-seller/"]
   },
   {
     "slug": "/cast-iron-sewer-pipe-replacement-cost/",
@@ -691,7 +691,7 @@
         "answer": "Clear scope documentation, severity detail, and a practical next-step request usually help more than general pressure."
       }
     ],
-    "relatedSlugs": ["/sewer-scope-before-buying-house/", "/sewer-scope-negotiation-with-seller/"]
+    "relatedSlugs": ["/sewer-scope-before-buying-house/", "/sewer-scope-red-flags/"]
   },
   {
     "slug": "/root-intrusion-sewer-line-what-to-do/",
