@@ -27,7 +27,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Buffalo Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Milwaukee, WI")))
 			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")))
-			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")));
+			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")));
 	}
 
 	@Test
@@ -57,5 +58,18 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Cincinnati Sewer Backup Risk")))
 			.andExpect(content().string(containsString("Cincinnati responsibility guide")));
+	}
+
+	@Test
+	void newNegotiationAndBaltimoreBuyerPagesRenderSuccessfully() throws Exception {
+		mockMvc.perform(get("/cities/milwaukee/sewer-scope-negotiation-with-seller/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Milwaukee Sewer Scope Negotiation With Seller")))
+			.andExpect(content().string(containsString("Buyer decision lens")));
+
+		mockMvc.perform(get("/cities/baltimore/sewer-scope-before-buying-house/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Official responsibility boundary")));
 	}
 }
