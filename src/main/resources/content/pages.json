@@ -3194,7 +3194,11 @@
     ],
     "relatedSlugs": [
       "/homeowner-vs-city-sewer-responsibility/",
-      "/old-house-sewer-line-risk/"
+      "/old-house-sewer-line-risk/",
+      "/cities/milwaukee/old-house-sewer-line-risk/",
+      "/cities/milwaukee/sewer-scope-before-buying-house/",
+      "/cities/milwaukee/sewer-scope-negotiation-with-seller/",
+      "/cities/milwaukee/sewer-backup-risk/"
     ]
   },
   {
@@ -3253,7 +3257,11 @@
     ],
     "relatedSlugs": [
       "/old-house-sewer-line-risk/",
-      "/sewer-scope-before-buying-house/"
+      "/sewer-scope-before-buying-house/",
+      "/cities/milwaukee/sewer-scope-before-buying-house/",
+      "/cities/milwaukee/sewer-scope-negotiation-with-seller/",
+      "/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
+      "/cities/milwaukee/sewer-backup-risk/"
     ]
   },
   {
@@ -3313,7 +3321,8 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/sewer-scope-before-buying-house/",
       "/cities/cincinnati/sewer-scope-before-buying-house/",
-      "/cities/cincinnati/sewer-backup-risk/"
+      "/cities/cincinnati/sewer-backup-risk/",
+      "/cities/cincinnati/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3374,7 +3383,8 @@
       "/sewer-scope-before-buying-house/",
       "/homeowner-vs-city-sewer-responsibility/",
       "/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
-      "/cities/cincinnati/sewer-backup-risk/"
+      "/cities/cincinnati/sewer-backup-risk/",
+      "/cities/cincinnati/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3433,7 +3443,8 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/does-home-insurance-cover-sewer-line-replacement/",
       "/cities/baltimore/wet-weather-sewer-backup-responsibility/",
-      "/cities/baltimore/sewer-scope-before-buying-house/"
+      "/cities/baltimore/sewer-scope-before-buying-house/",
+      "/cities/baltimore/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3494,7 +3505,8 @@
       "/sewer-line-replacement-cost/",
       "/cities/detroit/sewer-line-replacement-cost/",
       "/cities/detroit/sewer-scope-before-buying-house/",
-      "/cities/detroit/sewer-backup-risk/"
+      "/cities/detroit/sewer-backup-risk/",
+      "/cities/detroit/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3557,7 +3569,8 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
       "/cities/detroit/sewer-scope-before-buying-house/",
-      "/cities/detroit/sewer-backup-risk/"
+      "/cities/detroit/sewer-backup-risk/",
+      "/cities/detroit/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3619,7 +3632,8 @@
       "/old-house-sewer-line-risk/",
       "/cities/milwaukee/old-house-sewer-line-risk/",
       "/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
-      "/cities/milwaukee/sewer-scope-negotiation-with-seller/"
+      "/cities/milwaukee/sewer-scope-negotiation-with-seller/",
+      "/cities/milwaukee/sewer-backup-risk/"
     ]
   },
   {
@@ -3680,7 +3694,8 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
       "/cities/detroit/sewer-line-replacement-cost/",
-      "/cities/detroit/sewer-backup-risk/"
+      "/cities/detroit/sewer-backup-risk/",
+      "/cities/detroit/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3739,7 +3754,8 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/does-home-insurance-cover-sewer-line-replacement/",
       "/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
-      "/cities/baltimore/sewer-scope-before-buying-house/"
+      "/cities/baltimore/sewer-scope-before-buying-house/",
+      "/cities/baltimore/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3799,7 +3815,8 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/sewer-scope-before-buying-house/",
       "/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
-      "/cities/cincinnati/sewer-scope-before-buying-house/"
+      "/cities/cincinnati/sewer-scope-before-buying-house/",
+      "/cities/cincinnati/sewer-scope-negotiation-with-seller/"
     ]
   },
   {
@@ -3978,7 +3995,249 @@
       "/homeowner-vs-city-sewer-responsibility/",
       "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
       "/cities/detroit/sewer-scope-before-buying-house/",
-      "/cities/detroit/sewer-line-replacement-cost/"
+      "/cities/detroit/sewer-line-replacement-cost/",
+      "/cities/detroit/sewer-scope-negotiation-with-seller/"
+    ]
+  },
+  {
+    "slug": "/cities/milwaukee/sewer-backup-risk/",
+    "family": "geo",
+    "title": "Milwaukee Sewer Backup Risk",
+    "metaTitle": "Milwaukee Sewer Backup Risk | SewerVerdict",
+    "metaDescription": "Milwaukee sewer backup risk guidance with owner-side lateral responsibility, pre-1954 inflow context, and evidence-first next steps.",
+    "eyebrow": "Milwaukee backup guide",
+    "summary": "A local defect page for Milwaukee users who need to separate generic old-house anxiety from a real backup pattern that may involve the private lateral.",
+    "quickAnswer": "Milwaukee sewer backup risk deserves earlier inspection because owner-side laterals and pre-1954 inflow context can make drainage problems more financially relevant without proving a defect by themselves.",
+    "seriousness": "This becomes urgent when backups repeat, the home is older, or the owner is about to spend money without knowing whether the private lateral is actually part of the problem.",
+    "nextStep": "Document the pattern and get line evidence before assuming the city, a support program, or age alone explains what is happening.",
+    "costDirection": "Milwaukee backup costs can range from cleaning and diagnosis to rehab or replacement, so the real driver is whether footage shows a private-lateral issue rather than a general old-house worry.",
+    "uncertainty": "This page does not say every Milwaukee backup is a failing private lateral or that city-supported programs will apply automatically.",
+    "sourceNote": "Reviewed against Milwaukee owner-side lateral language, the private-property inflow program, and Pipe Check support information. The page stays evidence-first because local program context does not replace footage.",
+    "sourceIds": [
+      "mil-001",
+      "mil-002",
+      "mil-003"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the Milwaukee responsibility guide",
+    "secondaryCtaHref": "/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "why-milwaukee-backups-need-more-than-age-based-guessing",
+        "title": "Why Milwaukee backups need more than age-based guessing",
+        "intro": "Milwaukee gives users real reasons to take backups seriously, but not enough reason to skip evidence.",
+        "bullets": [
+          "Owner-side lateral responsibility means the private line can become the owner's problem fast.",
+          "Pre-1954 inflow and rehab context makes older-property sewer behavior more commercially relevant.",
+          "That still does not tell you whether the current issue is structural, maintenance-related, or only temporary."
+        ]
+      },
+      {
+        "anchor": "what-should-change-the-next-move",
+        "title": "What should change the next move in Milwaukee",
+        "intro": "The right question is not whether backups are scary. It is what evidence actually changes the decision.",
+        "bullets": [
+          "Do backups repeat or only happen in narrow conditions?",
+          "Is there footage pointing to a private-lateral defect or only general old-house concern?",
+          "Would a scope or estimate actually reduce uncertainty more than another guess?"
+        ]
+      }
+    ],
+    "highlights": [
+      "Milwaukee backup risk is strongest when repeated behavior and private-lateral exposure overlap.",
+      "Program context can matter without replacing line evidence."
+    ],
+    "questions": [
+      "Is there any actual sign the private lateral is involved?",
+      "Would evidence change the next move more than a generic cleanup response?"
+    ],
+    "relatedSlugs": [
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
+      "/cities/milwaukee/sewer-scope-before-buying-house/",
+      "/cities/milwaukee/sewer-scope-negotiation-with-seller/"
+    ]
+  },
+  {
+    "slug": "/cities/cincinnati/sewer-scope-negotiation-with-seller/",
+    "family": "geo",
+    "title": "Cincinnati Sewer Scope Negotiation With Seller",
+    "metaTitle": "Cincinnati Sewer Scope Negotiation With Seller | SewerVerdict",
+    "metaDescription": "Cincinnati sewer scope negotiation guidance with private building sewer ownership, wet-weather caveats, and evidence-first buyer framing.",
+    "eyebrow": "Cincinnati negotiation guide",
+    "summary": "A local transaction page for Cincinnati buyers who need to turn sewer findings into a grounded request in a market where public and private causes can overlap.",
+    "quickAnswer": "Cincinnati sewer scope negotiation works best when the buyer can show the issue is in the private building sewer or at least well documented enough that the seller cannot dismiss it as vague wet-weather noise.",
+    "seriousness": "This matters when the deal is active and the buyer has enough line evidence to ask for a credit, more inspection, or another specific next step before closing.",
+    "nextStep": "Tie the ask to the footage and the likely owner-side exposure rather than to a broad argument that every backup or storm story should become a concession.",
+    "costDirection": "Negotiation gets cleaner when the request is tied to private-building-sewer risk or unresolved causation that materially changes the buyer's downside after closing.",
+    "uncertainty": "This page does not say every Cincinnati sewer concern deserves a seller credit or that the city context removes the need for proof.",
+    "sourceNote": "Reviewed against Cincinnati MSD ownership and backup-program materials plus Redfin sewer scope guidance. The local angle is stronger cause-finding and clearer owner-side exposure, not louder fear.",
+    "sourceIds": [
+      "rdf-001",
+      "cin-001",
+      "cin-002",
+      "cin-003"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-negotiation-with-seller/",
+    "sections": [
+      {
+        "anchor": "why-a-cincinnati-sewer-ask-needs-better-boundary-language",
+        "title": "Why a Cincinnati sewer ask needs better boundary language",
+        "intro": "Cincinnati buyers need to sound specific because wet weather and public-private overlap can otherwise make the ask sound vague.",
+        "bullets": [
+          "Private building sewer ownership makes a documented owner-side issue more meaningful in negotiation.",
+          "Wet-weather context can muddy the story if the footage is weak or the cause is still unclear.",
+          "That is why a narrow, evidence-backed ask usually lands better."
+        ]
+      },
+      {
+        "anchor": "what-a-good-cincinnati-request-looks-like",
+        "title": "What a good Cincinnati sewer request looks like",
+        "intro": "The cleanest ask is usually the one most closely tied to the evidence.",
+        "bullets": [
+          "Ask for a credit or further inspection when the owner-side problem is credible but not fully priced.",
+          "Do not oversell a city or storm narrative if the footage still points back to the private line.",
+          "Keep the request proportional to what the scope actually resolved."
+        ]
+      }
+    ],
+    "highlights": [
+      "Cincinnati negotiation gets stronger when the buyer separates private-line evidence from general wet-weather noise.",
+      "A narrow ask usually beats a dramatic one."
+    ],
+    "questions": [
+      "Is the request tied to the private building sewer evidence or only to a messy backup story?",
+      "Would a credit or another inspection be more credible than a seller-managed repair promise?"
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-negotiation-with-seller/",
+      "/cities/cincinnati/sewer-scope-before-buying-house/",
+      "/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
+      "/cities/cincinnati/sewer-backup-risk/"
+    ]
+  },
+  {
+    "slug": "/cities/baltimore/sewer-scope-negotiation-with-seller/",
+    "family": "geo",
+    "title": "Baltimore Sewer Scope Negotiation With Seller",
+    "metaTitle": "Baltimore Sewer Scope Negotiation With Seller | SewerVerdict",
+    "metaDescription": "Baltimore sewer scope negotiation guidance with property-line responsibility split, wet-weather caveats, and evidence-first buyer framing.",
+    "eyebrow": "Baltimore negotiation guide",
+    "summary": "A local transaction page for Baltimore buyers who need to translate a sewer finding into a precise ask when the property-line split changes what risk may actually transfer after closing.",
+    "quickAnswer": "Baltimore sewer scope negotiation gets stronger when the buyer can show whether the issue sits in the private building sewer or remains unclear enough that more evidence is still worth requesting before closing.",
+    "seriousness": "This matters when a sewer story is affecting the transaction and the buyer needs to decide whether to ask for a credit, more inspection, or a narrower clarification step.",
+    "nextStep": "Use the footage to explain where the risk appears to sit, then keep the request proportional to that evidence rather than relying on generic backup history or city-liability assumptions.",
+    "costDirection": "A Baltimore sewer request becomes more credible when it is tied to the private-building-sewer downside the buyer may inherit, not just to the fact that a sewer event happened before.",
+    "uncertainty": "This page does not say Baltimore sellers automatically owe a sewer concession or that wet-weather reimbursement proves the city side is at fault.",
+    "sourceNote": "Reviewed against Baltimore's property-line responsibility split, wet-weather reimbursement guidance, and Redfin sewer scope guidance. The page stays evidence-first because the local angle is boundary clarity, not automatic blame.",
+    "sourceIds": [
+      "rdf-001",
+      "bal-001",
+      "bal-002"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-negotiation-with-seller/",
+    "sections": [
+      {
+        "anchor": "why-baltimore-negotiation-works-best-with-boundary-clarity",
+        "title": "Why Baltimore negotiation works best with boundary clarity",
+        "intro": "Baltimore buyers gain leverage when they can explain what part of the sewer story is city-side uncertainty and what part looks like private-building-sewer risk.",
+        "bullets": [
+          "The property-line split gives a more concrete explanation of why the issue matters.",
+          "That clarity helps the buyer avoid making a broad sewer complaint that feels hard to act on.",
+          "The strongest ask is usually one tied to the private downside that may transfer after closing."
+        ]
+      },
+      {
+        "anchor": "what-a-clean-baltimore-sewer-request-looks-like",
+        "title": "What a clean Baltimore sewer request looks like",
+        "intro": "The buyer's best move is often the most specific one.",
+        "bullets": [
+          "Use the scope to show whether the concern looks owner-side, unresolved, or clearly still needs more inspection.",
+          "Do not use wet-weather reimbursement talk as a substitute for line evidence.",
+          "Ask for credits or more investigation when the footage changes the buyer's real risk, not just their anxiety."
+        ]
+      }
+    ],
+    "highlights": [
+      "Baltimore negotiation improves when the buyer explains where the risk sits, not just that a sewer problem exists.",
+      "A precise ask beats a generic city-responsibility argument."
+    ],
+    "questions": [
+      "Does the footage point to the private building sewer, or is the risk still mainly unresolved?",
+      "Would a narrower ask make the sewer issue easier to resolve before closing?"
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-negotiation-with-seller/",
+      "/cities/baltimore/sewer-scope-before-buying-house/",
+      "/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
+      "/cities/baltimore/wet-weather-sewer-backup-responsibility/"
+    ]
+  },
+  {
+    "slug": "/cities/detroit/sewer-scope-negotiation-with-seller/",
+    "family": "geo",
+    "title": "Detroit Sewer Scope Negotiation With Seller",
+    "metaTitle": "Detroit Sewer Scope Negotiation With Seller | SewerVerdict",
+    "metaDescription": "Detroit sewer scope negotiation guidance with basement-backup context, private repair program caveats, and evidence-first buyer framing.",
+    "eyebrow": "Detroit negotiation guide",
+    "summary": "A local transaction page for Detroit buyers who need to turn sewer evidence into a practical request without confusing neighborhood program talk with the actual line condition.",
+    "quickAnswer": "Detroit sewer scope negotiation works best when the buyer uses footage to show a real private-line issue or a still-unresolved risk that matters after closing, not when they rely on general backup stories or assumed program help.",
+    "seriousness": "This matters when the transaction is active and the buyer needs a credible next step before closing because sewer history, backup events, or footage have raised the buried-line question.",
+    "nextStep": "Use the scope to narrow the actual line risk, then ask for a credit, more specialist review, or another practical step that matches the quality of the evidence.",
+    "costDirection": "A Detroit sewer request becomes more defensible when it ties the ask to probable owner-side repair exposure and uncertainty, not to vague hopes that a city program may solve it later.",
+    "uncertainty": "This page does not say Detroit buyers automatically deserve a sewer concession or that program support removes the need for a seller conversation.",
+    "sourceNote": "Reviewed against Detroit basement backup protection materials, the private sewer repair program, and Redfin sewer scope guidance. The page keeps negotiation posture tied to evidence because location-based program help is still limited and case-specific.",
+    "sourceIds": [
+      "rdf-001",
+      "det-002",
+      "det-003"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-negotiation-with-seller/",
+    "sections": [
+      {
+        "anchor": "why-detroit-buyers-need-a-tighter-story",
+        "title": "Why Detroit buyers need a tighter sewer story in negotiation",
+        "intro": "Detroit is a city where broad sewer narratives can drown out what actually matters on the subject property.",
+        "bullets": [
+          "Backup history and neighborhood program talk can make the risk sound large without proving the line condition.",
+          "A buyer gains more leverage by showing what the footage actually says about the private line.",
+          "That makes the negotiation more practical and less speculative."
+        ]
+      },
+      {
+        "anchor": "what-a-proportional-detroit-sewer-ask-looks-like",
+        "title": "What a proportional Detroit sewer ask looks like",
+        "intro": "The best ask is usually the one that solves the buyer's risk without pretending the answer is already complete.",
+        "bullets": [
+          "Use a credit when the line risk is credible but the full repair path is still not cleanly priced.",
+          "Use more inspection when the footage raises concern but does not finish the diagnosis.",
+          "Do not let program rumors replace actual footage in the request."
+        ]
+      }
+    ],
+    "highlights": [
+      "Detroit negotiation is strongest when it stays tied to the subject property's line evidence.",
+      "Program talk can support context, but it should not carry the argument."
+    ],
+    "questions": [
+      "Is the request based on the actual footage or on broad city-level sewer anxiety?",
+      "Would a credit or another inspection be cleaner than arguing over a still-uncertain repair path?"
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-negotiation-with-seller/",
+      "/cities/detroit/sewer-scope-before-buying-house/",
+      "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
+      "/cities/detroit/sewer-backup-risk/"
     ]
   }
 ]

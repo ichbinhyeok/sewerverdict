@@ -28,7 +28,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Milwaukee, WI")))
 			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")))
 			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
-			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")));
+			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")));
 	}
 
 	@Test
@@ -71,5 +72,28 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Official responsibility boundary")));
+	}
+
+	@Test
+	void newTierTwoNegotiationAndBackupPagesRenderSuccessfully() throws Exception {
+		mockMvc.perform(get("/cities/milwaukee/sewer-backup-risk/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Milwaukee Sewer Backup Risk")))
+			.andExpect(content().string(containsString("Defect interpretation lens")));
+
+		mockMvc.perform(get("/cities/cincinnati/sewer-scope-negotiation-with-seller/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Cincinnati Sewer Scope Negotiation With Seller")))
+			.andExpect(content().string(containsString("Buyer decision lens")));
+
+		mockMvc.perform(get("/cities/baltimore/sewer-scope-negotiation-with-seller/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Baltimore Sewer Scope Negotiation With Seller")))
+			.andExpect(content().string(containsString("Official responsibility boundary")));
+
+		mockMvc.perform(get("/cities/detroit/sewer-scope-negotiation-with-seller/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")))
+			.andExpect(content().string(containsString("Buyer decision lens")));
 	}
 }
