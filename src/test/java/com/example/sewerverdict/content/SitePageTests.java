@@ -40,4 +40,26 @@ class SitePageTests {
 		assertTrue(page.isDefectPage());
 		assertFalse(page.isCostPage());
 	}
+
+	@Test
+	void geoOldHouseRiskPageStaysBuyerIntentInsteadOfGenericRisk() {
+		SitePage page = new SitePage();
+		page.setSlug("/cities/cleveland/old-house-sewer-line-risk/");
+		page.setFamily("geo");
+		page.setSecondaryCtaHref("/old-house-sewer-line-risk/");
+
+		assertTrue(page.isBuyerPage());
+		assertFalse(page.isDefectPage());
+	}
+
+	@Test
+	void geoNegotiationPageInheritsBuyerDecisionLensFamily() {
+		SitePage page = new SitePage();
+		page.setSlug("/cities/philadelphia/sewer-scope-negotiation-with-seller/");
+		page.setFamily("geo");
+		page.setSecondaryCtaHref("/sewer-scope-negotiation-with-seller/");
+
+		assertTrue(page.isBuyerPage());
+		assertFalse(page.isDefectPage());
+	}
 }

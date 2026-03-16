@@ -47,9 +47,12 @@ public class SiteController {
 			"/sewer-scope-red-flags/"
 		)));
 		model.addAttribute("geoPages", siteContentService.getFeaturedPages(List.of(
-			"/cities/chicago/sewer-line-replacement-cost/",
-			"/cities/philadelphia/sewer-scope-before-buying-house/",
-			"/cities/pittsburgh/cast-iron-sewer-line-risk/"
+			"/cities/philadelphia/homeowner-vs-city-sewer-responsibility/",
+			"/cities/pittsburgh/sewer-scope-before-buying-house/",
+			"/cities/cleveland/old-house-sewer-line-risk/",
+			"/cities/chicago/cast-iron-sewer-line-risk/",
+			"/cities/buffalo/old-house-sewer-line-risk/",
+			"/cities/washington-dc/homeowner-vs-city-sewer-responsibility/"
 		)));
 		List<PageFaq> homeFaq = List.of(
 			faq("What can the estimator do?", "It narrows the likely next step, rough cost direction, and biggest uncertainty drivers for buyers, sellers, and owners."),

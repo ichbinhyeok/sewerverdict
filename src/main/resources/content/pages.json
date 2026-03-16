@@ -1518,5 +1518,545 @@
     "highlights": ["Material evidence matters more than city identity.", "Older-home access often shapes the final quote."],
     "questions": ["Is the cast iron actually deteriorating or just rough?", "Would a scope or quote move the decision forward faster?"],
     "relatedSlugs": ["/cast-iron-sewer-pipe-replacement-cost/", "/old-house-sewer-line-risk/"]
+  },
+  {
+    "slug": "/cities/philadelphia/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "Philadelphia Homeowner vs City Sewer Responsibility",
+    "metaTitle": "Philadelphia Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "Philadelphia sewer responsibility guidance for homeowners and buyers, with city-backed lateral rules and HELP financing context.",
+    "eyebrow": "Philadelphia responsibility guide",
+    "summary": "A local trust page for the line between private sewer lateral responsibility and the City system in Philadelphia.",
+    "quickAnswer": "In Philadelphia, the private sewer lateral connecting the home to the main is usually the property owner's responsibility, not the City's.",
+    "seriousness": "Responsibility matters most when a buyer is negotiating, an owner is facing a repair, or the next step depends on who must move first.",
+    "nextStep": "Use the local rule to frame the next move calmly: inspection first if the line is still uncertain, repair financing or quote comparison if the failure is documented.",
+    "costDirection": "Responsibility does not tell you the final bill, but it changes who has to solve the problem and whether financing or repair programs matter.",
+    "uncertainty": "This page does not decide legal fault in a specific transaction. It shows the local utility boundary and the questions to verify next.",
+    "sourceNote": "Reviewed against Philadelphia utility responsibility pages and the City HELP program. The page is written to prevent false certainty about what the City must pay.",
+    "sourceIds": ["phl-001", "pwd-001", "phl-002"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "where-boundary-usually-sits",
+        "title": "Where the responsibility boundary usually sits in Philadelphia",
+        "intro": "The practical question is not whether the City ever touches sewers. It is where the private lateral stops and the public main begins.",
+        "bullets": [
+          "Philadelphia utility pages say owners maintain and repair sanitary and storm sewer laterals serving the property.",
+          "That means a damaged private lateral usually starts as an owner-side problem, not an automatic City repair obligation.",
+          "Buyers should use this boundary to ask sharper questions before assuming the seller or City will make the issue disappear."
+        ]
+      },
+      {
+        "anchor": "help-loan-changes-next-step",
+        "title": "Why the HELP program changes the next-step conversation",
+        "intro": "Responsibility pages are more useful when they also explain what owners can do after the bad news lands.",
+        "bullets": [
+          "Philadelphia's HELP program creates a repair-financing angle that can matter when the problem is real but cash flow is tight.",
+          "That makes this page useful for sellers deciding whether to fix now, owners deciding whether to act sooner, and buyers assessing whether a repair path is at least feasible.",
+          "The right next move is still evidence first when the line condition is unclear."
+        ]
+      }
+    ],
+    "highlights": ["Private laterals are the key local boundary.", "Philadelphia's HELP program adds a real financing angle."],
+    "questions": ["Is the problem actually in the private lateral or somewhere else in the system?", "Does this need a scope, a financing conversation, or a quote now?"],
+    "relatedSlugs": ["/homeowner-vs-city-sewer-responsibility/", "/who-pays-for-sewer-line-repair-buyer-or-seller/"]
+  },
+  {
+    "slug": "/cities/philadelphia/sewer-scope-negotiation-with-seller/",
+    "family": "geo",
+    "title": "Philadelphia Sewer Scope Negotiation With Seller",
+    "metaTitle": "Philadelphia Sewer Scope Negotiation With Seller | SewerVerdict",
+    "metaDescription": "Philadelphia buyer-first sewer scope negotiation guidance with older-housing context, seller leverage questions, and evidence-first framing.",
+    "eyebrow": "Philadelphia negotiation guide",
+    "summary": "A local buyer page for turning sewer-scope evidence into a cleaner Philadelphia seller conversation.",
+    "quickAnswer": "In Philadelphia's older housing context, sewer scope evidence can materially improve negotiation clarity because buried-line risk is rarely abstract.",
+    "seriousness": "This matters most when the house is older, the transaction is active, and the scope finding could shift the buyer's confidence or repair expectations.",
+    "nextStep": "Push for documentation quality first, then decide whether the clean move is more inspection, a credit request, seller repair, or a price adjustment.",
+    "costDirection": "A local scope cost is usually modest compared with the leverage you gain by documenting a buried issue before closing.",
+    "uncertainty": "This page does not claim that Philadelphia sellers must pay. It helps buyers negotiate from evidence instead of fear.",
+    "sourceNote": "Reviewed against Redfin's buyer-intent sewer scope guidance, Philadelphia housing-age reporting, and local utility responsibility pages.",
+    "sourceIds": ["rdf-001", "phl-001", "phl-002", "phl-003"],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-negotiation-with-seller/",
+    "sections": [
+      {
+        "anchor": "why-philadelphia-negotiation-is-different",
+        "title": "Why Philadelphia negotiation pressure is not generic",
+        "intro": "Older housing stock changes how much buried-line uncertainty should worry a buyer before closing.",
+        "bullets": [
+          "Philadelphia metro homes sold in recent Redfin reporting skew old enough that sewer uncertainty is easier to take seriously.",
+          "That does not make every scope urgent, but it does make evidence-backed negotiation more commercially relevant.",
+          "The strongest posture is still calm documentation, not threat language."
+        ]
+      },
+      {
+        "anchor": "best-asks-after-scope",
+        "title": "What to ask for after a sewer scope in Philadelphia",
+        "intro": "A good scope does not force one answer. It narrows the cleanest transaction move.",
+        "bullets": [
+          "Ask whether the footage shows an isolated defect or a broader lateral problem.",
+          "Use the private-lateral boundary to avoid pretending the City is the default fix.",
+          "If the issue is real, weigh seller credit versus repair versus more specialist review."
+        ]
+      }
+    ],
+    "highlights": ["Older-home context makes scope evidence more valuable.", "Utility responsibility boundaries sharpen negotiation questions."],
+    "questions": ["Would a credit be cleaner than a seller-managed repair?", "Does the footage support a watch-item, a repair request, or another inspection?"],
+    "relatedSlugs": ["/sewer-scope-negotiation-with-seller/", "/who-pays-for-sewer-line-repair-buyer-or-seller/"]
+  },
+  {
+    "slug": "/cities/pittsburgh/old-house-sewer-line-risk/",
+    "family": "geo",
+    "title": "Pittsburgh Old House Sewer Line Risk",
+    "metaTitle": "Pittsburgh Old House Sewer Line Risk | SewerVerdict",
+    "metaDescription": "Pittsburgh old-house sewer line risk guidance with older-housing data, owner lateral responsibility, and inspection-first next steps.",
+    "eyebrow": "Pittsburgh old-house guide",
+    "summary": "A local old-house page for buyers and owners who need a Pittsburgh-specific reason to take buried-line uncertainty seriously.",
+    "quickAnswer": "Pittsburgh is one of the oldest home-buying metros in recent Redfin reporting, so old-house sewer risk is a practical question, not a niche one.",
+    "seriousness": "This becomes more important when an older house, a live transaction, and unclear sewer history stack together.",
+    "nextStep": "Treat Pittsburgh old-house sewer risk as an evidence problem first: scope before you panic, quote after the line condition is actually documented.",
+    "costDirection": "Age does not dictate a bill, but it raises the odds that material, access, and history uncertainty will widen the cost band.",
+    "uncertainty": "This page does not claim every old Pittsburgh home has sewer trouble. It explains why the risk deserves sharper diligence.",
+    "sourceNote": "Reviewed against Redfin's aging-home data and Pittsburgh Water's pipe-ownership guidance. The page avoids pretending age alone equals failure.",
+    "sourceIds": ["red-001", "pit-001"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/old-house-sewer-line-risk/",
+    "sections": [
+      {
+        "anchor": "why-pittsburgh-sits-high-risk",
+        "title": "Why Pittsburgh earns a stronger old-house sewer warning",
+        "intro": "Old-house risk pages work when the city context actually changes how often the question matters.",
+        "bullets": [
+          "Redfin's metro-age reporting places Pittsburgh among the oldest markets in the country for recently sold homes.",
+          "That makes buried-line diligence more commercially relevant to buyers and owners than in a newer-housing market.",
+          "The right message is still probability and uncertainty, not certainty."
+        ]
+      },
+      {
+        "anchor": "why-ownership-boundary-matters",
+        "title": "Why private-lateral ownership matters in Pittsburgh",
+        "intro": "Risk is not only about pipe condition. It is also about who has to solve the problem when the scope goes bad.",
+        "bullets": [
+          "Pittsburgh Water states the private owner is responsible for the sewer lateral to the main.",
+          "That raises the practical stakes of buying or owning an older home with unclear sewer history.",
+          "It also makes early inspection logic easier to justify."
+        ]
+      }
+    ],
+    "highlights": ["Pittsburgh sits in the oldest-home tier nationally.", "The private-lateral boundary makes bad findings more financially real."],
+    "questions": ["Is the old-house concern based on evidence or only on age?", "Would a scope meaningfully reduce surprise before closing or repair work?"],
+    "relatedSlugs": ["/old-house-sewer-line-risk/", "/sewer-scope-before-buying-house/"]
+  },
+  {
+    "slug": "/cities/pittsburgh/sewer-scope-before-buying-house/",
+    "family": "geo",
+    "title": "Pittsburgh Sewer Scope Before Buying a House",
+    "metaTitle": "Pittsburgh Sewer Scope Before Buying a House | SewerVerdict",
+    "metaDescription": "Pittsburgh buyer-first sewer scope guidance for older homes, private lateral responsibility, and evidence-driven next steps before closing.",
+    "eyebrow": "Pittsburgh buyer guide",
+    "summary": "A local buyer page for deciding whether a sewer scope is worth it before closing in Pittsburgh.",
+    "quickAnswer": "In Pittsburgh, older housing stock plus owner-side lateral responsibility make a sewer scope easier to justify before closing than in a newer, lower-risk market.",
+    "seriousness": "The issue matters most when the house is older, the contract is live, and a buried-line surprise could become the buyer's problem immediately after closing.",
+    "nextStep": "Scope first when the downside of uncertainty is meaningful. Use the footage to separate watch-items from negotiation or quote-now problems.",
+    "costDirection": "The scope fee is usually the smaller part of the decision. The expensive mistake is buying into an unseen lateral problem.",
+    "uncertainty": "A Pittsburgh sewer scope is not automatically necessary for every buyer. The point is whether it changes decision quality on this property.",
+    "sourceNote": "Reviewed against Redfin's sewer scope buyer guidance, Redfin's older-home metro data, and Pittsburgh Water's ownership guidance.",
+    "sourceIds": ["rdf-001", "red-001", "pit-001"],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-before-buying-house/",
+    "sections": [
+      {
+        "anchor": "why-buyers-scope-in-pittsburgh",
+        "title": "Why the buyer case is stronger in Pittsburgh",
+        "intro": "A sewer scope is worth more when hidden risk is both plausible and financially meaningful.",
+        "bullets": [
+          "Pittsburgh's older housing profile makes buried-line uncertainty more commercially relevant.",
+          "Owner-side lateral responsibility means a bad post-closing surprise can land on the buyer quickly.",
+          "That combination makes evidence-first diligence a calmer move than guesswork."
+        ]
+      },
+      {
+        "anchor": "what-a-good-scope-solves",
+        "title": "What a sewer scope should help a Pittsburgh buyer decide",
+        "intro": "The scope is not only about finding defects. It is about clarifying the next clean action.",
+        "bullets": [
+          "A full run can separate isolated issues from broader old-line risk.",
+          "Good footage gives buyers something real to use in a credit or repair conversation.",
+          "If the line looks materially compromised, then quote comparison becomes more honest."
+        ]
+      }
+    ],
+    "highlights": ["Older sold-home age raises the value of diligence.", "Ownership rules make hidden lateral issues more expensive to ignore."],
+    "questions": ["Would bad footage materially change the deal or only create noise?", "Is this a scope-first property or already a quote-first property?"],
+    "relatedSlugs": ["/sewer-scope-before-buying-house/", "/old-house-sewer-line-risk/"]
+  },
+  {
+    "slug": "/cities/cleveland/old-house-sewer-line-risk/",
+    "family": "geo",
+    "title": "Cleveland Old House Sewer Line Risk",
+    "metaTitle": "Cleveland Old House Sewer Line Risk | SewerVerdict",
+    "metaDescription": "Cleveland old-house sewer risk guidance with aging-home market data, water-and-sewer responsibility context, and inspection-first next steps.",
+    "eyebrow": "Cleveland old-house guide",
+    "summary": "A local old-house page for Cleveland buyers and owners trying to rank buried-line risk without panic language.",
+    "quickAnswer": "Cleveland's housing stock is old enough that sewer-line uncertainty is a normal diligence question, not an edge case.",
+    "seriousness": "The issue becomes more meaningful when an old property, unclear sewer history, and a live decision all show up together.",
+    "nextStep": "Use age as a reason to investigate, not as proof of failure. Scope first when the line condition is still unknown.",
+    "costDirection": "Older properties tend to widen the cost band because material, access, and prior repair history are often less clear.",
+    "uncertainty": "This page does not claim all old Cleveland homes have sewer problems. It explains why the question deserves more serious screening.",
+    "sourceNote": "Reviewed against Redfin's old-home market data and Cleveland Water's water-and-sewer responsibility education.",
+    "sourceIds": ["red-001", "cle-001"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/old-house-sewer-line-risk/",
+    "sections": [
+      {
+        "anchor": "why-cleveland-homes-need-more-screening",
+        "title": "Why Cleveland old-house sewer screening is not overkill",
+        "intro": "Old-house pages are useful when the city actually has enough older housing for the issue to recur.",
+        "bullets": [
+          "Redfin's older-home reporting places Cleveland among the oldest metro areas for recently sold homes.",
+          "That makes buried-line diligence a recurring buyer and owner problem, not a rare exception.",
+          "The right framing is sharper inspection logic, not universal alarm."
+        ]
+      },
+      {
+        "anchor": "why-responsibility-still-matters",
+        "title": "Why local responsibility context raises the stakes",
+        "intro": "Risk becomes more real when the owner may have to deal with the line rather than assuming the utility will.",
+        "bullets": [
+          "Cleveland Water specifically educates customers that many do not realize they are responsible for their water and sewer lines.",
+          "That makes hidden old-line problems more commercially meaningful once the house changes hands.",
+          "Evidence first is still the cleanest way to avoid overreacting."
+        ]
+      }
+    ],
+    "highlights": ["Cleveland sits in the old-housing tier nationally.", "Responsibility education from the utility supports stronger diligence."],
+    "questions": ["Is this concern based on footage, symptoms, or only on age?", "Would a scope meaningfully reduce uncertainty before money is committed?"],
+    "relatedSlugs": ["/old-house-sewer-line-risk/", "/sewer-scope-before-buying-house/"]
+  },
+  {
+    "slug": "/cities/cleveland/sewer-line-replacement-cost/",
+    "family": "geo",
+    "title": "Cleveland Sewer Line Replacement Cost",
+    "metaTitle": "Cleveland Sewer Line Replacement Cost | SewerVerdict",
+    "metaDescription": "Cleveland-focused sewer replacement cost direction with older-housing context, responsibility reality, and quote-path framing.",
+    "eyebrow": "Cleveland cost guide",
+    "summary": "A local cost page for Cleveland users who need a city-level reason why sewer quotes can widen fast on older properties.",
+    "quickAnswer": "In Cleveland, sewer replacement cost still depends on line length, depth, and restoration, but older housing stock makes evidence and quote quality especially important.",
+    "seriousness": "This becomes a bigger decision when the issue is confirmed and the property is old enough that access or system history may complicate the job.",
+    "nextStep": "If the line is unscoped, get evidence first. If the defect is real, compare repair, trenchless, and replacement paths with an eye on what is actually included.",
+    "costDirection": "Older-home access and system uncertainty can make the spread between a basic quote and the real project surprisingly wide.",
+    "uncertainty": "This page does not give a universal Cleveland price. It explains why local old-house context should make you skeptical of neat averages.",
+    "sourceNote": "Reviewed against Redfin's old-home metro data, Cleveland Water responsibility guidance, and national cost sanity-check sources.",
+    "sourceIds": ["red-001", "cle-001", "cost-001", "cost-002"],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-replacement-cost/",
+    "sections": [
+      {
+        "anchor": "why-cost-bands-run-wide",
+        "title": "Why Cleveland cost bands can run wider than a headline suggests",
+        "intro": "The local challenge is not finding a number. It is understanding how much uncertainty still sits inside the quote.",
+        "bullets": [
+          "Older homes often mean less certainty about line material, prior repairs, and access complexity.",
+          "That makes line length and restoration assumptions more dangerous than they look in a neat national average.",
+          "Quotes become more trustworthy once the issue is documented clearly."
+        ]
+      },
+      {
+        "anchor": "owner-side-exposure",
+        "title": "Why owner-side line responsibility changes how users read costs",
+        "intro": "Responsibility does not set the price, but it changes whether the user should treat the quote as their problem to solve.",
+        "bullets": [
+          "Cleveland Water's own education emphasizes that owners may be responsible for these lines.",
+          "That makes cost pages more commercially serious for buyers and owners in Cleveland than generic plumbing content.",
+          "The clean move is still inspection-first unless the issue is already well documented."
+        ]
+      }
+    ],
+    "highlights": ["Older housing raises quote uncertainty.", "Responsibility reality makes the cost question more commercial."],
+    "questions": ["What part of the quote is assumption versus documented line condition?", "Would trenchless change the disruption story enough to matter?"],
+    "relatedSlugs": ["/sewer-line-replacement-cost/", "/old-house-sewer-line-risk/"]
+  },
+  {
+    "slug": "/cities/chicago/sewer-scope-before-buying-house/",
+    "family": "geo",
+    "title": "Chicago Sewer Scope Before Buying a House",
+    "metaTitle": "Chicago Sewer Scope Before Buying a House | SewerVerdict",
+    "metaDescription": "Chicago buyer-first sewer scope guidance with combined-sewer context, older-housing caution, and evidence-first decision logic.",
+    "eyebrow": "Chicago buyer guide",
+    "summary": "A local buyer page for deciding when a sewer scope is worth it before closing in Chicago.",
+    "quickAnswer": "In Chicago, older housing plus combined-sewer backup context make a sewer scope easier to justify when the property or timeline raises buried-line uncertainty.",
+    "seriousness": "This matters most when the home is older, the contract is active, and the buyer would own the downside of a hidden sewer issue after closing.",
+    "nextStep": "Use scope-first logic when the buried-line question is still open. Use quote comparison only after the evidence is clear enough to support it.",
+    "costDirection": "The scope fee is small compared with the cost of buying into a buried problem you did not document in time.",
+    "uncertainty": "This page does not claim every Chicago buyer needs a scope. It explains when the local context makes it a stronger move.",
+    "sourceNote": "Reviewed against MWRD's combined-sewer guidance, Redfin's buyer-intent sewer scope framing, and aging-home market data.",
+    "sourceIds": ["rdf-001", "chi-001", "red-001"],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-before-buying-house/",
+    "sections": [
+      {
+        "anchor": "why-chicago-buyers-have-a-real-case",
+        "title": "Why Chicago buyers have a stronger local case for sewer diligence",
+        "intro": "Chicago is not only an old-housing question. It is also a system-context question.",
+        "bullets": [
+          "MWRD explains that most of the Chicago area uses combined sewers, which raises the practical relevance of backup and drainage conversations.",
+          "That system context can make buried-line uncertainty feel less theoretical to buyers.",
+          "The clean buyer move is still evidence, not panic."
+        ]
+      },
+      {
+        "anchor": "what-scope-should-answer",
+        "title": "What a Chicago sewer scope should help a buyer answer",
+        "intro": "A useful scope helps the buyer decide whether the issue is real enough to change the transaction.",
+        "bullets": [
+          "Is the line clear enough to rule out a larger buried defect?",
+          "Does the footage suggest an isolated maintenance issue or something more structural?",
+          "Would the result change the negotiation or only add noise?"
+        ]
+      }
+    ],
+    "highlights": ["Combined-sewer context makes backup conversations more local and real.", "Evidence matters more than generic age fear."],
+    "questions": ["Would a scope meaningfully change negotiation leverage before closing?", "Is this property still inspection-first or already quote-first?"],
+    "relatedSlugs": ["/sewer-scope-before-buying-house/", "/sewer-scope-red-flags/"]
+  },
+  {
+    "slug": "/cities/chicago/cast-iron-sewer-line-risk/",
+    "family": "geo",
+    "title": "Chicago Cast Iron Sewer Line Risk",
+    "metaTitle": "Chicago Cast Iron Sewer Line Risk | SewerVerdict",
+    "metaDescription": "Chicago cast iron sewer risk guidance with older-housing caution, combined-sewer context, and quote-readiness framing.",
+    "eyebrow": "Chicago cast iron guide",
+    "summary": "A local cast-iron page for Chicago owners and buyers who need to rank old-line risk without overstating certainty.",
+    "quickAnswer": "Chicago cast iron sewer risk becomes commercially important when older housing, water exposure, and access uncertainty all stack together.",
+    "seriousness": "This moves from watch-item to real cost problem when the concern looks systemic, under-slab, or tied to active symptoms or scope evidence.",
+    "nextStep": "If the issue is still a suspicion, scope first. If the line condition is documented, compare repair and replacement paths with an eye on restoration and access.",
+    "costDirection": "Cast iron cost direction usually widens when the property is older and the work may involve slab, hardscape, or difficult restoration.",
+    "uncertainty": "This page does not treat every rough cast iron line as failure. It uses Chicago context to explain why the question deserves sharper screening.",
+    "sourceNote": "Reviewed against MWRD's local sewer-system context, Redfin's aging-home reporting, and national cast-iron/replacement cost guides.",
+    "sourceIds": ["chi-001", "red-001", "cost-002"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/cast-iron-sewer-pipe-replacement-cost/",
+    "sections": [
+      {
+        "anchor": "why-cast-iron-questions-land-hard",
+        "title": "Why cast iron questions land hard in Chicago",
+        "intro": "The local issue is not only metal deterioration. It is whether the house context makes the downside of being wrong expensive.",
+        "bullets": [
+          "Older housing stock means cast-iron questions show up often enough to matter commercially.",
+          "Combined-sewer and backup context can make users less willing to ignore drainage clues.",
+          "The right response is still evidence before excavation."
+        ]
+      },
+      {
+        "anchor": "when-cast-iron-becomes-quote-ready",
+        "title": "When cast iron concern becomes a quote-ready problem",
+        "intro": "Users need help separating rough old pipe from a path that really deserves pricing now.",
+        "bullets": [
+          "A full scope showing scale loss, offsetting, repeated backup, or collapse logic changes the decision fast.",
+          "Under-slab or hard-to-access runs make the cost conversation heavier.",
+          "If the evidence is partial, inspection-first is still the cleaner move."
+        ]
+      }
+    ],
+    "highlights": ["Chicago context makes cast-iron suspicion more commercially relevant.", "Quote-first only makes sense once the line is actually documented."],
+    "questions": ["Is this real cast-iron failure or just an old-house fear pattern?", "Would a quote clarify the decision, or is the footage still too weak?"],
+    "relatedSlugs": ["/cast-iron-sewer-pipe-replacement-cost/", "/sewer-scope-red-flags/"]
+  },
+  {
+    "slug": "/cities/buffalo/old-house-sewer-line-risk/",
+    "family": "geo",
+    "title": "Buffalo Old House Sewer Line Risk",
+    "metaTitle": "Buffalo Old House Sewer Line Risk | SewerVerdict",
+    "metaDescription": "Buffalo old-house sewer risk guidance with one of the oldest sold-home profiles in the country and inspection-first next-step logic.",
+    "eyebrow": "Buffalo old-house guide",
+    "summary": "A local old-house page for Buffalo buyers and owners who need a sharper frame for buried-line risk on very old properties.",
+    "quickAnswer": "Buffalo sits at the extreme end of recent Redfin sold-home age data, so old-house sewer risk deserves more serious screening here than in a newer-housing market.",
+    "seriousness": "The risk matters most when the home is old, the sewer history is unclear, and the next decision has real money attached to it.",
+    "nextStep": "Treat Buffalo old-house sewer risk as a reason to get evidence sooner, not as proof that the line has failed.",
+    "costDirection": "Very old housing can widen uncertainty around material, access, and prior repair quality, which makes neat cost assumptions weaker.",
+    "uncertainty": "This page does not claim that all old Buffalo homes have sewer trouble. It explains why buried-line diligence is more defensible locally.",
+    "sourceNote": "Reviewed against Redfin's sold-home age report and national old-house cost/material guidance. The page stays evidence-first and avoids fake local certainty.",
+    "sourceIds": ["red-001", "cost-002"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/old-house-sewer-line-risk/",
+    "sections": [
+      {
+        "anchor": "why-buffalo-earns-extra-caution",
+        "title": "Why Buffalo earns stronger old-house sewer caution",
+        "intro": "Old-house pages are strongest when the market is actually old enough that the risk pattern is normal rather than theoretical.",
+        "bullets": [
+          "Redfin's metro data puts Buffalo at the oldest end of recent sold-home age rankings.",
+          "That makes buried-line screening more commercially relevant for both buyers and owners.",
+          "The right framing is probability and due diligence, not certainty."
+        ]
+      },
+      {
+        "anchor": "how-to-use-that-signal",
+        "title": "How to use Buffalo's age profile without overreacting",
+        "intro": "A city-level age signal is useful only if it changes the next step intelligently.",
+        "bullets": [
+          "Use it to justify inspection when sewer history is thin or the transaction is live.",
+          "Do not use it to assume replacement without evidence.",
+          "Let footage or symptoms decide whether the next move is a scope, a cleaning path, or a quote."
+        ]
+      }
+    ],
+    "highlights": ["Buffalo sits in the oldest-home tier nationally.", "Age is a reason to inspect, not a diagnosis."],
+    "questions": ["Is the concern evidence-backed or age-only?", "Would a scope materially improve confidence before spending more money?"],
+    "relatedSlugs": ["/old-house-sewer-line-risk/", "/sewer-scope-before-buying-house/"]
+  },
+  {
+    "slug": "/cities/buffalo/sewer-line-replacement-cost/",
+    "family": "geo",
+    "title": "Buffalo Sewer Line Replacement Cost",
+    "metaTitle": "Buffalo Sewer Line Replacement Cost | SewerVerdict",
+    "metaDescription": "Buffalo sewer replacement cost direction with very old-housing context, uncertainty-first framing, and quote-path logic.",
+    "eyebrow": "Buffalo cost guide",
+    "summary": "A local cost page for Buffalo users who need a city-level reason why sewer replacement quotes should stay broad until the line is documented.",
+    "quickAnswer": "Buffalo sewer replacement cost still depends on footage, depth, and restoration, but the city's very old housing stock makes uncertainty a bigger part of the number.",
+    "seriousness": "This becomes a bigger decision when the issue is confirmed and the property age makes hidden material or access complexity more plausible.",
+    "nextStep": "Use the scope to narrow the problem first, then compare repair, trenchless, and replacement paths with a critical eye on what the quote assumes.",
+    "costDirection": "Older homes often raise uncertainty about actual material, prior repairs, and restoration scope, which can widen the quote range materially.",
+    "uncertainty": "This page does not give a universal Buffalo number. It explains why a broad band is more honest than a neat local average.",
+    "sourceNote": "Reviewed against Redfin's old-home data and national sewer cost guides. The page intentionally uses local age context without pretending to know every Buffalo run condition.",
+    "sourceIds": ["red-001", "cost-001", "cost-002"],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-replacement-cost/",
+    "sections": [
+      {
+        "anchor": "why-buffalo-cost-pages-need-wider-ranges",
+        "title": "Why Buffalo cost pages need wider local ranges",
+        "intro": "The local problem is not only labor or materials. It is how much uncertainty sits inside an old property before you even start.",
+        "bullets": [
+          "Very old housing makes hidden pipe material and repair history harder to predict.",
+          "That means a headline local average is often less useful than a well-explained range.",
+          "Users should be more skeptical of overly tidy quotes when the line is not fully documented."
+        ]
+      },
+      {
+        "anchor": "what-users-should-compare",
+        "title": "What Buffalo users should compare instead of one big number",
+        "intro": "The goal is not to memorize a city average. It is to compare the right project assumptions.",
+        "bullets": [
+          "Is the quote assuming spot repair or full replacement?",
+          "How much of the price is excavation and restoration versus actual pipe work?",
+          "Would trenchless change disruption enough to deserve a real second quote?"
+        ]
+      }
+    ],
+    "highlights": ["Buffalo's age profile makes false precision especially dangerous.", "A range with assumptions is more useful than a neat average."],
+    "questions": ["What part of the quote is proven versus assumed?", "Would a better scope or second quote materially change the decision?"],
+    "relatedSlugs": ["/sewer-line-replacement-cost/", "/old-house-sewer-line-risk/"]
+  },
+  {
+    "slug": "/cities/st-louis/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "St. Louis Homeowner vs City Sewer Responsibility",
+    "metaTitle": "St. Louis Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "St. Louis sewer responsibility guidance with MSD backup guidance and sewer lateral program context for owners and buyers.",
+    "eyebrow": "St. Louis responsibility guide",
+    "summary": "A local trust page for understanding where private responsibility and utility programs fit into St. Louis sewer decisions.",
+    "quickAnswer": "In St. Louis, sewer backup and lateral decisions often start on the property-owner side, even though MSD programs can affect how the repair path gets funded.",
+    "seriousness": "Responsibility matters most when a buyer, seller, or owner is deciding whether the next move is cleanup, scope, quote, or program-based repair help.",
+    "nextStep": "Use this page to clarify whether you are dealing with a private-property problem, then move into inspection or quote logic based on actual evidence.",
+    "costDirection": "Responsibility and program structure do not fix the pipe for you, but they change how users should think about cost exposure and repair options.",
+    "uncertainty": "This page does not promise MSD will pay for a specific problem. It shows the local program and backup context that users should verify first.",
+    "sourceNote": "Reviewed against MSD sewer backup guidance and local sewer lateral program information. The page is intentionally cautious about what any program guarantees.",
+    "sourceIds": ["stl-001", "stl-002"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "why-st-louis-needs-its-own-page",
+        "title": "Why St. Louis needs its own responsibility page",
+        "intro": "Local pages are most useful when the utility system and program structure actually change how users should interpret the problem.",
+        "bullets": [
+          "MSD's sewer backup guidance makes it clear that backups can have several causes and that users need local response steps, not generic plumbing copy.",
+          "The existence of sewer lateral programs changes the financing and ownership conversation in a way a national page cannot fully capture.",
+          "That makes St. Louis a real trust wedge, not a city swap."
+        ]
+      },
+      {
+        "anchor": "how-programs-change-next-step",
+        "title": "How local sewer lateral programs should change the next step",
+        "intro": "Program pages do not replace evidence. They change how users think about whether repair is feasible and who should start moving.",
+        "bullets": [
+          "If the line problem is still uncertain, scope first.",
+          "If the defect is documented, the program structure may shape whether the user pursues repair faster.",
+          "The safest language is still verify, document, then act."
+        ]
+      }
+    ],
+    "highlights": ["MSD program structure creates a real local trust angle.", "Responsibility still needs verification before anyone promises a fix."],
+    "questions": ["Is this definitely a private-property issue or still only a backup symptom?", "Does the local program change the timing of repair or only the funding conversation?"],
+    "relatedSlugs": ["/homeowner-vs-city-sewer-responsibility/", "/does-home-insurance-cover-sewer-line-replacement/"]
+  },
+  {
+    "slug": "/cities/washington-dc/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "Washington, DC Homeowner vs City Sewer Responsibility",
+    "metaTitle": "Washington, DC Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "Washington, DC sewer responsibility guidance with DC Water's backup language, owner cleanup reality, and next-step framing.",
+    "eyebrow": "Washington, DC responsibility guide",
+    "summary": "A local trust page for DC users who need utility-backed language on sewer backup responsibility before deciding what to do next.",
+    "quickAnswer": "DC Water says property owners are typically responsible for cleanup and for many maintenance-related causes of sewer backups, and that the utility generally does not pay damages.",
+    "seriousness": "This matters when a backup, buyer concern, or repair dispute turns on who is expected to act first and who may end up carrying the cost.",
+    "nextStep": "Use the utility language to ground the conversation, then decide whether the right follow-up is inspection, more evidence, or a repair quote.",
+    "costDirection": "Responsibility does not set the final repair number, but it changes whether the user should treat the sewer issue as an owner-side financial risk now.",
+    "uncertainty": "This page does not decide blame in a specific incident. It explains the local utility boundary and why users should verify the actual cause first.",
+    "sourceNote": "Reviewed against DC Water's sewer-backup guidance. The page is written to avoid implying that city responsibility or compensation is automatic.",
+    "sourceIds": ["dc-001"],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "what-dc-water-actually-says",
+        "title": "What DC Water actually says about owner responsibility",
+        "intro": "The value of a local responsibility page is precision, not drama.",
+        "bullets": [
+          "DC Water states that property owners are typically responsible for cleanup and many maintenance-related causes of backups.",
+          "The utility also says it generally does not pay for the damages.",
+          "That language changes how users should frame both risk and urgency."
+        ]
+      },
+      {
+        "anchor": "how-to-use-that-language",
+        "title": "How to use that language without overclaiming",
+        "intro": "Responsibility pages should help users ask better questions, not hand them fake certainty.",
+        "bullets": [
+          "Verify whether the cause appears owner-side or system-side before making demands.",
+          "Use footage, cleanup detail, and maintenance history to make the next conversation more credible.",
+          "If the line issue is real, the clean next move may be quote-first rather than another round of generic research."
+        ]
+      }
+    ],
+    "highlights": ["DC Water's language is unusually clear about owner-side exposure.", "Evidence still matters before anyone claims the utility owes a fix."],
+    "questions": ["Do you actually know what caused the backup?", "Is the next move more investigation or a documented repair path?"],
+    "relatedSlugs": ["/homeowner-vs-city-sewer-responsibility/", "/does-home-insurance-cover-sewer-line-replacement/"]
   }
 ]

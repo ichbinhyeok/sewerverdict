@@ -301,7 +301,11 @@ public class SitePage {
 		if (hint == null || hint.isBlank()) {
 			return null;
 		}
-		if (hint.contains("before-buying-house") || hint.contains("buyer-or-seller")) {
+		if (hint.contains("before-buying-house") || hint.contains("buyer-or-seller")
+				|| hint.contains("old-house") || hint.contains("before-1970")
+				|| hint.contains("negotiation-with-seller")
+				|| hint.contains("scope-worth-it")
+				|| hint.contains("scope-inspection")) {
 			return "buyer";
 		}
 		if (hint.contains("risk") || hint.contains("red-flags")
