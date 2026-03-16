@@ -257,18 +257,62 @@ public class SitePage {
 	}
 
 	public boolean isBuyerPage() {
-		return "buyer".equalsIgnoreCase(family);
+		return matchesFamily("buyer");
 	}
 
 	public boolean isCostPage() {
-		return "cost".equalsIgnoreCase(family);
+		return matchesFamily("cost");
 	}
 
 	public boolean isDefectPage() {
-		return "defect".equalsIgnoreCase(family);
+		return matchesFamily("defect");
 	}
 
 	public boolean isGeoPage() {
 		return slug != null && slug.startsWith("/cities/");
+	}
+
+	private boolean matchesFamily(String expectedFamily) {
+		if (expectedFamily.equalsIgnoreCase(family)) {
+			return true;
+		}
+		if (!isGeoPage()) {
+			return false;
+		}
+		String inferredFamily = inferGeoFamily();
+		return expectedFamily.equalsIgnoreCase(inferredFamily);
+	}
+
+	private String inferGeoFamily() {
+		String slugHint = slug == null ? "" : slug.toLowerCase();
+		String secondaryHint = secondaryCtaHref == null ? "" : secondaryCtaHref.toLowerCase();
+		String familyFromSlug = inferFamilyFromHint(slugHint);
+		if (familyFromSlug != null) {
+			return familyFromSlug;
+		}
+		String familyFromSecondary = inferFamilyFromHint(secondaryHint);
+		if (familyFromSecondary != null) {
+			return familyFromSecondary;
+		}
+		return family;
+	}
+
+	private String inferFamilyFromHint(String hint) {
+		if (hint == null || hint.isBlank()) {
+			return null;
+		}
+		if (hint.contains("before-buying-house") || hint.contains("buyer-or-seller")) {
+			return "buyer";
+		}
+		if (hint.contains("risk") || hint.contains("red-flags")
+				|| hint.contains("what-to-do") || hint.contains("meaning")
+				|| hint.contains("signs")) {
+			return "defect";
+		}
+		if (hint.contains("cost") || hint.contains("repair-vs-replacement")
+				|| hint.contains("trenchless")) {
+			return "cost";
+		}
+		return null;
 	}
 }

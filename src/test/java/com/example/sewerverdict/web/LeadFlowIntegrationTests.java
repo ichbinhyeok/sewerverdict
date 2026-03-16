@@ -1,6 +1,7 @@
 package com.example.sewerverdict.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
@@ -120,6 +121,23 @@ class LeadFlowIntegrationTests {
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"routingBucket\":\"inspection-first\""));
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"utmSource\":\"google\""));
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"sessionId\":\"" + session.getId() + "\""));
+	}
+
+	@Test
+	void leadPageHandlesShortDraftIdWithoutTemplateFailure() throws Exception {
+		mockMvc.perform(get("/get-sewer-quotes/")
+				.param("serviceNeeded", "replacement")
+				.param("draftId", "test")
+				.param("recommendedServicePath", "replacement")
+				.param("role", "owner")
+				.param("zipOrCity", "60614")
+				.param("houseAgeBand", "1950-1969")
+				.param("issueState", "scope-found-issue")
+				.param("defectType", "orangeburg")
+				.param("urgency", "urgent-repair"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Imported estimator draft test")))
+			.andExpect(content().string(containsString("Recommended path: replacement")));
 	}
 
 	private static Path createTempStorageRoot() {

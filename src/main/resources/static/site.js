@@ -1,15 +1,16 @@
 const EVENT_URL = "/api/events";
 const ATTRIBUTION_STORAGE_KEY = "sv-attribution";
-const ATTRIBUTION_KEYS = [
-	"utmSource",
-	"utmMedium",
-	"utmCampaign",
-	"utmTerm",
-	"utmContent",
-	"gclid",
-	"wbraid",
-	"gbraid"
-];
+const ATTRIBUTION_PARAM_ALIASES = {
+	utmSource: ["utmSource", "utm_source"],
+	utmMedium: ["utmMedium", "utm_medium"],
+	utmCampaign: ["utmCampaign", "utm_campaign"],
+	utmTerm: ["utmTerm", "utm_term"],
+	utmContent: ["utmContent", "utm_content"],
+	gclid: ["gclid"],
+	wbraid: ["wbraid"],
+	gbraid: ["gbraid"]
+};
+const ATTRIBUTION_KEYS = Object.keys(ATTRIBUTION_PARAM_ALIASES);
 
 function postEvent(eventType, pageSlug, label, metadata = {}) {
 	if (!eventType || !pageSlug) {
@@ -32,7 +33,9 @@ function readUrlAttribution() {
 	const params = new URLSearchParams(window.location.search);
 	const attribution = {};
 	ATTRIBUTION_KEYS.forEach((key) => {
-		const value = params.get(key);
+		const value = ATTRIBUTION_PARAM_ALIASES[key]
+			.map((paramName) => params.get(paramName))
+			.find((candidate) => candidate);
 		if (value) {
 			attribution[key] = value;
 		}
@@ -78,7 +81,9 @@ function applyAttributionToLinks(attribution) {
 		}
 		const url = new URL(link.getAttribute("href"), window.location.origin);
 		ATTRIBUTION_KEYS.forEach((key) => {
-			if (attribution[key] && !url.searchParams.has(key)) {
+			const hasAttributionParam = ATTRIBUTION_PARAM_ALIASES[key]
+				.some((paramName) => url.searchParams.has(paramName));
+			if (attribution[key] && !hasAttributionParam) {
 				url.searchParams.set(key, attribution[key]);
 			}
 		});
