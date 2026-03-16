@@ -6,19 +6,31 @@
 
 <main>
 	<section class="page-hero">
-		<div class="container compact-hero">
-			<span class="eyebrow">Estimator result</span>
-			<div class="result-tier" th:classappend="${result.riskClass}">
-				<span>Risk tier</span>
-				<strong th:text="${result.riskTier}">Meaningful uncertainty / moderate risk</strong>
+		<div class="container result-hero-shell">
+			<div class="hero-copy">
+				<span class="eyebrow">Estimator result</span>
+				<div class="result-tier" th:classappend="${result.riskClass}">
+					<span>Risk tier</span>
+					<strong th:text="${result.riskTier}">Meaningful uncertainty / moderate risk</strong>
+				</div>
+				<h1 th:text="${result.likelyNextStep}">Likely next step</h1>
+				<p class="lede" th:text="${result.interpretation}">Interpretation</p>
+				<div class="button-row">
+					<a class="button button-primary" th:href="${result.primaryCtaHref}" th:text="${result.primaryCtaLabel}"
+					   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/" th:attr="data-event-label=${result.primaryCtaLabel}">Primary CTA</a>
+					<a class="button button-secondary" th:href="${result.secondaryCtaHref}" th:text="${result.secondaryCtaLabel}"
+					   data-event-type="result_secondary_cta_click" data-page-slug="/estimator/results/" th:attr="data-event-label=${result.secondaryCtaLabel}">Secondary CTA</a>
+				</div>
 			</div>
-			<h1 th:text="${result.likelyNextStep}">Likely next step</h1>
-			<p class="lede" th:text="${result.interpretation}">Interpretation</p>
-			<div class="button-row">
-				<a class="button button-primary" th:href="${result.primaryCtaHref}" th:text="${result.primaryCtaLabel}"
-				   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/" th:attr="data-event-label=${result.primaryCtaLabel}">Primary CTA</a>
-				<a class="button button-secondary" th:href="${result.secondaryCtaHref}" th:text="${result.secondaryCtaLabel}"
-				   data-event-type="result_secondary_cta_click" data-page-slug="/estimator/results/" th:attr="data-event-label=${result.secondaryCtaLabel}">Secondary CTA</a>
+			<div class="result-brief">
+				<span class="card-kicker">Decision memo</span>
+				<h2>Share this like a calm brief</h2>
+				<p>Designed to be copied into a buyer thread, agent message, seller email, or contractor note without panic language.</p>
+				<ul class="clean-list">
+					<li>Risk tier and next move are kept separate on purpose.</li>
+					<li>Cost bands stay broad until a real scope or quote narrows them.</li>
+					<li>This output is meant to travel well in a stressed transaction.</li>
+				</ul>
 			</div>
 		</div>
 	</section>

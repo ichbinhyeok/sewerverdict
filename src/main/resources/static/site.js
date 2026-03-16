@@ -78,11 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			const valid = stepIsValid(currentStep());
 			if (nextButton) {
 				nextButton.classList.toggle("is-disabled", !valid);
-				nextButton.setAttribute("aria-disabled", String(!valid));
 			}
 			if (submitButton) {
 				submitButton.classList.toggle("is-disabled", !valid);
-				submitButton.setAttribute("aria-disabled", String(!valid));
 			}
 			if (stepError) {
 				stepError.hidden = valid || !showValidation;

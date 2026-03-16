@@ -14,8 +14,17 @@
 				<ul class="clean-list">
 					<li th:each="item : ${leadHighlights}" th:text="${item}">Highlight</li>
 				</ul>
+				<div class="trust-strip">
+					<div>Short form, routing only</div>
+					<div>Reviewed guidance</div>
+					<div>No scare tactics</div>
+				</div>
 			</div>
 			<div class="form-shell">
+				<div class="form-prelude">
+					<span class="card-kicker">Routing note</span>
+					<p>These details are used to match the next inspection or quote path more credibly. The form is intentionally short.</p>
+				</div>
 				<div class="form-success" th:if="${successMessage}" th:text="${successMessage}">Success</div>
 				<div class="form-error" th:if="${formError}" th:text="${formError}">Error</div>
 				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form">
@@ -92,6 +101,7 @@
 						<input th:field="*{consentGiven}" type="checkbox">
 						<span>I consent to being contacted about relevant sewer inspection or repair options based on the details I submit here.</span>
 					</label>
+					<p class="form-microcopy">Use a personal email and best callback number if you want this to move beyond a generic directory result.</p>
 					<button class="button button-primary button-block" type="submit">Submit details</button>
 				</form>
 			</div>
