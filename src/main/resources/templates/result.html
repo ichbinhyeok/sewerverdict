@@ -26,11 +26,14 @@
 				<span class="card-kicker">Decision memo</span>
 				<h2>Share this like a calm brief</h2>
 				<p>Designed to be copied into a buyer thread, agent message, seller email, or contractor note without panic language.</p>
+				<button class="button button-ghost" type="button" data-copy-summary data-event-type="summary_copy_click"
+				        data-page-slug="/estimator/results/" data-event-label="copy-summary-hero">Copy decision memo</button>
 				<ul class="clean-list">
 					<li>Risk tier and next move are kept separate on purpose.</li>
 					<li>Cost bands stay broad until a real scope or quote narrows them.</li>
 					<li>This output is meant to travel well in a stressed transaction.</li>
 				</ul>
+				<p class="summary-inline" th:text="${result.summaryBlock}">Summary</p>
 			</div>
 		</div>
 	</section>

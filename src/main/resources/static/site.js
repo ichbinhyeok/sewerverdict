@@ -74,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			return fields.every((field) => field.value && field.value.trim().length > 0);
 		};
 
+		const validationMessage = () => currentStep()?.dataset.stepMessage || "Please complete this step before continuing.";
+
 		const updateStepControls = () => {
 			const valid = stepIsValid(currentStep());
 			if (nextButton) {
@@ -83,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				submitButton.classList.toggle("is-disabled", !valid);
 			}
 			if (stepError) {
+				stepError.textContent = validationMessage();
 				stepError.hidden = valid || !showValidation;
 			}
 		};
@@ -156,20 +159,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		syncWizard();
 	}
 
-	const copyButton = document.querySelector("[data-copy-summary]");
-	if (copyButton) {
-		copyButton.addEventListener("click", async () => {
+	const copyButtons = Array.from(document.querySelectorAll("[data-copy-summary]"));
+	if (copyButtons.length) {
+		copyButtons.forEach((copyButton) => copyButton.addEventListener("click", async () => {
 			const target = document.querySelector("#summary-block");
 			if (!target) {
 				return;
 			}
 			try {
 				await navigator.clipboard.writeText(target.textContent.trim());
-				copyButton.textContent = "Summary copied";
+				copyButtons.forEach((button) => {
+					button.textContent = "Summary copied";
+				});
 			}
 			catch (error) {
-				copyButton.textContent = "Copy manually below";
+				copyButtons.forEach((button) => {
+					button.textContent = "Copy manually below";
+				});
 			}
-		});
+		}));
 	}
 });

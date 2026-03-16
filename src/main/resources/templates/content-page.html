@@ -16,6 +16,11 @@
 					<span class="eyebrow" th:text="${page.eyebrow}">Guide</span>
 					<h1 th:text="${page.title}">Title</h1>
 					<p class="lede" th:text="${page.summary}">Summary</p>
+					<div class="trust-strip trust-strip-compact">
+						<div th:text="${'Last reviewed ' + page.lastReviewed}">Last reviewed</div>
+						<div>Source-backed page</div>
+						<div>Methodology linked</div>
+					</div>
 				</div>
 				<div class="hero-actions">
 					<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
@@ -26,6 +31,14 @@
 						<div><strong>Author role:</strong> <span th:text="${page.authorRole}">Author</span></div>
 						<div><strong>Reviewer role:</strong> <span th:text="${page.reviewerRole}">Reviewer</span></div>
 						<div><strong>Last reviewed:</strong> <span th:text="${page.lastReviewed}">Date</span></div>
+					</div>
+					<div class="meta-block meta-block-accent">
+						<div class="card-kicker">Trust note</div>
+						<p th:text="${page.sourceNote}">Source note</p>
+						<div class="meta-links">
+							<a class="text-link" th:href="@{/methodology/}">Methodology</a>
+							<a class="text-link" th:href="@{/about-how-this-site-is-researched/}">Research</a>
+						</div>
 					</div>
 				</div>
 			</div>

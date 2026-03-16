@@ -21,7 +21,7 @@
 					<p data-progress-label>Step 1 of 7</p>
 				</div>
 				<form class="wizard-form" th:action="@{/estimator/results/}" th:object="${form}" method="post">
-					<section class="wizard-step" data-step>
+					<section class="wizard-step" data-step data-step-message="Choose the role that best matches this decision.">
 						<span class="card-kicker">Step 1</span>
 						<h2>Who are you in this situation?</h2>
 						<div class="choice-grid">
@@ -30,14 +30,14 @@
 							<label class="choice-card"><input type="radio" th:field="*{role}" value="owner"><span>Owner</span><small>Known issue, symptoms, or quote comparison</small></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden>
+					<section class="wizard-step" data-step hidden data-step-message="Enter the ZIP code or city so the result can anchor to a real place.">
 						<span class="card-kicker">Step 2</span>
 						<h2>Where is the property?</h2>
 						<label class="field-label">ZIP or city
 							<input th:field="*{location}" type="text" placeholder="ZIP or city">
 						</label>
 					</section>
-					<section class="wizard-step" data-step hidden>
+					<section class="wizard-step" data-step hidden data-step-message="Choose the house age band so the risk context is not too generic.">
 						<span class="card-kicker">Step 3</span>
 						<h2>What age band is the house in?</h2>
 						<div class="choice-grid">
@@ -47,7 +47,7 @@
 							<label class="choice-card"><input type="radio" th:field="*{houseAgeBand}" value="1990+"><span>1990+</span><small>Usually lower age-related uncertainty</small></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden>
+					<section class="wizard-step" data-step hidden data-step-message="Choose the current issue state before moving forward.">
 						<span class="card-kicker">Step 4</span>
 						<h2>What is the current issue state?</h2>
 						<div class="choice-grid">
@@ -56,7 +56,7 @@
 							<label class="choice-card"><input type="radio" th:field="*{issueState}" value="symptoms-only"><span>Symptoms only</span><small>Concern exists, but not confirmed</small></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden>
+					<section class="wizard-step" data-step hidden data-step-message="Pick the closest defect type, even if it is just unknown.">
 						<span class="card-kicker">Step 5</span>
 						<h2>If known, what kind of defect is involved?</h2>
 						<div class="choice-grid">
@@ -69,7 +69,7 @@
 							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="unknown"><span>Unknown</span></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden>
+					<section class="wizard-step" data-step hidden data-step-message="Pick the access context that seems closest to the property.">
 						<span class="card-kicker">Step 6</span>
 						<h2>What kind of access context applies?</h2>
 						<div class="choice-grid">
@@ -78,7 +78,7 @@
 							<label class="choice-card"><input type="radio" th:field="*{accessType}" value="unknown"><span>Unknown</span><small>Still enough to get a directional answer</small></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden>
+					<section class="wizard-step" data-step hidden data-step-message="Choose the urgency so the next step fits the timeline.">
 						<span class="card-kicker">Step 7</span>
 						<h2>How urgent is this decision?</h2>
 						<div class="choice-grid">

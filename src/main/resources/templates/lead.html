@@ -40,51 +40,6 @@
 					<label class="field-label">ZIP or city
 						<input th:field="*{zipOrCity}" type="text" placeholder="ZIP or city">
 					</label>
-					<label class="field-label">Role
-						<select th:field="*{role}">
-							<option value="">Choose one</option>
-							<option value="buyer">Buyer</option>
-							<option value="seller">Seller</option>
-							<option value="owner">Owner</option>
-						</select>
-					</label>
-					<label class="field-label">House age band
-						<select th:field="*{houseAgeBand}">
-							<option value="">Choose one</option>
-							<option value="pre-1950">Pre-1950</option>
-							<option value="1950-1969">1950-1969</option>
-							<option value="1970-1989">1970-1989</option>
-							<option value="1990+">1990+</option>
-						</select>
-					</label>
-					<label class="field-label">Issue state
-						<select th:field="*{issueState}">
-							<option value="">Choose one</option>
-							<option value="no-scope-yet">No scope yet</option>
-							<option value="scope-found-issue">Scope done, issue found</option>
-							<option value="symptoms-only">Symptoms only</option>
-						</select>
-					</label>
-					<label class="field-label">Defect type if known
-						<select th:field="*{defectType}">
-							<option value="">Choose one</option>
-							<option value="roots">Roots</option>
-							<option value="cast-iron">Cast iron</option>
-							<option value="orangeburg">Orangeburg</option>
-							<option value="belly">Belly</option>
-							<option value="offset-crack">Offset / crack</option>
-							<option value="collapse">Collapse</option>
-							<option value="unknown">Unknown</option>
-						</select>
-					</label>
-					<label class="field-label">Urgency
-						<select th:field="*{urgency}">
-							<option value="">Choose one</option>
-							<option value="researching">Just researching</option>
-							<option value="active-decision">Under contract / active decision</option>
-							<option value="urgent-repair">Urgent repair needed</option>
-						</select>
-					</label>
 					<label class="field-label">Name
 						<input th:field="*{name}" type="text" placeholder="Your name">
 					</label>
@@ -94,14 +49,64 @@
 					<label class="field-label">Phone
 						<input th:field="*{phone}" type="tel" placeholder="Best number">
 					</label>
-					<label class="field-label">Notes (optional)
-						<textarea th:field="*{notes}" rows="4" placeholder="Anything already known about the line, timeline, or property access"></textarea>
-					</label>
+					<details class="form-details">
+						<summary>Add a few more routing details if you already know them</summary>
+						<div class="form-details-grid">
+							<label class="field-label">Role
+								<select th:field="*{role}">
+									<option value="">Choose one</option>
+									<option value="buyer">Buyer</option>
+									<option value="seller">Seller</option>
+									<option value="owner">Owner</option>
+								</select>
+							</label>
+							<label class="field-label">House age band
+								<select th:field="*{houseAgeBand}">
+									<option value="">Choose one</option>
+									<option value="pre-1950">Pre-1950</option>
+									<option value="1950-1969">1950-1969</option>
+									<option value="1970-1989">1970-1989</option>
+									<option value="1990+">1990+</option>
+								</select>
+							</label>
+							<label class="field-label">Issue state
+								<select th:field="*{issueState}">
+									<option value="">Choose one</option>
+									<option value="no-scope-yet">No scope yet</option>
+									<option value="scope-found-issue">Scope done, issue found</option>
+									<option value="symptoms-only">Symptoms only</option>
+								</select>
+							</label>
+							<label class="field-label">Defect type if known
+								<select th:field="*{defectType}">
+									<option value="">Choose one</option>
+									<option value="roots">Roots</option>
+									<option value="cast-iron">Cast iron</option>
+									<option value="orangeburg">Orangeburg</option>
+									<option value="belly">Belly</option>
+									<option value="offset-crack">Offset / crack</option>
+									<option value="collapse">Collapse</option>
+									<option value="unknown">Unknown</option>
+								</select>
+							</label>
+							<label class="field-label">Urgency
+								<select th:field="*{urgency}">
+									<option value="">Choose one</option>
+									<option value="researching">Just researching</option>
+									<option value="active-decision">Under contract / active decision</option>
+									<option value="urgent-repair">Urgent repair needed</option>
+								</select>
+							</label>
+							<label class="field-label field-label-full">Notes (optional)
+								<textarea th:field="*{notes}" rows="4" placeholder="Anything already known about the line, timeline, or property access"></textarea>
+							</label>
+						</div>
+					</details>
 					<label class="consent-row">
 						<input th:field="*{consentGiven}" type="checkbox">
 						<span>I consent to being contacted about relevant sewer inspection or repair options based on the details I submit here.</span>
 					</label>
-					<p class="form-microcopy">Use a personal email and best callback number if you want this to move beyond a generic directory result.</p>
+					<p class="form-microcopy">Start with the basics. Extra routing detail helps, but the first goal is getting a credible response path started.</p>
 					<button class="button button-primary button-block" type="submit">Submit details</button>
 				</form>
 			</div>

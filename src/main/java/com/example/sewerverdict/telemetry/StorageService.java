@@ -62,9 +62,6 @@ public class StorageService {
 	public boolean isValidLead(LeadForm form) {
 		return StringUtils.hasText(form.getServiceNeeded())
 			&& StringUtils.hasText(form.getZipOrCity())
-			&& StringUtils.hasText(form.getRole())
-			&& StringUtils.hasText(form.getIssueState())
-			&& StringUtils.hasText(form.getUrgency())
 			&& StringUtils.hasText(form.getName())
 			&& StringUtils.hasText(form.getEmail())
 			&& StringUtils.hasText(form.getPhone())

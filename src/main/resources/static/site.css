@@ -320,6 +320,10 @@ h3 {
 	border: 1px solid rgba(30, 85, 99, 0.1);
 }
 
+.trust-strip-compact {
+	margin-top: 1rem;
+}
+
 .artifact-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -420,6 +424,21 @@ h3 {
 	color: var(--muted);
 }
 
+.meta-block-accent {
+	background: linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(236, 230, 218, 0.8) 100%);
+}
+
+.meta-block p {
+	margin: 0.4rem 0 0;
+}
+
+.meta-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.9rem;
+	margin-top: 0.9rem;
+}
+
 .compact-hero {
 	max-width: 820px;
 }
@@ -436,6 +455,19 @@ h3 {
 	border: 1px solid rgba(215, 208, 196, 0.95);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
+}
+
+.summary-inline {
+	margin: 1rem 0 0;
+	padding: 0.95rem 1rem;
+	border-radius: var(--radius-tight);
+	background: rgba(255, 253, 248, 0.8);
+	border: 1px solid rgba(215, 208, 196, 0.95);
+	color: var(--muted);
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .result-tier {
@@ -599,6 +631,30 @@ h3 {
 	font-size: 0.9rem;
 }
 
+.form-details {
+	padding: 1rem 1.05rem;
+	border: 1px solid rgba(215, 208, 196, 0.95);
+	border-radius: var(--radius-tight);
+	background: rgba(255, 253, 248, 0.72);
+}
+
+.form-details summary {
+	cursor: pointer;
+	font-weight: 600;
+	color: var(--brand-strong);
+}
+
+.form-details-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.95rem;
+	margin-top: 1rem;
+}
+
+.field-label-full {
+	grid-column: 1 / -1;
+}
+
 .field-label {
 	display: grid;
 	gap: 0.5rem;
@@ -706,6 +762,18 @@ h3 {
 	color: var(--brand-strong);
 }
 
+.header-mobile-trust {
+	display: none;
+	gap: 0.75rem;
+	padding: 0 0 0.9rem;
+	color: var(--muted);
+	font-size: 0.84rem;
+}
+
+.header-mobile-trust a {
+	color: var(--brand-strong);
+}
+
 .site-footer {
 	border-top: 1px solid rgba(215, 208, 196, 0.95);
 	background: rgba(255, 253, 248, 0.7);
@@ -768,6 +836,11 @@ h3 {
 		display: none;
 	}
 
+	.header-mobile-trust {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
 	.nav-toggle {
 		display: inline-flex;
 	}
@@ -804,7 +877,8 @@ h3 {
 	.info-card,
 	.section-card,
 	.rail-card,
-	.form-shell {
+	.form-shell,
+	.meta-block {
 		min-width: 0;
 	}
 
@@ -837,5 +911,9 @@ h3 {
 
 	.button {
 		width: 100%;
+	}
+
+	.form-details-grid {
+		grid-template-columns: 1fr;
 	}
 }
