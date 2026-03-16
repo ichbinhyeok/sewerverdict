@@ -150,7 +150,9 @@
 				<h2>Local pages built from real system and housing signals</h2>
 				<ul class="link-list">
 					<li th:each="page : ${geoPages}">
-						<a th:href="${page.slug}" th:text="${page.title}">Geo page</a>
+						<a th:href="${page.slug}" th:text="${page.title}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug='/',data-event-label=${'home-geo:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='home-geo-callout'">Geo page</a>
 					</li>
 				</ul>
 			</div>

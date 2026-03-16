@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.sewerverdict.content.PageFaq;
+import com.example.sewerverdict.content.GeoProfileService;
 import com.example.sewerverdict.content.SiteContentService;
 import com.example.sewerverdict.content.SitePage;
 import com.example.sewerverdict.content.SourceRegistryService;
@@ -18,12 +19,14 @@ public class SiteController {
 
 	private final SiteContentService siteContentService;
 	private final SourceRegistryService sourceRegistryService;
+	private final GeoProfileService geoProfileService;
 	private final SeoMetadataService seoMetadataService;
 
 	public SiteController(SiteContentService siteContentService, SourceRegistryService sourceRegistryService,
-		SeoMetadataService seoMetadataService) {
+		GeoProfileService geoProfileService, SeoMetadataService seoMetadataService) {
 		this.siteContentService = siteContentService;
 		this.sourceRegistryService = sourceRegistryService;
+		this.geoProfileService = geoProfileService;
 		this.seoMetadataService = seoMetadataService;
 	}
 
@@ -79,9 +82,17 @@ public class SiteController {
 	public String page(HttpServletRequest request, Model model) {
 		SitePage page = siteContentService.requirePage(request.getRequestURI());
 		List<Breadcrumb> breadcrumbs = buildBreadcrumbs(page);
+		var pageSources = sourceRegistryService.getSourcesForPage(page);
+		var geoProfileSources = geoProfileService.getProfileSources(page).stream()
+			.filter(source -> pageSources.stream().noneMatch(existing -> existing.sourceId().equals(source.sourceId())))
+			.toList();
 		model.addAttribute("page", page);
 		model.addAttribute("relatedPages", siteContentService.getRelatedPages(page));
-		model.addAttribute("pageSources", sourceRegistryService.getSourcesForPage(page));
+		model.addAttribute("geoCompanionPages", geoProfileService.getGeoCompanionPages(page, siteContentService.getAllPages(), 4));
+		model.addAttribute("pageSources", pageSources);
+		model.addAttribute("geoProfile", geoProfileService.getProfileForPage(page));
+		model.addAttribute("geoProfileSources", geoProfileSources);
+		model.addAttribute("responsibilityRuleViews", geoProfileService.getResponsibilityRuleViews(page));
 		model.addAttribute("pageTitle", page.getMetaTitle());
 		model.addAttribute("metaDescription", page.getMetaDescription());
 		model.addAttribute("breadcrumbs", breadcrumbs);

@@ -1,0 +1,93 @@
+[
+  {
+    "citySlug": "philadelphia",
+    "cityName": "Philadelphia",
+    "stateCode": "PA",
+    "priorityTier": "tier-1",
+    "marketReason": "Older sold-home stock, explicit lateral responsibility language, and a real repair-loan program make Philadelphia a strong buyer and owner wedge.",
+    "housingAgeSignal": "Philadelphia-area sales skew old enough that buried-line diligence is commercially relevant rather than theoretical.",
+    "systemContext": "Philadelphia's official water and city pages both describe sewer laterals as customer-maintained lines connecting the home to the main.",
+    "responsibilitySummary": "Owner-side responsibility is a practical part of both buyer diligence and owner-side repair planning in Philadelphia.",
+    "programSummary": "The City's HELP program can cover eligible owner-occupied water and sewer lateral repairs with zero-interest financing.",
+    "ctaBias": "Push inspection-first for active buyers, then move to quote or financing conversations only once the line condition is documented.",
+    "sourceIds": ["red-001", "phl-001", "pwd-001", "phl-002", "phl-003"]
+  },
+  {
+    "citySlug": "pittsburgh",
+    "cityName": "Pittsburgh",
+    "stateCode": "PA",
+    "priorityTier": "tier-1",
+    "marketReason": "Very old housing and unusually explicit owner-side sewer lateral responsibility create a clean local trust wedge.",
+    "housingAgeSignal": "Recent sold-home age data puts Pittsburgh among the oldest large metros in the country.",
+    "systemContext": "Pittsburgh Water says the entire sewer lateral from the building to the main is the property owner's responsibility.",
+    "responsibilitySummary": "That owner-side boundary matters to both buyers under contract and owners deciding whether to scope or quote first.",
+    "programSummary": "The strongest local signal here is responsibility clarity, not a broad public repair subsidy.",
+    "ctaBias": "Use buyer pages to justify inspection before closing; use owner pages to move from suspicion to documentation quickly.",
+    "sourceIds": ["red-001", "pit-001"]
+  },
+  {
+    "citySlug": "cleveland",
+    "cityName": "Cleveland",
+    "stateCode": "OH",
+    "priorityTier": "tier-1",
+    "marketReason": "Old housing, owner-side line exposure, and cost uncertainty create a strong owner and cost-intent market.",
+    "housingAgeSignal": "Cleveland sits in the oldest sold-home cohort, which raises the commercial value of old-line screening.",
+    "systemContext": "Cleveland Water explicitly tells customers they may be responsible for their water and sewer lines and promotes optional protection.",
+    "responsibilitySummary": "That local framing makes buried-line cost questions feel immediately financial, not just technical.",
+    "programSummary": "The most usable local note is protection-plan awareness, with the caveat that coverage is optional and limited.",
+    "ctaBias": "Use old-house pages to move users toward evidence, and cost pages to compare quote assumptions rather than fixed averages.",
+    "sourceIds": ["red-001", "cle-001", "cost-001", "cost-002"]
+  },
+  {
+    "citySlug": "chicago",
+    "cityName": "Chicago",
+    "stateCode": "IL",
+    "priorityTier": "tier-1",
+    "marketReason": "Chicago combines old housing with combined-sewer system context, which strengthens buyer and defect-intent pages without faking city responsibility certainty.",
+    "housingAgeSignal": "Chicago sold-home age remains old enough that cast iron and buried-line diligence are normal questions.",
+    "systemContext": "MWRD says most of the region uses combined sewers, so backup and wet-weather context matter more than generic plumbing copy suggests.",
+    "responsibilitySummary": "The local edge is system context and disruption risk, not a simplistic promise about who always pays.",
+    "programSummary": "Chicago pages should stay evidence-first and avoid overstating city guarantees unless a direct official boundary page is cited.",
+    "ctaBias": "Push inspection-first for buyers and evidence-first for cast iron; reserve quote-first for documented failures.",
+    "sourceIds": ["red-001", "chi-001", "cost-002"]
+  },
+  {
+    "citySlug": "buffalo",
+    "cityName": "Buffalo",
+    "stateCode": "NY",
+    "priorityTier": "tier-1",
+    "marketReason": "Buffalo is one of the oldest sold-home markets in the dataset, which makes old-house and replacement-cost pages a strong diligence wedge even without aggressive local claims.",
+    "housingAgeSignal": "Buffalo sits at the extreme old-housing end of recent sold-home age rankings.",
+    "systemContext": "The strongest local signal here is not a special sewer program. It is extreme housing age and the uncertainty that comes with buried infrastructure in very old homes.",
+    "responsibilitySummary": "Buffalo pages should stay conservative: age justifies diligence, but it does not prove responsibility or failure.",
+    "programSummary": "Because the local edge is age rather than a broad official program, Buffalo pages should avoid overclaiming and lean on inspection quality.",
+    "ctaBias": "Push inspection-first on old-house pages and wide-range quote comparison on cost pages.",
+    "sourceIds": ["red-001", "cost-001", "cost-002"]
+  },
+  {
+    "citySlug": "st-louis",
+    "cityName": "St. Louis",
+    "stateCode": "MO",
+    "priorityTier": "tier-2",
+    "marketReason": "MSD backup guidance and lateral repair program structure make St. Louis a useful responsibility and trust-support market.",
+    "housingAgeSignal": "The local wedge is less about age ranking than about public utility program structure and backup response.",
+    "systemContext": "MSD backup guidance and sewer lateral fee programs create a city-specific ownership and funding conversation.",
+    "responsibilitySummary": "St. Louis pages should help users distinguish private-property maintenance from what local programs may help fund.",
+    "programSummary": "City and County lateral programs matter here, but users still need evidence before assuming program eligibility.",
+    "ctaBias": "Use trust pages to move users into estimator or quote logic once the defect is documented.",
+    "sourceIds": ["stl-001", "stl-002"]
+  },
+  {
+    "citySlug": "washington-dc",
+    "cityName": "Washington, DC",
+    "stateCode": "DC",
+    "priorityTier": "tier-2",
+    "marketReason": "DC Water's unusually direct language about cleanup responsibility gives Washington a strong trust-support and owner-risk wedge.",
+    "housingAgeSignal": "The city signal here is official responsibility language rather than unusually old sold-home stock.",
+    "systemContext": "DC Water says owners are typically responsible for cleanup and many maintenance-related backup causes, and that the utility generally does not pay damages.",
+    "responsibilitySummary": "That makes DC a strong support market for owner-side cost exposure and responsibility clarification.",
+    "programSummary": "The page should emphasize verification and cause-finding rather than promising a city payout or denial.",
+    "ctaBias": "Use responsibility pages to move uncertain users into estimator or inspection-first logic, then quote once the problem is evidence-backed.",
+    "sourceIds": ["dc-001"]
+  }
+]

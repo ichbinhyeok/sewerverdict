@@ -110,7 +110,11 @@ document.addEventListener("click", (event) => {
 	postEvent(target.dataset.eventType, target.dataset.pageSlug, target.dataset.eventLabel || target.textContent.trim(), {
 		draftId: target.dataset.eventDraftId || "",
 		route: target.dataset.eventRoute || "",
-		step: target.dataset.eventStep || ""
+		step: target.dataset.eventStep || "",
+		city: target.dataset.eventCity || "",
+		geoPage: target.dataset.eventGeoPage || "",
+		geoFamily: target.dataset.eventGeoFamily || "",
+		placement: target.dataset.eventPlacement || ""
 	});
 });
 

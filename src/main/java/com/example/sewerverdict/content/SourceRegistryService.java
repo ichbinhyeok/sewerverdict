@@ -35,6 +35,17 @@ public class SourceRegistryService {
 			.toList();
 	}
 
+	public SourceReference getSourceById(String sourceId) {
+		return sourcesById.get(sourceId);
+	}
+
+	public List<SourceReference> getSourcesByIds(List<String> sourceIds) {
+		return sourceIds.stream()
+			.map(sourcesById::get)
+			.filter(Objects::nonNull)
+			.toList();
+	}
+
 	private List<String> defaultSourceIds(SitePage page) {
 		String slug = page.getSlug();
 		if (slug.contains("home-insurance-cover")) {

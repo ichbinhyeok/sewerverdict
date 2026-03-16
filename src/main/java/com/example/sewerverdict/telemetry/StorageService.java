@@ -2,6 +2,8 @@ package com.example.sewerverdict.telemetry;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
@@ -82,8 +84,10 @@ public class StorageService {
 		payload.put("sessionId", sessionId);
 		payload.put("pageSlug", pageSlug);
 		payload.put("referrer", referrer);
+		payload.putAll(buildGeoContext(pageSlug, referrer));
 		payload.put("role", form.getRole());
 		payload.put("location", form.getLocation());
+		payload.put("locationNormalized", normalizeLocation(form.getLocation()));
 		payload.put("houseAgeBand", form.getHouseAgeBand());
 		payload.put("issueState", form.getIssueState());
 		payload.put("defectType", form.getDefectType());
@@ -116,12 +120,14 @@ public class StorageService {
 		payload.put("sessionId", sessionId);
 		payload.put("draftId", form.getDraftId());
 		payload.put("pageSlug", pageSlug);
+		payload.putAll(buildGeoContext(pageSlug, referrer));
 		payload.put("serviceNeeded", form.getServiceNeeded());
 		payload.put("recommendedServicePath", form.getRecommendedServicePath());
 		payload.put("routingBucket", determineLeadRoutingBucket(form));
 		payload.put("opsStatus", "new");
 		payload.put("role", form.getRole());
 		payload.put("zipOrCity", form.getZipOrCity());
+		payload.put("locationNormalized", normalizeLocation(form.getZipOrCity()));
 		payload.put("houseAgeBand", form.getHouseAgeBand());
 		payload.put("issueState", form.getIssueState());
 		payload.put("defectType", form.getDefectType());
@@ -156,6 +162,7 @@ public class StorageService {
 		record.put("eventType", eventType);
 		record.put("pageSlug", pageSlug);
 		record.put("referrer", referrer);
+		record.putAll(buildGeoContext(pageSlug, referrer));
 		record.put("payload", payload);
 		appendJsonLine(eventsFile, record);
 	}
@@ -197,6 +204,67 @@ public class StorageService {
 
 	private String trimToNull(String value) {
 		return StringUtils.hasText(value) ? value.trim() : null;
+	}
+
+	private Map<String, Object> buildGeoContext(String pageSlug, String referrer) {
+		Map<String, Object> geoContext = new LinkedHashMap<>();
+		String normalizedPagePath = normalizePath(pageSlug);
+		String normalizedReferrerPath = normalizePath(referrer);
+		geoContext.put("pagePath", normalizedPagePath);
+		geoContext.put("pageGeoPage", isGeoPath(normalizedPagePath));
+		geoContext.put("pageCitySlug", extractCitySlug(normalizedPagePath));
+		geoContext.put("pageGeoTopicSlug", extractGeoTopicSlug(normalizedPagePath));
+		geoContext.put("referrerPath", normalizedReferrerPath);
+		geoContext.put("sourceGeoPage", isGeoPath(normalizedReferrerPath));
+		geoContext.put("sourceCitySlug", extractCitySlug(normalizedReferrerPath));
+		geoContext.put("sourceGeoTopicSlug", extractGeoTopicSlug(normalizedReferrerPath));
+		return geoContext;
+	}
+
+	private String normalizePath(String value) {
+		String raw = trimToNull(value);
+		if (raw == null) {
+			return null;
+		}
+		String candidate = raw;
+		if (raw.startsWith("http://") || raw.startsWith("https://")) {
+			try {
+				candidate = new URI(raw).getPath();
+			}
+			catch (URISyntaxException exception) {
+				return null;
+			}
+		}
+		if (candidate == null || candidate.isBlank()) {
+			return null;
+		}
+		String normalized = candidate.startsWith("/") ? candidate : "/" + candidate;
+		return normalized.endsWith("/") ? normalized : normalized + "/";
+	}
+
+	private boolean isGeoPath(String path) {
+		return path != null && path.startsWith("/cities/");
+	}
+
+	private String extractCitySlug(String path) {
+		if (!isGeoPath(path)) {
+			return null;
+		}
+		String[] segments = path.split("/");
+		return segments.length > 2 ? segments[2] : null;
+	}
+
+	private String extractGeoTopicSlug(String path) {
+		if (!isGeoPath(path)) {
+			return null;
+		}
+		String[] segments = path.split("/");
+		return segments.length > 3 ? segments[3] : null;
+	}
+
+	private String normalizeLocation(String value) {
+		String normalized = trimToNull(value);
+		return normalized == null ? null : normalized.toLowerCase();
 	}
 
 	private void initializeFile(Path file) throws IOException {

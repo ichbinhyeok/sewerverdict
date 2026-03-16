@@ -24,9 +24,11 @@
 				</div>
 				<div class="hero-actions">
 					<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
-					   data-event-type="page_cta_click" th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel}">Primary CTA</a>
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='hero-primary'">Primary CTA</a>
 					<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
-					   data-event-type="page_cta_click" th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel}">Secondary CTA</a>
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='hero-secondary'">Secondary CTA</a>
 					<div class="meta-block">
 						<div><strong>Author role:</strong> <span th:text="${page.authorRole}">Author</span></div>
 						<div><strong>Reviewer role:</strong> <span th:text="${page.reviewerRole}">Reviewer</span></div>
@@ -101,6 +103,19 @@
 						</div>
 					</div>
 				</article>
+				<article class="section-card section-card-accent" th:if="${page.coveragePage}">
+					<h2>Responsibility lens</h2>
+					<div class="card-grid card-grid-2">
+						<div class="info-card">
+							<span class="card-kicker">What boundary looks like</span>
+							<p th:text="${page.quickAnswer}">Quick answer</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">What to verify first</span>
+							<p th:text="${page.uncertainty}">Uncertainty</p>
+						</div>
+					</div>
+				</article>
 				<article class="section-card" th:if="${page.costDirection}">
 					<h2>Cost or decision direction</h2>
 					<p th:text="${page.costDirection}">Cost direction</p>
@@ -149,9 +164,24 @@
 					<p>Use this page to decide whether you should estimate the situation first, line up inspection options, or move into quote comparison now.</p>
 					<div class="inline-cta-group">
 						<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
-						   data-event-type="page_cta_click" th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'}">Primary CTA</a>
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-primary'">Primary CTA</a>
 						<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
-						   data-event-type="page_cta_click" th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'}">Secondary CTA</a>
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-secondary'">Secondary CTA</a>
+					</div>
+				</article>
+				<article class="section-card" th:if="${!#lists.isEmpty(geoCompanionPages)}">
+					<h2>Local angles worth checking next</h2>
+					<p>These city pages connect the national intent to local housing, system, or responsibility context.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="geoPage : ${geoCompanionPages}" th:href="${geoPage.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'geo-companion:' + geoPage.title},data-event-city=${geoPage.geoCitySlug},data-event-geo-page=${geoPage.geoPage},data-event-geo-family=${geoPage.trackingFamily},data-event-placement='geo-companion'">
+							<span class="card-kicker">Local angle</span>
+							<strong th:text="${geoPage.title}">Geo title</strong>
+							<span class="related-page-card-text" th:text="${geoPage.summary}">Geo summary</span>
+						</a>
 					</div>
 				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(relatedPages)}">
@@ -176,6 +206,38 @@
 				</article>
 			</div>
 			<aside class="content-rail">
+				<div class="rail-card" th:if="${geoProfile}">
+					<span class="card-kicker">Local market signal</span>
+					<p th:text="${geoProfile.marketReason}">Market reason</p>
+				</div>
+				<div class="rail-card" th:if="${geoProfile != null and !#strings.isEmpty(geoProfile.housingAgeSignal)}">
+					<span class="card-kicker">Housing and risk context</span>
+					<p th:text="${geoProfile.housingAgeSignal}">Housing age signal</p>
+				</div>
+				<div class="rail-card" th:if="${geoProfile != null and !#strings.isEmpty(geoProfile.systemContext)}">
+					<span class="card-kicker">Local system context</span>
+					<p th:text="${geoProfile.systemContext}">System context</p>
+				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(responsibilityRuleViews)}">
+					<span class="card-kicker">Official responsibility boundary</span>
+					<ul class="clean-list">
+						<li th:each="item : ${responsibilityRuleViews}">
+							<strong th:text="${item.cityLabel}">City</strong>
+							<p th:text="${item.ownerScope}">Owner scope</p>
+							<p th:text="${item.publicScope}">Public scope</p>
+							<p th:if="${!#strings.isEmpty(item.programNote)}" th:text="${item.programNote}">Program note</p>
+							<a class="text-link" th:if="${item.source != null}" th:href="${item.source.url}" target="_blank" rel="noreferrer" th:text="${item.source.title}">Source</a>
+						</li>
+					</ul>
+				</div>
+				<div class="rail-card" th:if="${geoProfile != null and !#strings.isEmpty(geoProfile.programSummary)}">
+					<span class="card-kicker">Local program or caveat</span>
+					<p th:text="${geoProfile.programSummary}">Program summary</p>
+				</div>
+				<div class="rail-card" th:if="${geoProfile != null and !#strings.isEmpty(geoProfile.ctaBias)}">
+					<span class="card-kicker">How this city changes the next move</span>
+					<p th:text="${geoProfile.ctaBias}">CTA bias</p>
+				</div>
 				<div class="rail-card">
 					<span class="card-kicker">Methodology and uncertainty</span>
 					<p th:text="${page.uncertainty}">Uncertainty</p>
@@ -192,6 +254,15 @@
 						<li th:each="source : ${pageSources}">
 							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
 							<span class="source-meta" th:text="${source.sourceClass + ' · ' + source.jurisdiction + ' · verified ' + source.lastVerified}">Source meta</span>
+						</li>
+					</ul>
+				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(geoProfileSources)}">
+					<span class="card-kicker">Geo profile sources</span>
+					<ul class="link-list source-list">
+						<li th:each="source : ${geoProfileSources}">
+							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
+							<span class="source-meta" th:text="${source.sourceClass + ' 쨌 ' + source.jurisdiction + ' 쨌 verified ' + source.lastVerified}">Source meta</span>
 						</li>
 					</ul>
 				</div>

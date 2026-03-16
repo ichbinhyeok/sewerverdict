@@ -140,6 +140,31 @@ class LeadFlowIntegrationTests {
 			.andExpect(content().string(containsString("Recommended path: replacement")));
 	}
 
+	@Test
+	void leadSubmitStoresGeoReferrerContextForPerformanceAnalysis() throws Exception {
+		mockMvc.perform(post("/find-sewer-scope/")
+				.header("Referer", "http://localhost/cities/chicago/sewer-scope-before-buying-house/")
+				.param("serviceNeeded", "inspection")
+				.param("recommendedServicePath", "inspection")
+				.param("zipOrCity", "60614")
+				.param("role", "buyer")
+				.param("houseAgeBand", "pre-1950")
+				.param("issueState", "no-scope-yet")
+				.param("defectType", "unknown")
+				.param("urgency", "active-decision")
+				.param("name", "Geo Buyer")
+				.param("email", "geo@example.com")
+				.param("phone", "555-0111")
+				.param("consentGiven", "true"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Thanks. Your details were saved")));
+
+		String leads = Files.readString(LEADS_FILE);
+		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"sourceGeoPage\":true"));
+		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"sourceCitySlug\":\"chicago\""));
+		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"sourceGeoTopicSlug\":\"sewer-scope-before-buying-house\""));
+	}
+
 	private static Path createTempStorageRoot() {
 		try {
 			return Files.createTempDirectory("sewerverdict-storage-test");

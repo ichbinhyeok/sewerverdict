@@ -62,4 +62,15 @@ class SitePageTests {
 		assertTrue(page.isBuyerPage());
 		assertFalse(page.isDefectPage());
 	}
+
+	@Test
+	void geoResponsibilityPageInheritsCoverageFamily() {
+		SitePage page = new SitePage();
+		page.setSlug("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/");
+		page.setFamily("geo");
+		page.setSecondaryCtaHref("/homeowner-vs-city-sewer-responsibility/");
+
+		assertTrue(page.isCoveragePage());
+		assertFalse(page.isCostPage());
+	}
 }

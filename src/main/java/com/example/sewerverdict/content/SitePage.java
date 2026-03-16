@@ -268,8 +268,32 @@ public class SitePage {
 		return matchesFamily("defect");
 	}
 
+	public boolean isCoveragePage() {
+		return matchesFamily("coverage");
+	}
+
 	public boolean isGeoPage() {
 		return slug != null && slug.startsWith("/cities/");
+	}
+
+	public String getTrackingFamily() {
+		return isGeoPage() ? inferGeoFamily() : family;
+	}
+
+	public String getGeoCitySlug() {
+		if (!isGeoPage()) {
+			return null;
+		}
+		String[] segments = slug.split("/");
+		return segments.length > 2 ? segments[2] : null;
+	}
+
+	public String getGeoTopicSlug() {
+		if (!isGeoPage()) {
+			return null;
+		}
+		String[] segments = slug.split("/");
+		return segments.length > 3 ? segments[3] : null;
 	}
 
 	private boolean matchesFamily(String expectedFamily) {
@@ -307,6 +331,11 @@ public class SitePage {
 				|| hint.contains("scope-worth-it")
 				|| hint.contains("scope-inspection")) {
 			return "buyer";
+		}
+		if (hint.contains("homeowner-vs-city")
+				|| hint.contains("home-insurance-cover")
+				|| hint.contains("service-line-coverage")) {
+			return "coverage";
 		}
 		if (hint.contains("risk") || hint.contains("red-flags")
 				|| hint.contains("what-to-do") || hint.contains("meaning")
