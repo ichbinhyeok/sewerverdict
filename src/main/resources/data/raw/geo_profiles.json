@@ -6,7 +6,7 @@
     "editorialAngle": "Older housing stock and restoration-heavy cost framing",
     "housingAgeNotes": "Older urban housing can raise buried-line uncertainty.",
     "responsibilityNotes": "Do not state universal city rules without verified local sourcing.",
-    "sourceRefs": ["src-001"],
+    "sourceRefs": ["cost-001", "cost-002"],
     "launchStatus": "live"
   },
   {
@@ -16,7 +16,7 @@
     "editorialAngle": "Buyer-intent scope logic under older housing conditions",
     "housingAgeNotes": "Older housing makes inspection-first framing commercially relevant.",
     "responsibilityNotes": "Keep responsibility claims caveated unless specifically sourced.",
-    "sourceRefs": ["src-001"],
+    "sourceRefs": ["pwd-001", "phl-001"],
     "launchStatus": "live"
   },
   {
@@ -26,7 +26,7 @@
     "editorialAngle": "Older-home cast iron risk framing",
     "housingAgeNotes": "Older-home access and material questions matter more than city label alone.",
     "responsibilityNotes": "No universal local responsibility claims.",
-    "sourceRefs": ["src-001"],
+    "sourceRefs": ["cost-002"],
     "launchStatus": "live"
   }
 ]

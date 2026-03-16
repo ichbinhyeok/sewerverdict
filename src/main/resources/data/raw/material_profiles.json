@@ -5,7 +5,7 @@
     "commonIssues": ["scaling", "deterioration", "access complexity"],
     "typicalAgeAssociations": ["older-home"],
     "cautionNotes": "Condition matters more than age alone.",
-    "sourceRefs": ["src-001"]
+    "sourceRefs": ["cost-002"]
   },
   {
     "material": "orangeburg",
@@ -13,6 +13,6 @@
     "commonIssues": ["deformation", "collapse risk", "replacement bias"],
     "typicalAgeAssociations": ["mid-century"],
     "cautionNotes": "Confirm actual material before escalating cost assumptions.",
-    "sourceRefs": ["src-001"]
+    "sourceRefs": ["cost-002"]
   }
 ]

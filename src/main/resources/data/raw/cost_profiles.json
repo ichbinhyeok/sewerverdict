@@ -1,14 +1,62 @@
 [
   {
+    "profileId": "inspection-camera",
+    "category": "inspection",
+    "nationalRangeLow": 100,
+    "nationalRangeHigh": 500,
+    "accessModifiers": ["cleanout-availability", "line-length", "market-rate"],
+    "materialModifiers": [],
+    "severityModifiers": [],
+    "notes": "Directional camera inspection range based on market sanity-check sources.",
+    "sourceRefs": ["cost-002"],
+    "lastVerified": "2026-03-16"
+  },
+  {
+    "profileId": "root-treatment-cleaning",
+    "category": "cleaning",
+    "nationalRangeLow": 300,
+    "nationalRangeHigh": 1100,
+    "accessModifiers": ["cleanout-availability", "repeat-visit"],
+    "materialModifiers": ["clay", "cast-iron"],
+    "severityModifiers": ["root-density", "backup-history"],
+    "notes": "Cleaning or hydro-jet style range for early-stage root or clog scenarios.",
+    "sourceRefs": ["cost-001"],
+    "lastVerified": "2026-03-16"
+  },
+  {
+    "profileId": "spot-repair-national",
+    "category": "spot-repair",
+    "nationalRangeLow": 1100,
+    "nationalRangeHigh": 4000,
+    "accessModifiers": ["yard-obstructions", "depth", "under-hardscape"],
+    "materialModifiers": ["cast-iron", "clay"],
+    "severityModifiers": ["break-crack", "localized-failure"],
+    "notes": "Directional spot-repair range for localized cracks or break repairs.",
+    "sourceRefs": ["cost-001"],
+    "lastVerified": "2026-03-16"
+  },
+  {
+    "profileId": "trenchless-national",
+    "category": "trenchless",
+    "nationalRangeLow": 60,
+    "nationalRangeHigh": 250,
+    "accessModifiers": ["entry-pit", "exit-pit", "layout"],
+    "materialModifiers": ["cast-iron", "orangeburg"],
+    "severityModifiers": ["eligible-layout", "systemic-deterioration"],
+    "notes": "Per-linear-foot directional trenchless range. Eligibility matters more than headline price.",
+    "sourceRefs": ["cost-002", "cost-001"],
+    "lastVerified": "2026-03-16"
+  },
+  {
     "profileId": "replacement-national",
     "category": "replacement",
-    "nationalRangeLow": 7000,
+    "nationalRangeLow": 3000,
     "nationalRangeHigh": 25000,
-    "accessModifiers": ["under-slab", "hardscape", "deep-run"],
+    "accessModifiers": ["under-slab", "hardscape", "deep-run", "restoration"],
     "materialModifiers": ["cast-iron", "orangeburg"],
     "severityModifiers": ["collapse", "systemic-deterioration"],
-    "notes": "Directional launch profile only.",
-    "sourceRefs": ["src-001"],
+    "notes": "Broad national replacement band anchored by market sanity checks and intentionally kept wide to avoid false precision.",
+    "sourceRefs": ["cost-001", "cost-002"],
     "lastVerified": "2026-03-16"
   }
 ]
