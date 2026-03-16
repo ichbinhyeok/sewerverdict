@@ -26,7 +26,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Philadelphia, PA")))
 			.andExpect(content().string(containsString("Buffalo Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Milwaukee, WI")))
-			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")));
+			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")))
+			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")));
 	}
 
 	@Test
@@ -43,5 +44,18 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Baltimore Homeowner vs City Sewer Responsibility")))
 			.andExpect(content().string(containsString("Official responsibility boundary")));
+	}
+
+	@Test
+	void newBuyerAndBackupGeoPagesRenderSuccessfully() throws Exception {
+		mockMvc.perform(get("/cities/detroit/sewer-scope-before-buying-house/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Detroit Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Local market signal")));
+
+		mockMvc.perform(get("/cities/cincinnati/sewer-backup-risk/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Cincinnati Sewer Backup Risk")))
+			.andExpect(content().string(containsString("Cincinnati responsibility guide")));
 	}
 }
