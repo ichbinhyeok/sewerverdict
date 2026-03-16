@@ -29,7 +29,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")))
 			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")))
-			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")));
+			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")))
+			.andExpect(content().string(containsString("Detroit Sewer Line Repair vs Replacement")));
 	}
 
 	@Test
@@ -95,5 +96,28 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")))
 			.andExpect(content().string(containsString("Buyer decision lens")));
+	}
+
+	@Test
+	void localRepairVsReplacementPagesRenderSuccessfully() throws Exception {
+		mockMvc.perform(get("/cities/milwaukee/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Milwaukee Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Quote comparison lens")));
+
+		mockMvc.perform(get("/cities/cincinnati/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Cincinnati Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Quote comparison lens")));
+
+		mockMvc.perform(get("/cities/baltimore/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Baltimore Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Official responsibility boundary")));
+
+		mockMvc.perform(get("/cities/detroit/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Detroit Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Quote comparison lens")));
 	}
 }

@@ -4237,7 +4237,255 @@
       "/sewer-scope-negotiation-with-seller/",
       "/cities/detroit/sewer-scope-before-buying-house/",
       "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
-      "/cities/detroit/sewer-backup-risk/"
+      "/cities/detroit/sewer-backup-risk/",
+      "/cities/detroit/sewer-line-repair-vs-replacement/"
+    ]
+  },
+  {
+    "slug": "/cities/milwaukee/sewer-line-repair-vs-replacement/",
+    "family": "geo",
+    "title": "Milwaukee Sewer Line Repair vs Replacement",
+    "metaTitle": "Milwaukee Sewer Line Repair vs Replacement | SewerVerdict",
+    "metaDescription": "Milwaukee sewer repair vs replacement guidance with owner-side laterals, older-home rehab context, and evidence-first quote comparison.",
+    "eyebrow": "Milwaukee repair guide",
+    "summary": "A local comparison page for Milwaukee users deciding whether a private-lateral issue still looks repairable or has become a cleaner replacement conversation.",
+    "quickAnswer": "Milwaukee repair makes more sense when the defect looks isolated and the rest of the lateral still seems serviceable. Replacement gets more honest when older-line context and repeated issues suggest a broader problem.",
+    "seriousness": "This is a high-stakes call because owner-side lateral responsibility can make the cheaper short-term option the wrong long-term choice.",
+    "nextStep": "Ask whether the footage supports a localized fix or a broader lateral story before comparing repair and replacement quotes as if they solve the same problem.",
+    "costDirection": "Milwaukee repair-vs-replacement cost can swing sharply because owner-side laterals, older-home rehab context, and support-program questions all change what the owner is really choosing between.",
+    "uncertainty": "This page cannot tell whether the line is still broadly serviceable without actual footage and a clearer sense of how much of the lateral is involved.",
+    "sourceNote": "Reviewed against Milwaukee owner-side lateral language, private-property inflow context, Pipe Check support information, and national repair-versus-replacement framing. The page stays evidence-first and does not treat every older lateral as a replacement job.",
+    "sourceIds": [
+      "mil-001",
+      "mil-002",
+      "mil-003",
+      "cost-001",
+      "cost-002"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-repair-vs-replacement/",
+    "sections": [
+      {
+        "anchor": "when-milwaukee-repair-still-looks-honest",
+        "title": "When repair still looks honest in Milwaukee",
+        "intro": "Repair deserves a fair look when the evidence still points to a localized lateral problem rather than a broader old-line failure pattern.",
+        "bullets": [
+          "One localized defect can still support repair-first logic if the rest of the lateral looks serviceable.",
+          "Repair is easier to justify when the issue is documented clearly and the older-home context is not hiding multiple problems.",
+          "The key question is still what the rest of the private lateral looks like."
+        ]
+      },
+      {
+        "anchor": "when-replacement-becomes-cleaner",
+        "title": "When replacement becomes the cleaner Milwaukee answer",
+        "intro": "Older-home rehab context matters most when it helps explain why repeated or systemic problems deserve a different decision.",
+        "bullets": [
+          "Repeated defects, multiple weak points, or a lateral that looks broadly tired can make replacement more honest.",
+          "Owner-side lateral responsibility makes repeated short-term fixes more expensive to tolerate.",
+          "Program or support talk should not keep users in repair logic if the footage already suggests a bigger problem."
+        ]
+      }
+    ],
+    "highlights": [
+      "Milwaukee repair-vs-replacement is really a localized-defect versus broader-lateral question.",
+      "Older-home context matters most when it changes how credible the repair path still looks."
+    ],
+    "questions": [
+      "Is the defect actually isolated, or is the lateral showing a broader deterioration pattern?",
+      "Would another repair only delay the replacement decision you already see coming?"
+    ],
+    "relatedSlugs": [
+      "/sewer-line-repair-vs-replacement/",
+      "/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
+      "/cities/milwaukee/sewer-backup-risk/",
+      "/cities/milwaukee/sewer-scope-negotiation-with-seller/"
+    ]
+  },
+  {
+    "slug": "/cities/cincinnati/sewer-line-repair-vs-replacement/",
+    "family": "geo",
+    "title": "Cincinnati Sewer Line Repair vs Replacement",
+    "metaTitle": "Cincinnati Sewer Line Repair vs Replacement | SewerVerdict",
+    "metaDescription": "Cincinnati sewer repair vs replacement guidance with private building sewer ownership, wet-weather caveats, and evidence-first quote comparison.",
+    "eyebrow": "Cincinnati repair guide",
+    "summary": "A local comparison page for Cincinnati users deciding whether the problem still looks like a private-line repair or has become a broader replacement conversation.",
+    "quickAnswer": "Cincinnati repair is easier to justify when the issue looks isolated in the private building sewer. Replacement becomes more plausible when recurring problems or stronger footage make the owner-side line risk look systemic.",
+    "seriousness": "This decision matters because mixed backup stories can hide whether the real problem is a one-off repair or a broader private-sewer failure.",
+    "nextStep": "Separate wet-weather noise from actual private-building-sewer evidence before comparing repair and replacement quotes.",
+    "costDirection": "Cincinnati costs are easy to misread if users compare repair and replacement before they know whether the private building sewer is the real problem or only part of a messier backup story.",
+    "uncertainty": "This page cannot settle the right path without clearer evidence about whether the private building sewer defect is isolated, recurring, or still mixed with public-backup context.",
+    "sourceNote": "Reviewed against Cincinnati MSD private-building-sewer ownership and backup-program materials plus national repair-versus-replacement framing. The page stays cause-first because local backup stories can blur the real decision.",
+    "sourceIds": [
+      "cin-001",
+      "cin-002",
+      "cin-003",
+      "cost-001",
+      "cost-002"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-repair-vs-replacement/",
+    "sections": [
+      {
+        "anchor": "when-a-cincinnati-repair-is-still-a-repair-story",
+        "title": "When a Cincinnati repair is still a repair story",
+        "intro": "Repair logic is strongest when the problem clearly sits in one part of the private building sewer and the rest of the line still looks usable.",
+        "bullets": [
+          "A localized private-line defect can still support repair-first thinking.",
+          "Repair is more credible when wet-weather context is not the main reason the problem looks severe.",
+          "The goal is to fix the actual owner-side problem, not to react to general backup anxiety."
+        ]
+      },
+      {
+        "anchor": "when-replacement-starts-looking-honest",
+        "title": "When replacement starts looking like the honest Cincinnati answer",
+        "intro": "Replacement becomes more plausible when repeated problems and stronger footage keep pushing the story back toward the private line.",
+        "bullets": [
+          "Recurring defects or broader deterioration can make repair look like delay rather than resolution.",
+          "Owner-side building sewer responsibility makes repeated disruption more expensive to carry.",
+          "The cleaner the private-line evidence gets, the easier it is to compare replacement honestly."
+        ]
+      }
+    ],
+    "highlights": [
+      "Cincinnati repair-vs-replacement only gets clean after cause-finding gets cleaner.",
+      "Private-line evidence matters more than broad storm or backup narratives."
+    ],
+    "questions": [
+      "Is the owner-side line problem truly isolated, or are repeated issues pointing to a broader failure pattern?",
+      "Would a repair solve the actual problem, or only buy time?"
+    ],
+    "relatedSlugs": [
+      "/sewer-line-repair-vs-replacement/",
+      "/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
+      "/cities/cincinnati/sewer-backup-risk/",
+      "/cities/cincinnati/sewer-scope-negotiation-with-seller/"
+    ]
+  },
+  {
+    "slug": "/cities/baltimore/sewer-line-repair-vs-replacement/",
+    "family": "geo",
+    "title": "Baltimore Sewer Line Repair vs Replacement",
+    "metaTitle": "Baltimore Sewer Line Repair vs Replacement | SewerVerdict",
+    "metaDescription": "Baltimore sewer repair vs replacement guidance with property-line split, private building sewer exposure, and evidence-first quote comparison.",
+    "eyebrow": "Baltimore repair guide",
+    "summary": "A local comparison page for Baltimore users deciding whether a private building sewer issue still looks repairable or has become a broader replacement call.",
+    "quickAnswer": "Baltimore repair makes more sense when the problem looks isolated in the private building sewer. Replacement becomes more plausible once the buyer or owner knows the downside really sits on the private side and the line looks broadly compromised.",
+    "seriousness": "This decision matters because Baltimore's property-line split can make users waste time blaming the wrong side instead of deciding what the private building sewer actually needs.",
+    "nextStep": "First confirm the issue is really in the private building sewer, then compare whether repair solves the isolated problem or only postpones a broader replacement discussion.",
+    "costDirection": "Baltimore repair-versus-replacement cost depends heavily on whether the defect sits in the private building sewer and how much of that line now looks unreliable.",
+    "uncertainty": "This page cannot decide the right path without clearer evidence about where the issue sits and how much of the private building sewer is actually affected.",
+    "sourceNote": "Reviewed against Baltimore's property-line responsibility split, wet-weather reimbursement guidance, and national repair-versus-replacement framing. The page keeps boundary clarity ahead of quote comparison.",
+    "sourceIds": [
+      "bal-001",
+      "bal-002",
+      "cost-001",
+      "cost-002"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-repair-vs-replacement/",
+    "sections": [
+      {
+        "anchor": "when-baltimore-repair-still-makes-sense",
+        "title": "When repair still makes sense in Baltimore",
+        "intro": "Repair logic is strongest once the user knows the problem is in the private building sewer and still looks localized.",
+        "bullets": [
+          "One isolated private-building-sewer defect can still support repair-first logic.",
+          "Repair makes more sense when the rest of the line still appears serviceable.",
+          "The key Baltimore question is not just severity. It is where the line problem actually sits."
+        ]
+      },
+      {
+        "anchor": "when-replacement-becomes-the-cleaner-path",
+        "title": "When replacement becomes the cleaner Baltimore path",
+        "intro": "Replacement gets more honest when the private building sewer side is clearly implicated and the problem no longer looks isolated.",
+        "bullets": [
+          "A broader private-line deterioration pattern can make repeated repairs look inefficient.",
+          "Once the boundary is clear, the decision becomes more like a normal private-line quote comparison.",
+          "Wet-weather reimbursement should not keep users in repair logic if the private line already looks broadly compromised."
+        ]
+      }
+    ],
+    "highlights": [
+      "Baltimore repair-vs-replacement becomes much clearer once the private-building-sewer boundary is confirmed.",
+      "Boundary confusion is often the first thing to remove before quote comparison gets honest."
+    ],
+    "questions": [
+      "Do you actually know the problem sits in the private building sewer?",
+      "Is repair solving an isolated defect, or only delaying a broader private-line replacement?"
+    ],
+    "relatedSlugs": [
+      "/sewer-line-repair-vs-replacement/",
+      "/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
+      "/cities/baltimore/wet-weather-sewer-backup-responsibility/",
+      "/cities/baltimore/sewer-scope-negotiation-with-seller/"
+    ]
+  },
+  {
+    "slug": "/cities/detroit/sewer-line-repair-vs-replacement/",
+    "family": "geo",
+    "title": "Detroit Sewer Line Repair vs Replacement",
+    "metaTitle": "Detroit Sewer Line Repair vs Replacement | SewerVerdict",
+    "metaDescription": "Detroit sewer repair vs replacement guidance with permits, basement-backup context, and evidence-first quote comparison.",
+    "eyebrow": "Detroit repair guide",
+    "summary": "A local comparison page for Detroit users deciding whether a private-line issue still looks repairable or has become a broader replacement job.",
+    "quickAnswer": "Detroit repair can still make sense when the issue looks localized and the rest of the line remains serviceable. Replacement becomes more plausible when stronger footage, repeat failures, or permit-heavy work scope make the broader fix more honest.",
+    "seriousness": "This is one of the most expensive Detroit sewer decisions because permit requirements, backup history, and possible program support can all obscure what the owner should really compare.",
+    "nextStep": "Clarify the actual line condition first, then compare repair and replacement with permit scope and any real program-eligibility questions kept separate from the core defect decision.",
+    "costDirection": "Detroit repair-versus-replacement cost can swing sharply because permits, access, and program eligibility can change the owner's out-of-pocket burden after the defect path is chosen.",
+    "uncertainty": "This page cannot decide the right path without stronger evidence about whether the defect is isolated, systemic, or still tangled up with broader backup history.",
+    "sourceNote": "Reviewed against Detroit permit guidance, basement backup protection materials, private sewer repair program information, and national repair-versus-replacement framing. The page stays evidence-first because program talk and permits can distract from the actual line decision.",
+    "sourceIds": [
+      "det-001",
+      "det-002",
+      "det-003",
+      "cost-001",
+      "cost-002"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-repair-vs-replacement/",
+    "sections": [
+      {
+        "anchor": "when-detroit-repair-still-looks-credible",
+        "title": "When repair still looks credible in Detroit",
+        "intro": "Repair deserves a fair look when the line evidence still points to a localized issue and the rest of the private line looks usable.",
+        "bullets": [
+          "A localized defect can still support repair-first logic even in a city with broader backup anxiety.",
+          "Repair is easier to defend when permit scope is manageable and the footage does not suggest broader deterioration.",
+          "The key is not whether Detroit has sewer programs. It is whether the line still looks broadly serviceable."
+        ]
+      },
+      {
+        "anchor": "when-replacement-becomes-the-better-detroit-call",
+        "title": "When replacement becomes the better Detroit call",
+        "intro": "Replacement gets more honest when repeat issues, broader defects, or permit-heavy work make short-term repairs look like delay.",
+        "bullets": [
+          "Repeat failures and stronger footage can make replacement more defensible than another isolated fix.",
+          "Program eligibility should be treated as a support factor, not as the reason to avoid the harder decision.",
+          "The cleaner the line evidence gets, the more honestly quotes can compare repair against replacement."
+        ]
+      }
+    ],
+    "highlights": [
+      "Detroit repair-vs-replacement gets distorted when users confuse permit or program questions with the actual line condition.",
+      "The right decision still comes back to localized versus broader failure."
+    ],
+    "questions": [
+      "Does the footage still support a localized repair path?",
+      "Are permit or program questions distracting from the bigger line condition decision?"
+    ],
+    "relatedSlugs": [
+      "/sewer-line-repair-vs-replacement/",
+      "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
+      "/cities/detroit/sewer-line-replacement-cost/",
+      "/cities/detroit/sewer-scope-negotiation-with-seller/"
     ]
   }
 ]
