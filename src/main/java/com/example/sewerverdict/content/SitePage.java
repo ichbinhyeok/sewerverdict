@@ -28,6 +28,7 @@ public class SitePage {
 	private String reviewerRole;
 	private String lastReviewed;
 	private String sourceNote;
+	private List<PageSection> sections = new ArrayList<>();
 	private List<String> highlights = new ArrayList<>();
 	private List<String> questions = new ArrayList<>();
 	private List<PageFaq> faq = new ArrayList<>();
@@ -191,6 +192,14 @@ public class SitePage {
 
 	public void setSourceNote(String sourceNote) {
 		this.sourceNote = sourceNote;
+	}
+
+	public List<PageSection> getSections() {
+		return sections;
+	}
+
+	public void setSections(List<PageSection> sections) {
+		this.sections = sections == null ? new ArrayList<>() : new ArrayList<>(sections);
 	}
 
 	public List<String> getHighlights() {

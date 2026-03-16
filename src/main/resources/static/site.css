@@ -493,6 +493,23 @@ h3 {
 	font-size: 0.95rem;
 }
 
+.section-note {
+	margin-top: 1rem;
+	padding: 0.95rem 1rem;
+	background: rgba(30, 85, 99, 0.06);
+	border: 1px solid rgba(30, 85, 99, 0.12);
+	border-radius: var(--radius-tight);
+	color: var(--muted);
+}
+
+.toc-list {
+	padding-left: 1rem;
+}
+
+.toc-list a {
+	color: var(--brand-strong);
+}
+
 .site-footer {
 	border-top: 1px solid rgba(215, 208, 196, 0.95);
 	background: rgba(255, 253, 248, 0.7);

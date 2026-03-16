@@ -17,8 +17,69 @@
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "price-drivers",
+        "title": "What usually changes sewer replacement cost",
+        "intro": "Headline ranges are only useful if you know what tends to move the project up or down.",
+        "bullets": [
+          "Line length and depth change labor, excavation, and restoration scope.",
+          "Under-slab, driveway, patio, or landscaping disruption can dominate the bill.",
+          "Permits, haul-away, and finish restoration are often where quotes stop looking comparable.",
+          "Trenchless eligibility can lower surface damage without making the whole project cheap."
+        ],
+        "note": "If one quote looks much lower, check whether restoration, permits, or full line footage are actually included."
+      },
+      {
+        "anchor": "repair-vs-replacement",
+        "title": "When repair may be enough versus when replacement becomes more likely",
+        "intro": "Users often search replacement cost before they know whether replacement is the honest path.",
+        "bullets": [
+          "A localized crack, offset, or one short bad section may still support repair-first logic.",
+          "Orangeburg, collapse, repeated root intrusion, or systemic cast iron deterioration often push the decision toward replacement.",
+          "An old line with multiple defects can make repeat repair the more expensive path over time.",
+          "Access complexity can make one-time replacement cleaner than repeated disruption."
+        ]
+      },
+      {
+        "anchor": "scope-before-quote",
+        "title": "When a sewer scope still matters before quote comparison",
+        "intro": "Many users are ready to ask for prices before the line has actually been documented well enough.",
+        "bullets": [
+          "If the line has not been scoped, the quote is partly a guess.",
+          "Camera evidence helps separate isolated repair from broader replacement logic.",
+          "Buyers under contract often need video evidence for negotiation, not just a rough price.",
+          "The less precise the evidence, the more likely contractors will bake uncertainty into the quote."
+        ]
+      },
+      {
+        "anchor": "quote-checklist",
+        "title": "Quote comparison checklist",
+        "intro": "The best quote is not simply the lowest number.",
+        "bullets": [
+          "Ask which method is assumed and why it fits the documented line condition.",
+          "Confirm whether cleanup, restoration, and permits are included or excluded.",
+          "Ask if the quote assumes full replacement, partial replacement, or a repairable section.",
+          "Check what could materially change after a full camera review or on-site access inspection."
+        ]
+      }
+    ],
     "highlights": ["Spot repair and full replacement are not the same decision.", "Restoration can be as important as pipe work."],
     "questions": ["How much of this quote is excavation and restoration?", "Would trenchless change disruption enough to deserve its own quote path?"],
+    "faq": [
+      {
+        "question": "What is a realistic national sewer replacement range?",
+        "answer": "A realistic national range needs to stay broad because restoration, access, and method fit can move the project sharply. A narrow national number usually creates false confidence."
+      },
+      {
+        "question": "Does trenchless always cost less than excavation?",
+        "answer": "No. Trenchless may reduce restoration and disruption, but it is not automatically cheaper and it is not always viable."
+      },
+      {
+        "question": "Can I compare quotes without a sewer scope?",
+        "answer": "You can ask for directional pricing, but a scope usually makes quote comparison more trustworthy because the contractor is reacting to evidence instead of general assumptions."
+      }
+    ],
     "relatedSlugs": ["/trenchless-sewer-replacement-cost/", "/sewer-line-repair-vs-replacement/"]
   },
   {
@@ -34,12 +95,72 @@
     "nextStep": "If the property is older or the transaction is live, inspection-first is usually calmer than hoping the line is fine.",
     "costDirection": "The scope itself is usually modest compared with the downside of discovering a buried problem after closing.",
     "uncertainty": "This page cannot tell you that every buyer needs a scope. It helps narrow when the decision is sensible.",
+    "sourceNote": "Reviewed against buyer-intent sewer scope patterns and source-backed cost/responsibility pages in the current registry. The page stays evidence-first and avoids claiming that every buyer needs a scope.",
     "primaryCtaLabel": "Find sewer camera inspection options",
     "primaryCtaHref": "/find-sewer-scope/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "when-worth-it",
+        "title": "When a sewer scope is most worth ordering",
+        "intro": "The best trigger is not fear. It is whether buried-line uncertainty could materially change the purchase decision.",
+        "bullets": [
+          "Older housing stock usually raises the value of a sewer scope.",
+          "A live contract makes hidden sewer risk more commercial because timing and leverage matter now.",
+          "Large trees, older materials, or unexplained drainage clues can justify checking before closing.",
+          "A scope is often easiest to justify when the downside of being wrong is expensive."
+        ]
+      },
+      {
+        "anchor": "older-home-risk",
+        "title": "Homes that deserve extra sewer caution",
+        "intro": "Some houses create more buried-line uncertainty even when the rest of the inspection feels clean.",
+        "bullets": [
+          "Older homes can hide clay, cast iron, or orangeburg risk that never shows up in a generic walkthrough.",
+          "Mature roots, additions, older hardscape, and unclear maintenance history all raise buried-line uncertainty.",
+          "The house age is only one clue, but it often changes whether inspection-first is worth the extra step."
+        ]
+      },
+      {
+        "anchor": "if-problem-found",
+        "title": "What happens if the scope finds a problem",
+        "intro": "A bad scope does not automatically kill the deal. It changes the conversation.",
+        "bullets": [
+          "Some findings are watch-items, not quote-now emergencies.",
+          "More serious defects can support a credit request, more specialist review, or repair-path comparison.",
+          "The key is good documentation, not panic language.",
+          "Buyers often need video, severity detail, and likely next-step logic more than a vague warning."
+        ]
+      },
+      {
+        "anchor": "buyer-checklist",
+        "title": "What to ask the inspector, seller, or plumber next",
+        "intro": "A stronger buyer outcome usually comes from sharper questions, not louder ones.",
+        "bullets": [
+          "Was the full run viewed clearly, and is the issue isolated or systemic?",
+          "Would a specialist quote materially change negotiation leverage or only add noise?",
+          "If repair is needed, is a credit cleaner than a seller-managed fix before closing?",
+          "What part of the risk is still unknown even after the scope?"
+        ]
+      }
+    ],
     "highlights": ["Older housing stock usually raises the value of a scope.", "A clean general inspection does not rule out buried-line issues."],
     "questions": ["Would a scope materially reduce the chance of buying into a hidden repair bill?", "If a problem is found, do you want credits, repair, or more specialist detail?"],
+    "faq": [
+      {
+        "question": "Does every buyer need a sewer scope?",
+        "answer": "No. The point is not universal fear. The point is whether buried-line uncertainty is high enough that checking changes the confidence of the purchase."
+      },
+      {
+        "question": "Is a sewer scope usually worth the cost before closing?",
+        "answer": "Often yes when the home is older, the transaction is active, or the downside of discovering a major buried issue after closing would be meaningful."
+      },
+      {
+        "question": "If the scope finds something, should I walk away?",
+        "answer": "Not automatically. The next move depends on severity, repair path, negotiation leverage, and whether the finding looks isolated or systemic."
+      }
+    ],
     "relatedSlugs": ["/sewer-scope-red-flags/", "/sewer-scope-negotiation-with-seller/"]
   },
   {
@@ -60,8 +181,65 @@
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Compare with traditional replacement",
     "secondaryCtaHref": "/trenchless-vs-traditional-sewer-line-replacement/",
+    "sections": [
+      {
+        "anchor": "when-possible",
+        "title": "When trenchless may be possible",
+        "intro": "Trenchless is most appealing when surface disruption is expensive or annoying, but the line still has to qualify.",
+        "bullets": [
+          "Straightforward access and a line layout that supports the method help a lot.",
+          "Users often explore trenchless when restoration risk from dig-up is high.",
+          "Some deteriorated lines can still be trenchless candidates, but that is a viability question, not a branding promise."
+        ]
+      },
+      {
+        "anchor": "when-not",
+        "title": "When trenchless may not be the right answer",
+        "intro": "This is where a lot of SERP content stays too soft.",
+        "bullets": [
+          "Severe collapse, bad access points, impossible bends, or layout constraints can kill trenchless viability.",
+          "A line may need more excavation than the ad-style version of trenchless suggests.",
+          "Some jobs are better framed as restoration-heavy excavation projects from the start."
+        ]
+      },
+      {
+        "anchor": "what-changes-price",
+        "title": "What changes trenchless price most",
+        "intro": "The useful question is not just cost per foot. It is what the project is avoiding and what it still has to solve.",
+        "bullets": [
+          "Entry and exit pit requirements still create labor and site disruption.",
+          "Method type, line condition, and access complexity all affect the total.",
+          "Restoration savings can make trenchless look better even when the line-work cost itself is not low."
+        ]
+      },
+      {
+        "anchor": "contractor-questions",
+        "title": "Questions to ask before accepting a trenchless quote",
+        "intro": "A credible trenchless quote should sound specific, not magical.",
+        "bullets": [
+          "Why is this line actually eligible for trenchless?",
+          "What restoration is still required even if the method is trenchless?",
+          "What conditions would force a change in method after more inspection?",
+          "How does this compare with excavation once all cleanup and restoration are included?"
+        ]
+      }
+    ],
     "highlights": ["Trenchless is a method question before it is a price question.", "A bad layout can force excavation even when trenchless sounds ideal."],
     "questions": ["Is the line condition good enough for the trenchless method being quoted?", "How much restoration cost would dig-up create on this property?"],
+    "faq": [
+      {
+        "question": "Is trenchless always cheaper than traditional replacement?",
+        "answer": "No. Sometimes trenchless reduces restoration enough to look attractive, but it is not automatically the cheaper total project."
+      },
+      {
+        "question": "Can trenchless work on every damaged sewer line?",
+        "answer": "No. Layout, access, and actual line condition still decide whether trenchless is viable."
+      },
+      {
+        "question": "Why do trenchless quotes vary so much?",
+        "answer": "Because method type, site access, line geometry, restoration risk, and what is included in the quote all vary materially."
+      }
+    ],
     "relatedSlugs": ["/trenchless-vs-traditional-sewer-line-replacement/", "/sewer-line-replacement-cost/"]
   },
   {
@@ -82,8 +260,54 @@
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Read trenchless cost guide",
     "secondaryCtaHref": "/trenchless-sewer-replacement-cost/",
+    "sections": [
+      {
+        "anchor": "disruption",
+        "title": "Disruption and restoration trade-offs",
+        "intro": "The homeowner version of this decision is often about disruption, not just pipe work.",
+        "bullets": [
+          "Traditional excavation can look simpler until hardscape, driveway, slab, or landscaping restoration enters the scope.",
+          "Trenchless can reduce surface damage, but it does not make site work disappear.",
+          "The cleaner method is the one that fits the actual line and total restoration burden."
+        ]
+      },
+      {
+        "anchor": "eligibility",
+        "title": "Eligibility is what separates a real comparison from a fake one",
+        "intro": "A side-by-side table is only honest if both methods are actually available.",
+        "bullets": [
+          "Some lines clearly support trenchless review; others do not.",
+          "A collapse, layout problem, or access constraint can remove trenchless from the board quickly.",
+          "The best comparison starts after the line has been documented properly."
+        ]
+      },
+      {
+        "anchor": "quote-risk",
+        "title": "What makes one quote more trustworthy than another",
+        "intro": "Users often compare numbers before comparing assumptions.",
+        "bullets": [
+          "Ask each contractor which method assumptions the quote is built on.",
+          "Check whether permits, pits, cleanup, and restoration are fully included.",
+          "A lower quote may simply be missing the expensive parts."
+        ]
+      }
+    ],
     "highlights": ["Eligibility is the first filter.", "Restoration can change the winner."],
     "questions": ["What makes this line a good or bad trenchless candidate?", "Which option creates the biggest restoration burden afterward?"],
+    "faq": [
+      {
+        "question": "Is trenchless less disruptive than traditional sewer replacement?",
+        "answer": "Often yes, but the actual disruption difference depends on the site and whether trenchless is truly viable for that line."
+      },
+      {
+        "question": "Why might a contractor still recommend excavation?",
+        "answer": "Because access, line condition, or geometry may make excavation the more realistic or durable option."
+      },
+      {
+        "question": "What should I compare besides price?",
+        "answer": "Method fit, restoration scope, timeline, risk of surprises, and exactly what the quote includes."
+      }
+    ],
     "relatedSlugs": ["/trenchless-sewer-replacement-cost/", "/sewer-line-repair-vs-replacement/"]
   },
   {
@@ -99,12 +323,59 @@
     "nextStep": "Use the finding to decide whether the right move is monitor, scope deeper, negotiate, or get repair quotes now.",
     "costDirection": "The cost story changes based on whether the defect looks isolated, recurring, material-wide, or structurally severe.",
     "uncertainty": "A label in a report is not the same thing as a full repair scope or a final quote.",
+    "sourceNote": "Reviewed against source-backed cost and material pages in the SewerVerdict registry. Report labels are interpreted as next-step signals, not standalone diagnoses.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Find sewer camera inspection options",
     "secondaryCtaHref": "/find-sewer-scope/",
+    "sections": [
+      {
+        "anchor": "seriousness-ladder",
+        "title": "How to think about severity instead of reacting to one phrase",
+        "intro": "The same report language can describe a watch-item or a quote-now problem depending on context.",
+        "bullets": [
+          "Roots, minor offsets, or limited standing water can still be maintenance or monitor issues.",
+          "Collapse, major deformation, repeated backups, or broader material failure move faster toward quote territory.",
+          "The useful question is what the finding probably means for the next step, not whether the phrase sounds scary."
+        ]
+      },
+      {
+        "anchor": "watch-vs-quote",
+        "title": "When a red flag is a watch-item versus a get-quotes-now issue",
+        "intro": "SERPs often overcollapse these into one answer.",
+        "bullets": [
+          "Localized and mild findings may justify monitoring or better documentation first.",
+          "Systemic, severe, or repeat-failure findings are more likely to justify repair-path comparison.",
+          "Buyers usually need a clearer documentation standard because the finding affects negotiation, not just maintenance."
+        ]
+      },
+      {
+        "anchor": "evidence",
+        "title": "What kind of evidence matters most",
+        "intro": "Strong scope pages win because they help users interpret the report, not just repeat the label.",
+        "bullets": [
+          "Actual footage, severity detail, and whether the problem is isolated or systemic matter more than generic wording.",
+          "The more specific the evidence, the more useful the next quote or negotiation step becomes.",
+          "A red flag page should move the user toward better judgment, not panic."
+        ]
+      }
+    ],
     "highlights": ["Some findings are severity questions, not automatic replacement questions.", "Good video evidence usually matters more than a scary phrase."],
     "questions": ["Is the finding isolated, recurring, or systemic?", "Is this a scope-first, quote-first, or specialist-review situation?"],
+    "faq": [
+      {
+        "question": "What is the most serious sewer scope red flag?",
+        "answer": "Collapse or clear structural failure is usually the highest-urgency category, but even then the next step still depends on scope detail, access, and repair path."
+      },
+      {
+        "question": "Are roots always a replacement problem?",
+        "answer": "No. Roots can be a maintenance issue or a clue to a structural opening. The difference matters."
+      },
+      {
+        "question": "Should buyers treat every red flag the same way?",
+        "answer": "No. Buyers need to rank findings by likely impact on the deal, cost, and uncertainty, not by scary wording alone."
+      }
+    ],
     "relatedSlugs": ["/root-intrusion-sewer-line-what-to-do/", "/offset-joint-sewer-line-meaning/"]
   },
   {
@@ -125,8 +396,54 @@
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "what-deterioration-looks-like",
+        "title": "What cast iron deterioration may actually look like",
+        "intro": "Users often search cast iron replacement cost before they know whether they are looking at age, roughness, or real decline.",
+        "bullets": [
+          "Some cast iron lines look rough but remain serviceable for a while.",
+          "Heavy scaling, repeated backup behavior, channel deterioration, or broader line weakness make the conversation more serious.",
+          "The difference between cosmetic roughness and structural decline is where the decision quality lives."
+        ]
+      },
+      {
+        "anchor": "under-slab",
+        "title": "Why under-slab cast iron gets expensive faster",
+        "intro": "Cast iron under slab changes the project even when the defective footage is short.",
+        "bullets": [
+          "Access, demolition, and restoration can dominate the quote.",
+          "A small repair may still create a large site and finish burden.",
+          "This is why users should compare path quality, not just the pipe-work line item."
+        ]
+      },
+      {
+        "anchor": "repair-lining-replacement",
+        "title": "Repair, lining, or replacement",
+        "intro": "Cast iron pages need to help users understand why not every bad-looking line goes straight to full replacement.",
+        "bullets": [
+          "A localized issue may still support repair or a narrower method path.",
+          "Systemic deterioration or hard access can make broader replacement more credible.",
+          "Quote comparison matters because cast iron projects are easy to oversimplify."
+        ]
+      }
+    ],
     "highlights": ["Old does not always mean failing.", "Under-slab access can dominate the quote."],
     "questions": ["Does the evidence show surface scaling or real structural decline?", "How much of the run is affected?"],
+    "faq": [
+      {
+        "question": "Does old cast iron always need replacement?",
+        "answer": "No. Age alone is not proof of failure. The real question is how deteriorated the line actually is and what access makes the fix realistic."
+      },
+      {
+        "question": "Why are cast iron sewer projects so expensive under slab?",
+        "answer": "Because access and restoration can outweigh the actual pipe-work portion of the project."
+      },
+      {
+        "question": "Can cast iron sometimes be repaired instead of replaced?",
+        "answer": "Yes. Localized issues may still support repair or a narrower path, but systemic deterioration often changes that conclusion."
+      }
+    ],
     "relatedSlugs": ["/old-house-sewer-line-risk/", "/sewer-line-replacement-cost/"]
   },
   {
@@ -147,8 +464,54 @@
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "what-orangeburg-is",
+        "title": "What orangeburg actually means for a buyer or owner",
+        "intro": "Orangeburg is a material question, which is why users often search it with more urgency than a generic crack or clog.",
+        "bullets": [
+          "The concern is usually long-term reliability, not just one small repair line item.",
+          "Once orangeburg is confirmed and deforming, the conversation often shifts toward replacement planning.",
+          "This is one reason buyers treat confirmed orangeburg differently from a routine maintenance issue."
+        ]
+      },
+      {
+        "anchor": "why-worry",
+        "title": "Why orangeburg worries buyers and owners",
+        "intro": "The commercial pain is not just the pipe. It is uncertainty plus replacement bias.",
+        "bullets": [
+          "Users worry because the material question can affect financing comfort, negotiation, and long-term ownership confidence.",
+          "A localized fix may not solve the broader reliability concern if more of the run is the same material.",
+          "That is why confirmation matters before serious quote comparison."
+        ]
+      },
+      {
+        "anchor": "trenchless-caveat",
+        "title": "Trenchless caveat for orangeburg",
+        "intro": "Some SERP pages oversell trenchless here.",
+        "bullets": [
+          "Trenchless may still be reviewed, but material condition and layout need to support it.",
+          "Users should not assume trenchless automatically makes orangeburg easier or cheaper.",
+          "This is a method-fit question after confirmation, not before."
+        ]
+      }
+    ],
     "highlights": ["Material confirmation matters before price comparison.", "Reliability is often the core issue."],
     "questions": ["Is orangeburg confirmed, or only inferred from age and context?", "Would trenchless actually solve the right problem here?"],
+    "faq": [
+      {
+        "question": "Does orangeburg usually mean replacement?",
+        "answer": "Often it pushes the decision in that direction, but the smarter answer still depends on confirmation, extent, and whether the issue is localized or broader."
+      },
+      {
+        "question": "Why do buyers worry so much about orangeburg?",
+        "answer": "Because it raises a reliability question, not just a one-time repair question, which can affect negotiation and ownership confidence."
+      },
+      {
+        "question": "Can orangeburg ever be handled without full replacement?",
+        "answer": "Sometimes a narrower path may still be discussed, but the material usually triggers a closer review of long-term replacement logic."
+      }
+    ],
     "relatedSlugs": ["/sewer-line-replacement-cost/", "/old-house-sewer-line-risk/"]
   },
   {
@@ -164,12 +527,60 @@
     "nextStep": "Gather evidence first, then decide whether a specialist quote, seller credit, or more inspection creates the cleanest path forward.",
     "costDirection": "The larger and more documented the issue looks, the more likely it becomes a real negotiation item rather than a minor note.",
     "uncertainty": "This page cannot determine your legal rights, contract language, or exact local custom.",
+    "sourceNote": "Reviewed against source-backed responsibility pages and transaction-oriented scope logic. The page explains leverage patterns rather than legal certainty.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Find sewer camera inspection options",
     "secondaryCtaHref": "/find-sewer-scope/",
+    "sections": [
+      {
+        "anchor": "what-shapes-leverage",
+        "title": "What usually shapes buyer versus seller leverage",
+        "intro": "This is not a page for fake certainty. It is a page for practical leverage patterns.",
+        "bullets": [
+          "How late the issue appears in the transaction matters.",
+          "Video evidence and scope detail usually matter more than a general concern.",
+          "The larger and more documented the likely repair burden looks, the more serious the conversation becomes.",
+          "Local custom may influence expectations, but it does not erase the need for evidence."
+        ]
+      },
+      {
+        "anchor": "credit-vs-repair",
+        "title": "Seller credit versus seller-managed repair",
+        "intro": "Many buyers care more about clean execution than winning the argument.",
+        "bullets": [
+          "A credit can be cleaner when buyers want control over the contractor or method.",
+          "A seller-managed repair may sound attractive but can create scope, timing, or workmanship uncertainty.",
+          "The best choice often depends on urgency and how clearly the work can be defined."
+        ]
+      },
+      {
+        "anchor": "documentation",
+        "title": "What documentation usually helps most",
+        "intro": "Negotiation pages win when they tell users what to gather next.",
+        "bullets": [
+          "Scope footage, severity language, and likely next-step framing help more than general alarm.",
+          "A specialist quote can be useful when it defines the issue better, not just when it produces a big number.",
+          "Buyers usually want something specific enough to justify a request without overclaiming certainty."
+        ]
+      }
+    ],
     "highlights": ["Credits, repair, and more specialist review are different negotiation tools.", "Documentation beats vague concern."],
     "questions": ["Is the finding documented well enough to support a request?", "Would a quote strengthen the conversation more than argument alone?"],
+    "faq": [
+      {
+        "question": "Does the seller automatically have to pay for sewer repair?",
+        "answer": "No. That depends on evidence, contract stage, leverage, and local practice. This page is meant to help with patterns, not guarantee outcomes."
+      },
+      {
+        "question": "Is a credit usually better than a seller repair?",
+        "answer": "Sometimes yes, especially when buyers want control over contractor choice, timing, or repair scope. But it depends on the deal."
+      },
+      {
+        "question": "What helps a sewer request look more credible?",
+        "answer": "Clear scope documentation, severity detail, and a practical next-step request usually help more than general pressure."
+      }
+    ],
     "relatedSlugs": ["/sewer-scope-before-buying-house/", "/sewer-scope-negotiation-with-seller/"]
   },
   {
@@ -185,12 +596,59 @@
     "nextStep": "Clarify whether the line looks structurally compromised or simply in need of treatment before jumping straight to replacement logic.",
     "costDirection": "The path can range from cleaning to spot repair to broader replacement depending on how repetitive and structural the problem looks.",
     "uncertainty": "This page cannot tell you whether the roots are the actual problem or a symptom of a deeper defect.",
+    "sourceNote": "Reviewed against source-backed repair, replacement, and material guidance in the current registry. Root intrusion is treated as a maintenance-versus-structure question, not an automatic replacement trigger.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Get sewer repair or replacement quotes",
     "secondaryCtaHref": "/get-sewer-quotes/",
+    "sections": [
+      {
+        "anchor": "cleaning-vs-structural",
+        "title": "When cleaning may be enough versus when roots suggest a structural problem",
+        "intro": "Root intrusion is one of the easiest findings to oversimplify.",
+        "bullets": [
+          "Light or occasional roots can still sit inside a maintenance story.",
+          "Recurring roots, visible openings, offsets, or cracks make the structural explanation more plausible.",
+          "The more often the problem returns, the harder it is to treat as a one-off clog issue."
+        ]
+      },
+      {
+        "anchor": "material-context",
+        "title": "Why line material and age still matter",
+        "intro": "Roots do not behave the same way in every line context.",
+        "bullets": [
+          "Clay and older jointed systems often make root recurrence easier to imagine.",
+          "Cast iron context changes the question from intrusion alone to overall line condition.",
+          "A root finding becomes more serious when it sits inside an older or already fragile material story."
+        ]
+      },
+      {
+        "anchor": "after-scope",
+        "title": "What to ask after a scope finds roots",
+        "intro": "The next question is usually not just how to clear it.",
+        "bullets": [
+          "Is the root issue recurring because there is a structural opening or weak joint?",
+          "Does the footage suggest a localized fix or a broader deterioration pattern?",
+          "Would cleaning only buy short-term relief without resolving the underlying entry point?"
+        ]
+      }
+    ],
     "highlights": ["Roots often point to openings or weakness in the line.", "Recurrence matters as much as severity in one snapshot."],
     "questions": ["Does the video suggest a structural opening or only a treatable intrusion?", "What evidence would justify repair instead of maintenance?"],
+    "faq": [
+      {
+        "question": "Do roots always mean the sewer line needs replacement?",
+        "answer": "No. Roots can range from a maintenance issue to a clue that the line has a structural weakness. The difference is what matters."
+      },
+      {
+        "question": "Can cleaning solve root intrusion?",
+        "answer": "Sometimes it can be enough for the moment, but recurring roots often point to an entry point or broader line problem that still needs attention."
+      },
+      {
+        "question": "Why do older lines get more root problems?",
+        "answer": "Older materials and joint styles can make openings, offsets, or weak points more plausible, which is why age context still matters."
+      }
+    ],
     "relatedSlugs": ["/sewer-scope-red-flags/", "/sewer-line-repair-vs-replacement/"]
   },
   {

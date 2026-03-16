@@ -53,6 +53,14 @@
 					<h2>Cost or decision direction</h2>
 					<p th:text="${page.costDirection}">Cost direction</p>
 				</article>
+				<article class="section-card" th:each="section : ${page.sections}" th:id="${section.anchor}">
+					<h2 th:text="${section.title}">Section title</h2>
+					<p th:if="${section.intro}" th:text="${section.intro}">Section intro</p>
+					<ul class="clean-list" th:if="${!#lists.isEmpty(section.bullets)}">
+						<li th:each="item : ${section.bullets}" th:text="${item}">Bullet</li>
+					</ul>
+					<p class="section-note" th:if="${section.note}" th:text="${section.note}">Note</p>
+				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(page.highlights)}">
 					<h2>What commonly changes the answer</h2>
 					<ul class="clean-list">
@@ -85,6 +93,14 @@
 					<span class="card-kicker">Source transparency</span>
 					<p th:text="${page.sourceNote}">Source note</p>
 					<a class="text-link" th:href="@{/about-how-this-site-is-researched/}">How this site is researched</a>
+				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(page.sections)}">
+					<span class="card-kicker">On this page</span>
+					<ul class="link-list toc-list">
+						<li th:each="section : ${page.sections}">
+							<a th:href="'#' + ${section.anchor}" th:text="${section.title}">Section</a>
+						</li>
+					</ul>
 				</div>
 				<div class="rail-card" th:if="${!#lists.isEmpty(relatedPages)}">
 					<span class="card-kicker">Related pages</span>
