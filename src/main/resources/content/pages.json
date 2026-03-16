@@ -664,12 +664,59 @@
     "nextStep": "Decide whether this looks like monitor, further inspection, or repair-path territory based on severity and symptoms, not the label alone.",
     "costDirection": "Belly-related work can range from monitoring to excavation-heavy repair or broader replacement depending on severity and location.",
     "uncertainty": "This page cannot tell whether a belly is minor, chronic, or actively affecting flow without evidence.",
+    "sourceNote": "Reviewed against source-backed repair, replacement, and red-flag guidance in the current registry. Belly findings are treated as severity questions, not automatic replacement calls.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Get sewer repair or replacement quotes",
     "secondaryCtaHref": "/get-sewer-quotes/",
+    "sections": [
+      {
+        "anchor": "what-belly-means",
+        "title": "What a sewer belly means in plain English",
+        "intro": "A belly is a low spot where wastewater can collect instead of moving cleanly through the line.",
+        "bullets": [
+          "Some bellies are mild and mainly increase monitoring value.",
+          "More serious bellies can slow flow, hold debris, and raise backup risk.",
+          "The label matters less than how severe it is and what symptoms it is already causing."
+        ]
+      },
+      {
+        "anchor": "when-it-matters",
+        "title": "When a belly matters more",
+        "intro": "SERPs often miss the difference between a visible belly and a commercially serious one.",
+        "bullets": [
+          "Standing water plus symptoms usually matters more than standing water alone.",
+          "Location and access can turn a manageable issue into an expensive one.",
+          "A belly inside an already compromised line changes the decision more than an isolated mild dip."
+        ]
+      },
+      {
+        "anchor": "monitor-vs-repair",
+        "title": "Monitor, repair, or replace",
+        "intro": "This is where user trust is won or lost.",
+        "bullets": [
+          "Mild cases may justify monitoring with clear caution language.",
+          "Persistent symptoms or more severe dips can justify repair-path comparison.",
+          "If the line already looks broadly compromised, the belly may be one part of a larger replacement story."
+        ]
+      }
+    ],
     "highlights": ["Severity matters more than the label alone.", "Location can make repair much more invasive."],
     "questions": ["Is the belly actually affecting flow or backup risk?", "Would monitoring create a reasonable risk, or just delay a known repair?"],
+    "faq": [
+      {
+        "question": "Does a sewer belly always need repair?",
+        "answer": "No. Some bellies are monitored rather than repaired immediately, but severity, symptoms, and access change that answer."
+      },
+      {
+        "question": "Why can sewer belly repair get expensive?",
+        "answer": "Because repair often depends on where the low spot is, how much excavation is needed, and what surface or structural restoration follows."
+      },
+      {
+        "question": "Can a belly be left alone?",
+        "answer": "Sometimes a mild belly can be monitored, but that is different from ignoring a symptomatic or clearly disruptive one."
+      }
+    ],
     "relatedSlugs": ["/sewer-scope-red-flags/", "/sewer-line-repair-vs-replacement/"]
   },
   {
@@ -690,8 +737,55 @@
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "when-repair-is-enough",
+        "title": "When repair may be enough",
+        "intro": "Repair deserves a fair look when the evidence points to a localized problem and the rest of the line still looks serviceable.",
+        "bullets": [
+          "One short crack, one bad joint, or a clearly isolated defect may support repair-first thinking.",
+          "Repair can be more attractive when access is straightforward and the rest of the line still looks usable.",
+          "Localized evidence is what makes repair logic credible."
+        ]
+      },
+      {
+        "anchor": "when-replacement-wins",
+        "title": "When replacement becomes the more honest answer",
+        "intro": "Users often resist replacement for understandable reasons, so the page needs to explain why it sometimes wins.",
+        "bullets": [
+          "Systemic deterioration, bad material, repeat failures, or multiple defects can all push the decision toward replacement.",
+          "Older lines with recurring issues can make repair look cheaper only in the short term.",
+          "Restoration and repeat disruption risk can make one larger project cleaner than several smaller ones."
+        ]
+      },
+      {
+        "anchor": "compare-quotes",
+        "title": "How to compare repair and replacement quotes",
+        "intro": "A number alone does not settle the decision.",
+        "bullets": [
+          "Ask what evidence the contractor is using to justify repair versus replacement.",
+          "Check what happens if additional deterioration is found after work begins.",
+          "Confirm what restoration is included in each option.",
+          "The cheapest quote can still be the weak long-term decision."
+        ]
+      }
+    ],
     "highlights": ["Localized evidence supports repair.", "Systemic deterioration supports replacement."],
     "questions": ["Is the defect isolated or part of a broader problem?", "What is the real cost of repeat disruption if repair fails?"],
+    "faq": [
+      {
+        "question": "How do I know if sewer repair is enough?",
+        "answer": "Repair is easier to justify when the issue is clearly localized and the rest of the line still looks serviceable."
+      },
+      {
+        "question": "When is replacement more likely than repair?",
+        "answer": "Replacement becomes more plausible when defects are systemic, repeated, or tied to a material-wide deterioration story."
+      },
+      {
+        "question": "Should I pick the cheaper repair quote first?",
+        "answer": "Not automatically. You should compare what problem each quote is actually solving and how durable that path looks."
+      }
+    ],
     "relatedSlugs": ["/sewer-line-replacement-cost/", "/trenchless-vs-traditional-sewer-line-replacement/"]
   },
   {
@@ -707,12 +801,55 @@
     "nextStep": "If the downside of a buried-line surprise would materially affect the purchase, treat a scope as decision-quality protection.",
     "costDirection": "The cost issue is not just the line itself. It is the chance of inheriting a major repair shortly after closing.",
     "uncertainty": "Age alone does not prove a defect. It increases the value of checking rather than guessing.",
+    "sourceNote": "Reviewed against source-backed material, cost, and buyer-intent pages in the current registry. Old-house sewer risk is framed as uncertainty management, not fear marketing.",
     "primaryCtaLabel": "Find sewer camera inspection options",
     "primaryCtaHref": "/find-sewer-scope/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "why-older-homes",
+        "title": "Why older homes deserve extra sewer caution",
+        "intro": "Older homes are not automatically bad sewer bets, but they often carry more buried uncertainty.",
+        "bullets": [
+          "Unknown line material, old repairs, root pressure, and hidden access constraints can overlap.",
+          "The line may be older, different, or less maintained than the visible house systems the buyer notices first.",
+          "This is why sewer risk often feels invisible until it becomes expensive."
+        ]
+      },
+      {
+        "anchor": "common-hidden-risk",
+        "title": "Common hidden-risk patterns in older homes",
+        "intro": "Users need a narrative, not just the word old.",
+        "bullets": [
+          "Older materials such as clay, cast iron, or orangeburg may change the inspection and replacement story.",
+          "Mature trees and older hardscape can make both detection and repair more commercially important.",
+          "A clean general inspection does not erase buried-line uncertainty."
+        ]
+      },
+      {
+        "anchor": "before-closing",
+        "title": "When buyers should scope before closing",
+        "intro": "Not every old house needs a scope, but some old-house purchases make it much easier to justify.",
+        "bullets": [
+          "The active deal timeline matters.",
+          "The downside of post-close sewer surprise matters.",
+          "The less known about the line, the stronger the inspection-first case becomes."
+        ]
+      }
+    ],
     "highlights": ["Older-home risk is about uncertainty, not panic.", "Buried-line age can be different from house age."],
     "questions": ["Would one inspection change the confidence of the deal materially?", "Is the sewer line a blind spot in the inspection plan?"],
+    "faq": [
+      {
+        "question": "Does an old house always need a sewer scope?",
+        "answer": "No. The stronger rule is that older homes often make a sewer scope easier to justify because buried uncertainty tends to be higher."
+      },
+      {
+        "question": "Why are sewer issues easier to miss in older homes?",
+        "answer": "Because the most important clues are buried: material age, repairs, roots, and access history rarely show up in a simple walkthrough."
+      }
+    ],
     "relatedSlugs": ["/house-built-before-1970-sewer-line-risk/", "/sewer-scope-before-buying-house/"]
   },
   {
@@ -728,12 +865,45 @@
     "nextStep": "Treat this page as a prompt to verify, not assume. Inspection often matters more when the property falls into this age band.",
     "costDirection": "The cost risk is directional: older properties are more likely to create uncertainty that pushes inspection or quote needs earlier.",
     "uncertainty": "The age band is a clue, not proof of failure.",
+    "sourceNote": "Reviewed against source-backed older-home, material, and cost pages in the current registry. Pre-1970 is used as a screening clue rather than a diagnosis.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Find sewer camera inspection options",
     "secondaryCtaHref": "/find-sewer-scope/",
+    "sections": [
+      {
+        "anchor": "why-this-age-band",
+        "title": "Why this age band matters",
+        "intro": "Homes built before 1970 often live inside the zone where buried-line uncertainty starts to matter more commercially.",
+        "bullets": [
+          "Material assumptions become more relevant.",
+          "Tree and site history often run longer.",
+          "Unknown repairs and layout changes are easier to imagine."
+        ]
+      },
+      {
+        "anchor": "what-to-ask",
+        "title": "What buyers or owners should ask next",
+        "intro": "A useful age-band page should move the user into sharper questions.",
+        "bullets": [
+          "Do you know the actual line material or are you inferring it from house age?",
+          "Has the line been scoped or repaired before?",
+          "Would a camera inspection answer a decision question that matters right now?"
+        ]
+      }
+    ],
     "highlights": ["Age band helps with screening, not diagnosis.", "Material assumptions should be verified."],
     "questions": ["Do you know the line material, or are you guessing from house age?", "Would a scope answer a transaction question that matters now?"],
+    "faq": [
+      {
+        "question": "Why does pre-1970 matter for sewer risk?",
+        "answer": "Because older age bands often raise the odds of older materials, unclear maintenance history, and buried-line uncertainty."
+      },
+      {
+        "question": "Does pre-1970 mean the line is definitely bad?",
+        "answer": "No. It means the value of verifying the line condition often goes up."
+      }
+    ],
     "relatedSlugs": ["/old-house-sewer-line-risk/", "/sewer-scope-before-buying-house/"]
   },
   {
@@ -749,12 +919,56 @@
     "nextStep": "Package the evidence, decide whether a credit or repair path is cleaner, and ask for specifics instead of reassurance.",
     "costDirection": "The bigger and more documented the issue looks, the more likely credits, quotes, or specialist review become relevant.",
     "uncertainty": "This page cannot tell you the best legal move under your contract.",
+    "sourceNote": "Reviewed against source-backed transaction and responsibility pages in the current registry. The page focuses on negotiation framing, not legal certainty.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Find sewer camera inspection options",
     "secondaryCtaHref": "/find-sewer-scope/",
+    "sections": [
+      {
+        "anchor": "frame-findings",
+        "title": "How to frame the finding with a seller",
+        "intro": "The best negotiation tone is specific, calm, and evidence-led.",
+        "bullets": [
+          "Start from what the scope shows, not from worst-case assumptions.",
+          "Explain why the finding matters to the deal, cost, or ownership risk.",
+          "Ask for a practical next step instead of making the conversation purely emotional."
+        ]
+      },
+      {
+        "anchor": "credit-vs-specialist",
+        "title": "Credit, repair, or specialist evaluation",
+        "intro": "These are different tools, not interchangeable phrases.",
+        "bullets": [
+          "A credit may be cleaner when the buyer wants control over contractor and method.",
+          "A specialist evaluation can be useful when the scope is concerning but still not specific enough.",
+          "Seller-managed repair only works well when scope, timeline, and workmanship expectations are clear."
+        ]
+      },
+      {
+        "anchor": "documentation-checklist",
+        "title": "Documentation checklist",
+        "intro": "This is where many negotiation pages stay too vague.",
+        "bullets": [
+          "Scope footage or report summary",
+          "Severity framing and likely next-step explanation",
+          "Any quote or specialist input that clarifies the issue without overclaiming certainty",
+          "A clear statement of what outcome would reduce deal risk fastest"
+        ]
+      }
+    ],
     "highlights": ["Clarity beats drama in sewer negotiations.", "Credits are sometimes cleaner than repair promises."],
     "questions": ["Do you have enough documentation to support the request?", "Is a credit or repair commitment cleaner for this deal?"],
+    "faq": [
+      {
+        "question": "Should buyers ask for a sewer repair or a credit?",
+        "answer": "It depends on how well the issue is defined and whether the buyer wants control over contractor choice, timing, and final scope."
+      },
+      {
+        "question": "Does a sewer scope automatically give the buyer leverage?",
+        "answer": "Not automatically. The leverage comes from how well the finding is documented and how materially it changes the deal."
+      }
+    ],
     "relatedSlugs": ["/who-pays-for-sewer-line-repair-buyer-or-seller/", "/sewer-scope-red-flags/"]
   },
   {
@@ -770,12 +984,45 @@
     "nextStep": "Use the evidence to decide whether this is a maintenance watch-item, a repair candidate, or part of broader replacement logic.",
     "costDirection": "Cost direction ranges from low-impact monitoring to spot repair or broader line work if the offset is symptomatic or structural.",
     "uncertainty": "This page cannot tell how severe the offset is without video and context.",
+    "sourceNote": "Reviewed against source-backed repair, replacement, and red-flag pages in the current registry. Offset joints are framed as severity-and-context findings, not automatic emergencies.",
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Get sewer repair or replacement quotes",
     "secondaryCtaHref": "/get-sewer-quotes/",
+    "sections": [
+      {
+        "anchor": "what-it-indicates",
+        "title": "What an offset joint may indicate",
+        "intro": "Offset joints often point to movement, separation, or a weak point in the line, but not every offset carries the same urgency.",
+        "bullets": [
+          "A minor offset may behave like a watch-item.",
+          "A more significant offset can trap debris, invite roots, or disrupt flow.",
+          "The commercial question is whether it changes the next step now."
+        ]
+      },
+      {
+        "anchor": "when-serious",
+        "title": "When it becomes more serious",
+        "intro": "This is where user intent is highest.",
+        "bullets": [
+          "If the offset is paired with recurring roots, symptoms, or broader deterioration, the concern rises.",
+          "If flow is affected or debris is catching consistently, repair logic becomes more plausible.",
+          "Buyers should also ask whether the finding is isolated or part of a wider line story."
+        ]
+      }
+    ],
     "highlights": ["Severity and symptoms matter more than the phrase alone.", "Offset joints can invite recurring problems."],
     "questions": ["Is the offset affecting flow or just visible on camera?", "Would repair solve the right problem, or just one symptom?"],
+    "faq": [
+      {
+        "question": "Does an offset joint always need repair?",
+        "answer": "No. Some offsets are monitored, while others justify repair because of symptoms, debris catching, or broader deterioration."
+      },
+      {
+        "question": "Why do offset joints matter to buyers?",
+        "answer": "Because they may signal movement or weakness in the line and can change whether a finding looks minor or negotiation-worthy."
+      }
+    ],
     "relatedSlugs": ["/sewer-scope-red-flags/", "/root-intrusion-sewer-line-what-to-do/"]
   },
   {
@@ -791,12 +1038,45 @@
     "nextStep": "Move quickly toward real evaluation. If the issue is already documented, compare repair paths immediately rather than waiting on general advice.",
     "costDirection": "Confirmed collapse often shifts the conversation toward the upper repair and replacement bands rather than minor maintenance.",
     "uncertainty": "This page cannot diagnose collapse from symptoms alone.",
+    "sourceNote": "Reviewed against source-backed replacement, urgent defect, and cost pages in the current registry. The page uses urgent-but-nondiagnostic wording on purpose.",
     "primaryCtaLabel": "Get sewer repair or replacement quotes",
     "primaryCtaHref": "/get-sewer-quotes/",
     "secondaryCtaLabel": "Find sewer camera inspection options",
     "secondaryCtaHref": "/find-sewer-scope/",
+    "sections": [
+      {
+        "anchor": "possible-signs",
+        "title": "Signs that may point to severe sewer failure",
+        "intro": "This page needs careful wording because symptom intent is high and certainty is low.",
+        "bullets": [
+          "Repeated backups, severe drainage failure, or strong inspection evidence can all raise concern.",
+          "Symptoms alone still do not prove a collapsed line.",
+          "The goal is to move users toward faster verification, not to diagnose remotely."
+        ]
+      },
+      {
+        "anchor": "urgent-next-steps",
+        "title": "Urgent next steps",
+        "intro": "Urgent does not mean vague.",
+        "bullets": [
+          "If there is no real evidence yet, move toward inspection-grade evaluation quickly.",
+          "If there is already footage or strong documentation, quote comparison becomes the next commercial move.",
+          "Ask what part of the likely cost is structural failure itself versus access and restoration."
+        ]
+      }
+    ],
     "highlights": ["Urgent does not mean fake certainty.", "Inspection still matters for scope of work."],
     "questions": ["Is there actual inspection evidence of structural failure?", "How quickly does the issue need real on-site evaluation?"],
+    "faq": [
+      {
+        "question": "Can symptoms alone confirm a collapsed sewer line?",
+        "answer": "No. Symptoms can justify urgent evaluation, but they do not confirm collapse by themselves."
+      },
+      {
+        "question": "When should I move straight to quotes?",
+        "answer": "When there is already strong documentation of serious structural trouble and the next real decision is how to fix it."
+      }
+    ],
     "relatedSlugs": ["/sewer-line-replacement-cost/", "/sewer-scope-red-flags/"]
   },
   {
@@ -817,8 +1097,55 @@
     "primaryCtaHref": "/estimator/",
     "secondaryCtaLabel": "Read methodology",
     "secondaryCtaHref": "/methodology/",
+    "sections": [
+      {
+        "anchor": "what-changes-answer",
+        "title": "What usually changes the answer",
+        "intro": "Coverage pages need to answer the right question: not yes or no, but what conditions change the outcome.",
+        "bullets": [
+          "Cause of damage matters.",
+          "Whether service line coverage or a separate endorsement exists matters.",
+          "Exclusions, limits, and line location still matter.",
+          "Users should verify actual policy language before assuming anything."
+        ]
+      },
+      {
+        "anchor": "common-misread",
+        "title": "What users often misread",
+        "intro": "This is where a lot of SEO pages lose trust.",
+        "bullets": [
+          "Homeowners insurance is not the same thing as service line coverage.",
+          "A sewer backup problem is not the same thing as a damaged private line.",
+          "Optional protection may exist without making every sewer problem covered."
+        ]
+      },
+      {
+        "anchor": "before-calling",
+        "title": "Questions to ask before assuming coverage",
+        "intro": "A good page should help the user sound sharper on the call.",
+        "bullets": [
+          "What exact endorsement or service line language applies?",
+          "Is this type of failure sudden damage, wear, backup, or something else?",
+          "What limits, deductibles, or exclusions would still leave me exposed?"
+        ]
+      }
+    ],
     "highlights": ["Cause matters.", "Endorsements matter."],
     "questions": ["What exact coverage language applies here?", "What documentation would an insurer ask for before making any decision?"],
+    "faq": [
+      {
+        "question": "Does homeowners insurance usually cover sewer line replacement?",
+        "answer": "Not usually under a standard policy by default. Coverage often depends on cause, endorsements, exclusions, and whether separate service line coverage exists."
+      },
+      {
+        "question": "Is sewer backup the same as sewer line coverage?",
+        "answer": "No. They are often discussed together, but they solve different problems and should not be treated as interchangeable."
+      },
+      {
+        "question": "Should I assume I am uninsured until I verify?",
+        "answer": "As a practical planning move, yes. It is safer to verify actual policy terms than to budget around an assumption of coverage."
+      }
+    ],
     "relatedSlugs": ["/service-line-coverage-vs-home-warranty-for-sewer-lines/", "/disclaimer/"]
   },
   {
@@ -839,8 +1166,54 @@
     "primaryCtaHref": "/does-home-insurance-cover-sewer-line-replacement/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "simple-difference",
+        "title": "The simple difference",
+        "intro": "Users usually search this topic because they know these products sound similar but are not sure how.",
+        "bullets": [
+          "Service line coverage is usually an insurance add-on or protection product tied to exterior service lines.",
+          "A home warranty is typically a service-contract style product with its own limits and exclusions.",
+          "Neither product should be treated as automatic full sewer-line protection."
+        ]
+      },
+      {
+        "anchor": "where-people-get-misled",
+        "title": "Where people get misled",
+        "intro": "This page should prevent false confidence.",
+        "bullets": [
+          "Product naming is often broader than actual sewer help.",
+          "Interior plumbing help does not automatically mean exterior line replacement help.",
+          "Users need to check the actual agreement, not just the marketing label."
+        ]
+      },
+      {
+        "anchor": "what-to-check",
+        "title": "What to check before relying on either one",
+        "intro": "The highest-value content here is a verification checklist.",
+        "bullets": [
+          "What exactly is covered: stoppage, line break, excavation, restoration, or none of the above?",
+          "What payout limits, deductibles, or service fees apply?",
+          "Does the product cover the part of the line that is actually causing the problem?"
+        ]
+      }
+    ],
     "highlights": ["These products are not interchangeable.", "Users should not assume full replacement help."],
     "questions": ["What type of product do you actually have?", "What exclusions could still leave most of the bill with you?"],
+    "faq": [
+      {
+        "question": "Is service line coverage the same as a home warranty?",
+        "answer": "No. They are different product categories with different limits, exclusions, and purposes."
+      },
+      {
+        "question": "Can a home warranty cover sewer line replacement?",
+        "answer": "Sometimes parts of plumbing or stoppage service may be covered, but users should not assume that means full exterior sewer replacement help."
+      },
+      {
+        "question": "Which is better for sewer risk?",
+        "answer": "That depends on the actual product language. The safer rule is to verify what is covered rather than assume the product label answers the question."
+      }
+    ],
     "relatedSlugs": ["/does-home-insurance-cover-sewer-line-replacement/", "/methodology/"]
   },
   {
