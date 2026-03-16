@@ -38,3 +38,4 @@ out/
 
 ### Runtime storage ###
 storage/*/*.jsonl
+.codex-tmp/
