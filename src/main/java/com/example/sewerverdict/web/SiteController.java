@@ -73,6 +73,27 @@ public class SiteController {
 		return "home";
 	}
 
+	@GetMapping({"/cities", "/cities/"})
+	public String cities(HttpServletRequest request, Model model) {
+		List<SitePage> allPages = siteContentService.getAllPages();
+		model.addAttribute("pageTitle", "Cities | SewerVerdict");
+		model.addAttribute("metaDescription",
+			"City-specific sewer risk pages that connect national guides to local housing age, system context, and responsibility signals.");
+		model.addAttribute("tierOneCities", geoProfileService.getCityHubEntriesByTier(allPages, "tier-1"));
+		model.addAttribute("tierTwoCities", geoProfileService.getCityHubEntriesByTier(allPages, "tier-2"));
+		seoMetadataService.apply(model, request,
+			"Cities | SewerVerdict",
+			"City-specific sewer risk pages that connect national guides to local housing age, system context, and responsibility signals.",
+			"website",
+			List.of(
+				new Breadcrumb("Home", "/"),
+				new Breadcrumb("Cities", "/cities/")
+			),
+			List.of(),
+			true);
+		return "cities";
+	}
+
 	@GetMapping({
 		"/{slug:[a-z0-9-]+}",
 		"/{slug:[a-z0-9-]+}/",

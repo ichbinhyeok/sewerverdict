@@ -87,6 +87,32 @@ public class GeoProfileService {
 			.toList();
 	}
 
+	public List<CityHubEntry> getCityHubEntries(List<SitePage> allPages) {
+		return profilesByCity.values().stream()
+			.sorted(Comparator
+				.comparingInt((GeoProfile profile) -> priorityRank(profile.getCitySlug()))
+				.thenComparing(GeoProfile::getCityName))
+			.map(profile -> new CityHubEntry(profile, getPagesForCity(profile.getCitySlug(), allPages)))
+			.filter(entry -> !entry.pages().isEmpty())
+			.toList();
+	}
+
+	public List<CityHubEntry> getCityHubEntriesByTier(List<SitePage> allPages, String priorityTier) {
+		return getCityHubEntries(allPages).stream()
+			.filter(entry -> priorityTier.equalsIgnoreCase(entry.profile().getPriorityTier()))
+			.toList();
+	}
+
+	public List<SitePage> getPagesForCity(String citySlug, List<SitePage> allPages) {
+		return allPages.stream()
+			.filter(SitePage::isGeoPage)
+			.filter(page -> citySlug.equals(page.getGeoCitySlug()))
+			.sorted(Comparator
+				.comparingInt((SitePage page) -> familyRank(page.getTrackingFamily()))
+				.thenComparing(SitePage::getTitle))
+			.toList();
+	}
+
 	private int priorityRank(String citySlug) {
 		GeoProfile profile = profilesByCity.get(citySlug);
 		if (profile == null || profile.getPriorityTier() == null) {
@@ -95,6 +121,19 @@ public class GeoProfileService {
 		return switch (profile.getPriorityTier().toLowerCase()) {
 			case "tier-1" -> 0;
 			case "tier-2" -> 1;
+			default -> 9;
+		};
+	}
+
+	private int familyRank(String family) {
+		if (family == null) {
+			return 9;
+		}
+		return switch (family.toLowerCase()) {
+			case "buyer" -> 0;
+			case "cost" -> 1;
+			case "defect" -> 2;
+			case "coverage" -> 3;
 			default -> 9;
 		};
 	}

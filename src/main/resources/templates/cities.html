@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(${pageTitle}, ${metaDescription}, false)}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+
+<main>
+	<section class="page-hero">
+		<div class="container">
+			<div class="hero-shell">
+				<div>
+					<span class="eyebrow">Local wedges</span>
+					<h1>City pages built only where the local signal is real.</h1>
+					<p class="lede">These pages exist because the housing stock, sewer system, responsibility boundary, or repair-program context materially changes the next decision.</p>
+				</div>
+				<div class="hero-actions">
+					<div class="meta-block">
+						<div><strong>Rule:</strong> No city-swap pages</div>
+						<div><strong>Bias:</strong> Inspection-first until evidence gets stronger</div>
+						<div><strong>Filter:</strong> Official utility or city context where available</div>
+					</div>
+					<div class="meta-block meta-block-accent">
+						<div class="card-kicker">How to use this hub</div>
+						<p>Start with the city that matches the property or transaction, then choose the page that best matches the current problem.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">Tier 1 cities</span>
+				<h2>Highest-priority local markets for buyer, cost, and buried-line trust</h2>
+			</div>
+			<div class="city-hub-grid">
+				<article class="section-card" th:each="entry : ${tierOneCities}">
+					<span class="card-kicker" th:text="${entry.profile.priorityTier}">Tier</span>
+					<h3 th:text="${entry.profile.cityName + ', ' + entry.profile.stateCode}">City</h3>
+					<p th:text="${entry.profile.marketReason}">Market reason</p>
+					<div class="city-hub-signals">
+						<div class="rail-card">
+							<span class="card-kicker">Housing signal</span>
+							<p th:text="${entry.profile.housingAgeSignal}">Housing signal</p>
+						</div>
+						<div class="rail-card">
+							<span class="card-kicker">Local system or ownership</span>
+							<p th:text="${entry.profile.systemContext}">System context</p>
+						</div>
+					</div>
+					<ul class="link-list city-hub-links">
+						<li th:each="page : ${entry.pages}">
+							<a th:href="${page.slug}" th:text="${page.title}"
+							   data-event-type="page_cta_click"
+							   th:attr="data-page-slug='/cities/',data-event-label=${'cities-hub:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='cities-tier-1'">City page</a>
+						</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt" th:if="${!#lists.isEmpty(tierTwoCities)}">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">Tier 2 cities</span>
+				<h2>Support markets where responsibility language is stronger than raw volume</h2>
+			</div>
+			<div class="city-hub-grid">
+				<article class="section-card" th:each="entry : ${tierTwoCities}">
+					<span class="card-kicker" th:text="${entry.profile.priorityTier}">Tier</span>
+					<h3 th:text="${entry.profile.cityName + ', ' + entry.profile.stateCode}">City</h3>
+					<p th:text="${entry.profile.marketReason}">Market reason</p>
+					<ul class="link-list city-hub-links">
+						<li th:each="page : ${entry.pages}">
+							<a th:href="${page.slug}" th:text="${page.title}"
+							   data-event-type="page_cta_click"
+							   th:attr="data-page-slug='/cities/',data-event-label=${'cities-hub:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='cities-tier-2'">City page</a>
+						</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

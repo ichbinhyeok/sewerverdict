@@ -163,7 +163,9 @@ h3 {
 
 .hero-grid,
 .content-grid,
-.callout-grid {
+.callout-grid,
+.city-hub-grid,
+.city-hub-signals {
 	display: grid;
 	gap: 1.5rem;
 }
@@ -171,6 +173,19 @@ h3 {
 .hero-grid {
 	grid-template-columns: 1.15fr 0.85fr;
 	align-items: stretch;
+}
+
+.city-hub-grid {
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.city-hub-signals {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin: 1rem 0 1.25rem;
+}
+
+.city-hub-links {
+	margin-top: 1rem;
 }
 
 .hero-copy,
