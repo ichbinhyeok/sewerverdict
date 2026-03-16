@@ -119,6 +119,22 @@
 	</section>
 
 	<section class="section section-alt">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">High-consequence findings</span>
+				<h2>Defect guides that usually trigger the next argument</h2>
+			</div>
+			<div class="card-grid card-grid-2">
+				<a class="info-card" th:each="page : ${issuePages}" th:href="${page.slug}">
+					<span class="card-kicker" th:text="${page.eyebrow}">Guide</span>
+					<h3 th:text="${page.title}">Page title</h3>
+					<p th:text="${page.summary}">Summary</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt">
 		<div class="container callout-grid">
 			<div class="callout">
 				<span class="eyebrow">Trust and methodology</span>

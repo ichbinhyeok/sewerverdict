@@ -1,10 +1,21 @@
 const EVENT_URL = "/api/events";
+const ATTRIBUTION_STORAGE_KEY = "sv-attribution";
+const ATTRIBUTION_KEYS = [
+	"utmSource",
+	"utmMedium",
+	"utmCampaign",
+	"utmTerm",
+	"utmContent",
+	"gclid",
+	"wbraid",
+	"gbraid"
+];
 
-function postEvent(eventType, pageSlug, label) {
+function postEvent(eventType, pageSlug, label, metadata = {}) {
 	if (!eventType || !pageSlug) {
 		return;
 	}
-	const payload = JSON.stringify({ eventType, pageSlug, label });
+	const payload = JSON.stringify({ eventType, pageSlug, label, metadata });
 	if (navigator.sendBeacon) {
 		navigator.sendBeacon(EVENT_URL, new Blob([payload], { type: "application/json" }));
 		return;
@@ -17,15 +28,92 @@ function postEvent(eventType, pageSlug, label) {
 	}).catch(() => {});
 }
 
+function readUrlAttribution() {
+	const params = new URLSearchParams(window.location.search);
+	const attribution = {};
+	ATTRIBUTION_KEYS.forEach((key) => {
+		const value = params.get(key);
+		if (value) {
+			attribution[key] = value;
+		}
+	});
+	return attribution;
+}
+
+function readStoredAttribution() {
+	try {
+		const raw = localStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+		if (!raw) {
+			return {};
+		}
+		return JSON.parse(raw);
+	}
+	catch {
+		return {};
+	}
+}
+
+function persistAttribution() {
+	const stored = readStoredAttribution();
+	const current = readUrlAttribution();
+	const merged = { ...stored, ...current };
+	if (Object.keys(merged).length) {
+		try {
+			localStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(merged));
+		}
+		catch {
+			return merged;
+		}
+	}
+	return merged;
+}
+
+function applyAttributionToLinks(attribution) {
+	if (!Object.keys(attribution).length) {
+		return;
+	}
+	document.querySelectorAll("a[href^='/']").forEach((link) => {
+		if (link.dataset.noAttribution === "true") {
+			return;
+		}
+		const url = new URL(link.getAttribute("href"), window.location.origin);
+		ATTRIBUTION_KEYS.forEach((key) => {
+			if (attribution[key] && !url.searchParams.has(key)) {
+				url.searchParams.set(key, attribution[key]);
+			}
+		});
+		link.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
+	});
+}
+
+function applyAttributionToForms(attribution) {
+	document.querySelectorAll("form[data-preserve-attribution]").forEach((form) => {
+		ATTRIBUTION_KEYS.forEach((key) => {
+			const field = form.querySelector(`[name='${key}']`);
+			if (field && attribution[key] && !field.value) {
+				field.value = attribution[key];
+			}
+		});
+	});
+}
+
 document.addEventListener("click", (event) => {
 	const target = event.target.closest("[data-event-type]");
 	if (!target) {
 		return;
 	}
-	postEvent(target.dataset.eventType, target.dataset.pageSlug, target.dataset.eventLabel || target.textContent.trim());
+	postEvent(target.dataset.eventType, target.dataset.pageSlug, target.dataset.eventLabel || target.textContent.trim(), {
+		draftId: target.dataset.eventDraftId || "",
+		route: target.dataset.eventRoute || "",
+		step: target.dataset.eventStep || ""
+	});
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+	const attribution = persistAttribution();
+	applyAttributionToLinks(attribution);
+	applyAttributionToForms(attribution);
+
 	const navToggle = document.querySelector("[data-nav-toggle]");
 	const navMenu = document.querySelector("[data-nav-menu]");
 	if (navToggle && navMenu) {
@@ -56,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const wizardForm = estimatorShell.querySelector(".wizard-form");
 		let activeIndex = 0;
 		let showValidation = false;
+		let lastTrackedStep = -1;
 
 		const currentStep = () => steps[activeIndex];
 
@@ -95,25 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			return idx === -1 ? 0 : idx;
 		};
 
-		const applyPrefillFromUrl = () => {
-			const params = new URLSearchParams(window.location.search);
-			const role = params.get("role");
-			const urgency = params.get("urgency");
-			if (role) {
-				const target = wizardForm?.querySelector(`input[name='role'][value='${role}']`);
-				if (target) {
-					target.checked = true;
-				}
-			}
-			if (urgency) {
-				const target = wizardForm?.querySelector(`input[name='urgency'][value='${urgency}']`);
-				if (target) {
-					target.checked = true;
-				}
-			}
-			activeIndex = findFirstIncompleteStepIndex();
-		};
-
 		const syncWizard = () => {
 			steps.forEach((step, index) => {
 				step.hidden = index !== activeIndex;
@@ -123,6 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			submitButton.hidden = activeIndex !== steps.length - 1;
 			progressFill.style.width = `${((activeIndex + 1) / steps.length) * 100}%`;
 			progressLabel.textContent = `Step ${activeIndex + 1} of ${steps.length}`;
+			if (lastTrackedStep !== activeIndex) {
+				postEvent("estimator_step_view", "/estimator/", `step-${activeIndex + 1}`, {
+					step: String(activeIndex + 1)
+				});
+				lastTrackedStep = activeIndex;
+			}
 			updateStepControls();
 		};
 
@@ -134,6 +210,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				return;
 			}
 			showValidation = true;
+			postEvent("estimator_step_validation_error", "/estimator/", `step-${activeIndex + 1}`, {
+				step: String(activeIndex + 1)
+			});
 			updateStepControls();
 		});
 
@@ -149,13 +228,16 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (!stepIsValid(currentStep())) {
 				event.preventDefault();
 				showValidation = true;
+				postEvent("estimator_step_validation_error", "/estimator/", `step-${activeIndex + 1}`, {
+					step: String(activeIndex + 1)
+				});
 				updateStepControls();
 			}
 		});
 
 		wizardForm?.addEventListener("input", updateStepControls);
 		wizardForm?.addEventListener("change", updateStepControls);
-		applyPrefillFromUrl();
+		activeIndex = findFirstIncompleteStepIndex();
 		syncWizard();
 	}
 
@@ -172,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					button.textContent = "Summary copied";
 				});
 			}
-			catch (error) {
+			catch {
 				copyButtons.forEach((button) => {
 					button.textContent = "Copy manually below";
 				});

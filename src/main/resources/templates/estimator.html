@@ -20,7 +20,15 @@
 					<div class="progress-bar"><span data-progress-fill></span></div>
 					<p data-progress-label>Step 1 of 7</p>
 				</div>
-				<form class="wizard-form" th:action="@{/estimator/results/}" th:object="${form}" method="post">
+				<form class="wizard-form" th:action="@{/estimator/results/}" th:object="${form}" method="post" data-preserve-attribution>
+					<input th:field="*{utmSource}" type="hidden">
+					<input th:field="*{utmMedium}" type="hidden">
+					<input th:field="*{utmCampaign}" type="hidden">
+					<input th:field="*{utmTerm}" type="hidden">
+					<input th:field="*{utmContent}" type="hidden">
+					<input th:field="*{gclid}" type="hidden">
+					<input th:field="*{wbraid}" type="hidden">
+					<input th:field="*{gbraid}" type="hidden">
 					<section class="wizard-step" data-step data-step-message="Choose the role that best matches this decision.">
 						<span class="card-kicker">Step 1</span>
 						<h2>Who are you in this situation?</h2>

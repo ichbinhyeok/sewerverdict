@@ -470,6 +470,15 @@ h3 {
 	overflow: hidden;
 }
 
+.result-rationale {
+	margin-top: 1rem;
+	color: var(--muted);
+}
+
+.result-context-strip {
+	margin-bottom: 1rem;
+}
+
 .result-tier {
 	display: inline-flex;
 	flex-direction: column;
@@ -631,6 +640,22 @@ h3 {
 	font-size: 0.9rem;
 }
 
+.context-pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+	margin: 1rem 0 0;
+}
+
+.context-pill {
+	padding: 0.55rem 0.8rem;
+	border-radius: 999px;
+	background: rgba(30, 85, 99, 0.06);
+	border: 1px solid rgba(30, 85, 99, 0.12);
+	color: var(--brand-strong);
+	font-size: 0.9rem;
+}
+
 .form-details {
 	padding: 1rem 1.05rem;
 	border: 1px solid rgba(215, 208, 196, 0.95);
@@ -760,6 +785,24 @@ h3 {
 
 .toc-list a {
 	color: var(--brand-strong);
+}
+
+.source-list {
+	padding-left: 0;
+	list-style: none;
+}
+
+.source-link {
+	display: block;
+	color: var(--brand-strong);
+	font-weight: 600;
+}
+
+.source-meta {
+	display: block;
+	margin-top: 0.2rem;
+	color: var(--muted);
+	font-size: 0.88rem;
 }
 
 .section-card-accent {

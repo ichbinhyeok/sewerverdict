@@ -28,6 +28,7 @@ public class SitePage {
 	private String reviewerRole;
 	private String lastReviewed;
 	private String sourceNote;
+	private List<String> sourceIds = new ArrayList<>();
 	private List<PageSection> sections = new ArrayList<>();
 	private List<PageTable> tables = new ArrayList<>();
 	private List<String> highlights = new ArrayList<>();
@@ -195,6 +196,14 @@ public class SitePage {
 		this.sourceNote = sourceNote;
 	}
 
+	public List<String> getSourceIds() {
+		return sourceIds;
+	}
+
+	public void setSourceIds(List<String> sourceIds) {
+		this.sourceIds = sourceIds == null ? new ArrayList<>() : new ArrayList<>(sourceIds);
+	}
+
 	public List<PageSection> getSections() {
 		return sections;
 	}
@@ -245,6 +254,18 @@ public class SitePage {
 
 	public boolean isTrustPage() {
 		return "trust".equalsIgnoreCase(family);
+	}
+
+	public boolean isBuyerPage() {
+		return "buyer".equalsIgnoreCase(family);
+	}
+
+	public boolean isCostPage() {
+		return "cost".equalsIgnoreCase(family);
+	}
+
+	public boolean isDefectPage() {
+		return "defect".equalsIgnoreCase(family);
 	}
 
 	public boolean isGeoPage() {

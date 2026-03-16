@@ -19,7 +19,7 @@
 					<div class="trust-strip trust-strip-compact">
 						<div th:text="${'Last reviewed ' + page.lastReviewed}">Last reviewed</div>
 						<div>Source-backed page</div>
-						<div>Methodology linked</div>
+						<div th:text="${#lists.size(pageSources) + ' sources linked'}">Sources linked</div>
 					</div>
 				</div>
 				<div class="hero-actions">
@@ -62,6 +62,45 @@
 						<p th:text="${page.nextStep}">Next step</p>
 					</article>
 				</div>
+				<article class="section-card section-card-accent" th:if="${page.buyerPage}">
+					<h2>Buyer decision lens</h2>
+					<div class="card-grid card-grid-2">
+						<div class="info-card">
+							<span class="card-kicker">Deal impact</span>
+							<p th:text="${page.quickAnswer}">Quick answer</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">Negotiation posture</span>
+							<p th:text="${page.nextStep}">Next step</p>
+						</div>
+					</div>
+				</article>
+				<article class="section-card section-card-accent" th:if="${page.costPage}">
+					<h2>Quote comparison lens</h2>
+					<div class="card-grid card-grid-2">
+						<div class="info-card">
+							<span class="card-kicker">What moves price</span>
+							<p th:text="${page.costDirection}">Cost direction</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">Why users misread this</span>
+							<p th:text="${page.uncertainty}">Uncertainty</p>
+						</div>
+					</div>
+				</article>
+				<article class="section-card section-card-accent" th:if="${page.defectPage}">
+					<h2>Defect interpretation lens</h2>
+					<div class="card-grid card-grid-2">
+						<div class="info-card">
+							<span class="card-kicker">What this often means</span>
+							<p th:text="${page.quickAnswer}">Quick answer</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">What changes urgency</span>
+							<p th:text="${page.seriousness}">Seriousness</p>
+						</div>
+					</div>
+				</article>
 				<article class="section-card" th:if="${page.costDirection}">
 					<h2>Cost or decision direction</h2>
 					<p th:text="${page.costDirection}">Cost direction</p>
@@ -146,6 +185,15 @@
 					<span class="card-kicker">Source transparency</span>
 					<p th:text="${page.sourceNote}">Source note</p>
 					<a class="text-link" th:href="@{/about-how-this-site-is-researched/}">How this site is researched</a>
+				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(pageSources)}">
+					<span class="card-kicker">Sources used on this page</span>
+					<ul class="link-list source-list">
+						<li th:each="source : ${pageSources}">
+							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
+							<span class="source-meta" th:text="${source.sourceClass + ' · ' + source.jurisdiction + ' · verified ' + source.lastVerified}">Source meta</span>
+						</li>
+					</ul>
 				</div>
 				<div class="rail-card" th:if="${!#lists.isEmpty(page.sections)}">
 					<span class="card-kicker">On this page</span>

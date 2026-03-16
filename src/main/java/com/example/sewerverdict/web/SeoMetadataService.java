@@ -37,11 +37,11 @@ public class SeoMetadataService {
 			schemaScripts.add(writeJsonLd(buildOrganizationSchema(canonicalUrl)));
 		}
 		schemaScripts.add(writeJsonLd(buildWebPageSchema(title, description, canonicalUrl)));
+		if ("article".equalsIgnoreCase(ogType)) {
+			schemaScripts.add(writeJsonLd(buildArticleSchema(title, description, canonicalUrl)));
+		}
 		if (breadcrumbs != null && !breadcrumbs.isEmpty()) {
 			schemaScripts.add(writeJsonLd(buildBreadcrumbSchema(canonicalUrl, breadcrumbs)));
-		}
-		if (faq != null && !faq.isEmpty()) {
-			schemaScripts.add(writeJsonLd(buildFaqSchema(faq)));
 		}
 		model.addAttribute("schemaScripts", schemaScripts);
 	}
@@ -85,22 +85,16 @@ public class SeoMetadataService {
 		return schema;
 	}
 
-	private Map<String, Object> buildFaqSchema(List<PageFaq> faq) {
-		List<Map<String, Object>> entities = new ArrayList<>();
-		for (PageFaq item : faq) {
-			Map<String, Object> question = new LinkedHashMap<>();
-			question.put("@type", "Question");
-			question.put("name", item.getQuestion());
-			Map<String, Object> answer = new LinkedHashMap<>();
-			answer.put("@type", "Answer");
-			answer.put("text", item.getAnswer());
-			question.put("acceptedAnswer", answer);
-			entities.add(question);
-		}
+	private Map<String, Object> buildArticleSchema(String title, String description, String canonicalUrl) {
 		Map<String, Object> schema = new LinkedHashMap<>();
 		schema.put("@context", "https://schema.org");
-		schema.put("@type", "FAQPage");
-		schema.put("mainEntity", entities);
+		schema.put("@type", "Article");
+		schema.put("headline", title);
+		schema.put("description", description);
+		schema.put("mainEntityOfPage", canonicalUrl);
+		schema.put("author", Map.of("@type", "Person", "name", "Homeowner research editor"));
+		schema.put("reviewedBy", Map.of("@type", "Person", "name", "Plumbing-risk content reviewer"));
+		schema.put("publisher", Map.of("@type", "Organization", "name", "SewerVerdict"));
 		return schema;
 	}
 

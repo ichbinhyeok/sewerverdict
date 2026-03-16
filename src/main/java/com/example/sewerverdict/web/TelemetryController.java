@@ -26,10 +26,12 @@ public class TelemetryController {
 	public ResponseEntity<Void> logEvent(@RequestBody TelemetryEventRequest eventRequest, HttpServletRequest request) {
 		Map<String, Object> payload = new LinkedHashMap<>();
 		payload.put("label", eventRequest.getLabel());
+		payload.putAll(eventRequest.getMetadata());
 		storageService.logEvent(
 			eventRequest.getEventType(),
 			eventRequest.getPageSlug(),
 			request.getHeader("Referer"),
+			request.getSession(true).getId(),
 			payload
 		);
 		return ResponseEntity.noContent().build();

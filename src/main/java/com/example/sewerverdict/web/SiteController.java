@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.sewerverdict.content.PageFaq;
 import com.example.sewerverdict.content.SiteContentService;
 import com.example.sewerverdict.content.SitePage;
+import com.example.sewerverdict.content.SourceRegistryService;
 
 @Controller
 public class SiteController {
 
 	private final SiteContentService siteContentService;
+	private final SourceRegistryService sourceRegistryService;
 	private final SeoMetadataService seoMetadataService;
 
-	public SiteController(SiteContentService siteContentService, SeoMetadataService seoMetadataService) {
+	public SiteController(SiteContentService siteContentService, SourceRegistryService sourceRegistryService,
+		SeoMetadataService seoMetadataService) {
 		this.siteContentService = siteContentService;
+		this.sourceRegistryService = sourceRegistryService;
 		this.seoMetadataService = seoMetadataService;
 	}
 
@@ -74,6 +78,7 @@ public class SiteController {
 		List<Breadcrumb> breadcrumbs = buildBreadcrumbs(page);
 		model.addAttribute("page", page);
 		model.addAttribute("relatedPages", siteContentService.getRelatedPages(page));
+		model.addAttribute("pageSources", sourceRegistryService.getSourcesForPage(page));
 		model.addAttribute("pageTitle", page.getMetaTitle());
 		model.addAttribute("metaDescription", page.getMetaDescription());
 		model.addAttribute("breadcrumbs", breadcrumbs);
@@ -83,9 +88,11 @@ public class SiteController {
 
 	private List<Breadcrumb> buildBreadcrumbs(SitePage page) {
 		if (page.isGeoPage()) {
+			SitePage nationalCounterpart = siteContentService.getRelatedPages(page).stream().findFirst().orElse(null);
 			return List.of(
 				new Breadcrumb("Home", "/"),
-				new Breadcrumb("Cities", "/cities/chicago/sewer-line-replacement-cost/"),
+				new Breadcrumb(nationalCounterpart != null ? nationalCounterpart.getTitle() : "National guide",
+					nationalCounterpart != null ? nationalCounterpart.getSlug() : "/"),
 				new Breadcrumb(page.getTitle(), page.getSlug())
 			);
 		}

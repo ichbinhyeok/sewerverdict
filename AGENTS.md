@@ -133,6 +133,13 @@ These are the surfaces that matter most for the 6-month target.
 - `/old-house-sewer-line-risk/`
 - `/house-built-before-1970-sewer-line-risk/`
 - `/sewer-scope-negotiation-with-seller/`
+- `/offset-joint-sewer-line-meaning/`
+- `/collapsed-sewer-line-signs/`
+- `/does-home-insurance-cover-sewer-line-replacement/`
+- `/service-line-coverage-vs-home-warranty-for-sewer-lines/`
+
+### Delay Unless There Is Clear Capacity
+
 - `/is-sewer-scope-worth-it/`
 - `/how-to-read-sewer-scope-report/`
 - `/sewer-scope-inspection-cost/`
@@ -140,9 +147,6 @@ These are the surfaces that matter most for the 6-month target.
 - `/sewer-line-under-slab-repair-cost/`
 - `/cost-to-replace-sewer-line-house-to-street/`
 - `/cast-iron-pipe-deterioration-signs/`
-
-### Delay Unless There Is Clear Capacity
-
 - `/hydro-jetting-sewer-line-cost/`
 - `/sewer-cleanout-installation-cost/`
 - `/how-long-does-sewer-line-replacement-take/`

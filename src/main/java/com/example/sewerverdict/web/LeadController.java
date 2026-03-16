@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sewerverdict.telemetry.LeadForm;
 import com.example.sewerverdict.telemetry.StorageService;
@@ -29,21 +29,16 @@ public class LeadController {
 	}
 
 	@GetMapping({"/find-sewer-scope", "/find-sewer-scope/"})
-	public String findSewerScope(@ModelAttribute("leadForm") LeadForm leadForm,
-		@RequestParam(required = false) String role,
-		@RequestParam(required = false) String issueState,
-		@RequestParam(required = false) String defectType,
-		@RequestParam(required = false) String urgency,
-		HttpServletRequest request,
-		Model model) {
+	public String findSewerScope(@ModelAttribute("leadForm") LeadForm leadForm, HttpServletRequest request, Model model) {
 		if (!StringUtils.hasText(leadForm.getServiceNeeded())) {
 			leadForm.setServiceNeeded("inspection");
-			leadForm.setRole(role);
-			leadForm.setIssueState(issueState);
-			leadForm.setDefectType(defectType);
-			leadForm.setUrgency(urgency);
 		}
-		storageService.logEvent("lead_form_view", "/find-sewer-scope/", request.getHeader("Referer"), Map.of());
+		if (!StringUtils.hasText(leadForm.getRecommendedServicePath())) {
+			leadForm.setRecommendedServicePath("inspection");
+		}
+		HttpSession session = request.getSession(true);
+		storageService.logEvent("lead_form_view", "/find-sewer-scope/", request.getHeader("Referer"), session.getId(),
+			buildLeadViewPayload(leadForm));
 		populateLeadModel(model,
 			"Find sewer camera inspection options",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
@@ -67,6 +62,9 @@ public class LeadController {
 	public String submitFindSewerScope(@ModelAttribute("leadForm") LeadForm leadForm, HttpServletRequest request,
 		Model model) {
 		leadForm.setServiceNeeded(StringUtils.hasText(leadForm.getServiceNeeded()) ? leadForm.getServiceNeeded() : "inspection");
+		leadForm.setRecommendedServicePath(StringUtils.hasText(leadForm.getRecommendedServicePath())
+			? leadForm.getRecommendedServicePath()
+			: "inspection");
 		submitLead(leadForm, "/find-sewer-scope/", request, model);
 		populateLeadModel(model,
 			"Find sewer camera inspection options",
@@ -88,21 +86,16 @@ public class LeadController {
 	}
 
 	@GetMapping({"/get-sewer-quotes", "/get-sewer-quotes/"})
-	public String getSewerQuotes(@ModelAttribute("leadForm") LeadForm leadForm,
-		@RequestParam(required = false) String role,
-		@RequestParam(required = false) String issueState,
-		@RequestParam(required = false) String defectType,
-		@RequestParam(required = false) String urgency,
-		HttpServletRequest request,
-		Model model) {
+	public String getSewerQuotes(@ModelAttribute("leadForm") LeadForm leadForm, HttpServletRequest request, Model model) {
 		if (!StringUtils.hasText(leadForm.getServiceNeeded())) {
 			leadForm.setServiceNeeded("replacement");
-			leadForm.setRole(role);
-			leadForm.setIssueState(issueState);
-			leadForm.setDefectType(defectType);
-			leadForm.setUrgency(urgency);
 		}
-		storageService.logEvent("lead_form_view", "/get-sewer-quotes/", request.getHeader("Referer"), Map.of());
+		if (!StringUtils.hasText(leadForm.getRecommendedServicePath())) {
+			leadForm.setRecommendedServicePath("replacement");
+		}
+		HttpSession session = request.getSession(true);
+		storageService.logEvent("lead_form_view", "/get-sewer-quotes/", request.getHeader("Referer"), session.getId(),
+			buildLeadViewPayload(leadForm));
 		populateLeadModel(model,
 			"Get sewer repair or replacement quotes",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
@@ -126,6 +119,9 @@ public class LeadController {
 	public String submitSewerQuotes(@ModelAttribute("leadForm") LeadForm leadForm, HttpServletRequest request,
 		Model model) {
 		leadForm.setServiceNeeded(StringUtils.hasText(leadForm.getServiceNeeded()) ? leadForm.getServiceNeeded() : "replacement");
+		leadForm.setRecommendedServicePath(StringUtils.hasText(leadForm.getRecommendedServicePath())
+			? leadForm.getRecommendedServicePath()
+			: "replacement");
 		submitLead(leadForm, "/get-sewer-quotes/", request, model);
 		populateLeadModel(model,
 			"Get sewer repair or replacement quotes",
@@ -147,27 +143,32 @@ public class LeadController {
 	}
 
 	private void submitLead(LeadForm leadForm, String pageSlug, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession(true);
+		String sessionId = session.getId();
 		if (!storageService.isValidLead(leadForm)) {
 			model.addAttribute("formError",
 				"Please complete the routing fields, contact details, and consent checkbox before submitting.");
+			storageService.logEvent("lead_submit_invalid", pageSlug, request.getHeader("Referer"), sessionId,
+				buildLeadViewPayload(leadForm));
 			return;
 		}
 
-		Map<String, String> utmValues = storageService.buildUtmMap(
-			request.getParameter("utm_source"),
-			request.getParameter("utm_medium"),
-			request.getParameter("utm_campaign")
-		);
-		storageService.storeLead(leadForm, pageSlug, request.getHeader("Referer"), utmValues);
+		storageService.storeLead(leadForm, pageSlug, request.getHeader("Referer"), sessionId);
 
 		Map<String, Object> payload = new LinkedHashMap<>();
+		payload.put("draftId", leadForm.getDraftId());
 		payload.put("serviceNeeded", leadForm.getServiceNeeded());
+		payload.put("recommendedServicePath", leadForm.getRecommendedServicePath());
+		payload.put("routingBucket", storageService.determineLeadRoutingBucket(leadForm));
 		payload.put("role", leadForm.getRole());
 		payload.put("issueState", leadForm.getIssueState());
-		storageService.logEvent("lead_submit", pageSlug, request.getHeader("Referer"), payload);
+		storageService.logEvent("lead_submit", pageSlug, request.getHeader("Referer"), sessionId, payload);
 		model.addAttribute("successMessage",
 			"Thanks. Your details were saved for the next routing step. A real quote or inspection path still depends on scope, access, and local fit.");
-		model.addAttribute("leadForm", new LeadForm());
+		LeadForm blankForm = new LeadForm();
+		blankForm.setServiceNeeded(leadForm.getServiceNeeded());
+		blankForm.setRecommendedServicePath(leadForm.getRecommendedServicePath());
+		model.addAttribute("leadForm", blankForm);
 	}
 
 	private void populateLeadModel(Model model, String title, String summary, List<String> highlights, String formAction) {
@@ -177,5 +178,16 @@ public class LeadController {
 		model.addAttribute("leadSummary", summary);
 		model.addAttribute("leadHighlights", highlights);
 		model.addAttribute("formAction", formAction);
+	}
+
+	private Map<String, Object> buildLeadViewPayload(LeadForm leadForm) {
+		Map<String, Object> payload = new LinkedHashMap<>();
+		payload.put("draftId", leadForm.getDraftId());
+		payload.put("serviceNeeded", leadForm.getServiceNeeded());
+		payload.put("recommendedServicePath", leadForm.getRecommendedServicePath());
+		payload.put("role", leadForm.getRole());
+		payload.put("issueState", leadForm.getIssueState());
+		payload.put("defectType", leadForm.getDefectType());
+		return payload;
 	}
 }

@@ -11,6 +11,12 @@
 				<span class="eyebrow">Next-step routing</span>
 				<h1 th:text="${leadTitle}">Lead title</h1>
 				<p class="lede" th:text="${leadSummary}">Summary</p>
+				<div class="context-pills" th:if="${leadForm.draftId != null or leadForm.role != null or leadForm.issueState != null}">
+					<span class="context-pill" th:if="${leadForm.draftId != null}" th:text="${'Imported estimator draft ' + leadForm.draftId.substring(0, 8)}">Draft</span>
+					<span class="context-pill" th:if="${leadForm.role != null}" th:text="${'Role: ' + leadForm.role}">Role</span>
+					<span class="context-pill" th:if="${leadForm.issueState != null}" th:text="${'Issue: ' + leadForm.issueState}">Issue state</span>
+					<span class="context-pill" th:if="${leadForm.recommendedServicePath != null}" th:text="${'Recommended path: ' + leadForm.recommendedServicePath}">Path</span>
+				</div>
 				<ul class="clean-list">
 					<li th:each="item : ${leadHighlights}" th:text="${item}">Highlight</li>
 				</ul>
@@ -27,7 +33,17 @@
 				</div>
 				<div class="form-success" th:if="${successMessage}" th:text="${successMessage}">Success</div>
 				<div class="form-error" th:if="${formError}" th:text="${formError}">Error</div>
-				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form">
+				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form" data-preserve-attribution>
+					<input th:field="*{draftId}" type="hidden">
+					<input th:field="*{recommendedServicePath}" type="hidden">
+					<input th:field="*{utmSource}" type="hidden">
+					<input th:field="*{utmMedium}" type="hidden">
+					<input th:field="*{utmCampaign}" type="hidden">
+					<input th:field="*{utmTerm}" type="hidden">
+					<input th:field="*{utmContent}" type="hidden">
+					<input th:field="*{gclid}" type="hidden">
+					<input th:field="*{wbraid}" type="hidden">
+					<input th:field="*{gbraid}" type="hidden">
 					<label class="field-label">Service needed
 						<select th:field="*{serviceNeeded}">
 							<option value="">Choose one</option>

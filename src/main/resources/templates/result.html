@@ -9,17 +9,25 @@
 		<div class="container result-hero-shell">
 			<div class="hero-copy">
 				<span class="eyebrow">Estimator result</span>
+				<div class="trust-strip trust-strip-compact result-context-strip">
+					<div th:text="${result.evidenceState}">Incomplete evidence</div>
+					<div th:text="${result.routingBucket == 'inspection-first' ? 'Inspection-first route' : 'Quote-ready route'}">Route</div>
+					<div th:text="${'Draft ' + draftId.substring(0, 8)}">Draft</div>
+				</div>
 				<div class="result-tier" th:classappend="${result.riskClass}">
 					<span>Risk tier</span>
 					<strong th:text="${result.riskTier}">Meaningful uncertainty / moderate risk</strong>
 				</div>
 				<h1 th:text="${result.likelyNextStep}">Likely next step</h1>
 				<p class="lede" th:text="${result.interpretation}">Interpretation</p>
+				<p class="result-rationale" th:text="${result.routingRationale}">Routing rationale</p>
 				<div class="button-row">
-					<a class="button button-primary" th:href="${result.primaryCtaHref}" th:text="${result.primaryCtaLabel}"
-					   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/" th:attr="data-event-label=${result.primaryCtaLabel}">Primary CTA</a>
-					<a class="button button-secondary" th:href="${result.secondaryCtaHref}" th:text="${result.secondaryCtaLabel}"
-					   data-event-type="result_secondary_cta_click" data-page-slug="/estimator/results/" th:attr="data-event-label=${result.secondaryCtaLabel}">Secondary CTA</a>
+					<a class="button button-primary" th:href="${primaryCtaHref}" th:text="${result.primaryCtaLabel}"
+					   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/"
+					   th:attr="data-event-label=${result.primaryCtaLabel},data-event-draft-id=${draftId},data-event-route=${result.routingBucket}">Primary CTA</a>
+					<a class="button button-secondary" th:href="${secondaryCtaHref}" th:text="${result.secondaryCtaLabel}"
+					   data-event-type="result_secondary_cta_click" data-page-slug="/estimator/results/"
+					   th:attr="data-event-label=${result.secondaryCtaLabel},data-event-draft-id=${draftId},data-event-route=${result.routingBucket}">Secondary CTA</a>
 				</div>
 			</div>
 			<div class="result-brief">
