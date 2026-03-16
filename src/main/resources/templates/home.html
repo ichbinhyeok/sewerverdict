@@ -135,6 +135,21 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">FAQ</span>
+				<h2>What the estimator can and cannot do</h2>
+			</div>
+			<div class="faq-list">
+				<details th:each="item, stat : ${homeFaq}" th:open="${stat.first}">
+					<summary th:text="${item.question}">Question</summary>
+					<p th:text="${item.answer}">Answer</p>
+				</details>
+			</div>
+		</div>
+	</section>
 </main>
 
 <footer th:replace="~{fragments :: footer}"></footer>

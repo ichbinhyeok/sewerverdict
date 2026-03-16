@@ -66,6 +66,10 @@ public class SiteContentService {
 			.toList();
 	}
 
+	public List<SitePage> getAllPages() {
+		return List.copyOf(pages);
+	}
+
 	private List<SitePage> loadPages(String reviewDate) {
 		Resource resource = new ClassPathResource(CONTENT_PATH);
 		try (InputStream inputStream = resource.getInputStream()) {

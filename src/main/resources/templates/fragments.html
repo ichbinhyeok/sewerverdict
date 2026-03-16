@@ -6,11 +6,17 @@
 	<title th:text="${title}">SewerVerdict</title>
 	<meta name="description" th:content="${description}">
 	<meta name="robots" content="index,follow" th:content="${noindex} ? 'noindex,nofollow' : 'index,follow'">
+	<link rel="canonical" th:if="${canonicalUrl}" th:href="${canonicalUrl}">
+	<meta property="og:title" th:content="${title}">
+	<meta property="og:description" th:content="${description}">
+	<meta property="og:type" th:if="${ogType}" th:content="${ogType}">
+	<meta property="og:url" th:if="${ogUrl}" th:content="${ogUrl}">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/site.css}">
 	<script defer th:src="@{/site.js}"></script>
+	<script th:each="schema : ${schemaScripts}" type="application/ld+json" th:utext="${schema}"></script>
 </head>
 <body>
 <header class="site-header" th:fragment="header">

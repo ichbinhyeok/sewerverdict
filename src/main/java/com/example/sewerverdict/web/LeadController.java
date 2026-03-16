@@ -21,9 +21,11 @@ import com.example.sewerverdict.telemetry.StorageService;
 public class LeadController {
 
 	private final StorageService storageService;
+	private final SeoMetadataService seoMetadataService;
 
-	public LeadController(StorageService storageService) {
+	public LeadController(StorageService storageService, SeoMetadataService seoMetadataService) {
 		this.storageService = storageService;
+		this.seoMetadataService = seoMetadataService;
 	}
 
 	@GetMapping({"/find-sewer-scope", "/find-sewer-scope/"})
@@ -51,6 +53,12 @@ public class LeadController {
 				"Short form only asks for details that improve routing."
 			)
 		);
+		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerVerdict",
+			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
+			"website",
+			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Find sewer camera inspection options", "/find-sewer-scope/")),
+			List.of(),
+			false);
 		return "lead";
 	}
 
@@ -68,6 +76,12 @@ public class LeadController {
 				"Short form only asks for details that improve routing."
 			)
 		);
+		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerVerdict",
+			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
+			"website",
+			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Find sewer camera inspection options", "/find-sewer-scope/")),
+			List.of(),
+			false);
 		return "lead";
 	}
 
@@ -96,6 +110,12 @@ public class LeadController {
 				"Keep the form short so qualified users actually submit it."
 			)
 		);
+		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerVerdict",
+			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
+			"website",
+			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Get sewer repair or replacement quotes", "/get-sewer-quotes/")),
+			List.of(),
+			false);
 		return "lead";
 	}
 
@@ -113,6 +133,12 @@ public class LeadController {
 				"Keep the form short so qualified users actually submit it."
 			)
 		);
+		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerVerdict",
+			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
+			"website",
+			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Get sewer repair or replacement quotes", "/get-sewer-quotes/")),
+			List.of(),
+			false);
 		return "lead";
 	}
 

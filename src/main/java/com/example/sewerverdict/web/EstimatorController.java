@@ -1,6 +1,7 @@
 package com.example.sewerverdict.web;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,17 +23,27 @@ public class EstimatorController {
 
 	private final EstimatorService estimatorService;
 	private final StorageService storageService;
+	private final SeoMetadataService seoMetadataService;
 
-	public EstimatorController(EstimatorService estimatorService, StorageService storageService) {
+	public EstimatorController(EstimatorService estimatorService, StorageService storageService,
+		SeoMetadataService seoMetadataService) {
 		this.estimatorService = estimatorService;
 		this.storageService = storageService;
+		this.seoMetadataService = seoMetadataService;
 	}
 
 	@GetMapping({"/estimator", "/estimator/"})
-	public String estimator(@ModelAttribute("form") EstimatorForm form, Model model) {
+	public String estimator(@ModelAttribute("form") EstimatorForm form, HttpServletRequest request, Model model) {
 		model.addAttribute("pageTitle", "Estimator | SewerVerdict");
 		model.addAttribute("metaDescription",
 			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.");
+		seoMetadataService.apply(model, request,
+			"Estimator | SewerVerdict",
+			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.",
+			"website",
+			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Estimator", "/estimator/")),
+			List.of(),
+			false);
 		return "estimator";
 	}
 
