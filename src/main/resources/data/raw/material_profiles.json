@@ -1,0 +1,18 @@
+[
+  {
+    "material": "cast-iron",
+    "commonRiskNarrative": "Older cast iron can range from rough but serviceable to materially deteriorated.",
+    "commonIssues": ["scaling", "deterioration", "access complexity"],
+    "typicalAgeAssociations": ["older-home"],
+    "cautionNotes": "Condition matters more than age alone.",
+    "sourceRefs": ["src-001"]
+  },
+  {
+    "material": "orangeburg",
+    "commonRiskNarrative": "Orangeburg questions often lean toward replacement and reliability risk.",
+    "commonIssues": ["deformation", "collapse risk", "replacement bias"],
+    "typicalAgeAssociations": ["mid-century"],
+    "cautionNotes": "Confirm actual material before escalating cost assumptions.",
+    "sourceRefs": ["src-001"]
+  }
+]

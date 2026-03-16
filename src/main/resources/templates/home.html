@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(${pageTitle}, ${metaDescription}, false)}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+
+<main>
+	<section class="hero">
+		<div class="container hero-grid">
+			<div class="hero-copy">
+				<span class="eyebrow">Buried line risk, explained clearly</span>
+				<h1>Sewer scope risk and next-step estimator for buyers, sellers, and owners.</h1>
+				<p class="lede">Understand likely sewer-line risk, see what to do next, and choose an inspection-first or quote-ready path without false certainty.</p>
+				<div class="button-row">
+					<a class="button button-primary" th:href="@{/estimator/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="hero-estimator">Start the estimator</a>
+					<a class="button button-secondary" th:href="@{/find-sewer-scope/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="hero-scope">Find sewer camera inspection options</a>
+				</div>
+				<div class="trust-strip">
+					<div>Ranges, not fake certainty</div>
+					<div>Reviewed pages</div>
+					<div>Methodology-backed estimates</div>
+				</div>
+			</div>
+			<div class="hero-artifact">
+				<div class="artifact-card">
+					<div class="artifact-label card-kicker">Decision brief</div>
+					<h2>What this tool helps with</h2>
+					<ul class="clean-list">
+						<li>Should a buyer order a scope before closing?</li>
+						<li>Does this finding look like a watch-item or quote-now problem?</li>
+						<li>What cost band and uncertainty should you expect?</li>
+					</ul>
+				</div>
+				<div class="artifact-grid">
+					<div class="artifact-mini">
+						<span class="mini-label">Risk</span>
+						<strong>Moderate / meaningful uncertainty</strong>
+					</div>
+					<div class="artifact-mini">
+						<span class="mini-label">Next step</span>
+						<strong>Order a scope or compare quotes</strong>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">Start from your situation</span>
+				<h2>Three common paths into SewerVerdict</h2>
+			</div>
+			<div class="card-grid card-grid-3">
+				<a class="info-card" th:href="@{/estimator(role=buyer,urgency=active-decision)}">
+					<span class="card-kicker">Buyer under contract</span>
+					<h3>Decide whether you need a scope before closing.</h3>
+					<p>Best for hidden-risk questions, negotiation preparation, and old-house uncertainty.</p>
+				</a>
+				<a class="info-card" th:href="@{/estimator(role=seller)}">
+					<span class="card-kicker">Seller pre-listing</span>
+					<h3>Clarify the issue before it becomes a negotiation drag.</h3>
+					<p>Best for deciding whether to scope, disclose, price-adjust, or get a quote first.</p>
+				</a>
+				<a class="info-card" th:href="@{/estimator(role=owner)}">
+					<span class="card-kicker">Owner with symptoms or a finding</span>
+					<h3>Separate watch-items from quote-now situations.</h3>
+					<p>Best for cast iron, roots, orangeburg, bellies, and trenchless questions.</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">How it works</span>
+				<h2>One calm path from uncertainty to action</h2>
+			</div>
+			<div class="steps-grid">
+				<div class="step-card">
+					<span>01</span>
+					<h3>Answer a few context questions</h3>
+					<p>Role, house age, issue state, access, and urgency are enough to guide the next step.</p>
+				</div>
+				<div class="step-card">
+					<span>02</span>
+					<h3>See the likely risk tier and next move</h3>
+					<p>Get a high-trust interpretation, cost direction, uncertainty drivers, and questions to ask next.</p>
+				</div>
+				<div class="step-card">
+					<span>03</span>
+					<h3>Move into the right commercial path</h3>
+					<p>Inspection-first when certainty is missing. Quote-first when the issue already looks real.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-heading">
+				<span class="eyebrow">Featured guides</span>
+				<h2>Money pages and decision pages worth shipping first</h2>
+			</div>
+			<div class="card-grid card-grid-3">
+				<a class="info-card" th:each="page : ${featuredPages}" th:href="${page.slug}">
+					<span class="card-kicker" th:text="${page.eyebrow}">Guide</span>
+					<h3 th:text="${page.title}">Page title</h3>
+					<p th:text="${page.summary}">Summary</p>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-alt">
+		<div class="container callout-grid">
+			<div class="callout">
+				<span class="eyebrow">Trust and methodology</span>
+				<h2>Educational guidance, not fake diagnosis</h2>
+				<p>The site uses ranges, not false precision. It does not decide legal liability, insurance coverage, or city responsibility for you.</p>
+				<div class="button-row">
+					<a class="button button-secondary" th:href="@{/methodology/}">Read methodology</a>
+					<a class="button button-ghost" th:href="@{/disclaimer/}">Read disclaimer</a>
+				</div>
+			</div>
+			<div class="callout">
+				<span class="eyebrow">Geo anchors</span>
+				<h2>Three local launch pages with real angles</h2>
+				<ul class="link-list">
+					<li th:each="page : ${geoPages}">
+						<a th:href="${page.slug}" th:text="${page.title}">Geo page</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, description, noindex)">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title th:text="${title}">SewerVerdict</title>
+	<meta name="description" th:content="${description}">
+	<meta name="robots" content="index,follow" th:content="${noindex} ? 'noindex,nofollow' : 'index,follow'">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/site.css}">
+	<script defer th:src="@{/site.js}"></script>
+</head>
+<body>
+<header class="site-header" th:fragment="header">
+	<div class="container nav-shell">
+		<a class="brand" th:href="@{/}">SewerVerdict</a>
+		<nav class="nav-links">
+			<a th:href="@{/estimator/}">Estimate Risk</a>
+			<a th:href="@{/sewer-scope-before-buying-house/}">Buying a House</a>
+			<a th:href="@{/sewer-line-replacement-cost/}">Costs</a>
+			<a th:href="@{/sewer-scope-red-flags/}">Defects</a>
+			<a th:href="@{/cities/chicago/sewer-line-replacement-cost/}">Cities</a>
+			<a th:href="@{/methodology/}">Methodology</a>
+		</nav>
+	</div>
+</header>
+<footer class="site-footer" th:fragment="footer">
+	<div class="container footer-grid">
+		<div>
+			<div class="footer-title">SewerVerdict</div>
+			<p class="footer-copy">Buyer-first sewer scope risk and next-step guidance for buyers, sellers, and owners.</p>
+		</div>
+		<div class="footer-links">
+			<a th:href="@{/methodology/}">Methodology</a>
+			<a th:href="@{/how-we-estimate-sewer-line-costs/}">How We Estimate Costs</a>
+			<a th:href="@{/homeowner-vs-city-sewer-responsibility/}">Homeowner vs City</a>
+			<a th:href="@{/about-how-this-site-is-researched/}">Research</a>
+			<a th:href="@{/disclaimer/}">Disclaimer</a>
+			<a th:href="@{/about/}">About</a>
+		</div>
+	</div>
+</footer>
+</body>
+</html>

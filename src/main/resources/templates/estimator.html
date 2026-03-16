@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(${pageTitle}, ${metaDescription}, false)}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+
+<main>
+	<section class="page-hero">
+		<div class="container compact-hero">
+			<span class="eyebrow">Estimator</span>
+			<h1>Estimate sewer-line risk and the most likely next step.</h1>
+			<p class="lede">This is a high-trust next-step tool. It does not diagnose a buried defect, but it can narrow the smartest move and the likely cost band.</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="wizard-shell" data-estimator>
+				<div class="wizard-progress">
+					<div class="progress-bar"><span data-progress-fill></span></div>
+					<p data-progress-label>Step 1 of 7</p>
+				</div>
+				<form class="wizard-form" th:action="@{/estimator/results/}" th:object="${form}" method="post">
+					<section class="wizard-step" data-step>
+						<span class="card-kicker">Step 1</span>
+						<h2>Who are you in this situation?</h2>
+						<div class="choice-grid">
+							<label class="choice-card"><input type="radio" th:field="*{role}" value="buyer"><span>Buyer</span><small>Under contract or preparing to buy</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{role}" value="seller"><span>Seller</span><small>Pre-listing or reducing negotiation risk</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{role}" value="owner"><span>Owner</span><small>Known issue, symptoms, or quote comparison</small></label>
+						</div>
+					</section>
+					<section class="wizard-step" data-step hidden>
+						<span class="card-kicker">Step 2</span>
+						<h2>Where is the property?</h2>
+						<label class="field-label">ZIP or city
+							<input th:field="*{location}" type="text" placeholder="ZIP or city">
+						</label>
+					</section>
+					<section class="wizard-step" data-step hidden>
+						<span class="card-kicker">Step 3</span>
+						<h2>What age band is the house in?</h2>
+						<div class="choice-grid">
+							<label class="choice-card"><input type="radio" th:field="*{houseAgeBand}" value="pre-1950"><span>Pre-1950</span><small>Highest buried-line uncertainty</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{houseAgeBand}" value="1950-1969"><span>1950-1969</span><small>Often still worth extra caution</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{houseAgeBand}" value="1970-1989"><span>1970-1989</span><small>Mixed risk profile</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{houseAgeBand}" value="1990+"><span>1990+</span><small>Usually lower age-related uncertainty</small></label>
+						</div>
+					</section>
+					<section class="wizard-step" data-step hidden>
+						<span class="card-kicker">Step 4</span>
+						<h2>What is the current issue state?</h2>
+						<div class="choice-grid">
+							<label class="choice-card"><input type="radio" th:field="*{issueState}" value="no-scope-yet"><span>No scope yet</span><small>Still deciding whether to inspect first</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{issueState}" value="scope-found-issue"><span>Scope done, issue found</span><small>There is already some evidence</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{issueState}" value="symptoms-only"><span>Symptoms only</span><small>Concern exists, but not confirmed</small></label>
+						</div>
+					</section>
+					<section class="wizard-step" data-step hidden>
+						<span class="card-kicker">Step 5</span>
+						<h2>If known, what kind of defect is involved?</h2>
+						<div class="choice-grid">
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="roots"><span>Roots</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="cast-iron"><span>Cast iron deterioration</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="orangeburg"><span>Orangeburg</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="belly"><span>Belly</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="offset-crack"><span>Offset / crack</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="collapse"><span>Collapse</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="unknown"><span>Unknown</span></label>
+						</div>
+					</section>
+					<section class="wizard-step" data-step hidden>
+						<span class="card-kicker">Step 6</span>
+						<h2>What kind of access context applies?</h2>
+						<div class="choice-grid">
+							<label class="choice-card"><input type="radio" th:field="*{accessType}" value="slab"><span>Slab</span><small>Higher access and restoration uncertainty</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{accessType}" value="basement-crawlspace"><span>Basement / crawlspace</span><small>Sometimes easier to inspect and stage work</small></label>
+							<label class="choice-card"><input type="radio" th:field="*{accessType}" value="unknown"><span>Unknown</span><small>Still enough to get a directional answer</small></label>
+						</div>
+					</section>
+					<section class="wizard-step" data-step hidden>
+						<span class="card-kicker">Step 7</span>
+						<h2>How urgent is this decision?</h2>
+						<div class="choice-grid">
+							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="researching"><span>Just researching</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="active-decision"><span>Under contract / active decision</span></label>
+							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="urgent-repair"><span>Urgent repair needed</span></label>
+						</div>
+					</section>
+					<div class="wizard-actions">
+						<button type="button" class="button button-ghost" data-step-back>Back</button>
+						<button type="button" class="button button-secondary" data-step-next>Next</button>
+						<button type="submit" class="button button-primary" hidden data-step-submit>See my result</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>
