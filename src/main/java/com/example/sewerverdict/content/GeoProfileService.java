@@ -46,6 +46,13 @@ public class GeoProfileService {
 		return profilesByCity.get(page.getGeoCitySlug());
 	}
 
+	public GeoProfile getProfileByCitySlug(String citySlug) {
+		if (citySlug == null) {
+			return null;
+		}
+		return profilesByCity.get(citySlug);
+	}
+
 	public List<SourceReference> getProfileSources(SitePage page) {
 		GeoProfile profile = getProfileForPage(page);
 		if (profile == null || profile.getSourceIds().isEmpty()) {
@@ -61,7 +68,14 @@ public class GeoProfileService {
 		if (page == null || !page.isGeoPage()) {
 			return List.of();
 		}
-		return rulesByCity.getOrDefault(page.getGeoCitySlug(), List.of()).stream()
+		return getResponsibilityRuleViews(page.getGeoCitySlug());
+	}
+
+	public List<ResponsibilityRuleView> getResponsibilityRuleViews(String citySlug) {
+		if (citySlug == null) {
+			return List.of();
+		}
+		return rulesByCity.getOrDefault(citySlug, List.of()).stream()
 			.map(rule -> new ResponsibilityRuleView(
 				rule.cityLabel(),
 				rule.ownerScope(),
@@ -69,6 +83,17 @@ public class GeoProfileService {
 				rule.programNote(),
 				sourceRegistryService.getSourceById(rule.sourceId())
 			))
+			.toList();
+	}
+
+	public List<SourceReference> getProfileSources(String citySlug) {
+		GeoProfile profile = getProfileByCitySlug(citySlug);
+		if (profile == null || profile.getSourceIds().isEmpty()) {
+			return List.of();
+		}
+		return profile.getSourceIds().stream()
+			.map(sourceRegistryService::getSourceById)
+			.filter(Objects::nonNull)
 			.toList();
 	}
 
@@ -92,9 +117,24 @@ public class GeoProfileService {
 			.sorted(Comparator
 				.comparingInt((GeoProfile profile) -> priorityRank(profile.getCitySlug()))
 				.thenComparing(GeoProfile::getCityName))
-			.map(profile -> new CityHubEntry(profile, getPagesForCity(profile.getCitySlug(), allPages)))
+			.map(profile -> {
+				List<SitePage> pagesForCity = getPagesForCity(profile.getCitySlug(), allPages);
+				return new CityHubEntry(profile, pagesForCity, getStarterPages(pagesForCity));
+			})
 			.filter(entry -> !entry.pages().isEmpty())
 			.toList();
+	}
+
+	public CityHubEntry getCityHubEntry(String citySlug, List<SitePage> allPages) {
+		GeoProfile profile = getProfileByCitySlug(citySlug);
+		if (profile == null) {
+			return null;
+		}
+		List<SitePage> pagesForCity = getPagesForCity(citySlug, allPages);
+		if (pagesForCity.isEmpty()) {
+			return null;
+		}
+		return new CityHubEntry(profile, pagesForCity, getStarterPages(pagesForCity));
 	}
 
 	public List<CityHubEntry> getCityHubEntriesByTier(List<SitePage> allPages, String priorityTier) {
@@ -110,6 +150,15 @@ public class GeoProfileService {
 			.sorted(Comparator
 				.comparingInt((SitePage page) -> familyRank(page.getTrackingFamily()))
 				.thenComparing(SitePage::getTitle))
+			.toList();
+	}
+
+	private List<SitePage> getStarterPages(List<SitePage> pagesForCity) {
+		return pagesForCity.stream()
+			.sorted(Comparator
+				.comparingInt(this::starterRank)
+				.thenComparing(SitePage::getTitle))
+			.limit(3)
 			.toList();
 	}
 
@@ -136,6 +185,38 @@ public class GeoProfileService {
 			case "coverage" -> 3;
 			default -> 9;
 		};
+	}
+
+	private int starterRank(SitePage page) {
+		String slug = page.getSlug() == null ? "" : page.getSlug().toLowerCase();
+		if (slug.contains("before-buying-house")) {
+			return 0;
+		}
+		if (slug.contains("homeowner-vs-city") || slug.contains("who-pays")) {
+			return 1;
+		}
+		if (slug.contains("repair-vs-replacement")) {
+			return 2;
+		}
+		if (slug.contains("replacement-cost")) {
+			return 3;
+		}
+		if (slug.contains("negotiation-with-seller")) {
+			return 4;
+		}
+		if (page.isBuyerPage()) {
+			return 5;
+		}
+		if (page.isCoveragePage()) {
+			return 6;
+		}
+		if (page.isCostPage()) {
+			return 7;
+		}
+		if (page.isDefectPage()) {
+			return 8;
+		}
+		return 9;
 	}
 
 	private Map<String, GeoProfile> loadProfiles() {

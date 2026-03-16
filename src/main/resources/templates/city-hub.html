@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(${pageTitle}, ${metaDescription}, false)}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+
+<main>
+	<section class="page-hero">
+		<div class="container">
+			<nav class="breadcrumbs" aria-label="Breadcrumb">
+				<a href="/">Home</a>
+				<a href="/cities/">Cities</a>
+				<a th:href="${cityHubSlug}" class="current"
+				   th:text="${cityEntry.profile.cityName + ', ' + cityEntry.profile.stateCode}">City</a>
+			</nav>
+			<div class="hero-shell">
+				<div>
+					<span class="eyebrow" th:text="${cityEntry.profile.priorityTier + ' city hub'}">City hub</span>
+					<h1 th:text="${cityEntry.profile.cityName + ', ' + cityEntry.profile.stateCode + ' Sewer Pages'}">City pages</h1>
+					<p class="lede" th:text="${cityEntry.profile.marketReason}">Market reason</p>
+					<div class="trust-strip trust-strip-compact">
+						<div th:text="${#lists.size(cityEntry.pages) + ' city pages'}">City pages</div>
+						<div>Local signal only</div>
+						<div th:text="${#lists.size(geoProfileSources) + ' sources linked'}">Sources linked</div>
+					</div>
+				</div>
+				<div class="hero-actions">
+					<a class="button button-primary" href="/estimator/"
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug=${cityHubSlug},data-event-label='Use the estimator',data-event-city=${cityEntry.profile.citySlug},data-event-geo-page='false',data-event-placement='city-hub-primary'">Use the estimator</a>
+					<a class="button button-secondary" th:if="${secondaryStarter != null}" th:href="${secondaryStarter.slug}" th:text="${secondaryStarter.title}"
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + secondaryStarter.title},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${secondaryStarter.geoPage},data-event-geo-family=${secondaryStarter.trackingFamily},data-event-placement='city-hub-secondary'">Starter page</a>
+					<div class="meta-block">
+						<div><strong>Housing signal:</strong> <span th:text="${cityEntry.profile.housingAgeSignal}">Housing signal</span></div>
+						<div><strong>Local system:</strong> <span th:text="${cityEntry.profile.systemContext}">System context</span></div>
+						<div><strong>Next-step bias:</strong> <span th:text="${cityEntry.profile.ctaBias}">CTA bias</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container content-grid">
+			<div class="content-main">
+				<article class="section-card section-card-accent" th:if="${!#lists.isEmpty(starterPages)}">
+					<h2 th:text="${'Start Here in ' + cityEntry.profile.cityName}">Start here</h2>
+					<p>These are the best entry pages if you want the fastest path from city context to a real next decision.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="page : ${starterPages}" th:href="${page.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-starter:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-starter'">
+							<span class="card-kicker">Start here</span>
+							<strong th:text="${page.title}">Page title</strong>
+							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
+						</a>
+					</div>
+				</article>
+
+				<article class="section-card" th:if="${!#lists.isEmpty(buyerPages)}">
+					<h2>Buyer and negotiation pages</h2>
+					<p>Use these when the property is under contract, the sewer history is unclear, or the next move depends on better inspection evidence.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="page : ${buyerPages}" th:href="${page.slug}">
+							<span class="card-kicker">Buyer path</span>
+							<strong th:text="${page.title}">Page title</strong>
+							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
+						</a>
+					</div>
+				</article>
+
+				<article class="section-card" th:if="${!#lists.isEmpty(coveragePages)}">
+					<h2>Responsibility and trust pages</h2>
+					<p>Use these when the first question is who likely owns the problem, where the boundary sits, or whether local support changes the next move.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="page : ${coveragePages}" th:href="${page.slug}">
+							<span class="card-kicker">Trust path</span>
+							<strong th:text="${page.title}">Page title</strong>
+							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
+						</a>
+					</div>
+				</article>
+
+				<article class="section-card" th:if="${!#lists.isEmpty(costPages)}">
+					<h2>Cost and quote-ready pages</h2>
+					<p>Use these when the line condition is stronger, the budget question is live, or you need to compare repair, replacement, or method paths.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="page : ${costPages}" th:href="${page.slug}">
+							<span class="card-kicker">Quote-ready</span>
+							<strong th:text="${page.title}">Page title</strong>
+							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
+						</a>
+					</div>
+				</article>
+
+				<article class="section-card" th:if="${!#lists.isEmpty(defectPages)}">
+					<h2>Defect and backup pages</h2>
+					<p>Use these when the user already has a symptom, report finding, or backup pattern and needs calmer interpretation before the next spend.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="page : ${defectPages}" th:href="${page.slug}">
+							<span class="card-kicker">Defect path</span>
+							<strong th:text="${page.title}">Page title</strong>
+							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
+						</a>
+					</div>
+				</article>
+			</div>
+			<aside class="content-rail">
+				<div class="rail-card">
+					<span class="card-kicker">Local market signal</span>
+					<p th:text="${cityEntry.profile.marketReason}">Market reason</p>
+				</div>
+				<div class="rail-card">
+					<span class="card-kicker">Housing and risk context</span>
+					<p th:text="${cityEntry.profile.housingAgeSignal}">Housing signal</p>
+				</div>
+				<div class="rail-card">
+					<span class="card-kicker">Local system context</span>
+					<p th:text="${cityEntry.profile.systemContext}">System context</p>
+				</div>
+				<div class="rail-card" th:if="${cityEntry.profile.responsibilitySummary}">
+					<span class="card-kicker">Responsibility summary</span>
+					<p th:text="${cityEntry.profile.responsibilitySummary}">Responsibility summary</p>
+				</div>
+				<div class="rail-card" th:if="${cityEntry.profile.programSummary}">
+					<span class="card-kicker">Program or caveat</span>
+					<p th:text="${cityEntry.profile.programSummary}">Program summary</p>
+				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(responsibilityRuleViews)}">
+					<span class="card-kicker">Official responsibility boundary</span>
+					<ul class="clean-list">
+						<li th:each="item : ${responsibilityRuleViews}">
+							<p th:text="${item.ownerScope}">Owner scope</p>
+							<p th:text="${item.publicScope}">Public scope</p>
+							<p th:if="${!#strings.isEmpty(item.programNote)}" th:text="${item.programNote}">Program note</p>
+							<a class="text-link" th:if="${item.source != null}" th:href="${item.source.url}" target="_blank" rel="noreferrer" th:text="${item.source.title}">Source</a>
+						</li>
+					</ul>
+				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(geoProfileSources)}">
+					<span class="card-kicker">Sources used for this city hub</span>
+					<ul class="link-list source-list">
+						<li th:each="source : ${geoProfileSources}">
+							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
+							<span class="source-meta" th:text="${source.sourceClass + ' . ' + source.jurisdiction + ' . verified ' + source.lastVerified}">Source meta</span>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

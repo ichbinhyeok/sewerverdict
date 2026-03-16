@@ -37,7 +37,7 @@
 			<div class="city-hub-grid">
 				<article class="section-card" th:each="entry : ${tierOneCities}">
 					<span class="card-kicker" th:text="${entry.profile.priorityTier}">Tier</span>
-					<h3 th:text="${entry.profile.cityName + ', ' + entry.profile.stateCode}">City</h3>
+					<h3><a th:href="@{|/cities/${entry.profile.citySlug}/|}" th:text="${entry.profile.cityName + ', ' + entry.profile.stateCode}">City</a></h3>
 					<p th:text="${entry.profile.marketReason}">Market reason</p>
 					<div class="city-hub-signals">
 						<div class="rail-card">
@@ -48,6 +48,17 @@
 							<span class="card-kicker">Local system or ownership</span>
 							<p th:text="${entry.profile.systemContext}">System context</p>
 						</div>
+					</div>
+					<div class="rail-card" th:if="${!#lists.isEmpty(entry.starterPages)}">
+						<span class="card-kicker">Start here</span>
+						<ul class="link-list">
+							<li th:each="page : ${entry.starterPages}">
+								<a th:href="${page.slug}" th:text="${page.title}"
+								   data-event-type="page_cta_click"
+								   th:attr="data-page-slug='/cities/',data-event-label=${'cities-start:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='cities-tier-1-start'">Starter page</a>
+							</li>
+						</ul>
+						<a class="text-link" th:href="@{|/cities/${entry.profile.citySlug}/|}">Open city hub</a>
 					</div>
 					<ul class="link-list city-hub-links">
 						<li th:each="page : ${entry.pages}">
@@ -70,8 +81,19 @@
 			<div class="city-hub-grid">
 				<article class="section-card" th:each="entry : ${tierTwoCities}">
 					<span class="card-kicker" th:text="${entry.profile.priorityTier}">Tier</span>
-					<h3 th:text="${entry.profile.cityName + ', ' + entry.profile.stateCode}">City</h3>
+					<h3><a th:href="@{|/cities/${entry.profile.citySlug}/|}" th:text="${entry.profile.cityName + ', ' + entry.profile.stateCode}">City</a></h3>
 					<p th:text="${entry.profile.marketReason}">Market reason</p>
+					<div class="rail-card" th:if="${!#lists.isEmpty(entry.starterPages)}">
+						<span class="card-kicker">Start here</span>
+						<ul class="link-list">
+							<li th:each="page : ${entry.starterPages}">
+								<a th:href="${page.slug}" th:text="${page.title}"
+								   data-event-type="page_cta_click"
+								   th:attr="data-page-slug='/cities/',data-event-label=${'cities-start:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='cities-tier-2-start'">Starter page</a>
+							</li>
+						</ul>
+						<a class="text-link" th:href="@{|/cities/${entry.profile.citySlug}/|}">Open city hub</a>
+					</div>
 					<ul class="link-list city-hub-links">
 						<li th:each="page : ${entry.pages}">
 							<a th:href="${page.slug}" th:text="${page.title}"

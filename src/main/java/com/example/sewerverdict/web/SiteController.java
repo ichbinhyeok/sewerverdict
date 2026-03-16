@@ -4,9 +4,12 @@ import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.sewerverdict.content.PageFaq;
 import com.example.sewerverdict.content.GeoProfileService;
@@ -92,6 +95,51 @@ public class SiteController {
 			List.of(),
 			true);
 		return "cities";
+	}
+
+	@GetMapping({"/cities/{city:[a-z0-9-]+}", "/cities/{city:[a-z0-9-]+}/"})
+	public String cityHub(@PathVariable String city, HttpServletRequest request, Model model) {
+		List<SitePage> allPages = siteContentService.getAllPages();
+		var cityEntry = geoProfileService.getCityHubEntry(city, allPages);
+		if (cityEntry == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		var starterPages = cityEntry.starterPages();
+		var buyerPages = cityEntry.pages().stream().filter(SitePage::isBuyerPage).toList();
+		var coveragePages = cityEntry.pages().stream().filter(SitePage::isCoveragePage).toList();
+		var costPages = cityEntry.pages().stream().filter(SitePage::isCostPage).toList();
+		var defectPages = cityEntry.pages().stream().filter(SitePage::isDefectPage).toList();
+		var secondaryStarter = starterPages.isEmpty() ? null : starterPages.get(0);
+
+		model.addAttribute("cityEntry", cityEntry);
+		model.addAttribute("starterPages", starterPages);
+		model.addAttribute("buyerPages", buyerPages);
+		model.addAttribute("coveragePages", coveragePages);
+		model.addAttribute("costPages", costPages);
+		model.addAttribute("defectPages", defectPages);
+		model.addAttribute("responsibilityRuleViews", geoProfileService.getResponsibilityRuleViews(city));
+		model.addAttribute("geoProfileSources", geoProfileService.getProfileSources(city));
+		model.addAttribute("cityHubSlug", "/cities/" + cityEntry.profile().getCitySlug() + "/");
+		model.addAttribute("secondaryStarter", secondaryStarter);
+		model.addAttribute("pageTitle",
+			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerVerdict");
+		model.addAttribute("metaDescription",
+			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
+				+ ", from buyer-first inspection pages to responsibility, backup, and quote-ready comparison guides.");
+		seoMetadataService.apply(model, request,
+			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerVerdict",
+			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
+				+ ", from buyer-first inspection pages to responsibility, backup, and quote-ready comparison guides.",
+			"website",
+			List.of(
+				new Breadcrumb("Home", "/"),
+				new Breadcrumb("Cities", "/cities/"),
+				new Breadcrumb(cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode(),
+					"/cities/" + cityEntry.profile().getCitySlug() + "/")
+			),
+			List.of(),
+			true);
+		return "city-hub";
 	}
 
 	@GetMapping({

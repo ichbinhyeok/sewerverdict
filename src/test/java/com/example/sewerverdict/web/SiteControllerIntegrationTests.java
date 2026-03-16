@@ -23,6 +23,7 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/cities/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("City pages built only where the local signal is real.")))
+			.andExpect(content().string(containsString("Start here")))
 			.andExpect(content().string(containsString("Philadelphia, PA")))
 			.andExpect(content().string(containsString("Buffalo Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Philadelphia Sewer Line Repair vs Replacement")))
@@ -33,6 +34,22 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Baltimore Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")))
 			.andExpect(content().string(containsString("Detroit Sewer Line Repair vs Replacement")));
+	}
+
+	@Test
+	void cityHubRendersStarterPagesAndSources() throws Exception {
+		mockMvc.perform(get("/cities/philadelphia/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Philadelphia, PA Sewer Pages")))
+			.andExpect(content().string(containsString("Start Here in Philadelphia")))
+			.andExpect(content().string(containsString("Responsibility and trust pages")))
+			.andExpect(content().string(containsString("Sources used for this city hub")));
+
+		mockMvc.perform(get("/cities/milwaukee/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Milwaukee, WI Sewer Pages")))
+			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Cost and quote-ready pages")));
 	}
 
 	@Test

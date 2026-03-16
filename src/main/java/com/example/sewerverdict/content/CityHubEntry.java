@@ -4,6 +4,7 @@ import java.util.List;
 
 public record CityHubEntry(
 	GeoProfile profile,
-	List<SitePage> pages
+	List<SitePage> pages,
+	List<SitePage> starterPages
 ) {
 }
