@@ -24,7 +24,9 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("City pages built only where the local signal is real.")))
 			.andExpect(content().string(containsString("Philadelphia, PA")))
-			.andExpect(content().string(containsString("Buffalo Sewer Scope Before Buying a House")));
+			.andExpect(content().string(containsString("Buffalo Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Milwaukee, WI")))
+			.andExpect(content().string(containsString("Detroit Sewer Line Replacement Cost")));
 	}
 
 	@Test
@@ -33,5 +35,13 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Chicago Sewer Scope Negotiation With Seller")))
 			.andExpect(content().string(containsString("Local system context")));
+	}
+
+	@Test
+	void newResponsibilityGeoPageRendersSuccessfully() throws Exception {
+		mockMvc.perform(get("/cities/baltimore/homeowner-vs-city-sewer-responsibility/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Baltimore Homeowner vs City Sewer Responsibility")))
+			.andExpect(content().string(containsString("Official responsibility boundary")));
 	}
 }

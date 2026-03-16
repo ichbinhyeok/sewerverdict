@@ -3132,5 +3132,414 @@
       "/sewer-scope-negotiation-with-seller/",
       "/sewer-scope-before-buying-house/"
     ]
+  },
+  {
+    "slug": "/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "Milwaukee Homeowner vs City Sewer Responsibility",
+    "metaTitle": "Milwaukee Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "Milwaukee sewer responsibility guidance with owner-side lateral language, pre-1954 inflow context, and cautious program caveats.",
+    "eyebrow": "Milwaukee responsibility guide",
+    "summary": "A local trust page for Milwaukee users who need to understand where homeowner responsibility usually starts and how neighborhood programs fit without changing the basic owner-side boundary.",
+    "quickAnswer": "Milwaukee says the sewer lateral from the home to the public main is generally the homeowner's responsibility, even though older-home rehabilitation programs may change what support is available.",
+    "seriousness": "This matters when a buyer or owner is trying to separate city-main assumptions from the private lateral costs they may actually carry.",
+    "nextStep": "First verify whether the issue looks owner-side, then check whether any neighborhood or eligibility-based support applies before assuming the city will pay.",
+    "costDirection": "Owner-side lateral responsibility can make inspection, cleaning, rehabilitation, or replacement costs feel immediate even when Milwaukee programs may help some homes.",
+    "uncertainty": "This page does not promise that every old Milwaukee property qualifies for support or that every sewer problem is on the homeowner side.",
+    "sourceNote": "Reviewed against Milwaukee utility responsibility language, the city's private-property inflow program, and local Pipe Check support materials. Program references stay caveated because neighborhood and eligibility limits matter.",
+    "sourceIds": [
+      "mil-001",
+      "mil-002",
+      "mil-003"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "where-the-owner-side-boundary-usually-sits",
+        "title": "Where the owner-side boundary usually sits in Milwaukee",
+        "intro": "Milwaukee gives users a clearer starting point than many cities because it directly describes laterals from the home to the main as owner responsibility.",
+        "bullets": [
+          "That helps buyers and owners stop assuming every buried issue belongs to the city.",
+          "It also means sewer diligence can become a budget question faster once symptoms or footage appear.",
+          "The public main is still city infrastructure, so boundary and cause still matter."
+        ]
+      },
+      {
+        "anchor": "how-programs-change-the-conversation-without-erasing-risk",
+        "title": "How Milwaukee programs change the conversation without erasing owner-side risk",
+        "intro": "The local nuance is not that the city always pays. It is that older-home rehabilitation and support programs can affect what the next move looks like.",
+        "bullets": [
+          "Milwaukee's inflow program shows why older laterals and foundation drain connections can matter locally.",
+          "Pipe Check support can help some homeowners with inspection or repair costs.",
+          "Neither program should be treated as guaranteed funding or as proof that a defect is city-caused."
+        ]
+      }
+    ],
+    "highlights": [
+      "Milwaukee gives unusually direct owner-side lateral language.",
+      "Program support can matter without changing the need to verify the actual defect."
+    ],
+    "questions": [
+      "Does the current evidence point to a private lateral issue or to a city-side problem?",
+      "Is there any real eligibility basis for support, or are you only hoping there is?"
+    ],
+    "relatedSlugs": [
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/old-house-sewer-line-risk/"
+    ]
+  },
+  {
+    "slug": "/cities/milwaukee/old-house-sewer-line-risk/",
+    "family": "geo",
+    "title": "Milwaukee Old House Sewer Line Risk",
+    "metaTitle": "Milwaukee Old House Sewer Line Risk | SewerVerdict",
+    "metaDescription": "Milwaukee old-house sewer risk guidance with pre-1954 lateral context, owner responsibility, and inspection-first next steps.",
+    "eyebrow": "Milwaukee old-house guide",
+    "summary": "A local old-house page for Milwaukee buyers and owners who need a stronger framework for buried-line diligence in a city where older laterals and rehab programs are already part of the public conversation.",
+    "quickAnswer": "Milwaukee old-house sewer risk deserves sharper screening because the city explicitly calls out pre-1954 properties and owner-side lateral rehabilitation in its private-property inflow work.",
+    "seriousness": "The concern matters most when the home is older, the sewer history is thin, and the user is deciding whether uncertainty is still tolerable.",
+    "nextStep": "Use a scope or better evidence before making a replacement assumption. The right local move is usually inspection-first, not panic-first.",
+    "costDirection": "Milwaukee old-house cost risk often comes from uncertainty around lateral condition, rehabilitation scope, and whether any support program changes the owner's out-of-pocket path.",
+    "uncertainty": "Older Milwaukee housing is a reason to screen earlier, not a reason to assume the line is failing or that a city program will cover it.",
+    "sourceNote": "Reviewed against Milwaukee's private-property inflow guidance, local Pipe Check support material, and older-home sewer-risk framing. The page stays evidence-first and avoids treating age like a diagnosis.",
+    "sourceIds": [
+      "mil-001",
+      "mil-002",
+      "mil-003",
+      "red-001"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/old-house-sewer-line-risk/",
+    "sections": [
+      {
+        "anchor": "why-milwaukee-old-house-risk-feels-more-concrete",
+        "title": "Why old-house sewer risk feels more concrete in Milwaukee",
+        "intro": "Milwaukee local pages work because the city already talks about older homes, lateral rehabilitation, and inflow reduction in a way that makes buried-line diligence more practical.",
+        "bullets": [
+          "Pre-1954 housing enters the conversation because older property conditions can affect laterals and drainage behavior.",
+          "Owner-side responsibility makes sewer uncertainty more financially relevant once evidence appears.",
+          "That combination makes scope-first logic easier to defend in Milwaukee than in a generic city-swap page."
+        ]
+      },
+      {
+        "anchor": "how-to-use-milwaukee-context-calmly",
+        "title": "How to use Milwaukee context without turning it into fear",
+        "intro": "The right use of local context is to improve diligence, not to exaggerate the defect.",
+        "bullets": [
+          "Use old-house and local-program context to justify checking sooner when history is missing.",
+          "Do not assume replacement or public support without documented line condition and actual eligibility.",
+          "Let the scope decide whether the next move is monitoring, cleaning, rehab discussion, or quote comparison."
+        ]
+      }
+    ],
+    "highlights": [
+      "Milwaukee old-house sewer risk is grounded in real city program context, not generic fear copy.",
+      "Age justifies better screening. It does not replace footage."
+    ],
+    "questions": [
+      "Is the concern backed by symptoms or footage, or only by the age of the home?",
+      "Would a scope materially change the next decision here?"
+    ],
+    "relatedSlugs": [
+      "/old-house-sewer-line-risk/",
+      "/sewer-scope-before-buying-house/"
+    ]
+  },
+  {
+    "slug": "/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "Cincinnati Homeowner vs City Sewer Responsibility",
+    "metaTitle": "Cincinnati Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "Cincinnati sewer responsibility guidance with private building sewer ownership, public-versus-private backup context, and wet-weather caveats.",
+    "eyebrow": "Cincinnati responsibility guide",
+    "summary": "A local trust page for Cincinnati users who need to understand why private building sewer ownership can matter even when wet weather or public backup context makes blame feel less obvious.",
+    "quickAnswer": "Cincinnati generally treats the private building sewer as owner-maintained, even though wet-weather and public-sewer conditions can still matter when backups occur.",
+    "seriousness": "This matters most when a user is trying to decide whether the next call is for cause-finding, cleanup, inspection, or a city claim.",
+    "nextStep": "Verify whether the problem looks public, private, or mixed before assuming the city is responsible or the owner is stuck with a full repair bill.",
+    "costDirection": "The financial difference between a public backup and a private building sewer defect can be large, which makes better evidence more valuable before arguing over payment.",
+    "uncertainty": "This page does not say every Cincinnati backup is owner-caused or that heavy rain automatically makes it the city's problem.",
+    "sourceNote": "Reviewed against MSD's development-services ownership language, sewer backup program guidance, and regional public-private backup context. Cause-finding stays central because Cincinnati backup stories can be mixed.",
+    "sourceIds": [
+      "cin-001",
+      "cin-002",
+      "cin-003"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "why-owner-responsibility-is-still-the-starting-point",
+        "title": "Why owner responsibility is still the starting point in Cincinnati",
+        "intro": "Cincinnati gives strong language on private building sewers, which matters because it keeps the owner-side boundary visible even when backups feel like a city problem.",
+        "bullets": [
+          "MSD says private building sewers are maintained by owners at the owner's cost and expense.",
+          "That includes situations where the line runs through areas users might assume are public responsibility.",
+          "This makes footage and cause-finding valuable before anyone starts arguing over payment."
+        ]
+      },
+      {
+        "anchor": "how-wet-weather-complicates-the-conversation",
+        "title": "How wet weather complicates the conversation without erasing the boundary",
+        "intro": "The local nuance is that Cincinnati can have genuine public-private backup complexity, especially in wet-weather conditions.",
+        "bullets": [
+          "Heavy rain and combined-sewer context can contribute to backup conditions.",
+          "MSD may inspect whether a backup is public, private, or mixed.",
+          "That does not erase owner-side maintenance responsibility for the private building sewer."
+        ]
+      }
+    ],
+    "highlights": [
+      "Cincinnati gives clear owner-side language but still requires real cause-finding during backups.",
+      "Wet weather complicates blame. It does not replace evidence."
+    ],
+    "questions": [
+      "Do you actually know whether the problem is in the private building sewer or the public system?",
+      "Would better footage or an investigation change the next financial decision?"
+    ],
+    "relatedSlugs": [
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/sewer-scope-before-buying-house/"
+    ]
+  },
+  {
+    "slug": "/cities/cincinnati/sewer-scope-before-buying-house/",
+    "family": "geo",
+    "title": "Cincinnati Sewer Scope Before Buying a House",
+    "metaTitle": "Cincinnati Sewer Scope Before Buying a House | SewerVerdict",
+    "metaDescription": "Cincinnati buyer sewer scope guidance with private building sewer exposure, wet-weather context, and evidence-first next steps.",
+    "eyebrow": "Cincinnati buyer guide",
+    "summary": "A local buyer page for Cincinnati where private building sewer ownership and public-private backup complexity make pre-closing sewer diligence more rational.",
+    "quickAnswer": "Cincinnati buyers have a stronger reason to consider a sewer scope when the sewer history is unclear because the private building sewer can remain an owner-side problem even in a city with wet-weather backup complexity.",
+    "seriousness": "The decision matters most when the transaction is live, the property history is thin, and sewer symptoms or backup stories already exist.",
+    "nextStep": "Use a scope to clarify whether there is a real private-line issue before closing, instead of discovering after the purchase that the owner-side building sewer is the problem.",
+    "costDirection": "The scope fee is small compared with the cost of inheriting a private building sewer problem or negotiating with weak evidence in a wet-weather market.",
+    "uncertainty": "This page does not say every Cincinnati buyer needs a scope or that every drainage problem is a buried-line defect.",
+    "sourceNote": "Reviewed against Redfin buyer sewer scope guidance and Cincinnati MSD responsibility and backup-program materials. The local angle is owner-side exposure plus public-private complexity, not universal fear.",
+    "sourceIds": [
+      "rdf-001",
+      "cin-001",
+      "cin-002",
+      "cin-003"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-scope-before-buying-house/",
+    "sections": [
+      {
+        "anchor": "why-a-cincinnati-buyer-gets-extra-value-from-a-scope",
+        "title": "Why a Cincinnati buyer gets extra value from a scope",
+        "intro": "The local buyer win is not certainty. It is reducing the chance of inheriting a private building sewer problem you did not understand before closing.",
+        "bullets": [
+          "Private building sewer ownership makes buried-line issues financially relevant to the future owner.",
+          "Wet-weather backup context can make symptoms harder to interpret without footage.",
+          "A scope helps separate rumor, old-home anxiety, and actual line evidence."
+        ]
+      },
+      {
+        "anchor": "what-a-cincinnati-scope-should-resolve",
+        "title": "What a Cincinnati sewer scope should actually resolve",
+        "intro": "A good buyer page should explain what the inspection is supposed to clarify.",
+        "bullets": [
+          "Is there a private-line defect that deserves negotiation before closing?",
+          "Does the issue look structural, maintenance-related, or still uncertain?",
+          "Would the result support a credit request, more inspection, or simple peace of mind?"
+        ]
+      }
+    ],
+    "highlights": [
+      "Cincinnati buyers are screening for owner-side downside, not just collecting another inspection report.",
+      "Wet-weather context makes better footage more valuable before closing."
+    ],
+    "questions": [
+      "Would a scope materially reduce the chance of inheriting a private-line surprise?",
+      "Is the current concern specific enough to justify inspection now?"
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-before-buying-house/",
+      "/homeowner-vs-city-sewer-responsibility/"
+    ]
+  },
+  {
+    "slug": "/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "Baltimore Homeowner vs City Sewer Responsibility",
+    "metaTitle": "Baltimore Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "Baltimore sewer responsibility guidance with property-line split, private building sewer exposure, and wet-weather reimbursement caveats.",
+    "eyebrow": "Baltimore responsibility guide",
+    "summary": "A local trust page for Baltimore users who need a cleaner explanation of where city responsibility may stop, where private building sewer responsibility begins, and why wet-weather reimbursement still has limits.",
+    "quickAnswer": "Baltimore separates city-side sewer infrastructure from the owner's building sewer at the property line, so users need to know where the issue sits before assuming who pays.",
+    "seriousness": "This matters most when a user is deciding whether a backup, cleanup bill, or sewer finding should be treated as a city issue, an owner issue, or a mix of both.",
+    "nextStep": "Start by clarifying whether the concern is in the city-side sewer lateral to the property line or in the private building sewer from the property line to the home.",
+    "costDirection": "Baltimore's split boundary can create very different out-of-pocket outcomes depending on where the defect is and whether any wet-weather reimbursement rules actually apply.",
+    "uncertainty": "This page does not promise that Baltimore will pay for every sewer backup or that a property-line question can be answered without evidence.",
+    "sourceNote": "Reviewed against Baltimore DPW regulations and the city's sewage backup expedited reimbursement program. Wet-weather reimbursement is kept narrow because it requires verification, documentation, and a qualifying capacity-related event.",
+    "sourceIds": [
+      "bal-001",
+      "bal-002"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "why-the-property-line-matters-so-much-in-baltimore",
+        "title": "Why the property line matters so much in Baltimore",
+        "intro": "Baltimore is a strong responsibility page because the city and owner boundary is more explicit than in many markets.",
+        "bullets": [
+          "City-side infrastructure runs from the sewer main to the property line.",
+          "The building sewer from the property line to the building is private and owner-maintained.",
+          "That means the right question is often where the defect sits, not simply whether the sewer is city-related."
+        ]
+      },
+      {
+        "anchor": "how-reimbursement-fits-without-changing-the-core-boundary",
+        "title": "How reimbursement fits without changing the core boundary",
+        "intro": "Baltimore's reimbursement process is useful, but it should not be mistaken for blanket city liability.",
+        "bullets": [
+          "The program is tied to verified wet-weather capacity-related backup situations.",
+          "Cleanup reimbursement is not the same thing as city responsibility for every private sewer defect.",
+          "Documentation, timing, and investigation still determine whether the program is relevant."
+        ]
+      }
+    ],
+    "highlights": [
+      "Baltimore gives a cleaner property-line split than many cities.",
+      "Reimbursement can matter without proving city responsibility for the underlying defect."
+    ],
+    "questions": [
+      "Do you know whether the problem is in the city-side line or the private building sewer?",
+      "Is the reimbursement angle actually relevant, or does the evidence still point to a private defect?"
+    ],
+    "relatedSlugs": [
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/does-home-insurance-cover-sewer-line-replacement/"
+    ]
+  },
+  {
+    "slug": "/cities/detroit/homeowner-vs-city-sewer-responsibility/",
+    "family": "geo",
+    "title": "Detroit Homeowner vs City Sewer Responsibility",
+    "metaTitle": "Detroit Homeowner vs City Sewer Responsibility | SewerVerdict",
+    "metaDescription": "Detroit sewer responsibility guidance with permit rules, basement-backup program context, and private repair eligibility caveats.",
+    "eyebrow": "Detroit responsibility guide",
+    "summary": "A local trust page for Detroit users who need to understand owner-side repair exposure in a city where permits, backup programs, and neighborhood-specific repair support can all affect the next move.",
+    "quickAnswer": "Detroit users should not assume the city automatically pays for sewer problems: repair work may require permits, owner-side defects still matter, and program help depends on location and eligibility.",
+    "seriousness": "This matters when a user is deciding whether the next step is a permit-aware repair path, a claim-like conversation, or more line evidence.",
+    "nextStep": "Confirm what the footage or symptoms show, then separate permit requirements and possible program support from the basic question of where the defect sits.",
+    "costDirection": "Detroit sewer cost exposure can change sharply depending on whether the work is private, whether permits or right-of-way work are involved, and whether the property qualifies for a city repair program.",
+    "uncertainty": "This page does not promise program eligibility or city-funded repair. It explains why Detroit users should verify scope, location, and neighborhood status first.",
+    "sourceNote": "Reviewed against Detroit sewer-repair permit guidance, basement backup protection materials, and the private sewer repair program. Program help stays tightly caveated because eligibility and geography matter.",
+    "sourceIds": [
+      "det-001",
+      "det-002",
+      "det-003"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
+    "sections": [
+      {
+        "anchor": "why-detroit-users-need-to-think-about-permits-early",
+        "title": "Why Detroit users need to think about permits early",
+        "intro": "Detroit sewer pages are stronger when they explain that work scope is not just a defect question. It is also a process question.",
+        "bullets": [
+          "Repair or replacement work may need a DWSD permit before it begins.",
+          "That makes contractor scope and line location more important than a vague promise to fix it later.",
+          "Permit context does not tell you who pays, but it does shape the repair path."
+        ]
+      },
+      {
+        "anchor": "how-detroit-programs-help-without-guaranteeing-relief",
+        "title": "How Detroit programs help without guaranteeing relief",
+        "intro": "Detroit has more public sewer-repair program language than many cities, but that is still not the same as universal city responsibility.",
+        "bullets": [
+          "Basement backup protection and private sewer repair programs can help some homeowners.",
+          "Those programs depend on neighborhood, documentation, approval, and the actual defect.",
+          "The right next move is still evidence-first, not assumption-first."
+        ]
+      }
+    ],
+    "highlights": [
+      "Detroit adds permit and program complexity to the usual owner-versus-city question.",
+      "Program support is possible, but only after location and defect details are clear."
+    ],
+    "questions": [
+      "Do you actually know whether the property qualifies for any Detroit repair support?",
+      "Is the next blocker the line evidence, the permit path, or both?"
+    ],
+    "relatedSlugs": [
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/sewer-line-replacement-cost/"
+    ]
+  },
+  {
+    "slug": "/cities/detroit/sewer-line-replacement-cost/",
+    "family": "geo",
+    "title": "Detroit Sewer Line Replacement Cost",
+    "metaTitle": "Detroit Sewer Line Replacement Cost | SewerVerdict",
+    "metaDescription": "Detroit sewer replacement cost guidance with permit requirements, basement-backup context, and private repair program caveats.",
+    "eyebrow": "Detroit cost guide",
+    "summary": "A local cost page for Detroit users who need a realistic range and a calmer explanation of how permits, private-lateral repairs, and limited program support can change the owner's actual cost path.",
+    "quickAnswer": "Detroit sewer replacement cost is a wide range shaped by permits, access, restoration, and whether any city repair program changes what the owner actually pays out of pocket.",
+    "seriousness": "This becomes a major decision when footage or repeated backup evidence suggests structural failure rather than a small maintenance issue.",
+    "nextStep": "If the line condition is still fuzzy, get better evidence first. If the defect is documented, compare quotes with permit scope and any program-eligibility questions in view.",
+    "costDirection": "Detroit pricing can move hard when right-of-way work, restoration, permit steps, or neighborhood-specific program support change the owner's share of the job.",
+    "uncertainty": "This page cannot tell whether your address qualifies for repair support or whether the defect extends into city-side infrastructure.",
+    "sourceNote": "Reviewed against Detroit permit guidance, basement backup protection materials, the private sewer repair program, and national sewer replacement cost benchmarks. The page avoids false precision because owner out-of-pocket can swing sharply with eligibility and scope.",
+    "sourceIds": [
+      "det-001",
+      "det-002",
+      "det-003",
+      "cost-001",
+      "cost-002"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Read the national guide",
+    "secondaryCtaHref": "/sewer-line-replacement-cost/",
+    "sections": [
+      {
+        "anchor": "why-detroit-cost-ranges-stay-wide",
+        "title": "Why Detroit cost ranges need to stay wide",
+        "intro": "Detroit users need range thinking, not a fake average, because local process and eligibility can materially change what the owner ends up paying.",
+        "bullets": [
+          "Permits and work-scope clarity matter before any quote feels comparable.",
+          "Private-lateral work can still carry full owner cost in many situations.",
+          "Some neighborhoods may have support programs, but that does not make the repair free by default."
+        ]
+      },
+      {
+        "anchor": "what-to-check-before-trusting-a-detroit-quote",
+        "title": "What to check before trusting a Detroit quote",
+        "intro": "The useful comparison is not just price. It is what the contractor thinks the job actually includes.",
+        "bullets": [
+          "Does the quote reflect permit and access requirements?",
+          "Is the defect documented clearly enough to separate repair from replacement logic?",
+          "Has anyone checked whether the address qualifies for any Detroit sewer repair support?"
+        ]
+      }
+    ],
+    "highlights": [
+      "Detroit cost uncertainty is driven by permits, access, and program eligibility as much as by pipe footage.",
+      "A calm quote comparison starts with evidence and scope clarity."
+    ],
+    "questions": [
+      "Would better footage reduce the quote uncertainty more than gathering another rough estimate?",
+      "Is any supposed program support actually real for this address?"
+    ],
+    "relatedSlugs": [
+      "/sewer-line-replacement-cost/",
+      "/homeowner-vs-city-sewer-responsibility/"
+    ]
   }
 ]

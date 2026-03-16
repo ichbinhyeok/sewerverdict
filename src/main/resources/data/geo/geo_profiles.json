@@ -89,5 +89,57 @@
     "programSummary": "The page should emphasize verification and cause-finding rather than promising a city payout or denial.",
     "ctaBias": "Use responsibility pages to move uncertain users into estimator or inspection-first logic, then quote once the problem is evidence-backed.",
     "sourceIds": ["dc-001"]
+  },
+  {
+    "citySlug": "milwaukee",
+    "cityName": "Milwaukee",
+    "stateCode": "WI",
+    "priorityTier": "tier-2",
+    "marketReason": "Milwaukee combines owner-side lateral responsibility with pre-1954 clearwater-inflow history and local support programs, creating a strong old-house and responsibility wedge.",
+    "housingAgeSignal": "Milwaukee's older housing stock matters because city guidance specifically calls out many pre-1954 homes in laterals and foundation-drain rehabilitation conversations.",
+    "systemContext": "Milwaukee says owners are responsible for laterals from the home to the main, and its PPII program shows how older lateral conditions can matter to neighborhood sewer performance.",
+    "responsibilitySummary": "Milwaukee pages can talk about owner-side exposure without pretending every old property has the same line condition or program access.",
+    "programSummary": "Pipe Check and PPII-related work can change affordability or urgency, but both still depend on eligibility, neighborhood, and documented line condition.",
+    "ctaBias": "Use old-house pages to push inspection-first and responsibility pages to clarify boundary before any quote conversation hardens.",
+    "sourceIds": ["mil-001", "mil-002", "mil-003"]
+  },
+  {
+    "citySlug": "cincinnati",
+    "cityName": "Cincinnati",
+    "stateCode": "OH",
+    "priorityTier": "tier-2",
+    "marketReason": "Cincinnati has unusually clear private-building-sewer ownership language plus wet-weather and combined-sewer context that supports buyer and backup-related wedges.",
+    "housingAgeSignal": "The stronger local signal here is not sold-home age leadership. It is the way public-private sewer responsibility becomes practical during active backup or buyer diligence questions.",
+    "systemContext": "MSD says private building sewers are owner-maintained and also explains that heavy rain and combined sewers can complicate backup conversations across public and private systems.",
+    "responsibilitySummary": "That makes Cincinnati a strong market for clarifying what the owner likely controls before arguing over whether the city caused a problem.",
+    "programSummary": "MSD's backup program can investigate cause, but it does not turn every private line issue into a public-sewer payout.",
+    "ctaBias": "Use buyer and responsibility pages to move users toward scope-first and cause-finding before they default to blame or big-repair assumptions.",
+    "sourceIds": ["cin-001", "cin-002", "cin-003"]
+  },
+  {
+    "citySlug": "baltimore",
+    "cityName": "Baltimore",
+    "stateCode": "MD",
+    "priorityTier": "tier-2",
+    "marketReason": "Baltimore has a clean property-line responsibility split plus a wet-weather reimbursement program, giving it one of the clearest support-intent local trust wedges.",
+    "housingAgeSignal": "The main local edge is split responsibility and wet-weather response structure rather than a single old-house stat.",
+    "systemContext": "Baltimore regulations separate city-side sewer lateral infrastructure from the owner's building sewer, and DPW has a reimbursement process for verified capacity-related wet-weather backups.",
+    "responsibilitySummary": "That split gives Baltimore pages practical nuance: city responsibility may begin at the property line, but owner-side exposure still begins at the building sewer.",
+    "programSummary": "The reimbursement program is useful, but only for qualifying wet-weather backup situations with documentation and investigation.",
+    "ctaBias": "Use responsibility pages to help users separate boundary questions from cause questions before they assume the city will pay.",
+    "sourceIds": ["bal-001", "bal-002"]
+  },
+  {
+    "citySlug": "detroit",
+    "cityName": "Detroit",
+    "stateCode": "MI",
+    "priorityTier": "tier-2",
+    "marketReason": "Detroit pairs active private-sewer repair programs with permit-heavy repair context and basement-backup pressure, creating strong owner and cost-intent wedges.",
+    "housingAgeSignal": "The local value is not just older housing. It is the fact that basement-backup and private-lateral repair conversations are already part of the city's public utility posture.",
+    "systemContext": "Detroit requires permits for sewer service repair work and runs basement-backup and private-sewer programs that depend on location, evidence, and eligibility.",
+    "responsibilitySummary": "Detroit pages can talk honestly about owner-side cost exposure while also acknowledging that some neighborhoods may have program support.",
+    "programSummary": "Program help is real but limited. Users still need documented defects and should never assume automatic city-funded repair.",
+    "ctaBias": "Use cost and responsibility pages to push evidence-first next steps, then surface quote logic only once eligibility and line condition are clearer.",
+    "sourceIds": ["det-001", "det-002", "det-003"]
   }
 ]
