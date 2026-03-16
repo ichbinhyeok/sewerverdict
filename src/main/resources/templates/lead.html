@@ -18,7 +18,7 @@
 			<div class="form-shell">
 				<div class="form-success" th:if="${successMessage}" th:text="${successMessage}">Success</div>
 				<div class="form-error" th:if="${formError}" th:text="${formError}">Error</div>
-				<form th:action="${#httpServletRequest.requestURI}" th:object="${leadForm}" method="post" class="lead-form">
+				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form">
 					<label class="field-label">Service needed
 						<select th:field="*{serviceNeeded}">
 							<option value="">Choose one</option>

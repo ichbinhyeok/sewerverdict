@@ -51,7 +51,8 @@ public class LeadController {
 				"Best for buyers under contract, sellers pre-listing, and owners with symptoms but no confirmation.",
 				"Useful when the next smart move is clarity, not a rushed repair commitment.",
 				"Short form only asks for details that improve routing."
-			)
+			),
+			"/find-sewer-scope/"
 		);
 		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerVerdict",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
@@ -74,7 +75,8 @@ public class LeadController {
 				"Best for buyers under contract, sellers pre-listing, and owners with symptoms but no confirmation.",
 				"Useful when the next smart move is clarity, not a rushed repair commitment.",
 				"Short form only asks for details that improve routing."
-			)
+			),
+			"/find-sewer-scope/"
 		);
 		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerVerdict",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
@@ -108,7 +110,8 @@ public class LeadController {
 				"Best when the line has already been scoped or there is strong evidence of a serious issue.",
 				"Useful for comparing spot repair, trenchless, and excavation logic.",
 				"Keep the form short so qualified users actually submit it."
-			)
+			),
+			"/get-sewer-quotes/"
 		);
 		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerVerdict",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
@@ -131,7 +134,8 @@ public class LeadController {
 				"Best when the line has already been scoped or there is strong evidence of a serious issue.",
 				"Useful for comparing spot repair, trenchless, and excavation logic.",
 				"Keep the form short so qualified users actually submit it."
-			)
+			),
+			"/get-sewer-quotes/"
 		);
 		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerVerdict",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
@@ -166,11 +170,12 @@ public class LeadController {
 		model.addAttribute("leadForm", new LeadForm());
 	}
 
-	private void populateLeadModel(Model model, String title, String summary, List<String> highlights) {
+	private void populateLeadModel(Model model, String title, String summary, List<String> highlights, String formAction) {
 		model.addAttribute("pageTitle", title + " | SewerVerdict");
 		model.addAttribute("metaDescription", summary);
 		model.addAttribute("leadTitle", title);
 		model.addAttribute("leadSummary", summary);
 		model.addAttribute("leadHighlights", highlights);
+		model.addAttribute("formAction", formAction);
 	}
 }
