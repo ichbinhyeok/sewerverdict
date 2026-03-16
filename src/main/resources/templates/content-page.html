@@ -61,6 +61,25 @@
 					</ul>
 					<p class="section-note" th:if="${section.note}" th:text="${section.note}">Note</p>
 				</article>
+				<article class="section-card" th:each="table : ${page.tables}">
+					<h2 th:text="${table.title}">Table title</h2>
+					<p th:if="${table.intro}" th:text="${table.intro}">Table intro</p>
+					<div class="table-shell">
+						<table class="comparison-table">
+							<thead>
+								<tr>
+									<th th:each="column : ${table.columns}" th:text="${column}">Column</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="row : ${table.rows}">
+									<td th:each="cell : ${row.cells}" th:text="${cell}">Cell</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="section-note" th:if="${table.note}" th:text="${table.note}">Note</p>
+				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(page.highlights)}">
 					<h2>What commonly changes the answer</h2>
 					<ul class="clean-list">

@@ -29,6 +29,7 @@ public class SitePage {
 	private String lastReviewed;
 	private String sourceNote;
 	private List<PageSection> sections = new ArrayList<>();
+	private List<PageTable> tables = new ArrayList<>();
 	private List<String> highlights = new ArrayList<>();
 	private List<String> questions = new ArrayList<>();
 	private List<PageFaq> faq = new ArrayList<>();
@@ -200,6 +201,14 @@ public class SitePage {
 
 	public void setSections(List<PageSection> sections) {
 		this.sections = sections == null ? new ArrayList<>() : new ArrayList<>(sections);
+	}
+
+	public List<PageTable> getTables() {
+		return tables;
+	}
+
+	public void setTables(List<PageTable> tables) {
+		this.tables = tables == null ? new ArrayList<>() : new ArrayList<>(tables);
 	}
 
 	public List<String> getHighlights() {

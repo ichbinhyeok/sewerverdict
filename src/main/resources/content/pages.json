@@ -64,6 +64,28 @@
         ]
       }
     ],
+    "tables": [
+      {
+        "title": "Typical sewer work paths",
+        "intro": "Users searching replacement cost are often comparing very different project types under one phrase.",
+        "columns": ["Scenario", "Typical range", "What usually drives it"],
+        "rows": [
+          {
+            "cells": ["Inspection only", "$100-$500", "camera access, market rate, cleanout availability"]
+          },
+          {
+            "cells": ["Cleaning or root treatment", "$300-$1,100", "root density, repeat visits, access"]
+          },
+          {
+            "cells": ["Spot repair", "$1,100-$4,000", "depth, yard obstacles, localized failure"]
+          },
+          {
+            "cells": ["Full replacement", "$3,000-$25,000+", "length, depth, restoration, method fit"]
+          }
+        ],
+        "note": "These are directional national bands, not promises. Site access, restoration, and method fit are often what stretch the quote."
+      }
+    ],
     "highlights": ["Spot repair and full replacement are not the same decision.", "Restoration can be as important as pipe work."],
     "questions": ["How much of this quote is excavation and restoration?", "Would trenchless change disruption enough to deserve its own quote path?"],
     "faq": [
@@ -143,6 +165,28 @@
           "If repair is needed, is a credit cleaner than a seller-managed fix before closing?",
           "What part of the risk is still unknown even after the scope?"
         ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "When a sewer scope makes the most sense",
+        "intro": "The strongest buyer pages help people decide when sewer uncertainty is actually worth paying to reduce.",
+        "columns": ["Situation", "Why buyers scope", "Likely next move"],
+        "rows": [
+          {
+            "cells": ["Older home under contract", "buried-line uncertainty can change negotiation", "scope before closing"]
+          },
+          {
+            "cells": ["Older home plus trees or symptoms", "higher hidden-risk pattern", "scope now"]
+          },
+          {
+            "cells": ["Newer home with no clues", "uncertainty may be lower", "context-based call, not automatic"]
+          },
+          {
+            "cells": ["Known bad scope from another party", "documentation may be incomplete or biased", "clarify footage and next-step evidence"]
+          }
+        ],
+        "note": "This page is not arguing that every buyer needs a scope. It is helping buyers decide when the scope changes decision quality materially."
       }
     ],
     "highlights": ["Older housing stock usually raises the value of a scope.", "A clean general inspection does not rule out buried-line issues."],
@@ -360,6 +404,28 @@
         ]
       }
     ],
+    "tables": [
+      {
+        "title": "How common findings usually rank",
+        "intro": "The same red-flag phrase can mean very different next steps depending on severity and context.",
+        "columns": ["Finding", "Typical seriousness", "Most common next move"],
+        "rows": [
+          {
+            "cells": ["Minor roots", "watch to moderate", "clarify recurrence or clean"]
+          },
+          {
+            "cells": ["Offset joint", "moderate", "check flow impact and broader context"]
+          },
+          {
+            "cells": ["Belly", "moderate to high", "severity review or quote path"]
+          },
+          {
+            "cells": ["Collapse", "high", "urgent evaluation and quotes"]
+          }
+        ],
+        "note": "A report phrase is not a final diagnosis. It is a clue about how quickly the next step should move."
+      }
+    ],
     "highlights": ["Some findings are severity questions, not automatic replacement questions.", "Good video evidence usually matters more than a scary phrase."],
     "questions": ["Is the finding isolated, recurring, or systemic?", "Is this a scope-first, quote-first, or specialist-review situation?"],
     "faq": [
@@ -426,6 +492,28 @@
           "Systemic deterioration or hard access can make broader replacement more credible.",
           "Quote comparison matters because cast iron projects are easy to oversimplify."
         ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "How cast iron scenarios usually differ",
+        "intro": "Users searching cast iron replacement cost are often mixing age, roughness, and true failure into one question.",
+        "columns": ["Condition", "What it often means", "Most common next move"],
+        "rows": [
+          {
+            "cells": ["Rough but functioning", "age clue, not automatic failure", "scope detail and monitor or repair review"]
+          },
+          {
+            "cells": ["Recurring backups or heavy scaling", "higher deterioration concern", "quote comparison"]
+          },
+          {
+            "cells": ["Under-slab deterioration", "access burden drives project", "replacement-path review"]
+          },
+          {
+            "cells": ["Localized bad section", "may still support narrower work", "repair versus lining review"]
+          }
+        ],
+        "note": "Cast iron age alone is not enough. The table is meant to separate condition logic from panic language."
       }
     ],
     "highlights": ["Old does not always mean failing.", "Under-slab access can dominate the quote."],
@@ -563,6 +651,28 @@
           "A specialist quote can be useful when it defines the issue better, not just when it produces a big number.",
           "Buyers usually want something specific enough to justify a request without overclaiming certainty."
         ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "What usually changes leverage",
+        "intro": "This page wins when it helps buyers ask for the right thing, not when it promises a guaranteed outcome.",
+        "columns": ["Factor", "Why it matters", "What buyers often do next"],
+        "rows": [
+          {
+            "cells": ["Clear scope evidence", "supports a specific request", "credit or repair discussion"]
+          },
+          {
+            "cells": ["Late deal timing", "changes urgency and leverage", "focus on practical resolution"]
+          },
+          {
+            "cells": ["Vague or weak evidence", "harder to justify a strong ask", "get better documentation first"]
+          },
+          {
+            "cells": ["High repair uncertainty", "parties may fear open-ended exposure", "specialist review or credit framing"]
+          }
+        ],
+        "note": "This is leverage guidance, not legal advice. Contract language and local practice still matter."
       }
     ],
     "highlights": ["Credits, repair, and more specialist review are different negotiation tools.", "Documentation beats vague concern."],
