@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.sewerverdict.content.GeoProfileService;
 import com.example.sewerverdict.content.SiteContentService;
 import com.example.sewerverdict.content.SitePage;
 
@@ -19,10 +20,13 @@ import com.example.sewerverdict.content.SitePage;
 public class SeoController {
 
 	private final SiteContentService siteContentService;
+	private final GeoProfileService geoProfileService;
 	private final String reviewDate;
 
-	public SeoController(SiteContentService siteContentService, @Value("${app.review-date}") String reviewDate) {
+	public SeoController(SiteContentService siteContentService, GeoProfileService geoProfileService,
+			@Value("${app.review-date}") String reviewDate) {
 		this.siteContentService = siteContentService;
+		this.geoProfileService = geoProfileService;
 		this.reviewDate = reviewDate;
 	}
 
@@ -48,6 +52,9 @@ public class SeoController {
 		urls.add(new SitemapUrl(baseUrl + "/estimator/", reviewDate));
 		urls.add(new SitemapUrl(baseUrl + "/find-sewer-scope/", reviewDate));
 		urls.add(new SitemapUrl(baseUrl + "/get-sewer-quotes/", reviewDate));
+		urls.add(new SitemapUrl(baseUrl + "/cities/", reviewDate));
+		geoProfileService.getCityHubEntries(siteContentService.getAllPages()).forEach(entry ->
+			urls.add(new SitemapUrl(baseUrl + "/cities/" + entry.profile().getCitySlug() + "/", reviewDate)));
 		for (SitePage page : siteContentService.getAllPages()) {
 			urls.add(new SitemapUrl(baseUrl + page.getSlug(), page.getLastReviewed()));
 		}
