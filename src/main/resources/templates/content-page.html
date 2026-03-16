@@ -184,6 +184,33 @@
 						</a>
 					</div>
 				</article>
+				<article class="section-card section-card-accent" th:if="${page.geoPage and cityHubEntry != null}">
+					<h2 th:text="${'Keep moving inside ' + cityHubEntry.profile.cityName}">Keep moving inside the city</h2>
+					<p>Use the city hub when you want the fastest local path for buyers, owners, agents, or quote comparison, then branch into the next page that matches the situation.</p>
+					<div class="inline-cta-group">
+						<a class="button button-secondary" th:href="${cityHubSlug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-hub-main'">Open city hub</a>
+					</div>
+					<div class="related-card-grid" th:if="${!#lists.isEmpty(cityStarterPages)}">
+						<a class="related-page-card" th:each="starter : ${cityStarterPages}" th:href="${starter.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-starter:' + starter.title},data-event-city=${starter.geoCitySlug},data-event-geo-page=${starter.geoPage},data-event-geo-family=${starter.trackingFamily},data-event-placement='city-starter-main'">
+							<span class="card-kicker">Same city starter</span>
+							<strong th:text="${starter.title}">Starter title</strong>
+							<span class="related-page-card-text" th:text="${starter.summary}">Starter summary</span>
+						</a>
+					</div>
+					<div class="related-card-grid" th:if="${#lists.isEmpty(cityStarterPages) and !#lists.isEmpty(sameCityFamilyPages)}">
+						<a class="related-page-card" th:each="localPage : ${sameCityFamilyPages}" th:href="${localPage.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'same-city:' + localPage.title},data-event-city=${localPage.geoCitySlug},data-event-geo-page=${localPage.geoPage},data-event-geo-family=${localPage.trackingFamily},data-event-placement='same-city-main'">
+							<span class="card-kicker">Same city follow-up</span>
+							<strong th:text="${localPage.title}">Local title</strong>
+							<span class="related-page-card-text" th:text="${localPage.summary}">Local summary</span>
+						</a>
+					</div>
+				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(relatedPages)}">
 					<h2>Keep moving with the right follow-up page</h2>
 					<p>These pages usually answer the next decision users have after this one.</p>
@@ -237,6 +264,18 @@
 				<div class="rail-card" th:if="${geoProfile != null and !#strings.isEmpty(geoProfile.ctaBias)}">
 					<span class="card-kicker">How this city changes the next move</span>
 					<p th:text="${geoProfile.ctaBias}">CTA bias</p>
+				</div>
+				<div class="rail-card" th:if="${page.geoPage and cityHubEntry != null}">
+					<span class="card-kicker" th:text="${'Go back to ' + cityHubEntry.profile.cityName + ' hub'}">City hub</span>
+					<p>Use the city hub to choose the cleanest local entry page for buyers, owners, backup situations, and quote comparison.</p>
+					<a class="text-link" th:href="${cityHubSlug}"
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug=${page.slug},data-event-label=${'rail-city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='rail-city-hub'">Open city hub</a>
+					<ul class="link-list" th:if="${!#lists.isEmpty(cityStarterPages)}">
+						<li th:each="starter : ${cityStarterPages}">
+							<a th:href="${starter.slug}" th:text="${starter.title}">Starter</a>
+						</li>
+					</ul>
 				</div>
 				<div class="rail-card">
 					<span class="card-kicker">Methodology and uncertainty</span>

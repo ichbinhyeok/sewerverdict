@@ -58,6 +58,41 @@
 					</div>
 				</article>
 
+				<article class="section-card" th:if="${buyerStarter != null or coverageStarter != null or costStarter != null or defectStarter != null}">
+					<h2>Pick the path that matches the situation</h2>
+					<p>Use these starting points when you need to share one city page with a buyer, seller, owner, or agent without sending them through the whole cluster first.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:if="${buyerStarter != null}" th:href="${buyerStarter.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:buyer:' + buyerStarter.title},data-event-city=${buyerStarter.geoCitySlug},data-event-geo-page=${buyerStarter.geoPage},data-event-geo-family=${buyerStarter.trackingFamily},data-event-placement='city-scenario-buyer'">
+							<span class="card-kicker">If you are buying or negotiating</span>
+							<strong th:text="${buyerStarter.title}">Buyer starter</strong>
+							<span class="related-page-card-text" th:text="${buyerStarter.summary}">Buyer summary</span>
+						</a>
+						<a class="related-page-card" th:if="${coverageStarter != null}" th:href="${coverageStarter.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:trust:' + coverageStarter.title},data-event-city=${coverageStarter.geoCitySlug},data-event-geo-page=${coverageStarter.geoPage},data-event-geo-family=${coverageStarter.trackingFamily},data-event-placement='city-scenario-trust'">
+							<span class="card-kicker">If the first question is who owns the line</span>
+							<strong th:text="${coverageStarter.title}">Coverage starter</strong>
+							<span class="related-page-card-text" th:text="${coverageStarter.summary}">Coverage summary</span>
+						</a>
+						<a class="related-page-card" th:if="${costStarter != null}" th:href="${costStarter.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:cost:' + costStarter.title},data-event-city=${costStarter.geoCitySlug},data-event-geo-page=${costStarter.geoPage},data-event-geo-family=${costStarter.trackingFamily},data-event-placement='city-scenario-cost'">
+							<span class="card-kicker">If you are comparing repair or replacement paths</span>
+							<strong th:text="${costStarter.title}">Cost starter</strong>
+							<span class="related-page-card-text" th:text="${costStarter.summary}">Cost summary</span>
+						</a>
+						<a class="related-page-card" th:if="${defectStarter != null}" th:href="${defectStarter.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:defect:' + defectStarter.title},data-event-city=${defectStarter.geoCitySlug},data-event-geo-page=${defectStarter.geoPage},data-event-geo-family=${defectStarter.trackingFamily},data-event-placement='city-scenario-defect'">
+							<span class="card-kicker">If you already have a backup or finding</span>
+							<strong th:text="${defectStarter.title}">Defect starter</strong>
+							<span class="related-page-card-text" th:text="${defectStarter.summary}">Defect summary</span>
+						</a>
+					</div>
+				</article>
+
 				<article class="section-card" th:if="${!#lists.isEmpty(buyerPages)}">
 					<h2>Buyer and negotiation pages</h2>
 					<p>Use these when the property is under contract, the sewer history is unclear, or the next move depends on better inspection evidence.</p>

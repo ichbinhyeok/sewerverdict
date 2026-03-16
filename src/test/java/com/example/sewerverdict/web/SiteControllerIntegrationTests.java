@@ -42,6 +42,7 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Philadelphia, PA Sewer Pages")))
 			.andExpect(content().string(containsString("Start Here in Philadelphia")))
+			.andExpect(content().string(containsString("Pick the path that matches the situation")))
 			.andExpect(content().string(containsString("Responsibility and trust pages")))
 			.andExpect(content().string(containsString("Sources used for this city hub")));
 
@@ -50,6 +51,16 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Milwaukee, WI Sewer Pages")))
 			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Cost and quote-ready pages")));
+	}
+
+	@Test
+	void geoPagesLinkBackToCityHubAndCityBreadcrumbs() throws Exception {
+		mockMvc.perform(get("/cities/chicago/sewer-line-repair-vs-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"/cities/chicago/\"")))
+			.andExpect(content().string(containsString("Keep moving inside Chicago")))
+			.andExpect(content().string(containsString("Go back to Chicago hub")))
+			.andExpect(content().string(containsString("Chicago, IL")));
 	}
 
 	@Test

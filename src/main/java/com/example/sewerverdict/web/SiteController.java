@@ -117,6 +117,10 @@ public class SiteController {
 		model.addAttribute("coveragePages", coveragePages);
 		model.addAttribute("costPages", costPages);
 		model.addAttribute("defectPages", defectPages);
+		model.addAttribute("buyerStarter", firstPage(buyerPages));
+		model.addAttribute("coverageStarter", firstPage(coveragePages));
+		model.addAttribute("costStarter", firstPage(costPages));
+		model.addAttribute("defectStarter", firstPage(defectPages));
 		model.addAttribute("responsibilityRuleViews", geoProfileService.getResponsibilityRuleViews(city));
 		model.addAttribute("geoProfileSources", geoProfileService.getProfileSources(city));
 		model.addAttribute("cityHubSlug", "/cities/" + cityEntry.profile().getCitySlug() + "/");
@@ -149,19 +153,34 @@ public class SiteController {
 		"/cities/{city:[a-z0-9-]+}/{slug:[a-z0-9-]+}/"
 	})
 	public String page(HttpServletRequest request, Model model) {
+		List<SitePage> allPages = siteContentService.getAllPages();
 		SitePage page = siteContentService.requirePage(request.getRequestURI());
 		List<Breadcrumb> breadcrumbs = buildBreadcrumbs(page);
 		var pageSources = sourceRegistryService.getSourcesForPage(page);
 		var geoProfileSources = geoProfileService.getProfileSources(page).stream()
 			.filter(source -> pageSources.stream().noneMatch(existing -> existing.sourceId().equals(source.sourceId())))
 			.toList();
+		var cityHubEntry = page.isGeoPage() ? geoProfileService.getCityHubEntry(page.getGeoCitySlug(), allPages) : null;
+		var cityStarterPages = cityHubEntry == null ? List.<SitePage>of() : cityHubEntry.starterPages().stream()
+			.filter(candidate -> !candidate.getSlug().equals(page.getSlug()))
+			.limit(3)
+			.toList();
+		var sameCityFamilyPages = cityHubEntry == null ? List.<SitePage>of() : cityHubEntry.pages().stream()
+			.filter(candidate -> !candidate.getSlug().equals(page.getSlug()))
+			.filter(candidate -> candidate.getTrackingFamily().equalsIgnoreCase(page.getTrackingFamily()))
+			.limit(3)
+			.toList();
 		model.addAttribute("page", page);
 		model.addAttribute("relatedPages", siteContentService.getRelatedPages(page));
-		model.addAttribute("geoCompanionPages", geoProfileService.getGeoCompanionPages(page, siteContentService.getAllPages(), 4));
+		model.addAttribute("geoCompanionPages", geoProfileService.getGeoCompanionPages(page, allPages, 4));
 		model.addAttribute("pageSources", pageSources);
 		model.addAttribute("geoProfile", geoProfileService.getProfileForPage(page));
 		model.addAttribute("geoProfileSources", geoProfileSources);
 		model.addAttribute("responsibilityRuleViews", geoProfileService.getResponsibilityRuleViews(page));
+		model.addAttribute("cityHubEntry", cityHubEntry);
+		model.addAttribute("cityHubSlug", cityHubEntry == null ? null : "/cities/" + cityHubEntry.profile().getCitySlug() + "/");
+		model.addAttribute("cityStarterPages", cityStarterPages);
+		model.addAttribute("sameCityFamilyPages", sameCityFamilyPages);
 		model.addAttribute("pageTitle", page.getMetaTitle());
 		model.addAttribute("metaDescription", page.getMetaDescription());
 		model.addAttribute("breadcrumbs", breadcrumbs);
@@ -171,6 +190,16 @@ public class SiteController {
 
 	private List<Breadcrumb> buildBreadcrumbs(SitePage page) {
 		if (page.isGeoPage()) {
+			var geoProfile = geoProfileService.getProfileForPage(page);
+			if (geoProfile != null) {
+				return List.of(
+					new Breadcrumb("Home", "/"),
+					new Breadcrumb("Cities", "/cities/"),
+					new Breadcrumb(geoProfile.getCityName() + ", " + geoProfile.getStateCode(),
+						"/cities/" + geoProfile.getCitySlug() + "/"),
+					new Breadcrumb(page.getTitle(), page.getSlug())
+				);
+			}
 			SitePage nationalCounterpart = siteContentService.getRelatedPages(page).stream().findFirst().orElse(null);
 			return List.of(
 				new Breadcrumb("Home", "/"),
@@ -214,6 +243,10 @@ public class SiteController {
 		item.setQuestion(question);
 		item.setAnswer(answer);
 		return item;
+	}
+
+	private SitePage firstPage(List<SitePage> pages) {
+		return pages == null || pages.isEmpty() ? null : pages.get(0);
 	}
 
 	public record Breadcrumb(String label, String href) {
