@@ -3,6 +3,7 @@
 This file is the project anchor for AI coding sessions in this repository.
 Use it as the working execution brief.
 Visual and UX direction is fixed in `DESIGN.md`.
+Pre-deploy judgment and prioritization are fixed in `PREDEPLOY_PERSONA_COUNCIL.md`.
 
 ## Mission
 
@@ -55,6 +56,18 @@ When deciding what to build, ship, or polish, prefer the option that more direct
 6. partner-friendly inspection-first conversion paths
 
 If a feature does not clearly help ranking, trust, conversion, attribution, or monetization, deprioritize it.
+
+## Pre-Deploy Filter
+
+Before deployment, prefer the change that improves one of these fastest:
+
+1. trust on first screen
+2. mobile composure on iPhone SE width
+3. decision clarity on money and buyer pages
+4. shareability with agents, sellers, inspectors, and contractors
+5. inspection-first versus quote-first routing accuracy
+
+If a pre-deploy change is visually clever but does not improve one of the five items above, it is usually a delay item.
 
 ## Keyword And Route Rules
 
