@@ -1,0 +1,14 @@
+services:
+  sewerclarity:
+    image: shinhyeok22/sewer:latest
+    container_name: sewerclarity
+    restart: unless-stopped
+    ports:
+      - "8091:8080"
+    environment:
+      APP_STORAGE_ROOT: /app/storage
+      APP_CONTACT_EMAIL: contact@sewerclarity.com
+      JAVA_OPTS: -XX:+UseSerialGC -Xms256m -Xmx384m -Xss512k
+    volumes:
+      - ./storage:/app/storage
+    mem_limit: 512m
