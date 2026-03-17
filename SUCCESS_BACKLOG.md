@@ -1,4 +1,4 @@
-# SewerVerdict Success Backlog
+# SewerClarity Success Backlog
 
 This file turns `SUCCESS_COUNCIL.md` into the **current** execution queue.
 It is no longer a pre-build backlog.
@@ -151,3 +151,4 @@ When unsure what to do next, ask:
 5. will this matter in the next 6 months?
 
 If not, it can wait.
+

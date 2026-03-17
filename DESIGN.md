@@ -1,6 +1,6 @@
-# SewerVerdict Design Anchor
+# SewerClarity Design Anchor
 
-This file fixes the visual and UX direction for SewerVerdict.
+This file fixes the visual and UX direction for SewerClarity.
 Use it with `AGENTS.md`.
 
 The goal is not generic "nice design."
@@ -15,7 +15,7 @@ Design quality must help the business reach the revenue target by increasing tru
 
 ## Chosen Direction
 
-The primary design direction for SewerVerdict is:
+The primary design direction for SewerClarity is:
 
 **home due-diligence desk**
 
@@ -49,7 +49,7 @@ But not:
 
 ## Design Thesis
 
-SewerVerdict should feel like:
+SewerClarity should feel like:
 
 - a calm homeowner decision utility
 - a trustworthy inspection and cost explainer
@@ -259,7 +259,7 @@ Rules:
 
 ## Modernity Standard
 
-SewerVerdict should feel like a product built now, not five years ago.
+SewerClarity should feel like a product built now, not five years ago.
 
 Use modern patterns such as:
 
@@ -672,7 +672,7 @@ choose the reusable component.
 
 ## Final Standard
 
-SewerVerdict should look like the most trustworthy page a stressed homeowner can land on when trying to understand a buried sewer-line problem.
+SewerClarity should look like the most trustworthy page a stressed homeowner can land on when trying to understand a buried sewer-line problem.
 
 It should make users think:
 
@@ -685,3 +685,4 @@ It should make users think:
 not:
 
 - "this is trying to sell me before helping me"
+

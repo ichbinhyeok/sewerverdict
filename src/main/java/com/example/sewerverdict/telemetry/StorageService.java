@@ -88,7 +88,7 @@ public class StorageService {
 			errors.put("phone", "Add a phone number so inspection or quote follow-up is possible.");
 		}
 		if (!form.isConsentGiven()) {
-			errors.put("consentGiven", "Consent is required before SewerVerdict can pass this request forward.");
+			errors.put("consentGiven", "Consent is required before SewerClarity can pass this request forward.");
 		}
 		return errors;
 	}
@@ -301,3 +301,4 @@ public class StorageService {
 		}
 	}
 }
+

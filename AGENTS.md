@@ -1,4 +1,4 @@
-# SewerVerdict Agent Anchor
+# SewerClarity Agent Anchor
 
 This file is the project anchor for AI coding sessions in this repository.
 Use it as the working execution brief.
@@ -9,7 +9,7 @@ execution triage is fixed in `SUCCESS_BACKLOG.md`.
 
 ## Mission
 
-Build **SewerVerdict** as a real, launchable V1.5 for a US audience.
+Build **SewerClarity** as a real, launchable V1.5 for a US audience.
 
 Primary business target:
 
@@ -182,7 +182,7 @@ These are the surfaces that matter most for the 6-month target.
 - ship the smallest implementation that materially improves launch readiness
 - bias toward revenue-relevant surfaces over completeness for its own sake
 
-## What SewerVerdict Is
+## What SewerClarity Is
 
 - a sewer-scope decision tool
 - a buried-line risk explainer
@@ -190,7 +190,7 @@ These are the surfaces that matter most for the 6-month target.
 - a cost-band explainer with uncertainty disclosure
 - a lead generation system for sewer inspection and repair demand
 
-## What SewerVerdict Is Not
+## What SewerClarity Is Not
 
 - generic plumbing SEO
 - a local plumber microsite
@@ -546,3 +546,4 @@ When working in this repository:
   - where trust/compliance language was added
   - what still blocks launch, if anything
   - whether the change helps the revenue spine directly or indirectly
+

@@ -186,15 +186,16 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/editorial-standards/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Editorial Standards")))
-			.andExpect(content().string(containsString("What SewerVerdict will not claim")))
-			.andExpect(content().string(containsString("contact@sewerverdict.com")))
+			.andExpect(content().string(containsString("What SewerClarity will not claim")))
+			.andExpect(content().string(containsString("contact@sewerclarity.com")))
 			.andExpect(content().string(containsString("Privacy")));
 
 		mockMvc.perform(get("/privacy/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Privacy and Data Handling")))
-			.andExpect(content().string(containsString("What SewerVerdict collects")))
+			.andExpect(content().string(containsString("What SewerClarity collects")))
 			.andExpect(content().string(containsString("When information may be shared")))
-			.andExpect(content().string(containsString("mailto:contact@sewerverdict.com")));
+			.andExpect(content().string(containsString("mailto:contact@sewerclarity.com")));
 	}
 }
+

@@ -35,7 +35,7 @@ public class SiteController {
 
 	@GetMapping("/")
 	public String home(HttpServletRequest request, Model model) {
-		model.addAttribute("pageTitle", "SewerVerdict | Sewer scope risk and next-step estimator");
+		model.addAttribute("pageTitle", "SewerClarity | Sewer scope risk and next-step estimator");
 		model.addAttribute("metaDescription",
 			"Calm, buyer-first sewer scope risk guidance for buyers, sellers, and owners. Estimate the next step, understand cost direction, and find inspection or quote paths.");
 		model.addAttribute("featuredPages", siteContentService.getFeaturedPages(List.of(
@@ -67,7 +67,7 @@ public class SiteController {
 		);
 		model.addAttribute("homeFaq", homeFaq);
 		seoMetadataService.apply(model, request,
-			"SewerVerdict | Sewer scope risk and next-step estimator",
+			"SewerClarity | Sewer scope risk and next-step estimator",
 			"Calm, buyer-first sewer scope risk guidance for buyers, sellers, and owners. Estimate the next step, understand cost direction, and find inspection or quote paths.",
 			"website",
 			List.of(new Breadcrumb("Home", "/")),
@@ -79,13 +79,13 @@ public class SiteController {
 	@GetMapping({"/cities", "/cities/"})
 	public String cities(HttpServletRequest request, Model model) {
 		List<SitePage> allPages = siteContentService.getAllPages();
-		model.addAttribute("pageTitle", "Cities | SewerVerdict");
+		model.addAttribute("pageTitle", "Cities | SewerClarity");
 		model.addAttribute("metaDescription",
 			"City-specific sewer risk pages that connect national guides to local housing age, system context, and responsibility signals.");
 		model.addAttribute("tierOneCities", geoProfileService.getCityHubEntriesByTier(allPages, "tier-1"));
 		model.addAttribute("tierTwoCities", geoProfileService.getCityHubEntriesByTier(allPages, "tier-2"));
 		seoMetadataService.apply(model, request,
-			"Cities | SewerVerdict",
+			"Cities | SewerClarity",
 			"City-specific sewer risk pages that connect national guides to local housing age, system context, and responsibility signals.",
 			"website",
 			List.of(
@@ -126,12 +126,12 @@ public class SiteController {
 		model.addAttribute("cityHubSlug", "/cities/" + cityEntry.profile().getCitySlug() + "/");
 		model.addAttribute("secondaryStarter", secondaryStarter);
 		model.addAttribute("pageTitle",
-			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerVerdict");
+			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerClarity");
 		model.addAttribute("metaDescription",
 			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
 				+ ", from buyer-first inspection pages to responsibility, backup, and quote-ready comparison guides.");
 		seoMetadataService.apply(model, request,
-			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerVerdict",
+			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerClarity",
 			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
 				+ ", from buyer-first inspection pages to responsibility, backup, and quote-ready comparison guides.",
 			"website",
@@ -252,3 +252,4 @@ public class SiteController {
 	public record Breadcrumb(String label, String href) {
 	}
 }
+

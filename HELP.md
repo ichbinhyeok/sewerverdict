@@ -1,11 +1,11 @@
-# SewerVerdict Engineering Help
+# SewerClarity Engineering Help
 
 This file replaces the Spring Boot boilerplate help page.
 Use it as the quick operational reference for the current repo state.
 
 ## What This Repo Is
 
-SewerVerdict is a server-rendered Spring Boot site for:
+SewerClarity is a server-rendered Spring Boot site for:
 
 - buyer-first sewer scope decisions
 - defect interpretation
@@ -143,3 +143,4 @@ If you are resuming work from the current repo state, the best next areas are:
 3. reduce lead and estimator friction further
 4. weight city hubs and internal links using real data
 5. add the next national pages only after current winners stabilize
+

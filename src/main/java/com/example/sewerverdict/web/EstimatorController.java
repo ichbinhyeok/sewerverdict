@@ -36,11 +36,11 @@ public class EstimatorController {
 
 	@GetMapping({"/estimator", "/estimator/"})
 	public String estimator(@ModelAttribute("form") EstimatorForm form, HttpServletRequest request, Model model) {
-		model.addAttribute("pageTitle", "Estimator | SewerVerdict");
+		model.addAttribute("pageTitle", "Estimator | SewerClarity");
 		model.addAttribute("metaDescription",
 			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.");
 		seoMetadataService.apply(model, request,
-			"Estimator | SewerVerdict",
+			"Estimator | SewerClarity",
 			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.",
 			"website",
 			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Estimator", "/estimator/")),
@@ -74,7 +74,7 @@ public class EstimatorController {
 		payload.put("routingBucket", result.routingBucket());
 		storageService.logEvent("estimator_complete", "/estimator/results/", request.getHeader("Referer"), sessionId, payload);
 
-		model.addAttribute("pageTitle", "Estimator results | SewerVerdict");
+		model.addAttribute("pageTitle", "Estimator results | SewerClarity");
 		model.addAttribute("metaDescription", "Educational next-step estimate for sewer scope and sewer line risk.");
 		model.addAttribute("noindex", true);
 		model.addAttribute("result", result);
@@ -112,3 +112,4 @@ public class EstimatorController {
 		}
 	}
 }
+

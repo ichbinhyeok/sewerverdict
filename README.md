@@ -1,6 +1,6 @@
-# SewerVerdict
+# SewerClarity
 
-SewerVerdict is a buyer-first sewer scope and sewer-line risk decision site for a US audience.
+SewerClarity is a buyer-first sewer scope and sewer-line risk decision site for a US audience.
 It is built as a server-rendered Spring Boot product with file-backed content, geo data, and attribution storage.
 
 ## What It Does
@@ -71,3 +71,4 @@ Runtime JSONL files are written under `storage/`:
 - `SUCCESS_COUNCIL.md` for six-month success rules
 - `SUCCESS_BACKLOG.md` for the current backlog
 - `HELP.md` for engineering operations
+

@@ -171,7 +171,7 @@ class LeadFlowIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Please check the highlighted fields and consent box before submitting.")))
 			.andExpect(content().string(containsString("Add the ZIP or city so the request anchors to a real market.")))
-			.andExpect(content().string(containsString("Consent is required before SewerVerdict can pass this request forward.")));
+			.andExpect(content().string(containsString("Consent is required before SewerClarity can pass this request forward.")));
 
 		String events = Files.readString(EVENTS_FILE);
 		org.junit.jupiter.api.Assertions.assertTrue(events.contains("\"eventType\":\"lead_submit_invalid\""));
@@ -184,7 +184,7 @@ class LeadFlowIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("privacy page")))
 			.andExpect(content().string(containsString("/privacy/")))
-			.andExpect(content().string(containsString("contact@sewerverdict.com")));
+			.andExpect(content().string(containsString("contact@sewerclarity.com")));
 	}
 
 	private static Path createTempStorageRoot() {
@@ -196,3 +196,4 @@ class LeadFlowIntegrationTests {
 		}
 	}
 }
+

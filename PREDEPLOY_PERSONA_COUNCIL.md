@@ -1,6 +1,6 @@
-# SewerVerdict Pre-Deploy Persona Council
+# SewerClarity Pre-Deploy Persona Council
 
-This file captures the smartest pre-deploy arguments for SewerVerdict.
+This file captures the smartest pre-deploy arguments for SewerClarity.
 Use it before launch-day polishing.
 
 Purpose:
@@ -28,7 +28,7 @@ Hard argument:
 
 - Cost SERPs are already occupied by broad home-improvement publishers.
 - A new domain usually loses if it publishes the same "average cost plus drivers" page in weaker brand form.
-- SewerVerdict should win on information gain:
+- SewerClarity should win on information gain:
   - better next-step framing
   - clearer risk ranking
   - stronger issue comparison
@@ -68,7 +68,7 @@ Demand:
 
 Decision:
 
-- SewerVerdict must feel safe to send to an agent or seller.
+- SewerClarity must feel safe to send to an agent or seller.
 
 ### 3. The Share Recipient
 
@@ -169,7 +169,7 @@ Decision:
 
 The council agrees on five things:
 
-1. SewerVerdict should win as a decision utility, not as a generic home-improvement publisher.
+1. SewerClarity should win as a decision utility, not as a generic home-improvement publisher.
 2. Buyer-intent and defect-interpretation pages are more strategically valuable than broad generic plumbing expansion.
 3. Trust cues are product features, not support material.
 4. Mobile polish is part of conversion, not a later phase.
@@ -206,3 +206,4 @@ The right question is:
 - "does this feel trustworthy enough, useful enough, and sharp enough to earn one real lead from one real anxious homeowner?"
 
 If the answer becomes yes repeatedly, the site has a path.
+

@@ -321,7 +321,7 @@ public class EstimatorService {
 
 	private String buildSummary(EstimatorForm form, DecisionProfile decision, List<String> uncertaintyDrivers) {
 		return """
-			SewerVerdict next-step summary
+			SewerClarity next-step summary
 			Location: %s
 			Role: %s
 			Current situation: %s
@@ -374,3 +374,4 @@ public class EstimatorService {
 	) {
 	}
 }
+

@@ -3,11 +3,11 @@
 <head th:fragment="head(title, description, noindex)">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title th:text="${title}">SewerVerdict</title>
+	<title th:text="${title}">SewerClarity</title>
 	<meta name="description" th:content="${description}">
 	<meta name="robots" content="index,follow" th:content="${noindex} ? 'noindex,nofollow' : 'index,follow'">
 	<link rel="canonical" th:if="${canonicalUrl}" th:href="${canonicalUrl}">
-	<meta property="og:site_name" content="SewerVerdict">
+	<meta property="og:site_name" content="SewerClarity">
 	<meta property="og:title" th:content="${title}">
 	<meta property="og:description" th:content="${description}">
 	<meta property="og:type" th:if="${ogType}" th:content="${ogType}">
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<div class="container nav-shell">
-		<a class="brand" th:href="@{/}">SewerVerdict</a>
+		<a class="brand" th:href="@{/}">SewerClarity</a>
 		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
 			<span></span>
 			<span></span>
@@ -57,7 +57,7 @@
 <footer class="site-footer" th:fragment="footer">
 	<div class="container footer-grid">
 		<div>
-			<div class="footer-title">SewerVerdict</div>
+			<div class="footer-title">SewerClarity</div>
 			<p class="footer-copy">Buyer-first sewer scope risk and next-step guidance for buyers, sellers, and owners.</p>
 			<div class="footer-trust">
 				<div>Reviewed by homeowner research editor and plumbing-risk content reviewer.</div>
@@ -65,7 +65,7 @@
 				<div>Educational guidance only. Not engineering, legal, or insurance advice.</div>
 				<div th:if="${contactEmail}">
 					Questions, corrections, or privacy requests:
-					<a th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerverdict.com</a>
+					<a th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerclarity.com</a>
 				</div>
 			</div>
 		</div>
@@ -83,3 +83,4 @@
 </footer>
 </body>
 </html>
+

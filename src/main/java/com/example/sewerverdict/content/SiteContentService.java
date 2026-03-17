@@ -87,7 +87,7 @@ public class SiteContentService {
 					page.setReviewerRole("Plumbing-risk content reviewer");
 				}
 				if (!StringUtils.hasText(page.getSourceNote())) {
-					page.setSourceNote("Reviewed against the SewerVerdict source registry and range-based methodology.");
+					page.setSourceNote("Reviewed against the SewerClarity source registry and range-based methodology.");
 				}
 			});
 			return loadedPages;
@@ -105,3 +105,4 @@ public class SiteContentService {
 		return value.endsWith("/") ? value : value + "/";
 	}
 }
+

@@ -58,7 +58,7 @@ public class SeoMetadataService {
 		Map<String, Object> schema = new LinkedHashMap<>();
 		schema.put("@context", "https://schema.org");
 		schema.put("@type", "Organization");
-		schema.put("name", "SewerVerdict");
+		schema.put("name", "SewerClarity");
 		schema.put("url", origin);
 		schema.put("description", "Buyer-first sewer scope risk and next-step guidance for buyers, sellers, and owners.");
 		if (StringUtils.hasText(contactEmail)) {
@@ -110,7 +110,7 @@ public class SeoMetadataService {
 		schema.put("mainEntityOfPage", canonicalUrl);
 		schema.put("author", Map.of("@type", "Person", "name", "Homeowner research editor"));
 		schema.put("reviewedBy", Map.of("@type", "Person", "name", "Plumbing-risk content reviewer"));
-		schema.put("publisher", Map.of("@type", "Organization", "name", "SewerVerdict"));
+		schema.put("publisher", Map.of("@type", "Organization", "name", "SewerClarity"));
 		return schema;
 	}
 
@@ -127,3 +127,4 @@ public class SeoMetadataService {
 		return canonicalUrl.replaceFirst("^(https?://[^/]+).*$", "$1");
 	}
 }
+

@@ -1,6 +1,6 @@
-# SewerVerdict Success Council
+# SewerClarity Success Council
 
-This file is the hard-edged success doctrine for SewerVerdict.
+This file is the hard-edged success doctrine for SewerClarity.
 It exists to reduce the main ways this project could fail in the first 6 months.
 
 Use it when deciding:
@@ -199,7 +199,7 @@ Decision:
 
 The council agrees on seven truths:
 
-1. SewerVerdict wins as a decision utility, not as a broad publisher.
+1. SewerClarity wins as a decision utility, not as a broad publisher.
 2. Buyer-intent and defect-intent are the real moat.
 3. Trust must appear on the first screen, especially on mobile.
 4. Inspection-first routing is a strategic advantage, not a compromise.
@@ -254,7 +254,7 @@ If the answer is mostly no, cut it.
 
 ## Final Council Call
 
-SewerVerdict does not need to look unbeatable.
+SewerClarity does not need to look unbeatable.
 It needs to become hard to dismiss.
 
 That means:
@@ -266,3 +266,4 @@ That means:
 - more honest than lead traps
 
 If that standard is met consistently, the project earns its path.
+

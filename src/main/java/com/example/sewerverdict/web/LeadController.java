@@ -49,7 +49,7 @@ public class LeadController {
 			),
 			"/find-sewer-scope/"
 		);
-		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerVerdict",
+		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerClarity",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
 			"website",
 			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Find sewer camera inspection options", "/find-sewer-scope/")),
@@ -76,7 +76,7 @@ public class LeadController {
 			),
 			"/find-sewer-scope/"
 		);
-		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerVerdict",
+		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerClarity",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
 			"website",
 			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Find sewer camera inspection options", "/find-sewer-scope/")),
@@ -106,7 +106,7 @@ public class LeadController {
 			),
 			"/get-sewer-quotes/"
 		);
-		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerVerdict",
+		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerClarity",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
 			"website",
 			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Get sewer repair or replacement quotes", "/get-sewer-quotes/")),
@@ -133,7 +133,7 @@ public class LeadController {
 			),
 			"/get-sewer-quotes/"
 		);
-		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerVerdict",
+		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerClarity",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
 			"website",
 			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Get sewer repair or replacement quotes", "/get-sewer-quotes/")),
@@ -176,7 +176,7 @@ public class LeadController {
 	}
 
 	private void populateLeadModel(Model model, String title, String summary, List<String> highlights, String formAction) {
-		model.addAttribute("pageTitle", title + " | SewerVerdict");
+		model.addAttribute("pageTitle", title + " | SewerClarity");
 		model.addAttribute("metaDescription", summary);
 		model.addAttribute("leadTitle", title);
 		model.addAttribute("leadSummary", summary);
@@ -196,3 +196,4 @@ public class LeadController {
 		return payload;
 	}
 }
+

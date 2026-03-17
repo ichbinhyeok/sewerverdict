@@ -293,7 +293,7 @@
 				<div class="rail-card">
 					<span class="card-kicker">Corrections, contact, and privacy</span>
 					<p>Use the contact address below if you need to flag a source issue, ask about data handling, or request a correction before relying on the page.</p>
-					<a class="text-link" th:if="${contactEmail}" th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerverdict.com</a>
+					<a class="text-link" th:if="${contactEmail}" th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerclarity.com</a>
 					<div class="meta-links">
 						<a class="text-link" th:href="@{/editorial-standards/}">Editorial standards</a>
 						<a class="text-link" th:href="@{/privacy/}">Privacy</a>
@@ -313,7 +313,7 @@
 					<ul class="link-list source-list">
 						<li th:each="source : ${geoProfileSources}">
 							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
-							<span class="source-meta" th:text="${source.sourceClass + ' ì¨Œ ' + source.jurisdiction + ' ì¨Œ verified ' + source.lastVerified}">Source meta</span>
+							<span class="source-meta" th:text="${source.sourceClass + ' ì¨?' + source.jurisdiction + ' ì¨?verified ' + source.lastVerified}">Source meta</span>
 						</li>
 					</ul>
 				</div>
@@ -341,3 +341,4 @@
 <footer th:replace="~{fragments :: footer}"></footer>
 </body>
 </html>
+
