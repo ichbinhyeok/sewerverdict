@@ -75,14 +75,20 @@
 			</div>
 		</div>
 		<div class="footer-links">
-			<a th:href="@{/methodology/}">Methodology</a>
-			<a th:href="@{/how-we-estimate-sewer-line-costs/}">How We Estimate Costs</a>
-			<a th:href="@{/editorial-standards/}">Editorial Standards</a>
-			<a th:href="@{/homeowner-vs-city-sewer-responsibility/}">Homeowner vs City</a>
-			<a th:href="@{/about-how-this-site-is-researched/}">Research</a>
-			<a th:href="@{/privacy/}">Privacy</a>
-			<a th:href="@{/disclaimer/}">Disclaimer</a>
-			<a th:href="@{/about/}">About</a>
+			<div class="footer-link-group">
+				<div class="footer-link-label">Standards</div>
+				<a th:href="@{/methodology/}">Methodology</a>
+				<a th:href="@{/how-we-estimate-sewer-line-costs/}">How We Estimate Costs</a>
+				<a th:href="@{/editorial-standards/}">Editorial Standards</a>
+				<a th:href="@{/privacy/}">Privacy</a>
+			</div>
+			<div class="footer-link-group">
+				<div class="footer-link-label">Context</div>
+				<a th:href="@{/homeowner-vs-city-sewer-responsibility/}">Homeowner vs City</a>
+				<a th:href="@{/about-how-this-site-is-researched/}">Research</a>
+				<a th:href="@{/disclaimer/}">Disclaimer</a>
+				<a th:href="@{/about/}">About</a>
+			</div>
 		</div>
 	</div>
 </footer>
