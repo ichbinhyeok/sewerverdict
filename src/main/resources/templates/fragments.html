@@ -16,6 +16,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<script th:if="${gaMeasurementId}" async th:src="'https://www.googletagmanager.com/gtag/js?id=' + ${gaMeasurementId}"></script>
+	<script th:if="${gaMeasurementId}" th:inline="javascript">
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		window.gtag = window.gtag || gtag;
+		gtag('js', new Date());
+		gtag('config', [[${gaMeasurementId}]]);
+	</script>
 	<link rel="stylesheet" th:href="@{/site.css}">
 	<script defer th:src="@{/site.js}"></script>
 	<script th:each="schema : ${schemaScripts}" type="application/ld+json" th:utext="${schema}"></script>

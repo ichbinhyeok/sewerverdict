@@ -11,11 +11,51 @@ const ATTRIBUTION_PARAM_ALIASES = {
 	gbraid: ["gbraid"]
 };
 const ATTRIBUTION_KEYS = Object.keys(ATTRIBUTION_PARAM_ALIASES);
+const ANALYTICS_PARAM_ALIASES = {
+	draftId: "draft_id",
+	route: "route_bucket",
+	step: "wizard_step",
+	city: "city_slug",
+	geoPage: "geo_page",
+	geoFamily: "geo_family",
+	placement: "placement",
+	serviceNeeded: "service_needed",
+	riskTier: "risk_tier"
+};
+
+function toAnalyticsParams(pageSlug, label, metadata = {}) {
+	const params = {};
+	if (pageSlug) {
+		params.page_slug = pageSlug;
+	}
+	if (label) {
+		params.event_label = label;
+	}
+	Object.entries(ANALYTICS_PARAM_ALIASES).forEach(([sourceKey, analyticsKey]) => {
+		const value = metadata[sourceKey];
+		if (value !== undefined && value !== null && String(value).trim() !== "") {
+			params[analyticsKey] = String(value);
+		}
+	});
+	return params;
+}
+
+function trackAnalyticsEvent(eventType, pageSlug, label, metadata = {}) {
+	if (!eventType || typeof window.gtag !== "function") {
+		return;
+	}
+	const params = toAnalyticsParams(pageSlug, label, metadata);
+	window.gtag("event", eventType, params);
+	if (eventType === "lead_submit") {
+		window.gtag("event", "generate_lead", params);
+	}
+}
 
 function postEvent(eventType, pageSlug, label, metadata = {}) {
 	if (!eventType || !pageSlug) {
 		return;
 	}
+	trackAnalyticsEvent(eventType, pageSlug, label, metadata);
 	const payload = JSON.stringify({ eventType, pageSlug, label, metadata });
 	if (navigator.sendBeacon) {
 		navigator.sendBeacon(EVENT_URL, new Blob([payload], { type: "application/json" }));
@@ -122,6 +162,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	const attribution = persistAttribution();
 	applyAttributionToLinks(attribution);
 	applyAttributionToForms(attribution);
+	document.querySelectorAll("[data-ga-event]").forEach((node) => {
+		trackAnalyticsEvent(node.dataset.gaEvent, node.dataset.gaPageSlug || window.location.pathname,
+			node.dataset.gaLabel || "", {
+				draftId: node.dataset.gaDraftId || "",
+				route: node.dataset.gaRoute || "",
+				serviceNeeded: node.dataset.gaServiceNeeded || "",
+				riskTier: node.dataset.gaRiskTier || ""
+			});
+	});
 	const revealAndFocus = (element) => {
 		if (!element) {
 			return;
@@ -308,6 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	document.querySelectorAll("form[data-lead-form]").forEach((form) => {
+		trackAnalyticsEvent("lead_form_view", form.dataset.pageSlug || window.location.pathname, "lead-form-view");
 		const formError = form.parentElement?.querySelector("[data-form-error]");
 		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		const fieldConfigs = {
@@ -401,6 +451,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				return;
 			}
 			event.preventDefault();
+			postEvent("lead_submit_invalid", form.dataset.pageSlug || window.location.pathname, "lead-submit-invalid", {
+				serviceNeeded: controlFor("serviceNeeded")?.value || ""
+			});
 			setFormError("Please fix the highlighted fields before submitting.");
 			const firstField = controlFor(invalid[0].name);
 			revealAndFocus(firstField || formError || form);

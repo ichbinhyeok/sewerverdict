@@ -6,7 +6,9 @@
 
 <main>
 	<section class="page-hero">
-		<div class="container result-hero-shell">
+		<div class="container result-hero-shell"
+		     data-ga-event="estimator_complete"
+		     th:attr="data-ga-page-slug='/estimator/results/',data-ga-label=${result.routingBucket},data-ga-route=${result.routingBucket},data-ga-draft-id=${draftId}">
 			<div class="hero-copy">
 				<span class="eyebrow">Estimator result</span>
 				<div class="trust-strip trust-strip-compact result-context-strip">

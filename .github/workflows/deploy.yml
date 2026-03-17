@@ -70,6 +70,7 @@ jobs:
                 environment:
                   APP_STORAGE_ROOT: /app/storage
                   APP_CONTACT_EMAIL: contact@sewerclarity.com
+                  APP_GA4_MEASUREMENT_ID: G-V2CM3MD07G
                   JAVA_OPTS: -XX:+UseSerialGC -Xms256m -Xmx384m -Xss512k
                 volumes:
                   - ./storage:/app/storage

@@ -31,9 +31,14 @@
 					<span class="card-kicker">Routing note</span>
 					<p>These details are used to match the next inspection or quote path more credibly. The form is intentionally short.</p>
 				</div>
-				<div class="form-success" th:if="${successMessage}" th:text="${successMessage}">Success</div>
+				<div class="form-success"
+					 th:if="${successMessage}"
+					 data-ga-event="lead_submit"
+					 th:attr="data-ga-page-slug=${formAction},data-ga-label='lead-submit-success',data-ga-service-needed=${leadForm.serviceNeeded},data-ga-route=${leadForm.recommendedServicePath}"
+					 th:text="${successMessage}">Success</div>
 				<div class="form-error" data-form-error role="alert" aria-live="polite" th:hidden="${formError == null}" th:text="${formError ?: 'Please fix the highlighted fields before submitting.'}">Error</div>
-				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form" data-preserve-attribution data-lead-form novalidate>
+				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form" data-preserve-attribution data-lead-form novalidate
+				      th:attr="data-page-slug=${formAction}">
 					<input th:field="*{draftId}" type="hidden">
 					<input th:field="*{recommendedServicePath}" type="hidden">
 					<input th:field="*{utmSource}" type="hidden">
