@@ -1616,7 +1616,7 @@
     ],
     "relatedSlugs": [
       "/how-we-estimate-sewer-line-costs/",
-      "/disclaimer/"
+      "/editorial-standards/"
     ]
   },
   {
@@ -1709,7 +1709,7 @@
     ],
     "relatedSlugs": [
       "/methodology/",
-      "/disclaimer/"
+      "/editorial-standards/"
     ]
   },
   {
@@ -1738,7 +1738,7 @@
       "Which part of the decision requires a source check?"
     ],
     "relatedSlugs": [
-      "/methodology/",
+      "/privacy/",
       "/homeowner-vs-city-sewer-responsibility/"
     ]
   },
@@ -1768,8 +1768,189 @@
       "Why does it emphasize uncertainty language so strongly?"
     ],
     "relatedSlugs": [
+      "/editorial-standards/",
+      "/privacy/"
+    ]
+  },
+  {
+    "slug": "/editorial-standards/",
+    "family": "trust",
+    "title": "Editorial Standards",
+    "metaTitle": "Editorial Standards | SewerVerdict",
+    "metaDescription": "See what SewerVerdict will publish, what it will not claim, how pages are reviewed, and how corrections are handled.",
+    "eyebrow": "Trust page",
+    "summary": "A plain-English explanation of the editorial rules that keep SewerVerdict useful without pretending to offer licensed diagnosis, legal certainty, or insurance certainty.",
+    "quickAnswer": "SewerVerdict publishes source-backed, uncertainty-aware pages built to help buyers, sellers, and owners decide the next move without fake precision.",
+    "seriousness": "Editorial standards matter here because sewer pages can influence inspections, negotiations, repair budgets, and coverage assumptions.",
+    "nextStep": "Use this page if you want to understand why the site favors calm ranges, official local sources, and evidence-first routing over louder claims.",
+    "costDirection": "The editorial rules directly affect cost content by forcing wide bands, clearer modifiers, and less false confidence.",
+    "uncertainty": "These standards improve the quality of guidance, but they do not replace a real sewer scope, quote, legal review, or coverage confirmation.",
+    "primaryCtaLabel": "Read methodology",
+    "primaryCtaHref": "/methodology/",
+    "secondaryCtaLabel": "Read privacy page",
+    "secondaryCtaHref": "/privacy/",
+    "sections": [
+      {
+        "anchor": "what-gets-published",
+        "title": "What SewerVerdict will publish",
+        "intro": "The site is intentionally narrow. It publishes pages that help a buyer, seller, or owner make a real next-step decision.",
+        "bullets": [
+          "Buyer-under-contract, defect-interpretation, cost-band, and responsibility-support topics are in scope.",
+          "Pages need a clear decision angle, not just generic plumbing traffic potential.",
+          "Local pages need a real local signal such as housing age, utility boundary, system context, or program caveat.",
+          "Trust pages are treated as conversion support, not filler."
+        ]
+      },
+      {
+        "anchor": "what-we-will-not-claim",
+        "title": "What SewerVerdict will not claim",
+        "intro": "The site is designed to reduce panic and false certainty at the same time.",
+        "bullets": [
+          "No fake diagnosis without inspection-grade evidence.",
+          "No claim that a seller must pay, a buyer is owed a credit, or the city is automatically responsible.",
+          "No assumption that sewer-line insurance or service-line coverage is standard or guaranteed.",
+          "No invented licenses, institutions, or reviewer credentials."
+        ],
+        "note": "If a question needs legal, insurance, or property-specific confirmation, the page should say so directly."
+      },
+      {
+        "anchor": "review-and-refresh",
+        "title": "How pages are reviewed and refreshed",
+        "intro": "Different source classes carry different weight, and the site is explicit about that.",
+        "bullets": [
+          "Official utility, city, insurer, and program pages outrank broad publisher summaries when responsibility or coverage is involved.",
+          "Broad cost publishers are used as market sanity checks, not as the only authority.",
+          "Every page carries a review date, source note, and methodology path.",
+          "Pages are meant to be tightened when new evidence, better local sources, or live search data show a better framing."
+        ]
+      },
+      {
+        "anchor": "corrections",
+        "title": "How corrections work",
+        "intro": "A trust-first site should make it obvious how to challenge a claim or ask for a correction.",
+        "bullets": [
+          "Use the contact address shown on the site if a source is outdated, broken, or materially misread.",
+          "Include the page URL, the claim in question, and the better source if you have one.",
+          "SewerVerdict can revise or clarify pages without pretending every situation fits one national answer.",
+          "Correction requests are part of product maintenance, not an afterthought."
+        ]
+      }
+    ],
+    "highlights": [
+      "No fake certainty is a publishing rule, not just a writing preference.",
+      "Local pages need a genuine local angle before they go live."
+    ],
+    "questions": [
+      "Does this page help a real next-step decision, or just chase a keyword?",
+      "Would this wording still feel honest if a buyer forwarded it to an agent or seller?"
+    ],
+    "faq": [
+      {
+        "question": "Does SewerVerdict claim to be a licensed inspection or legal service?",
+        "answer": "No. The product is educational and routing-focused. It is designed to support the next step, not replace licensed or property-specific advice."
+      },
+      {
+        "question": "Why does the site use ranges instead of tighter numbers?",
+        "answer": "Because access, restoration, method fit, and evidence quality can move sewer decisions sharply. Wider ranges are often more honest than false precision."
+      },
+      {
+        "question": "Why do some local pages sound more careful than others?",
+        "answer": "Because local responsibility, utility boundaries, and support programs vary widely. The site stays cautious when local certainty would be overstated."
+      }
+    ],
+    "relatedSlugs": [
       "/methodology/",
-      "/sewer-scope-before-buying-house/"
+      "/about-how-this-site-is-researched/"
+    ]
+  },
+  {
+    "slug": "/privacy/",
+    "family": "trust",
+    "title": "Privacy and Data Handling",
+    "metaTitle": "Privacy and Data Handling | SewerVerdict",
+    "metaDescription": "What SewerVerdict collects, why lead and event data are stored, when information may be shared, and how to ask questions or corrections.",
+    "eyebrow": "Trust page",
+    "summary": "A practical privacy page for a lead-gen decision product: what is collected, why it is stored, and how the site treats routing and consent.",
+    "quickAnswer": "SewerVerdict stores the details needed to operate the estimator, capture lead requests, and inspect routing quality. It should not collect more personal information than the request needs.",
+    "seriousness": "Privacy matters here because the site handles contact details, routing context, and transaction-sensitive sewer concerns.",
+    "nextStep": "Read this page before submitting contact details if you want to understand what gets stored, what may be shared, and how to ask a question or correction.",
+    "costDirection": "Privacy choices do not change a sewer quote directly, but they do affect whether users feel safe enough to submit a credible request.",
+    "uncertainty": "This page explains the intended handling of lead and event data. It does not promise that every future partner or deployment setup will look identical.",
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Read disclaimer",
+    "secondaryCtaHref": "/disclaimer/",
+    "sections": [
+      {
+        "anchor": "what-is-collected",
+        "title": "What SewerVerdict collects",
+        "intro": "The site is built to keep forms short and routing-focused.",
+        "bullets": [
+          "Estimator and lead flows can store the role, ZIP or city, house age band, issue state, defect type, urgency, and the route the product recommended.",
+          "Lead forms can store name, email, phone, optional notes, and explicit consent status.",
+          "Attribution fields such as UTM parameters, gclid, wbraid, and gbraid may be stored when they are present.",
+          "Basic event logging is used to understand estimator completion, CTA clicks, invalid submits, and summary-copy behavior."
+        ]
+      },
+      {
+        "anchor": "why-it-is-stored",
+        "title": "Why that data is stored",
+        "intro": "The goal is routing quality and product improvement, not collecting extra profile data.",
+        "bullets": [
+          "Lead details help SewerVerdict decide whether the user is better matched to inspection-first or quote-ready follow-up.",
+          "Event data helps identify where users stop, submit, or drop out.",
+          "Attribution data helps inspect which pages and channels produce commercially plausible demand.",
+          "Source and routing context make submitted requests more usable than a bare contact form."
+        ]
+      },
+      {
+        "anchor": "sharing",
+        "title": "When information may be shared",
+        "intro": "Lead routing only works if the submitted details can be used for the next relevant step.",
+        "bullets": [
+          "If SewerVerdict routes a request to an inspection or repair option, the practical details needed to make that request usable may be shared for that purpose.",
+          "Do not assume every request is automatically forwarded. Routing still depends on fit, evidence state, and operational readiness.",
+          "SewerVerdict should not share more than the request needs to be actioned credibly.",
+          "If a user does not want to be contacted, the lead form should not be submitted."
+        ]
+      },
+      {
+        "anchor": "requests-and-corrections",
+        "title": "Questions, corrections, and requests",
+        "intro": "A trust-first site should make it easy to flag a data or source concern.",
+        "bullets": [
+          "Use the contact address shown on the site for privacy questions, correction requests, or source issues.",
+          "Include the page URL or request context so the issue can be reviewed quickly.",
+          "Avoid sending extra sensitive information that is not needed to resolve the issue.",
+          "Privacy and correction handling are part of operating the product responsibly."
+        ]
+      }
+    ],
+    "highlights": [
+      "Lead storage should stay short, practical, and consent-based.",
+      "Routing quality is the main reason the site stores more than a pageview."
+    ],
+    "questions": [
+      "What details are actually needed to make this request usable?",
+      "Would I still submit this form if the site could not explain what happens next?"
+    ],
+    "faq": [
+      {
+        "question": "Does SewerVerdict store contact information from the lead form?",
+        "answer": "Yes. The lead form stores the contact details and routing context needed to operate the request, along with consent and available attribution data."
+      },
+      {
+        "question": "Does SewerVerdict share every lead automatically?",
+        "answer": "No. The site is built to route requests when the next step is credible and operationally usable, not to force every request into the same path."
+      },
+      {
+        "question": "Can I ask a question about data handling or request a correction?",
+        "answer": "Yes. Use the contact address shown on the site and include the relevant page URL or request context so the issue can be reviewed."
+      }
+    ],
+    "relatedSlugs": [
+      "/editorial-standards/",
+      "/disclaimer/"
     ]
   },
   {

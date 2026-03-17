@@ -133,6 +133,14 @@
 						<span>I consent to being contacted about relevant sewer inspection or repair options based on the details I submit here.</span>
 					</label>
 					<p class="field-error" th:if="${fieldErrors.containsKey('consentGiven')}" th:text="${fieldErrors['consentGiven']}">Consent error</p>
+					<p class="form-microcopy">
+						Privacy and data-handling details are explained in the
+						<a th:href="@{/privacy/}">privacy page</a>.
+						<span th:if="${contactEmail}">
+							Questions or corrections can go to
+							<a th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerverdict.com</a>.
+						</span>
+					</p>
 					<p class="form-microcopy">Start with the basics. Extra routing detail helps, but the first goal is getting a credible response path started.</p>
 					<button class="button button-primary button-block" type="submit">Submit details</button>
 				</form>

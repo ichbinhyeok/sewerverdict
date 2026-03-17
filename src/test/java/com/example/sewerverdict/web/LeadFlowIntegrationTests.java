@@ -178,6 +178,15 @@ class LeadFlowIntegrationTests {
 		org.junit.jupiter.api.Assertions.assertTrue(events.contains("\"missingFields\":[\"zipOrCity\""));
 	}
 
+	@Test
+	void leadFormShowsPrivacyAndContactLinks() throws Exception {
+		mockMvc.perform(get("/find-sewer-scope/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("privacy page")))
+			.andExpect(content().string(containsString("/privacy/")))
+			.andExpect(content().string(containsString("contact@sewerverdict.com")));
+	}
+
 	private static Path createTempStorageRoot() {
 		try {
 			return Files.createTempDirectory("sewerverdict-storage-test");

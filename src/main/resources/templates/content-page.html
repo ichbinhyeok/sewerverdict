@@ -40,6 +40,7 @@
 						<div class="meta-links">
 							<a class="text-link" th:href="@{/methodology/}">Methodology</a>
 							<a class="text-link" th:href="@{/about-how-this-site-is-researched/}">Research</a>
+							<a class="text-link" th:href="@{/editorial-standards/}">Editorial standards</a>
 						</div>
 					</div>
 				</div>
@@ -288,6 +289,15 @@
 					<span class="card-kicker">Source transparency</span>
 					<p th:text="${page.sourceNote}">Source note</p>
 					<a class="text-link" th:href="@{/about-how-this-site-is-researched/}">How this site is researched</a>
+				</div>
+				<div class="rail-card">
+					<span class="card-kicker">Corrections, contact, and privacy</span>
+					<p>Use the contact address below if you need to flag a source issue, ask about data handling, or request a correction before relying on the page.</p>
+					<a class="text-link" th:if="${contactEmail}" th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerverdict.com</a>
+					<div class="meta-links">
+						<a class="text-link" th:href="@{/editorial-standards/}">Editorial standards</a>
+						<a class="text-link" th:href="@{/privacy/}">Privacy</a>
+					</div>
 				</div>
 				<div class="rail-card" th:if="${!#lists.isEmpty(pageSources)}">
 					<span class="card-kicker">Sources used on this page</span>

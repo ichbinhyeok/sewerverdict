@@ -8,8 +8,10 @@ import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.sewerverdict.content.PageFaq;
@@ -20,6 +22,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SeoMetadataService {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
+	private final String contactEmail;
+
+	public SeoMetadataService(@Value("${app.contact-email}") String contactEmail) {
+		this.contactEmail = contactEmail;
+	}
 
 	public void apply(Model model, HttpServletRequest request, String title, String description, String ogType,
 		List<SiteController.Breadcrumb> breadcrumbs, List<PageFaq> faq, boolean includeOrganization) {
@@ -47,12 +54,21 @@ public class SeoMetadataService {
 	}
 
 	private Map<String, Object> buildOrganizationSchema(String canonicalUrl) {
+		String origin = extractOrigin(canonicalUrl);
 		Map<String, Object> schema = new LinkedHashMap<>();
 		schema.put("@context", "https://schema.org");
 		schema.put("@type", "Organization");
 		schema.put("name", "SewerVerdict");
-		schema.put("url", canonicalUrl);
+		schema.put("url", origin);
 		schema.put("description", "Buyer-first sewer scope risk and next-step guidance for buyers, sellers, and owners.");
+		if (StringUtils.hasText(contactEmail)) {
+			schema.put("email", "mailto:" + contactEmail);
+			schema.put("contactPoint", List.of(Map.of(
+				"@type", "ContactPoint",
+				"contactType", "customer support",
+				"email", contactEmail
+			)));
+		}
 		return schema;
 	}
 
@@ -105,5 +121,9 @@ public class SeoMetadataService {
 		catch (JsonProcessingException exception) {
 			throw new UncheckedIOException(exception);
 		}
+	}
+
+	private String extractOrigin(String canonicalUrl) {
+		return canonicalUrl.replaceFirst("^(https?://[^/]+).*$", "$1");
 	}
 }

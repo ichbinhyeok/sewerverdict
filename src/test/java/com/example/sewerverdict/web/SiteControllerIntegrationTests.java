@@ -180,4 +180,21 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Buffalo Sewer Line Repair vs Replacement")))
 			.andExpect(content().string(containsString("Quote comparison lens")));
 	}
+
+	@Test
+	void trustPagesExposeEditorialAndPrivacySurfaces() throws Exception {
+		mockMvc.perform(get("/editorial-standards/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Editorial Standards")))
+			.andExpect(content().string(containsString("What SewerVerdict will not claim")))
+			.andExpect(content().string(containsString("contact@sewerverdict.com")))
+			.andExpect(content().string(containsString("Privacy")));
+
+		mockMvc.perform(get("/privacy/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Privacy and Data Handling")))
+			.andExpect(content().string(containsString("What SewerVerdict collects")))
+			.andExpect(content().string(containsString("When information may be shared")))
+			.andExpect(content().string(containsString("mailto:contact@sewerverdict.com")));
+	}
 }
