@@ -1,4 +1,4 @@
-FROM gradle:8.14.3-jdk17-alpine AS build
+FROM eclipse-temurin:17-jdk-alpine AS build
 
 WORKDIR /workspace
 
