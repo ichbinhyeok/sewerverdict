@@ -190,7 +190,8 @@
 					<div class="inline-cta-group">
 						<a class="button button-secondary" th:href="${cityHubSlug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-hub-main'">Open city hub</a>
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-hub-main'"
+						   th:text="${'Open ' + cityHubEntry.profile.cityName + ' city hub'}">Open city hub</a>
 					</div>
 					<div class="related-card-grid" th:if="${!#lists.isEmpty(cityStarterPages)}">
 						<a class="related-page-card" th:each="starter : ${cityStarterPages}" th:href="${starter.slug}"
@@ -270,7 +271,8 @@
 					<p>Use the city hub to choose the cleanest local entry page for buyers, owners, backup situations, and quote comparison.</p>
 					<a class="text-link" th:href="${cityHubSlug}"
 					   data-event-type="page_cta_click"
-					   th:attr="data-page-slug=${page.slug},data-event-label=${'rail-city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='rail-city-hub'">Open city hub</a>
+					   th:attr="data-page-slug=${page.slug},data-event-label=${'rail-city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='rail-city-hub'"
+					   th:text="${'See ' + cityHubEntry.profile.cityName + ' starter links'}">Open city hub</a>
 					<ul class="link-list" th:if="${!#lists.isEmpty(cityStarterPages)}">
 						<li th:each="starter : ${cityStarterPages}">
 							<a th:href="${starter.slug}" th:text="${starter.title}">Starter</a>

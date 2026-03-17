@@ -165,6 +165,19 @@ class LeadFlowIntegrationTests {
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"sourceGeoTopicSlug\":\"sewer-scope-before-buying-house\""));
 	}
 
+	@Test
+	void invalidLeadSubmitShowsFieldLevelErrors() throws Exception {
+		mockMvc.perform(post("/find-sewer-scope/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Please check the highlighted fields and consent box before submitting.")))
+			.andExpect(content().string(containsString("Add the ZIP or city so the request anchors to a real market.")))
+			.andExpect(content().string(containsString("Consent is required before SewerVerdict can pass this request forward.")));
+
+		String events = Files.readString(EVENTS_FILE);
+		org.junit.jupiter.api.Assertions.assertTrue(events.contains("\"eventType\":\"lead_submit_invalid\""));
+		org.junit.jupiter.api.Assertions.assertTrue(events.contains("\"missingFields\":[\"zipOrCity\""));
+	}
+
 	private static Path createTempStorageRoot() {
 		try {
 			return Files.createTempDirectory("sewerverdict-storage-test");

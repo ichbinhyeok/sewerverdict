@@ -44,8 +44,9 @@
 					<input th:field="*{gclid}" type="hidden">
 					<input th:field="*{wbraid}" type="hidden">
 					<input th:field="*{gbraid}" type="hidden">
-					<label class="field-label">Service needed
-						<select th:field="*{serviceNeeded}">
+					<label class="field-label" th:classappend="${fieldErrors.containsKey('serviceNeeded')} ? ' has-error'">
+						Service needed
+						<select th:field="*{serviceNeeded}" th:attr="aria-invalid=${fieldErrors.containsKey('serviceNeeded')}">
 							<option value="">Choose one</option>
 							<option value="inspection">Inspection</option>
 							<option value="repair">Repair</option>
@@ -53,18 +54,27 @@
 							<option value="not-sure">Not sure</option>
 						</select>
 					</label>
-					<label class="field-label">ZIP or city
-						<input th:field="*{zipOrCity}" type="text" placeholder="ZIP or city">
+					<p class="field-error" th:if="${fieldErrors.containsKey('serviceNeeded')}" th:text="${fieldErrors['serviceNeeded']}">Service needed error</p>
+					<label class="field-label" th:classappend="${fieldErrors.containsKey('zipOrCity')} ? ' has-error'">
+						ZIP or city
+						<input th:field="*{zipOrCity}" type="text" placeholder="ZIP or city" th:attr="aria-invalid=${fieldErrors.containsKey('zipOrCity')}">
 					</label>
-					<label class="field-label">Name
-						<input th:field="*{name}" type="text" placeholder="Your name">
+					<p class="field-error" th:if="${fieldErrors.containsKey('zipOrCity')}" th:text="${fieldErrors['zipOrCity']}">ZIP or city error</p>
+					<label class="field-label" th:classappend="${fieldErrors.containsKey('name')} ? ' has-error'">
+						Name
+						<input th:field="*{name}" type="text" placeholder="Your name" th:attr="aria-invalid=${fieldErrors.containsKey('name')}">
 					</label>
-					<label class="field-label">Email
-						<input th:field="*{email}" type="email" placeholder="you@example.com">
+					<p class="field-error" th:if="${fieldErrors.containsKey('name')}" th:text="${fieldErrors['name']}">Name error</p>
+					<label class="field-label" th:classappend="${fieldErrors.containsKey('email')} ? ' has-error'">
+						Email
+						<input th:field="*{email}" type="email" placeholder="you@example.com" th:attr="aria-invalid=${fieldErrors.containsKey('email')}">
 					</label>
-					<label class="field-label">Phone
-						<input th:field="*{phone}" type="tel" placeholder="Best number">
+					<p class="field-error" th:if="${fieldErrors.containsKey('email')}" th:text="${fieldErrors['email']}">Email error</p>
+					<label class="field-label" th:classappend="${fieldErrors.containsKey('phone')} ? ' has-error'">
+						Phone
+						<input th:field="*{phone}" type="tel" placeholder="Best number" th:attr="aria-invalid=${fieldErrors.containsKey('phone')}">
 					</label>
+					<p class="field-error" th:if="${fieldErrors.containsKey('phone')}" th:text="${fieldErrors['phone']}">Phone error</p>
 					<details class="form-details">
 						<summary>Add a few more routing details if you already know them</summary>
 						<div class="form-details-grid">
@@ -118,10 +128,11 @@
 							</label>
 						</div>
 					</details>
-					<label class="consent-row">
-						<input th:field="*{consentGiven}" type="checkbox">
+					<label class="consent-row" th:classappend="${fieldErrors.containsKey('consentGiven')} ? ' has-error'">
+						<input th:field="*{consentGiven}" type="checkbox" th:attr="aria-invalid=${fieldErrors.containsKey('consentGiven')}">
 						<span>I consent to being contacted about relevant sewer inspection or repair options based on the details I submit here.</span>
 					</label>
+					<p class="field-error" th:if="${fieldErrors.containsKey('consentGiven')}" th:text="${fieldErrors['consentGiven']}">Consent error</p>
 					<p class="form-microcopy">Start with the basics. Extra routing detail helps, but the first goal is getting a credible response path started.</p>
 					<button class="button button-primary button-block" type="submit">Submit details</button>
 				</form>

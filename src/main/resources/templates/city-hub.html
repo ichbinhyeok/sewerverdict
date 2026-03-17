@@ -93,8 +93,11 @@
 					</div>
 				</article>
 
-				<article class="section-card" th:if="${!#lists.isEmpty(buyerPages)}">
-					<h2>Buyer and negotiation pages</h2>
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(buyerPages)}">
+					<summary>
+						<span class="card-kicker">Browse the full buyer cluster</span>
+						<strong class="city-hub-disclosure-title">Buyer and negotiation pages</strong>
+					</summary>
 					<p>Use these when the property is under contract, the sewer history is unclear, or the next move depends on better inspection evidence.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${buyerPages}" th:href="${page.slug}">
@@ -103,10 +106,13 @@
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>
 					</div>
-				</article>
+				</details>
 
-				<article class="section-card" th:if="${!#lists.isEmpty(coveragePages)}">
-					<h2>Responsibility and trust pages</h2>
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(coveragePages)}">
+					<summary>
+						<span class="card-kicker">Browse the full trust cluster</span>
+						<strong class="city-hub-disclosure-title">Responsibility and trust pages</strong>
+					</summary>
 					<p>Use these when the first question is who likely owns the problem, where the boundary sits, or whether local support changes the next move.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${coveragePages}" th:href="${page.slug}">
@@ -115,10 +121,13 @@
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>
 					</div>
-				</article>
+				</details>
 
-				<article class="section-card" th:if="${!#lists.isEmpty(costPages)}">
-					<h2>Cost and quote-ready pages</h2>
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(costPages)}">
+					<summary>
+						<span class="card-kicker">Browse the full quote cluster</span>
+						<strong class="city-hub-disclosure-title">Cost and quote-ready pages</strong>
+					</summary>
 					<p>Use these when the line condition is stronger, the budget question is live, or you need to compare repair, replacement, or method paths.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${costPages}" th:href="${page.slug}">
@@ -127,10 +136,13 @@
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>
 					</div>
-				</article>
+				</details>
 
-				<article class="section-card" th:if="${!#lists.isEmpty(defectPages)}">
-					<h2>Defect and backup pages</h2>
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(defectPages)}">
+					<summary>
+						<span class="card-kicker">Browse the full defect cluster</span>
+						<strong class="city-hub-disclosure-title">Defect and backup pages</strong>
+					</summary>
 					<p>Use these when the user already has a symptom, report finding, or backup pattern and needs calmer interpretation before the next spend.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${defectPages}" th:href="${page.slug}">
@@ -139,7 +151,7 @@
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>
 					</div>
-				</article>
+				</details>
 			</div>
 			<aside class="content-rail">
 				<div class="rail-card">

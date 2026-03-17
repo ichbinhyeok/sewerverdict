@@ -67,12 +67,30 @@ public class StorageService {
 	}
 
 	public boolean isValidLead(LeadForm form) {
-		return StringUtils.hasText(form.getServiceNeeded())
-			&& StringUtils.hasText(form.getZipOrCity())
-			&& StringUtils.hasText(form.getName())
-			&& StringUtils.hasText(form.getEmail())
-			&& StringUtils.hasText(form.getPhone())
-			&& form.isConsentGiven();
+		return getLeadValidationErrors(form).isEmpty();
+	}
+
+	public Map<String, String> getLeadValidationErrors(LeadForm form) {
+		Map<String, String> errors = new LinkedHashMap<>();
+		if (!StringUtils.hasText(form.getServiceNeeded())) {
+			errors.put("serviceNeeded", "Choose the service path so routing does not stay generic.");
+		}
+		if (!StringUtils.hasText(form.getZipOrCity())) {
+			errors.put("zipOrCity", "Add the ZIP or city so the request anchors to a real market.");
+		}
+		if (!StringUtils.hasText(form.getName())) {
+			errors.put("name", "Add your name so the next contact step is usable.");
+		}
+		if (!StringUtils.hasText(form.getEmail())) {
+			errors.put("email", "Add an email address for the next routing step.");
+		}
+		if (!StringUtils.hasText(form.getPhone())) {
+			errors.put("phone", "Add a phone number so inspection or quote follow-up is possible.");
+		}
+		if (!form.isConsentGiven()) {
+			errors.put("consentGiven", "Consent is required before SewerVerdict can pass this request forward.");
+		}
+		return errors;
 	}
 
 	public String storeEstimatorDraft(EstimatorForm form, EstimatorResult result, String pageSlug, String referrer,

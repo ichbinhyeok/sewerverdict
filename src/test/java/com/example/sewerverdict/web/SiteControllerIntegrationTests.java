@@ -60,6 +60,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("href=\"/cities/chicago/\"")))
 			.andExpect(content().string(containsString("Keep moving inside Chicago")))
 			.andExpect(content().string(containsString("Go back to Chicago hub")))
+			.andExpect(content().string(containsString("Open Chicago city hub")))
+			.andExpect(content().string(containsString("See Chicago starter links")))
 			.andExpect(content().string(containsString("Chicago, IL")));
 	}
 

@@ -145,11 +145,14 @@ public class LeadController {
 	private void submitLead(LeadForm leadForm, String pageSlug, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession(true);
 		String sessionId = session.getId();
-		if (!storageService.isValidLead(leadForm)) {
+		Map<String, String> fieldErrors = storageService.getLeadValidationErrors(leadForm);
+		if (!fieldErrors.isEmpty()) {
+			Map<String, Object> payload = buildLeadViewPayload(leadForm);
+			payload.put("missingFields", fieldErrors.keySet());
+			model.addAttribute("fieldErrors", fieldErrors);
 			model.addAttribute("formError",
-				"Please complete the routing fields, contact details, and consent checkbox before submitting.");
-			storageService.logEvent("lead_submit_invalid", pageSlug, request.getHeader("Referer"), sessionId,
-				buildLeadViewPayload(leadForm));
+				"Please check the highlighted fields and consent box before submitting.");
+			storageService.logEvent("lead_submit_invalid", pageSlug, request.getHeader("Referer"), sessionId, payload);
 			return;
 		}
 
@@ -169,6 +172,7 @@ public class LeadController {
 		blankForm.setServiceNeeded(leadForm.getServiceNeeded());
 		blankForm.setRecommendedServicePath(leadForm.getRecommendedServicePath());
 		model.addAttribute("leadForm", blankForm);
+		model.addAttribute("fieldErrors", Map.of());
 	}
 
 	private void populateLeadModel(Model model, String title, String summary, List<String> highlights, String formAction) {
@@ -178,6 +182,7 @@ public class LeadController {
 		model.addAttribute("leadSummary", summary);
 		model.addAttribute("leadHighlights", highlights);
 		model.addAttribute("formAction", formAction);
+		model.asMap().putIfAbsent("fieldErrors", Map.of());
 	}
 
 	private Map<String, Object> buildLeadViewPayload(LeadForm leadForm) {
