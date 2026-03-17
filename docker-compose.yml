@@ -1,6 +1,6 @@
 services:
   sewerclarity:
-    image: shinhyeok22/sewer:latest
+    image: shinhyeok22/sewerclarity:latest
     container_name: sewerclarity
     restart: unless-stopped
     ports:

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: shinhyeok22/sewer
+  IMAGE_NAME: shinhyeok22/sewerclarity
   DEPLOY_DIR: ~/deploy/sewerclarity
 
 jobs:
@@ -40,15 +40,15 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: |
-            shinhyeok22/sewer:latest
-            shinhyeok22/sewer:${{ github.sha }}
+            shinhyeok22/sewerclarity:latest
+            shinhyeok22/sewerclarity:${{ github.sha }}
 
       - name: Deploy on OCI
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.OCI_HOST }}
           username: ${{ secrets.OCI_USERNAME }}
-          key: ${{ secrets.OCI_SSH_KEY }}
+          key: ${{ secrets.OCI_KEY }}
           port: ${{ secrets.OCI_PORT || 22 }}
           script_stop: true
           script: |
@@ -62,7 +62,7 @@ jobs:
             cat <<'EOF' > docker-compose.yml
             services:
               sewerclarity:
-                image: shinhyeok22/sewer:latest
+                image: shinhyeok22/sewerclarity:latest
                 container_name: sewerclarity
                 restart: unless-stopped
                 ports:
