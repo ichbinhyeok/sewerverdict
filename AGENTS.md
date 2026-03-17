@@ -31,18 +31,33 @@ Primary business goal:
 - turn high-intent sewer-risk traffic into trusted **inspection-first** and **repair-quote** demand
 - do this fast enough to create a realistic path to the 6-month monthly revenue target
 
+## Current Product Snapshot
+
+As of **2026-03-17**, the repository is no longer sparse.
+The current product already includes:
+
+- homepage, estimator, noindex results page, and both lead routes
+- the full current national winner set plus trust pages
+- **24** national/trust pages in `pages.json`
+- **11** geo profiles with `/cities/` and `/cities/{city}/` hubs
+- **52** geo pages across tier-1 and tier-2 cities
+- file-backed source registry, responsibility registry, review queue, estimator drafts, lead storage, and event logging
+- geo hub navigation, sitemap coverage for city hubs, and iPhone SE-safe layouts verified in beta testing
+
+When this document conflicts with the shipped repo state, the shipped repo state wins.
+
 ## Agent Execution Model
 
 This repository should be built using a **revenue-first spine**.
 
-When the repo is still sparse, do not try to make the full site feel "complete" before it can monetize.
-Build in this order:
+Do not rebuild completed foundations unless they are broken.
+From the current state, build in this order:
 
-1. pages that can attract high-intent search demand
-2. the estimator and result UX that turns uncertainty into action
-3. lead capture and attribution
-4. trust scaffolding on money pages
-5. support pages that strengthen ranking and conversion
+1. deploy and measurement surfaces
+2. winner-page tightening based on real impressions and CTR
+3. estimator and lead-flow friction removal
+4. geo hub weighting and internal-link refinement
+5. only then add the next national or geo pages
 
 If there is tension between architectural neatness and shipping the revenue spine, ship the revenue spine first.
 
@@ -110,35 +125,31 @@ Canonical clustering examples:
 
 These are the surfaces that matter most for the 6-month target.
 
-### Must Build Now
+### Shipped And Active
 
 - `/`
 - `/estimator/`
 - `/estimator/results/`
 - `/find-sewer-scope/`
 - `/get-sewer-quotes/`
-- `/sewer-scope-before-buying-house/`
-- `/sewer-scope-red-flags/`
-- `/who-pays-for-sewer-line-repair-buyer-or-seller/`
-- `/sewer-line-replacement-cost/`
-- `/trenchless-sewer-replacement-cost/`
-- `/cast-iron-sewer-pipe-replacement-cost/`
-- `/orangeburg-pipe-replacement-cost/`
-- `/root-intrusion-sewer-line-what-to-do/`
+- all current national winner pages in `src/main/resources/content/pages.json`
+- trust pages and methodology pages
+- `/cities/`
+- `/cities/{city}/`
+- current geo clusters for:
+  - Philadelphia
+  - Pittsburgh
+  - Cleveland
+  - Chicago
+  - Buffalo
+  - St. Louis
+  - Washington, DC
+  - Milwaukee
+  - Cincinnati
+  - Baltimore
+  - Detroit
 
-### Build Next
-
-- `/sewer-belly-repair-cost/`
-- `/sewer-line-repair-vs-replacement/`
-- `/old-house-sewer-line-risk/`
-- `/house-built-before-1970-sewer-line-risk/`
-- `/sewer-scope-negotiation-with-seller/`
-- `/offset-joint-sewer-line-meaning/`
-- `/collapsed-sewer-line-signs/`
-- `/does-home-insurance-cover-sewer-line-replacement/`
-- `/service-line-coverage-vs-home-warranty-for-sewer-lines/`
-
-### Delay Unless There Is Clear Capacity
+### Highest-Leverage Next Pages
 
 - `/is-sewer-scope-worth-it/`
 - `/how-to-read-sewer-scope-report/`
@@ -147,6 +158,9 @@ These are the surfaces that matter most for the 6-month target.
 - `/sewer-line-under-slab-repair-cost/`
 - `/cost-to-replace-sewer-line-house-to-street/`
 - `/cast-iron-pipe-deterioration-signs/`
+
+### Delay Unless Search Or Lead Data Justifies It
+
 - `/hydro-jetting-sewer-line-cost/`
 - `/sewer-cleanout-installation-cost/`
 - `/how-long-does-sewer-line-replacement-take/`
@@ -241,27 +255,22 @@ Typical needs:
 - what kind of cost band am I facing?
 - is trenchless even plausible?
 
-## Launch Scope
+## Current Scope
 
-Build the following for the initial real launchable version:
+The current shipped scope includes:
 
-- homepage
-- estimator
-- noindex estimator results page
-- `/find-sewer-scope/`
-- `/get-sewer-quotes/`
-- all required P0 national pages
-- all required P1 national pages
-- trust pages
-- first 3 geo anchor pages
-- file-backed source registry, review queue, lead storage, and event logging
-- trust boxes, reviewer metadata, and methodology/source boxes
-- exportable summary block on estimator results
-- metadata, FAQ/schema where useful, and internal linking
+- homepage, estimator, and noindex results page
+- inspection-first and quote-first lead pages
+- all current national winner and support pages
+- trust pages and methodology pages
+- geo profiles, city hubs, and geo content clusters
+- file-backed source registry, geo profiles, responsibility registry, review queue, lead storage, estimator drafts, and event logging
+- trust boxes, reviewer metadata, source boxes, local responsibility rails, and exportable summary blocks
+- metadata, article schema, breadcrumb schema, sitemap, and internal linking
 
 Do not broaden into giant geo matrices, ZIP pages, broad plumbing content, media analysis, or policy parsing engines.
 
-Launch scope should be executed in a way that supports the revenue target quickly:
+Current scope should keep supporting the revenue target quickly:
 
 - ship high-intent commercial pages before low-intent support surfaces
 - ensure estimator -> lead flow -> attribution works early
@@ -311,11 +320,11 @@ Launch scope should be executed in a way that supports the revenue target quickl
 - `/disclaimer/`
 - `/about/`
 
-### Geo Anchors
+### Geo Entry Surfaces
 
-- `/cities/chicago/sewer-line-replacement-cost/`
-- `/cities/philadelphia/sewer-scope-before-buying-house/`
-- `/cities/pittsburgh/cast-iron-sewer-line-risk/`
+- `/cities/`
+- `/cities/{city}/`
+- geo page clusters for the current 11 cities in `src/main/resources/data/geo/geo_profiles.json`
 
 ## Estimator Rules
 
@@ -475,26 +484,25 @@ Create and maintain lightweight file-backed structures for:
 Minimum event types:
 
 - `estimator_start`
+- `estimator_step_view`
+- `estimator_step_validation_error`
 - `estimator_complete`
 - `result_primary_cta_click`
 - `result_secondary_cta_click`
 - `lead_form_view`
 - `lead_submit`
+- `lead_submit_invalid`
 - `page_cta_click`
 - `summary_copy_click`
 
-## Execution Order
+## Current Execution Order
 
-1. scaffold routes and content/data loading
-2. build shared templates/components
-3. implement trust metadata, source registry, review queue, leads, and event logging
-4. build homepage, estimator, results page, and lead pages
-5. build the **Must Build Now** revenue spine
-6. build the **Build Next** set
-7. build trust pages and the 3 geo pages
-8. wire internal links, metadata, FAQ/schema, and indexing rules
-9. add lower-priority support pages only if capacity remains
-10. review copy for false certainty and trust compliance
+1. keep deployability, sitemap, robots, and storage stable
+2. tighten winner pages using real Search Console and lead data
+3. reduce estimator and lead-form friction
+4. improve city-hub weighting and internal path control
+5. add the next national support pages only when the current winner set is stable
+6. widen geo only where local evidence and routing value stay real
 
 If sequencing tradeoffs are needed, prioritize the steps that improve revenue path visibility earliest:
 

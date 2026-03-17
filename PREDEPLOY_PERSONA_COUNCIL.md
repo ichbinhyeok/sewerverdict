@@ -7,7 +7,7 @@ Purpose:
 
 - sharpen what wins trust
 - avoid building the wrong kind of "complete"
-- decide what matters before deploy tomorrow
+- decide what matters in the next deploy cycle
 
 Grounded against current search and category patterns:
 
@@ -190,7 +190,7 @@ These are the highest-leverage improvements before deployment:
 Do not drift into:
 
 - broad plumbing encyclopedia behavior
-- city-swap page expansion before the first three anchors prove useful
+- city-swap page expansion before the current geo clusters prove useful
 - overdesigned SaaS behavior that weakens trust
 - contractor-ad landing-page tone
 - cost-page bloat that adds words without helping the decision

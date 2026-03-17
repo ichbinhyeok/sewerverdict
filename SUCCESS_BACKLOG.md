@@ -1,157 +1,122 @@
 # SewerVerdict Success Backlog
 
-This file turns `SUCCESS_COUNCIL.md` into an execution queue.
+This file turns `SUCCESS_COUNCIL.md` into the **current** execution queue.
+It is no longer a pre-build backlog.
+It assumes the current product state is already shipped in the repo and needs to be tightened, measured, and expanded carefully.
 
-It answers four questions:
+## Current State
 
-1. what must happen before deploy
-2. what must happen right after deploy
-3. what should wait
-4. what should be cut
+The repository already has:
 
-Use this as the default backlog lens.
+- homepage, estimator, noindex results page
+- inspection-first and quote-first lead pages
+- source-backed national pages and trust pages
+- geo profiles, `/cities/`, `/cities/{city}/`, and local city clusters
+- attribution-preserving estimator -> result -> lead flow
+- sitemap coverage for city hubs
+- file-backed leads, events, and estimator drafts
+- mobile-safe layouts verified on iPhone SE width
 
-## North Star
+The project does **not** mainly risk failure because of missing product anymore.
+The biggest risks now are:
 
-Everything here should improve at least one of these:
+- weak real-world measurement after deploy
+- too much expansion before enough winners prove out
+- CTR and internal-link opportunities going unmeasured
+- lead quality not being inspected tightly enough
 
-1. buyer-intent or defect-intent rankings
-2. first-screen trust
-3. estimator completion
-4. shareability
-5. qualified lead submission
-6. inspection-first or quote-first routing quality
+## Highest-Leverage Now
 
-## Current Read
+### 1. Deploy And Measure
 
-The project already has:
+Do first:
 
-- a real homepage
-- estimator and noindex result flow
-- inspection and quote lead pages
-- trust pages
-- source-backed trust scaffolding
-- SEO basics
-- premium mobile-safe design direction
+1. deploy the current build cleanly
+2. verify production estimator -> result -> lead flow
+3. connect Search Console and submit sitemap
+4. verify robots, canonical, and city hub indexing
+5. confirm JSONL event and lead writes in production
 
-The biggest risks now are no longer "missing product."
-The biggest risks are:
+### 2. Tighten The Winners
 
-- weak launch measurement
-- too many pages before enough winners
-- insufficient post-deploy tightening
-- traffic without routing discipline
-
-## Do Now
-
-These are the highest-leverage items before or immediately around first deploy.
-
-### A. Tighten The Winner Set
-
-Keep improving these pages before widening:
+These remain the pages to protect hardest:
 
 1. `/sewer-scope-before-buying-house/`
 2. `/sewer-scope-red-flags/`
 3. `/who-pays-for-sewer-line-repair-buyer-or-seller/`
-4. `/cast-iron-sewer-pipe-replacement-cost/`
-5. `/orangeburg-pipe-replacement-cost/`
-6. `/sewer-line-replacement-cost/`
+4. `/sewer-line-replacement-cost/`
+5. `/cast-iron-sewer-pipe-replacement-cost/`
+6. `/orangeburg-pipe-replacement-cost/`
 
-Definition:
+What tightening means now:
 
-- better first-screen clarity
-- stronger internal links
-- cleaner CTA logic
-- stronger share-safe wording
+- better title and meta CTR packaging
+- stronger first-screen decision framing
+- stronger internal links from hubs and related pages
+- clearer estimator and CTA handoff
+- stronger share-safe summaries
 
-### B. Finish Launch Instrumentation
+### 3. Tighten Geo Winners Before Widening
 
-Must verify at deploy:
+Current geo program is already meaningful.
+Do not widen it blindly.
 
-1. Search Console property setup
-2. sitemap submission
-3. robots correctness
-4. canonical correctness
-5. event logging is actually writing records
-6. lead submissions are actually stored and readable
+First tighten:
 
-### C. Tighten SERP Packaging
+1. Philadelphia
+2. Pittsburgh
+3. Cleveland
+4. Chicago
+5. Buffalo
 
-For the winner set above:
+Then evaluate:
 
-1. rewrite title tags for click intent
-2. rewrite meta descriptions for decision intent
-3. keep FAQ blocks sharp and non-generic
-4. make sure each page opening names the decision being solved
+1. Milwaukee
+2. Cincinnati
+3. Baltimore
+4. Detroit
+5. St. Louis
+6. Washington, DC
 
-### D. Strengthen Result Sharing
+Use real impression, click, and lead data before adding more cities.
 
-Keep polishing:
+### 4. Improve Lead Quality Visibility
 
-1. estimator summary block
-2. buyer-safe memo tone
-3. copyable result phrasing
-4. obvious handoff from result -> inspection or quote path
+Do next:
 
-### E. Protect Mobile Quality
+1. review which pages create `lead_submit`
+2. review which pages create `lead_submit_invalid`
+3. log whether inspection-first or quote-ready routing matches later partner usability
+4. compare city-hub entry pages against direct geo page entries
 
-Every important page must be checked on iPhone SE width for:
+## Next Build Candidates
 
-1. first-screen trust visibility
-2. no horizontal overflow
-3. calm button spacing
-4. readable tables
-5. finishable form flow
-
-## Deploy-Day Checklist
-
-Do these immediately when deploy is available.
-
-1. push live build
-2. verify homepage renders correctly
-3. verify one winner page
-4. verify estimator works end to end
-5. verify results are `noindex`
-6. verify one lead submit in production
-7. verify sitemap and robots
-8. connect Search Console
-9. request indexing for the winner set
-
-## First 14 Days After Deploy
-
-This is the critical window.
-
-### Must Do
-
-1. watch which pages get impressions first
-2. tighten title/meta for low-CTR pages
-3. tighten internal links into pages with impression growth
-4. improve the first two paragraphs of pages with impressions but weak clicks
-5. log real-world lead quality by page
-
-### Main Goal
-
-Do not widen the site too early.
-Find the first 3 to 5 pages that show traction and make them harder to dismiss.
-
-## Build Next
-
-These are worth doing after the first deploy if the winner set is stable.
+These are the highest-value **not-yet-built** national pages:
 
 1. `/is-sewer-scope-worth-it/`
 2. `/how-to-read-sewer-scope-report/`
 3. `/sewer-scope-inspection-cost/`
-4. `/sewer-line-under-slab-repair-cost/`
-5. `/cost-to-replace-sewer-line-house-to-street/`
-6. `/cast-iron-pipe-deterioration-signs/`
-7. `/old-house-sewer-line-risk/`
-8. `/house-built-before-1970-sewer-line-risk/`
+4. `/clay-sewer-pipe-replacement-cost/`
+5. `/sewer-line-under-slab-repair-cost/`
+6. `/cost-to-replace-sewer-line-house-to-street/`
+7. `/cast-iron-pipe-deterioration-signs/`
 
-These support the moat without drifting into broad plumbing sprawl.
+Add these only after deploy and only if the current winners are stable enough to deserve more support.
+
+## Next Product Tightening Candidates
+
+These do not add breadth.
+They improve the current system:
+
+1. Search Console-driven city hub starter weighting
+2. lead form friction and field-error polish
+3. first-screen share blocks on winner pages
+4. page-to-estimator transition copy
+5. geo hub internal-link weighting by evidence state
 
 ## Delay
 
-Do not do these until there is proof of traction or extra capacity.
+Delay these until there is real traction or spare capacity:
 
 1. `/hydro-jetting-sewer-line-cost/`
 2. `/sewer-cleanout-installation-cost/`
@@ -160,43 +125,29 @@ Do not do these until there is proof of traction or extra capacity.
 5. `/sewer-line-replacement-cost-per-foot/`
 6. `/sewer-line-under-driveway-replacement-cost/`
 7. `/emergency-sewer-line-repair-cost/`
-8. wider geo expansion beyond the first 3 anchor pages
-
-Reason:
-
-- weaker share value
-- weaker buyer wedge value
-- easier to drift into generic plumbing content
+8. more cities beyond the current 11-city program
 
 ## Cut By Default
 
-If these ideas come up, reject them unless a later proof point clearly changes the case.
+Reject these unless hard evidence changes the case:
 
 1. giant city-swap page expansion
-2. ZIP code page generation
+2. ZIP code pages
 3. neighborhood pSEO
-4. broad drain-cleaning content
-5. generic plumbing maintenance blog posts
-6. flashy SaaS dashboard behavior
-7. complicated insurance decision engines
-8. media upload analysis for V1.5
+4. broad plumbing maintenance content
+5. generic homeowner blog posts
+6. heavy dashboard behavior
+7. fake insurance or legal decision engines
+8. media analysis or upload tooling for this phase
 
 ## Working Rule
 
 When unsure what to do next, ask:
 
-1. does this strengthen one of the six winner pages?
-2. does this improve trust on the first screen?
-3. does this make estimator or lead flow easier to finish?
-4. does this make the result easier to share?
-5. will this matter within 6 months, not 2 years?
+1. does this improve a current winner?
+2. does this improve trust on first screen?
+3. does this improve estimator or lead completion?
+4. does this improve shareability?
+5. will this matter in the next 6 months?
 
 If not, it can wait.
-
-## Final Priority Order
-
-1. deploy safely
-2. measure real search and lead behavior
-3. tighten the winners
-4. only then add the next support pages
-5. delay broad expansion until the first wedge proves itself
