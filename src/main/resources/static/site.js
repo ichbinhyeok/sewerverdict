@@ -151,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const syncNav = (open) => {
 			navToggle.setAttribute("aria-expanded", String(open));
 			navMenu.dataset.open = open ? "true" : "false";
+			document.body.classList.toggle("nav-open", open);
 		};
 		syncNav(false);
 		navToggle.addEventListener("click", () => {
@@ -158,6 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 		navMenu.querySelectorAll("a").forEach((link) => {
 			link.addEventListener("click", () => syncNav(false));
+		});
+		document.addEventListener("click", (event) => {
+			if (navToggle.getAttribute("aria-expanded") !== "true") {
+				return;
+			}
+			if (navToggle.contains(event.target) || navMenu.contains(event.target)) {
+				return;
+			}
+			syncNav(false);
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+				syncNav(false);
+				navToggle.focus();
+			}
 		});
 	}
 
