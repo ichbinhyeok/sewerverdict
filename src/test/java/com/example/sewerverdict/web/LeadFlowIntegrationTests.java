@@ -137,7 +137,7 @@ class LeadFlowIntegrationTests {
 				.param("urgency", "urgent-repair"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Imported estimator draft test")))
-			.andExpect(content().string(containsString("Recommended path: replacement")));
+			.andExpect(content().string(containsString("Recommended path: Quote comparison")));
 	}
 
 	@Test

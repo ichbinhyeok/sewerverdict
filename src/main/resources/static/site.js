@@ -276,6 +276,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 
 		const validationMessage = () => currentStep()?.dataset.stepMessage || "Please complete this step before continuing.";
+		const activeControl = () => currentStep()?.querySelector("input[type='text'], input[type='email'], input[type='tel'], textarea, select");
+		const goToNextStep = () => {
+			if (activeIndex < steps.length - 1) {
+				showValidation = false;
+				activeIndex += 1;
+				syncWizard();
+				revealAndFocus(firstInvalidControl(currentStep()) || currentStep());
+			}
+		};
 
 		const updateStepControls = () => {
 			const valid = stepIsValid(currentStep());
@@ -317,9 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		nextButton?.addEventListener("click", () => {
 			if (stepIsValid(currentStep()) && activeIndex < steps.length - 1) {
-				showValidation = false;
-				activeIndex += 1;
-				syncWizard();
+				goToNextStep();
 				return;
 			}
 			showValidation = true;
@@ -352,6 +359,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		wizardForm?.addEventListener("input", updateStepControls);
 		wizardForm?.addEventListener("change", updateStepControls);
+		wizardForm?.addEventListener("change", (event) => {
+			const target = event.target;
+			if (!(target instanceof HTMLInputElement) || target.type !== "radio" || !target.checked) {
+				return;
+			}
+			const step = currentStep();
+			if (!step || !step.contains(target)) {
+				return;
+			}
+			if (stepIsValid(step) && activeIndex < steps.length - 1) {
+				window.setTimeout(goToNextStep, 120);
+			}
+		});
+		wizardForm?.addEventListener("keydown", (event) => {
+			if (event.key !== "Enter") {
+				return;
+			}
+			const step = currentStep();
+			const control = activeControl();
+			if (!step || !control || !step.contains(event.target)) {
+				return;
+			}
+			event.preventDefault();
+			if (stepIsValid(step)) {
+				if (activeIndex === steps.length - 1) {
+					submitButton?.click();
+					return;
+				}
+				goToNextStep();
+				return;
+			}
+			showValidation = true;
+			updateStepControls();
+			revealCurrentStepIssue();
+		});
 		activeIndex = findFirstIncompleteStepIndex();
 		syncWizard();
 	}
@@ -469,20 +511,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const copyButtons = Array.from(document.querySelectorAll("[data-copy-summary]"));
 	if (copyButtons.length) {
+		const fallbackCopy = (text) => {
+			const textArea = document.createElement("textarea");
+			textArea.value = text;
+			textArea.setAttribute("readonly", "true");
+			textArea.style.position = "fixed";
+			textArea.style.opacity = "0";
+			document.body.appendChild(textArea);
+			textArea.select();
+			textArea.setSelectionRange(0, textArea.value.length);
+			let copied = false;
+			try {
+				copied = document.execCommand("copy");
+			}
+			catch {
+				copied = false;
+			}
+			document.body.removeChild(textArea);
+			return copied;
+		};
 		copyButtons.forEach((copyButton) => copyButton.addEventListener("click", async () => {
 			const target = document.querySelector("#summary-block");
 			if (!target) {
 				return;
 			}
 			try {
-				await navigator.clipboard.writeText(target.textContent.trim());
+				const text = target.textContent.trim();
+				if (navigator.clipboard?.writeText) {
+					await navigator.clipboard.writeText(text);
+				}
+				else if (!fallbackCopy(text)) {
+					throw new Error("Clipboard unavailable");
+				}
 				copyButtons.forEach((button) => {
 					button.textContent = "Summary copied";
 				});
 			}
 			catch {
+				const copied = fallbackCopy(target.textContent.trim());
 				copyButtons.forEach((button) => {
-					button.textContent = "Copy manually below";
+					button.textContent = copied ? "Summary copied" : "Copy manually below";
 				});
 			}
 		}));

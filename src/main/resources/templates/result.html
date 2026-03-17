@@ -22,7 +22,6 @@
 				</div>
 				<h1 th:text="${result.likelyNextStep}">Likely next step</h1>
 				<p class="lede" th:text="${result.interpretation}">Interpretation</p>
-				<p class="result-rationale" th:text="${result.routingRationale}">Routing rationale</p>
 				<div class="button-row">
 					<a class="button button-primary" th:href="${primaryCtaHref}" th:text="${result.primaryCtaLabel}"
 					   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/"
@@ -35,13 +34,13 @@
 			<div class="result-brief">
 				<span class="card-kicker">Decision memo</span>
 				<h2>Share this like a calm brief</h2>
-				<p>Designed to be copied into a buyer thread, agent message, seller email, or contractor note without panic language.</p>
+				<p>Designed to paste into a buyer thread, agent message, seller email, or contractor note without sounding like a diagnosis.</p>
 				<button class="button button-ghost" type="button" data-copy-summary data-event-type="summary_copy_click"
 				        data-page-slug="/estimator/results/" data-event-label="copy-summary-hero">Copy decision memo</button>
 				<ul class="clean-list">
-					<li>Risk tier and next move are kept separate on purpose.</li>
-					<li>Cost bands stay broad until a real scope or quote narrows them.</li>
-					<li>This output is meant to travel well in a stressed transaction.</li>
+					<li>Risk level and next move are shown separately so urgency does not outrun evidence.</li>
+					<li>Cost bands stay broad until footage or a field quote narrows the scope.</li>
+					<li>This memo is written to travel cleanly in a tense transaction or repair decision.</li>
 				</ul>
 				<p class="summary-inline" th:text="${result.summaryBlock}">Summary</p>
 			</div>
@@ -52,8 +51,9 @@
 		<div class="container content-grid">
 			<div class="content-main">
 				<article class="section-card">
-					<h2>What this likely means</h2>
+					<h2>Why this route fits</h2>
 					<p th:text="${result.interpretation}">Interpretation</p>
+					<p class="result-rationale" th:text="${result.routingRationale}">Routing rationale</p>
 				</article>
 				<article class="section-card">
 					<h2>Rough cost bands</h2>
@@ -74,21 +74,21 @@
 			</div>
 			<aside class="content-rail">
 				<div class="rail-card">
-					<span class="card-kicker">Biggest uncertainty drivers</span>
+					<span class="card-kicker">What Could Change The Call</span>
 					<ul class="clean-list">
 						<li th:each="driver : ${result.uncertaintyDrivers}" th:text="${driver}">Driver</li>
 					</ul>
 				</div>
 				<div class="rail-card">
-					<span class="card-kicker">Exportable summary</span>
-					<p>Use this for an agent, seller, inspector, or contractor when you need one short shared note.</p>
+					<span class="card-kicker">Forwardable Memo</span>
+					<p>Use this when an agent, seller, inspector, or contractor needs one short note with calm language and clear uncertainty.</p>
 					<button class="button button-secondary" type="button" data-copy-summary data-event-type="summary_copy_click"
 					        data-page-slug="/estimator/results/" data-event-label="copy-summary">Copy summary</button>
 					<pre class="summary-block" id="summary-block" th:text="${result.summaryBlock}">Summary</pre>
 				</div>
 				<div class="rail-card">
 					<span class="card-kicker">Important note</span>
-					<p>This is educational guidance, not a substitute for a sewer scope, legal advice, insurance advice, or an in-person quote.</p>
+					<p>This is directional guidance, not a substitute for footage, legal advice, insurance advice, or an in-person quote.</p>
 				</div>
 			</aside>
 		</div>

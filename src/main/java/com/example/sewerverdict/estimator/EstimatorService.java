@@ -63,10 +63,10 @@ public class EstimatorService {
 			return new DecisionProfile(
 				"Scope-confirmed major issue",
 				"quote-ready",
-				"High urgency / quote-ready now",
+				"High urgency. Quote-ready now.",
 				"high",
-				"The issue already looks serious enough to compare repair methods and full-project scope now.",
-				"Get 2-3 repair quotes and compare trenchless viability against excavation.",
+				"The issue already looks serious enough to compare repair scope, restoration burden, and method fit now.",
+				"Get 2-3 repair quotes and confirm whether spot repair, trenchless, or excavation is actually realistic.",
 				"Get sewer repair or replacement quotes",
 				"/get-sewer-quotes/",
 				"replacement",
@@ -80,13 +80,13 @@ public class EstimatorService {
 			return new DecisionProfile(
 				"Scope-confirmed deterioration with expensive access",
 				"quote-ready",
-				"Confirmed issue / compare repair paths",
+				"Confirmed issue. Compare repair paths.",
 				"high",
-				"Cast iron plus older-house or slab context usually needs quote comparison, not just another generic opinion.",
-				"Get 2-3 repair quotes and compare spot repair, trenchless rehab, and broader replacement logic.",
+				"Cast iron in an older house or under a slab usually needs repair-path comparison, not another generic opinion.",
+				"Get 2-3 repair quotes and compare spot repair, rehab, and broader replacement assumptions.",
 				"Get sewer repair or replacement quotes",
 				"/get-sewer-quotes/",
-				"replacement",
+				"repair",
 				"Find inspection options first",
 				"/find-sewer-scope/",
 				"inspection"
@@ -97,10 +97,10 @@ public class EstimatorService {
 			return new DecisionProfile(
 				"Scope-confirmed issue inside a live transaction",
 				"quote-ready",
-				"Confirmed issue / compare repair paths",
+				"Confirmed issue. Compare repair paths.",
 				"medium",
-				"Because the line is already scoped, the buyer usually needs quote-ready documentation and negotiation support more than another broad warning.",
-				"Document the finding, ask for specialist detail, and compare repair paths before final negotiation.",
+				"Because the line is already scoped, the buyer usually needs documentation and scope-specific pricing more than another broad warning.",
+				"Document the finding, get specialist detail, and compare repair options before final negotiation.",
 				"Get sewer repair or replacement quotes",
 				"/get-sewer-quotes/",
 				"repair",
@@ -114,10 +114,10 @@ public class EstimatorService {
 			return new DecisionProfile(
 				"Scoped issue that still needs method clarity",
 				"quote-ready",
-				"Confirmed issue / compare repair paths",
+				"Confirmed issue. Compare repair paths.",
 				"medium",
 				"The line already has evidence behind it, so the next useful move is usually comparing repair scope and method fit.",
-				"Get 2-3 repair quotes and compare spot repair versus broader replacement logic.",
+				"Get 2-3 repair quotes and compare targeted repair against broader replacement assumptions.",
 				"Get sewer repair or replacement quotes",
 				"/get-sewer-quotes/",
 				"repair",
@@ -131,10 +131,10 @@ public class EstimatorService {
 			return new DecisionProfile(
 				"Strong failure signals without a settled work plan",
 				"quote-ready",
-				"High urgency / quote-ready now",
+				"High urgency. Quote-ready now.",
 				"high",
-				"When symptoms are acute and the likely defect is a major material or collapse issue, delaying every quote until perfect certainty can waste time.",
-				"Get quote-ready contractor input now, then confirm the full run and method assumptions as part of that process.",
+				"When symptoms are acute and the likely defect is a major material or collapse issue, quote-first input makes sense, but the final scope still depends on confirming the full run and access.",
+				"Get contractor input now, then confirm the full run and method assumptions before you commit.",
 				"Get sewer repair or replacement quotes",
 				"/get-sewer-quotes/",
 				"replacement",
@@ -148,52 +148,52 @@ public class EstimatorService {
 			return new DecisionProfile(
 				"Transaction risk with incomplete evidence",
 				"inspection-first",
-				"Meaningful uncertainty / transaction-sensitive",
+				"Meaningful uncertainty. Transaction-sensitive.",
 				"medium",
-				"A buyer with an older home or an active contract usually benefits more from evidence first than from jumping straight to repair pricing.",
-				"Order a sewer scope before making a repair or negotiation call.",
+				"A buyer with an older home or an active contract usually benefits more from real footage first than from repair pricing built on assumptions.",
+				"Book a sewer scope before you price repairs or negotiate around the line.",
 				"Find sewer camera inspection options",
 				"/find-sewer-scope/",
 				"inspection",
-				"Review repair quote path",
+				"See quote-first option",
 				"/get-sewer-quotes/",
-				"replacement"
+				"not-sure"
 			);
 		}
 
 		if (symptomsOnly || noScopeYet) {
 			boolean lowEvidence = !oldHome && "researching".equals(urgency) && "unknown".equals(defectType) && !buyer && !seller;
 			return new DecisionProfile(
-				lowEvidence ? "Low-evidence research stage" : "Incomplete evidence",
+				lowEvidence ? "Low-evidence concern" : "Incomplete evidence",
 				"inspection-first",
-				lowEvidence ? "Low current evidence / inspect if the context justifies it" : "Meaningful uncertainty / inspect before pricing",
+				lowEvidence ? "Low current evidence. Inspect only if the context justifies it." : "Meaningful uncertainty. Inspect before pricing.",
 				lowEvidence ? "low" : "medium",
 				lowEvidence
 					? "There is not enough evidence yet to treat this like a repair project. Keep the next move light and evidence-first."
-					: "Without a documented run, the honest next move is usually inspection-first so pricing and urgency do not get overstated.",
-				"Order a sewer scope before making a repair or negotiation call.",
+					: "Without a documented run, the honest next move is usually a sewer scope so pricing and urgency do not get overstated.",
+				"Book a sewer scope before you price repairs or negotiate around the line.",
 				"Find sewer camera inspection options",
 				"/find-sewer-scope/",
 				"inspection",
-				"Review repair quote path",
+				"See quote-first option",
 				"/get-sewer-quotes/",
-				"replacement"
+				"not-sure"
 			);
 		}
 
 		return new DecisionProfile(
 			"Context needs more evidence",
 			"inspection-first",
-			"Meaningful uncertainty / inspect before pricing",
+			"Meaningful uncertainty. Inspect before pricing.",
 			"medium",
 			"The next reliable move is still to reduce uncertainty before treating the situation like a settled repair job.",
-			"Order a sewer scope before making a repair or negotiation call.",
+			"Book a sewer scope before you price repairs or negotiate around the line.",
 			"Find sewer camera inspection options",
 			"/find-sewer-scope/",
 			"inspection",
-			"Review repair quote path",
+			"See quote-first option",
 			"/get-sewer-quotes/",
-			"replacement"
+			"not-sure"
 		);
 	}
 
@@ -304,40 +304,58 @@ public class EstimatorService {
 			case "seller" -> "As a seller, the main job is clarifying the issue before it becomes negotiation drag.";
 			default -> "As an owner, the main job is separating watch-items from quote-now situations.";
 		};
+		String concernPhrase = "unknown".equals(defectType)
+			? "an unconfirmed buried-line concern"
+			: "a " + prettyLabel(defectType) + " concern";
+		String routePhrase = "inspection-first".equals(decision.routingBucket())
+			? "this points more toward an evidence-first inspection decision than a settled repair scope."
+			: "this points more toward a quote-comparison decision than a watch-and-wait posture.";
 		String accessPhrase = "slab".equals(accessType)
 			? " Under-slab access raises both cost and method uncertainty."
 			: "basement-crawlspace".equals(accessType)
 				? " Basement or crawlspace access can keep some repairs more inspectable."
 				: "";
-		return "%s A %s home with a %s state and %s concern usually lands in the %s lane.%s".formatted(
+		return "%s With a %s home, a %s situation, and %s, %s%s".formatted(
 			rolePhrase,
 			prettyLabel(ageBand),
 			prettyLabel(issueState),
-			prettyLabel(defectType),
-			decision.routingBucket().replace("-", " "),
+			concernPhrase,
+			routePhrase,
 			accessPhrase
 		);
 	}
 
 	private String buildSummary(EstimatorForm form, DecisionProfile decision, List<String> uncertaintyDrivers) {
+		String role = titleLabel(value(form.getRole(), "owner"));
+		String location = value(form.getLocation(), "Location not provided");
+		String issueState = titleLabel(prettyLabel(value(form.getIssueState(), "no-scope-yet")));
+		String defectType = value(form.getDefectType(), "unknown");
+		String concernLine = "unknown".equals(defectType)
+			? "Known concern: Nothing confirmed yet beyond the symptoms or context entered."
+			: "Known concern: " + titleLabel(prettyLabel(defectType)) + ".";
+		String costPosture = "inspection-first".equals(decision.routingBucket())
+			? "Cost posture: keep repair pricing broad until footage confirms severity, access, and whether the issue is isolated."
+			: "Cost posture: compare targeted repair, broader replacement, and restoration scope before you commit to one method.";
 		return """
-			SewerClarity next-step summary
+			SewerClarity decision memo
+			Who this is for: %s
 			Location: %s
-			Role: %s
 			Current situation: %s
-			Likely issue: %s
-			Evidence state: %s
-			Risk tier: %s
-			Most likely next step: %s
-			Key uncertainty: %s
+			Current read: %s
+			%s
+			Best next move: %s
+			Why this route: %s
+			%s
+			Biggest unknowns: %s
 			""".formatted(
-			value(form.getLocation(), "Not provided"),
-			prettyLabel(value(form.getRole(), "owner")),
-			prettyLabel(value(form.getIssueState(), "no-scope-yet")),
-			prettyLabel(value(form.getDefectType(), "unknown")),
-			decision.evidenceState(),
-			decision.riskTier(),
+			role,
+			location,
+			issueState,
+			decision.evidenceState() + " " + decision.riskTier(),
+			concernLine,
 			decision.likelyNextStep(),
+			decision.routingRationale(),
+			costPosture,
 			String.join("; ", uncertaintyDrivers)
 		).trim();
 	}
@@ -356,6 +374,13 @@ public class EstimatorService {
 			.replace("cast iron", "cast iron deterioration")
 			.replace("offset crack", "offset / crack")
 			.replace("basement crawlspace", "basement / crawlspace");
+	}
+
+	private String titleLabel(String value) {
+		if (!StringUtils.hasText(value)) {
+			return value;
+		}
+		return Character.toUpperCase(value.charAt(0)) + value.substring(1);
 	}
 
 	private record DecisionProfile(

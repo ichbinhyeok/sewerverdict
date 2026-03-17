@@ -13,9 +13,12 @@
 				<p class="lede" th:text="${leadSummary}">Summary</p>
 				<div class="context-pills" th:if="${!#strings.isEmpty(leadForm.draftId) or !#strings.isEmpty(leadForm.role) or !#strings.isEmpty(leadForm.issueState)}">
 					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.draftId)}" th:text="${'Imported estimator draft ' + (leadForm.draftId.length() > 8 ? leadForm.draftId.substring(0, 8) : leadForm.draftId)}">Draft</span>
-					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.role)}" th:text="${'Role: ' + leadForm.role}">Role</span>
-					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.issueState)}" th:text="${'Issue: ' + leadForm.issueState}">Issue state</span>
-					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.recommendedServicePath)}" th:text="${'Recommended path: ' + leadForm.recommendedServicePath}">Path</span>
+					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.role)}"
+					      th:text="${'Role: ' + (leadForm.role == 'buyer' ? 'Buyer' : leadForm.role == 'seller' ? 'Seller' : 'Owner')}">Role</span>
+					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.issueState)}"
+					      th:text="${'Issue: ' + (leadForm.issueState == 'no-scope-yet' ? 'No scope yet' : leadForm.issueState == 'scope-found-issue' ? 'Scope done, issue found' : 'Symptoms only')}">Issue state</span>
+					<span class="context-pill" th:if="${!#strings.isEmpty(leadForm.recommendedServicePath)}"
+					      th:text="${'Recommended path: ' + (leadForm.recommendedServicePath == 'inspection' ? 'Inspection first' : leadForm.recommendedServicePath == 'not-sure' ? 'Quote review only' : 'Quote comparison')}">Path</span>
 				</div>
 				<ul class="clean-list">
 					<li th:each="item : ${leadHighlights}" th:text="${item}">Highlight</li>
