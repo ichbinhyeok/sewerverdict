@@ -122,6 +122,28 @@ document.addEventListener("DOMContentLoaded", () => {
 	const attribution = persistAttribution();
 	applyAttributionToLinks(attribution);
 	applyAttributionToForms(attribution);
+	const revealAndFocus = (element) => {
+		if (!element) {
+			return;
+		}
+		element.scrollIntoView({ behavior: "smooth", block: "center" });
+		window.setTimeout(() => {
+			try {
+				element.focus({ preventScroll: true });
+			}
+			catch {
+				element.focus();
+			}
+		}, 120);
+	};
+
+	const markStepAttention = (step) => {
+		if (!step) {
+			return;
+		}
+		step.classList.add("step-needs-attention");
+		window.setTimeout(() => step.classList.remove("step-needs-attention"), 1400);
+	};
 
 	const navToggle = document.querySelector("[data-nav-toggle]");
 	const navMenu = document.querySelector("[data-nav-menu]");
@@ -156,6 +178,22 @@ document.addEventListener("DOMContentLoaded", () => {
 		let lastTrackedStep = -1;
 
 		const currentStep = () => steps[activeIndex];
+		const firstInvalidControl = (step) => {
+			if (!step) {
+				return null;
+			}
+			const radioInputs = Array.from(step.querySelectorAll("input[type='radio']"));
+			if (radioInputs.length && !radioInputs.some((input) => input.checked)) {
+				return radioInputs[0];
+			}
+			return Array.from(step.querySelectorAll("input[type='text'], input[type='email'], input[type='tel'], textarea, select"))
+				.find((field) => !(field.value && field.value.trim().length > 0)) || null;
+		};
+		const revealCurrentStepIssue = () => {
+			const step = currentStep();
+			markStepAttention(step);
+			revealAndFocus(firstInvalidControl(step) || stepError || step);
+		};
 
 		const stepIsValid = (step) => {
 			if (!step) {
@@ -186,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				stepError.textContent = validationMessage();
 				stepError.hidden = valid || !showValidation;
 			}
+			currentStep()?.classList.toggle("step-needs-attention", !valid && showValidation);
 		};
 
 		const findFirstIncompleteStepIndex = () => {
@@ -223,6 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				step: String(activeIndex + 1)
 			});
 			updateStepControls();
+			revealCurrentStepIssue();
 		});
 
 		backButton?.addEventListener("click", () => {
@@ -241,6 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					step: String(activeIndex + 1)
 				});
 				updateStepControls();
+				revealCurrentStepIssue();
 			}
 		});
 
@@ -249,6 +290,113 @@ document.addEventListener("DOMContentLoaded", () => {
 		activeIndex = findFirstIncompleteStepIndex();
 		syncWizard();
 	}
+
+	document.querySelectorAll("form[data-lead-form]").forEach((form) => {
+		const formError = form.parentElement?.querySelector("[data-form-error]");
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		const fieldConfigs = {
+			serviceNeeded: {
+				validate: (field) => field.value ? "" : "Choose the type of help you need first."
+			},
+			zipOrCity: {
+				validate: (field) => field.value.trim() ? "" : "Enter the ZIP code or city for this property."
+			},
+			name: {
+				validate: (field) => field.value.trim() ? "" : "Enter your name so the reply can be addressed correctly."
+			},
+			email: {
+				validate: (field) => {
+					const value = field.value.trim();
+					if (!value) {
+						return "Enter an email address for follow-up.";
+					}
+					return emailPattern.test(value) ? "" : "Enter a valid email address like name@example.com.";
+				}
+			},
+			phone: {
+				validate: (field) => field.value.trim() ? "" : "Enter the best phone number for a reply."
+			},
+			consentGiven: {
+				validate: (field) => field.checked ? "" : "Consent is required before the form can be submitted."
+			}
+		};
+
+		const errorNodeFor = (name) => form.querySelector(`[data-error-for='${name}']`);
+		const controlFor = (name) => form.querySelector(`[name='${name}']`);
+		const wrapperFor = (field) => field?.closest(".field-label, .consent-row");
+		const setFormError = (message) => {
+			if (!formError) {
+				return;
+			}
+			if (message) {
+				formError.textContent = message;
+				formError.hidden = false;
+				return;
+			}
+			formError.hidden = true;
+		};
+		const messageForField = (name) => {
+			const field = controlFor(name);
+			const config = fieldConfigs[name];
+			if (!field || !config) {
+				return "";
+			}
+			return config.validate(field);
+		};
+
+		const validateField = (name) => {
+			const field = controlFor(name);
+			if (!field) {
+				return "";
+			}
+			const message = messageForField(name);
+			const wrapper = wrapperFor(field);
+			const errorNode = errorNodeFor(name);
+			field.setAttribute("aria-invalid", message ? "true" : "false");
+			wrapper?.classList.toggle("has-error", Boolean(message));
+			if (errorNode) {
+				errorNode.textContent = message;
+			}
+			return message;
+		};
+
+		const invalidFields = (sync = false) => Object.keys(fieldConfigs)
+			.map((name) => ({ name, message: sync ? validateField(name) : messageForField(name) }))
+			.filter((entry) => entry.message);
+
+		const clearFieldOnInput = (field) => {
+			if (!field) {
+				return;
+			}
+			const name = field.getAttribute("name");
+			if (!name || !fieldConfigs[name]) {
+				return;
+			}
+			validateField(name);
+			if (!invalidFields(false).length) {
+				setFormError("");
+			}
+		};
+
+		form.addEventListener("submit", (event) => {
+			const invalid = invalidFields(true);
+			if (!invalid.length) {
+				setFormError("");
+				return;
+			}
+			event.preventDefault();
+			setFormError("Please fix the highlighted fields before submitting.");
+			const firstField = controlFor(invalid[0].name);
+			revealAndFocus(firstField || formError || form);
+		});
+
+		Object.keys(fieldConfigs).forEach((name) => {
+			const field = controlFor(name);
+			field?.addEventListener("input", () => clearFieldOnInput(field));
+			field?.addEventListener("change", () => clearFieldOnInput(field));
+			field?.addEventListener("blur", () => clearFieldOnInput(field));
+		});
+	});
 
 	const copyButtons = Array.from(document.querySelectorAll("[data-copy-summary]"));
 	if (copyButtons.length) {

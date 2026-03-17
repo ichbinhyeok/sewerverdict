@@ -32,8 +32,8 @@
 					<p>These details are used to match the next inspection or quote path more credibly. The form is intentionally short.</p>
 				</div>
 				<div class="form-success" th:if="${successMessage}" th:text="${successMessage}">Success</div>
-				<div class="form-error" th:if="${formError}" th:text="${formError}">Error</div>
-				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form" data-preserve-attribution>
+				<div class="form-error" data-form-error role="alert" aria-live="polite" th:hidden="${formError == null}" th:text="${formError ?: 'Please fix the highlighted fields before submitting.'}">Error</div>
+				<form th:action="${formAction}" th:object="${leadForm}" method="post" class="lead-form" data-preserve-attribution data-lead-form novalidate>
 					<input th:field="*{draftId}" type="hidden">
 					<input th:field="*{recommendedServicePath}" type="hidden">
 					<input th:field="*{utmSource}" type="hidden">
@@ -54,27 +54,27 @@
 							<option value="not-sure">Not sure</option>
 						</select>
 					</label>
-					<p class="field-error" th:if="${fieldErrors.containsKey('serviceNeeded')}" th:text="${fieldErrors['serviceNeeded']}">Service needed error</p>
+					<p class="field-error" data-error-for="serviceNeeded" th:text="${fieldErrors['serviceNeeded']} ?: ''">Service needed error</p>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('zipOrCity')} ? ' has-error'">
 						ZIP or city
 						<input th:field="*{zipOrCity}" type="text" placeholder="ZIP or city" th:attr="aria-invalid=${fieldErrors.containsKey('zipOrCity')}">
 					</label>
-					<p class="field-error" th:if="${fieldErrors.containsKey('zipOrCity')}" th:text="${fieldErrors['zipOrCity']}">ZIP or city error</p>
+					<p class="field-error" data-error-for="zipOrCity" th:text="${fieldErrors['zipOrCity']} ?: ''">ZIP or city error</p>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('name')} ? ' has-error'">
 						Name
 						<input th:field="*{name}" type="text" placeholder="Your name" th:attr="aria-invalid=${fieldErrors.containsKey('name')}">
 					</label>
-					<p class="field-error" th:if="${fieldErrors.containsKey('name')}" th:text="${fieldErrors['name']}">Name error</p>
+					<p class="field-error" data-error-for="name" th:text="${fieldErrors['name']} ?: ''">Name error</p>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('email')} ? ' has-error'">
 						Email
 						<input th:field="*{email}" type="email" placeholder="you@example.com" th:attr="aria-invalid=${fieldErrors.containsKey('email')}">
 					</label>
-					<p class="field-error" th:if="${fieldErrors.containsKey('email')}" th:text="${fieldErrors['email']}">Email error</p>
+					<p class="field-error" data-error-for="email" th:text="${fieldErrors['email']} ?: ''">Email error</p>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('phone')} ? ' has-error'">
 						Phone
 						<input th:field="*{phone}" type="tel" placeholder="Best number" th:attr="aria-invalid=${fieldErrors.containsKey('phone')}">
 					</label>
-					<p class="field-error" th:if="${fieldErrors.containsKey('phone')}" th:text="${fieldErrors['phone']}">Phone error</p>
+					<p class="field-error" data-error-for="phone" th:text="${fieldErrors['phone']} ?: ''">Phone error</p>
 					<details class="form-details">
 						<summary>Add a few more routing details if you already know them</summary>
 						<div class="form-details-grid">
@@ -132,7 +132,7 @@
 						<input th:field="*{consentGiven}" type="checkbox" th:attr="aria-invalid=${fieldErrors.containsKey('consentGiven')}">
 						<span>I consent to being contacted about relevant sewer inspection or repair options based on the details I submit here.</span>
 					</label>
-					<p class="field-error" th:if="${fieldErrors.containsKey('consentGiven')}" th:text="${fieldErrors['consentGiven']}">Consent error</p>
+					<p class="field-error" data-error-for="consentGiven" th:text="${fieldErrors['consentGiven']} ?: ''">Consent error</p>
 					<p class="form-microcopy">
 						Privacy and data-handling details are explained in the
 						<a th:href="@{/privacy/}">privacy page</a>.
