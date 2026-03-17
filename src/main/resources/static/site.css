@@ -593,7 +593,10 @@ h3 {
 
 .choice-card {
 	display: grid;
-	gap: 0.35rem;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: start;
+	column-gap: 0.85rem;
+	row-gap: 0.15rem;
 	padding: 1rem;
 	border-radius: var(--radius-tight);
 	border: 1px solid rgba(31, 42, 48, 0.12);
@@ -602,12 +605,21 @@ h3 {
 }
 
 .choice-card input {
-	margin: 0 0 0.5rem;
+	grid-row: 1 / span 2;
+	margin: 0.18rem 0 0;
 	accent-color: var(--brand);
 }
 
+.choice-card > span {
+	color: var(--ink);
+	font-weight: 600;
+	line-height: 1.35;
+}
+
 .choice-card small {
+	grid-column: 2;
 	color: var(--muted);
+	line-height: 1.45;
 }
 
 .choice-card:hover,
@@ -996,7 +1008,29 @@ h3 {
 
 	.header-mobile-trust {
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
+		gap: 0.6rem;
+		overflow-x: auto;
+		padding: 0 0 0.85rem;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.header-mobile-trust::-webkit-scrollbar {
+		display: none;
+	}
+
+	.header-mobile-trust > * {
+		flex: 0 0 auto;
+		white-space: nowrap;
+	}
+
+	.header-mobile-trust a,
+	.header-mobile-trust > div {
+		padding: 0.45rem 0.72rem;
+		border-radius: 999px;
+		background: rgba(255, 253, 248, 0.82);
+		border: 1px solid rgba(215, 208, 196, 0.92);
 	}
 
 	.nav-toggle {
@@ -1077,5 +1111,36 @@ h3 {
 
 	.form-details-grid {
 		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 480px) {
+	.container {
+		width: min(1120px, calc(100vw - 2.5rem));
+	}
+
+	.page-hero {
+		padding: 3.35rem 0 1.8rem;
+	}
+
+	.page-hero h1 {
+		font-size: clamp(2.1rem, 10vw, 2.8rem);
+		line-height: 1.02;
+	}
+
+	.breadcrumbs {
+		gap: 0.45rem;
+		margin-bottom: 1rem;
+		font-size: 0.86rem;
+	}
+
+	.hero-shell,
+	.result-hero-shell {
+		gap: 1.15rem;
+	}
+
+	.choice-card {
+		padding: 0.95rem;
+		column-gap: 0.75rem;
 	}
 }
