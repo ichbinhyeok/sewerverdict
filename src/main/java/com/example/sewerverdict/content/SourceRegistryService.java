@@ -64,7 +64,7 @@ public class SourceRegistryService {
 			return List.of("cost-001", "cost-002", "rdf-001", "nyc-001", "ins-001");
 		}
 		if (page.isBuyerPage() || slug.contains("scope")) {
-			return List.of("rdf-001", "cost-001", "cost-002");
+			return List.of("rdf-001", "cost-004", "cost-002");
 		}
 		if (page.isCostPage() || page.isDefectPage() || page.isGeoPage()) {
 			return List.of("cost-001", "cost-002");

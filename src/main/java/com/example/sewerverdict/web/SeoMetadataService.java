@@ -30,14 +30,21 @@ public class SeoMetadataService {
 
 	public void apply(Model model, HttpServletRequest request, String title, String description, String ogType,
 		List<SiteController.Breadcrumb> breadcrumbs, List<PageFaq> faq, boolean includeOrganization) {
+		apply(model, request, title, description, ogType, breadcrumbs, faq, includeOrganization, null);
+	}
+
+	public void apply(Model model, HttpServletRequest request, String title, String description, String ogType,
+		List<SiteController.Breadcrumb> breadcrumbs, List<PageFaq> faq, boolean includeOrganization, String articleDate) {
 		String canonicalUrl = ServletUriComponentsBuilder.fromRequestUri(request)
 			.replaceQuery(null)
 			.build()
 			.toUriString();
+		String defaultImageUrl = extractOrigin(canonicalUrl) + "/og-default.svg";
 
 		model.addAttribute("canonicalUrl", canonicalUrl);
 		model.addAttribute("ogType", ogType);
 		model.addAttribute("ogUrl", canonicalUrl);
+		model.addAttribute("ogImage", defaultImageUrl);
 
 		List<String> schemaScripts = new ArrayList<>();
 		if (includeOrganization) {
@@ -45,7 +52,7 @@ public class SeoMetadataService {
 		}
 		schemaScripts.add(writeJsonLd(buildWebPageSchema(title, description, canonicalUrl)));
 		if ("article".equalsIgnoreCase(ogType)) {
-			schemaScripts.add(writeJsonLd(buildArticleSchema(title, description, canonicalUrl)));
+			schemaScripts.add(writeJsonLd(buildArticleSchema(title, description, canonicalUrl, articleDate, defaultImageUrl)));
 		}
 		if (breadcrumbs != null && !breadcrumbs.isEmpty()) {
 			schemaScripts.add(writeJsonLd(buildBreadcrumbSchema(canonicalUrl, breadcrumbs)));
@@ -101,13 +108,21 @@ public class SeoMetadataService {
 		return schema;
 	}
 
-	private Map<String, Object> buildArticleSchema(String title, String description, String canonicalUrl) {
+	private Map<String, Object> buildArticleSchema(String title, String description, String canonicalUrl, String articleDate,
+		String imageUrl) {
 		Map<String, Object> schema = new LinkedHashMap<>();
 		schema.put("@context", "https://schema.org");
 		schema.put("@type", "Article");
 		schema.put("headline", title);
 		schema.put("description", description);
 		schema.put("mainEntityOfPage", canonicalUrl);
+		if (StringUtils.hasText(articleDate)) {
+			schema.put("datePublished", articleDate);
+			schema.put("dateModified", articleDate);
+		}
+		if (StringUtils.hasText(imageUrl)) {
+			schema.put("image", List.of(imageUrl));
+		}
 		schema.put("author", Map.of("@type", "Person", "name", "Homeowner research editor"));
 		schema.put("reviewedBy", Map.of("@type", "Person", "name", "Plumbing-risk content reviewer"));
 		schema.put("publisher", Map.of("@type", "Organization", "name", "SewerClarity"));

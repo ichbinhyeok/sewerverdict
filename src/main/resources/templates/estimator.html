@@ -9,13 +9,30 @@
 		<div class="container compact-hero">
 			<span class="eyebrow">Estimator</span>
 			<h1>Estimate sewer-line risk and the most likely next step.</h1>
-			<p class="lede">This is a high-trust next-step tool. It does not diagnose a buried defect, but it can narrow the smartest move and the likely cost band.</p>
+			<p class="lede">Answer the minimum context needed for a calm next-step call. SewerClarity will not fake a diagnosis, but it will show the route, cost posture, and unknowns that matter most.</p>
+			<div class="trust-strip trust-strip-compact">
+				<div>Usually under 60 seconds</div>
+				<div>Route first, pricing second</div>
+				<div>Directional, not diagnostic</div>
+			</div>
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="container">
 			<div class="wizard-shell" data-estimator>
+				<div class="form-prelude">
+					<span class="card-kicker">What you get</span>
+					<ul class="clean-list compact-list">
+						<li>A clear read on whether this looks inspection-first or quote-ready.</li>
+						<li>A wide cost posture with the biggest uncertainty drivers shown explicitly.</li>
+						<li>A forwardable decision memo you can send to an agent, seller, inspector, or contractor.</li>
+					</ul>
+				</div>
+				<div class="form-error" th:if="${estimatorError}" role="alert" aria-live="polite" th:text="${estimatorError}">Estimator error</div>
+				<ul class="field-error-list" th:if="${estimatorErrorDetails}">
+					<li th:each="item : ${estimatorErrorDetails}" th:text="${item}">Missing step</li>
+				</ul>
 				<div class="wizard-progress">
 					<div class="progress-bar"><span data-progress-fill></span></div>
 					<p data-progress-label>Step 1 of 7</p>
@@ -38,15 +55,8 @@
 							<label class="choice-card"><input type="radio" th:field="*{role}" value="owner"><span>Owner</span><small>Known issue, symptoms, or quote comparison</small></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden data-step-message="Enter the ZIP code or city so the result can anchor to a real place.">
-						<span class="card-kicker">Step 2</span>
-						<h2>Where is the property?</h2>
-						<label class="field-label">ZIP or city
-							<input th:field="*{location}" type="text" placeholder="ZIP or city">
-						</label>
-					</section>
 					<section class="wizard-step" data-step hidden data-step-message="Choose the house age band so the risk context is not too generic.">
-						<span class="card-kicker">Step 3</span>
+						<span class="card-kicker">Step 2</span>
 						<h2>What age band is the house in?</h2>
 						<div class="choice-grid">
 							<label class="choice-card"><input type="radio" th:field="*{houseAgeBand}" value="pre-1950"><span>Pre-1950</span><small>Highest buried-line uncertainty</small></label>
@@ -56,7 +66,7 @@
 						</div>
 					</section>
 					<section class="wizard-step" data-step hidden data-step-message="Choose the current issue state before moving forward.">
-						<span class="card-kicker">Step 4</span>
+						<span class="card-kicker">Step 3</span>
 						<h2>What is the current issue state?</h2>
 						<div class="choice-grid">
 							<label class="choice-card"><input type="radio" th:field="*{issueState}" value="no-scope-yet"><span>No scope yet</span><small>Still deciding whether to inspect first</small></label>
@@ -65,8 +75,9 @@
 						</div>
 					</section>
 					<section class="wizard-step" data-step hidden data-step-message="Pick the closest defect type, even if it is just unknown.">
-						<span class="card-kicker">Step 5</span>
+						<span class="card-kicker">Step 4</span>
 						<h2>If known, what kind of defect is involved?</h2>
+						<p class="form-microcopy">If you do not have footage or a written finding, leave this on unknown.</p>
 						<div class="choice-grid">
 							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="roots"><span>Roots</span></label>
 							<label class="choice-card"><input type="radio" th:field="*{defectType}" value="cast-iron"><span>Cast iron deterioration</span></label>
@@ -78,8 +89,9 @@
 						</div>
 					</section>
 					<section class="wizard-step" data-step hidden data-step-message="Pick the access context that seems closest to the property.">
-						<span class="card-kicker">Step 6</span>
+						<span class="card-kicker">Step 5</span>
 						<h2>What kind of access context applies?</h2>
+						<p class="form-microcopy">If you are not sure, leave this on unknown. It only widens or narrows restoration risk.</p>
 						<div class="choice-grid">
 							<label class="choice-card"><input type="radio" th:field="*{accessType}" value="slab"><span>Slab</span><small>Higher access and restoration uncertainty</small></label>
 							<label class="choice-card"><input type="radio" th:field="*{accessType}" value="basement-crawlspace"><span>Basement / crawlspace</span><small>Sometimes easier to inspect and stage work</small></label>
@@ -87,13 +99,21 @@
 						</div>
 					</section>
 					<section class="wizard-step" data-step hidden data-step-message="Choose the urgency so the next step fits the timeline.">
-						<span class="card-kicker">Step 7</span>
+						<span class="card-kicker">Step 6</span>
 						<h2>How urgent is this decision?</h2>
 						<div class="choice-grid">
 							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="researching"><span>Just researching</span></label>
 							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="active-decision"><span>Under contract / active decision</span></label>
 							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="urgent-repair"><span>Urgent repair needed</span></label>
 						</div>
+					</section>
+					<section class="wizard-step" data-step hidden data-step-message="Add the ZIP code or city so the result can use a real market anchor instead of staying purely national.">
+						<span class="card-kicker">Step 7</span>
+						<h2>Where is the property?</h2>
+						<p class="form-microcopy">Used as a market anchor and local-context check, not as a fake precise city quote.</p>
+						<label class="field-label">ZIP or city
+							<input th:field="*{location}" type="text" placeholder="ZIP or city">
+						</label>
 					</section>
 					<p class="wizard-error" data-step-error role="alert" aria-live="polite" hidden>Please complete this step before continuing.</p>
 					<div class="wizard-actions">

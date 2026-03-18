@@ -66,7 +66,11 @@ class LeadFlowIntegrationTests {
 			.andExpect(header().string("X-Robots-Tag", "noindex, nofollow"))
 			.andExpect(content().string(containsString("/find-sewer-scope/?")))
 			.andExpect(content().string(containsString("draftId=")))
-			.andExpect(content().string(containsString("utmSource=google")));
+			.andExpect(content().string(containsString("utmSource=google")))
+			.andExpect(content().string(containsString("How SewerClarity read the finding")))
+			.andExpect(content().string(containsString("What upgrades severity")))
+			.andExpect(content().string(containsString("Sources behind this read")))
+			.andExpect(content().string(containsString("Sewer Camera Inspection Cost")));
 
 		String drafts = Files.readString(DRAFTS_FILE);
 		String events = Files.readString(EVENTS_FILE);
@@ -76,10 +80,22 @@ class LeadFlowIntegrationTests {
 	}
 
 	@Test
+	void estimatorRejectsMissingCoreInputsInsteadOfRenderingFakeResult() throws Exception {
+		mockMvc.perform(post("/estimator/results/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Finish the missing steps before SewerClarity builds a directional call.")))
+			.andExpect(content().string(containsString("Choose whether you are the buyer, seller, or owner.")))
+			.andExpect(content().string(containsString("Add the ZIP code or city so the result anchors to a real market.")));
+
+		String drafts = Files.readString(DRAFTS_FILE);
+		org.junit.jupiter.api.Assertions.assertEquals("", drafts);
+	}
+
+	@Test
 	void leadSubmitStoresDraftAndAttribution() throws Exception {
 		MvcResult result = mockMvc.perform(post("/estimator/results/")
 				.param("role", "buyer")
-				.param("location", "60614")
+				.param("location", "Philadelphia, PA")
 				.param("houseAgeBand", "pre-1950")
 				.param("issueState", "no-scope-yet")
 				.param("defectType", "unknown")
@@ -100,7 +116,7 @@ class LeadFlowIntegrationTests {
 				.param("draftId", draftId)
 				.param("recommendedServicePath", "inspection")
 				.param("serviceNeeded", "inspection")
-				.param("zipOrCity", "60614")
+				.param("zipOrCity", "Philadelphia, PA")
 				.param("role", "buyer")
 				.param("houseAgeBand", "pre-1950")
 				.param("issueState", "no-scope-yet")
@@ -121,6 +137,32 @@ class LeadFlowIntegrationTests {
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"routingBucket\":\"inspection-first\""));
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"utmSource\":\"google\""));
 		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"sessionId\":\"" + session.getId() + "\""));
+	}
+
+	@Test
+	void leadPageShowsEstimatorCarryForwardFromStoredDraft() throws Exception {
+		mockMvc.perform(post("/estimator/results/")
+				.param("role", "buyer")
+				.param("location", "Philadelphia, PA")
+				.param("houseAgeBand", "pre-1950")
+				.param("issueState", "no-scope-yet")
+				.param("defectType", "unknown")
+				.param("accessType", "unknown")
+				.param("urgency", "active-decision"))
+			.andExpect(status().isOk());
+
+		String drafts = Files.readString(DRAFTS_FILE).trim();
+		String draftId = drafts.substring(drafts.indexOf("\"draftId\":\"") + 11);
+		draftId = draftId.substring(0, draftId.indexOf('"'));
+
+		mockMvc.perform(get("/find-sewer-scope/")
+				.param("draftId", draftId)
+				.param("recommendedServicePath", "inspection")
+				.param("serviceNeeded", "inspection"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Estimator carry-forward")))
+			.andExpect(content().string(containsString("Matched Philadelphia, PA.")))
+			.andExpect(content().string(containsString("Transaction risk with incomplete evidence")));
 	}
 
 	@Test
@@ -185,6 +227,20 @@ class LeadFlowIntegrationTests {
 			.andExpect(content().string(containsString("privacy page")))
 			.andExpect(content().string(containsString("/privacy/")))
 			.andExpect(content().string(containsString("contact@sewerclarity.com")));
+	}
+
+	@Test
+	void leadPagesExposeGuidesAndFaqContent() throws Exception {
+		mockMvc.perform(get("/find-sewer-scope/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Relevant guides")))
+			.andExpect(content().string(containsString("Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Why does the form still ask for location?")));
+
+		mockMvc.perform(get("/get-sewer-quotes/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Sewer Line Repair vs Replacement")))
+			.andExpect(content().string(containsString("Does a quote-ready route mean full replacement is certain?")));
 	}
 
 	private static Path createTempStorageRoot() {

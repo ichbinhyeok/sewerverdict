@@ -7,8 +7,10 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,6 +20,7 @@ import org.springframework.util.StringUtils;
 
 import com.example.sewerverdict.estimator.EstimatorForm;
 import com.example.sewerverdict.estimator.EstimatorResult;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.annotation.PostConstruct;
@@ -115,6 +118,11 @@ public class StorageService {
 		payload.put("evidenceState", result.evidenceState());
 		payload.put("riskTier", result.riskTier());
 		payload.put("likelyNextStep", result.likelyNextStep());
+		payload.put("evidenceSummary", result.evidenceSummary());
+		payload.put("estimateMethodSummary", result.estimateMethodSummary());
+		payload.put("localContextSummary", result.localContextSummary());
+		payload.put("callDrivers", result.callDrivers());
+		payload.put("summaryBlock", result.summaryBlock());
 		payload.put("primaryServiceNeeded", result.primaryServiceNeeded());
 		payload.put("secondaryServiceNeeded", result.secondaryServiceNeeded());
 		payload.putAll(buildAttributionMap(
@@ -129,6 +137,43 @@ public class StorageService {
 		));
 		appendJsonLine(estimatorDraftsFile, payload);
 		return draftId;
+	}
+
+	public Optional<EstimatorDraftSnapshot> getEstimatorDraft(String draftId) {
+		if (!StringUtils.hasText(draftId)) {
+			return Optional.empty();
+		}
+		try {
+			List<String> lines = Files.readAllLines(estimatorDraftsFile);
+			for (int index = lines.size() - 1; index >= 0; index--) {
+				String line = lines.get(index);
+				if (line == null || line.isBlank()) {
+					continue;
+				}
+				Map<String, Object> payload = objectMapper.readValue(line, new TypeReference<Map<String, Object>>() {
+				});
+				if (!draftId.equals(payload.get("draftId"))) {
+					continue;
+				}
+				return Optional.of(new EstimatorDraftSnapshot(
+					asString(payload.get("draftId")),
+					asString(payload.get("location")),
+					asString(payload.get("riskTier")),
+					asString(payload.get("likelyNextStep")),
+					asString(payload.get("routingBucket")),
+					asString(payload.get("evidenceState")),
+					asString(payload.get("evidenceSummary")),
+					asString(payload.get("estimateMethodSummary")),
+					asString(payload.get("localContextSummary")),
+					asString(payload.get("summaryBlock")),
+					asStringList(payload.get("callDrivers"))
+				));
+			}
+			return Optional.empty();
+		}
+		catch (IOException exception) {
+			throw new UncheckedIOException("Failed to read estimator drafts", exception);
+		}
 	}
 
 	public void storeLead(LeadForm form, String pageSlug, String referrer, String sessionId) {
@@ -283,6 +328,20 @@ public class StorageService {
 	private String normalizeLocation(String value) {
 		String normalized = trimToNull(value);
 		return normalized == null ? null : normalized.toLowerCase();
+	}
+
+	private String asString(Object value) {
+		return value == null ? null : String.valueOf(value);
+	}
+
+	private List<String> asStringList(Object value) {
+		if (!(value instanceof List<?> items)) {
+			return List.of();
+		}
+		return items.stream()
+			.map(this::asString)
+			.filter(StringUtils::hasText)
+			.toList();
 	}
 
 	private void initializeFile(Path file) throws IOException {

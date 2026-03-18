@@ -1,6 +1,7 @@
 package com.example.sewerverdict.web;
 
 import java.util.List;
+import java.util.Comparator;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -39,18 +40,20 @@ public class SiteController {
 		model.addAttribute("metaDescription",
 			"Calm, buyer-first sewer scope risk guidance for buyers, sellers, and owners. Estimate the next step, understand cost direction, and find inspection or quote paths.");
 		model.addAttribute("featuredPages", siteContentService.getFeaturedPages(List.of(
-			"/sewer-scope-before-buying-house/",
-			"/sewer-line-replacement-cost/",
 			"/sewer-scope-red-flags/",
-			"/cast-iron-sewer-pipe-replacement-cost/",
+			"/sewer-scope-inspection-cost/",
+			"/is-sewer-scope-worth-it/",
 			"/orangeburg-pipe-replacement-cost/",
-			"/who-pays-for-sewer-line-repair-buyer-or-seller/"
+			"/how-to-read-sewer-scope-report/",
+			"/cast-iron-sewer-pipe-replacement-cost/",
+			"/sewer-line-under-slab-repair-cost/"
 		)));
 		model.addAttribute("issuePages", siteContentService.getFeaturedPages(List.of(
+			"/sewer-scope-red-flags/",
+			"/how-to-read-sewer-scope-report/",
+			"/cast-iron-pipe-deterioration-signs/",
 			"/root-intrusion-sewer-line-what-to-do/",
-			"/trenchless-sewer-replacement-cost/",
-			"/sewer-line-replacement-cost/",
-			"/sewer-scope-red-flags/"
+			"/trenchless-sewer-replacement-cost/"
 		)));
 		model.addAttribute("geoPages", siteContentService.getFeaturedPages(List.of(
 			"/cities/philadelphia/homeowner-vs-city-sewer-responsibility/",
@@ -170,8 +173,17 @@ public class SiteController {
 			.filter(candidate -> candidate.getTrackingFamily().equalsIgnoreCase(page.getTrackingFamily()))
 			.limit(3)
 			.toList();
+		var familyClusterPages = page.isGeoPage() || page.getFamily() == null ? List.<SitePage>of() : siteContentService.getPagesByFamily(page.getFamily()).stream()
+			.filter(candidate -> !candidate.getSlug().equals(page.getSlug()))
+			.filter(candidate -> !candidate.isGeoPage())
+			.sorted(Comparator
+				.comparingInt(SitePage::getClusterRolePriority)
+				.thenComparing(SitePage::getTitle))
+			.limit(5)
+			.toList();
 		model.addAttribute("page", page);
 		model.addAttribute("relatedPages", siteContentService.getRelatedPages(page));
+		model.addAttribute("familyClusterPages", familyClusterPages);
 		model.addAttribute("geoCompanionPages", geoProfileService.getGeoCompanionPages(page, allPages, 4));
 		model.addAttribute("pageSources", pageSources);
 		model.addAttribute("geoProfile", geoProfileService.getProfileForPage(page));
@@ -184,7 +196,8 @@ public class SiteController {
 		model.addAttribute("pageTitle", page.getMetaTitle());
 		model.addAttribute("metaDescription", page.getMetaDescription());
 		model.addAttribute("breadcrumbs", breadcrumbs);
-		seoMetadataService.apply(model, request, page.getMetaTitle(), page.getMetaDescription(), "article", breadcrumbs, page.getFaq(), false);
+		seoMetadataService.apply(model, request, page.getMetaTitle(), page.getMetaDescription(), "article", breadcrumbs,
+			page.getFaq(), false, page.getLastReviewed());
 		return "content-page";
 	}
 

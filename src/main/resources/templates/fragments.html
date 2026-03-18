@@ -12,6 +12,9 @@
 	<meta property="og:description" th:content="${description}">
 	<meta property="og:type" th:if="${ogType}" th:content="${ogType}">
 	<meta property="og:url" th:if="${ogUrl}" th:content="${ogUrl}">
+	<meta property="og:image" th:if="${ogImage}" th:content="${ogImage}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" th:if="${ogImage}" th:content="${ogImage}">
 	<link rel="icon" type="image/svg+xml" th:href="@{/favicon.svg}">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

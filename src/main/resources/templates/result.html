@@ -8,13 +8,16 @@
 	<section class="page-hero">
 		<div class="container result-hero-shell"
 		     data-ga-event="estimator_complete"
-		     th:attr="data-ga-page-slug='/estimator/results/',data-ga-label=${result.routingBucket},data-ga-route=${result.routingBucket},data-ga-draft-id=${draftId}">
+		     th:attr="data-ga-page-slug='/estimator/results/',data-ga-label=${result.routingBucket},data-ga-route=${result.routingBucket},data-ga-draft-id=${draftId},data-ga-risk-tier=${result.riskClass}">
 			<div class="hero-copy">
 				<span class="eyebrow">Estimator result</span>
 				<div class="trust-strip trust-strip-compact result-context-strip">
 					<div th:text="${result.evidenceState}">Incomplete evidence</div>
 					<div th:text="${result.routingBucket == 'inspection-first' ? 'Inspection-first route' : 'Quote-ready route'}">Route</div>
-					<div th:text="${'Draft ' + draftId.substring(0, 8)}">Draft</div>
+					<div>Directional read, not a diagnosis</div>
+				</div>
+				<div class="context-pills">
+					<span class="context-pill" th:each="item : ${result.inputSummary}" th:text="${item}">Input</span>
 				</div>
 				<div class="result-tier" th:classappend="${result.riskClass}">
 					<span>Risk tier</span>
@@ -22,6 +25,10 @@
 				</div>
 				<h1 th:text="${result.likelyNextStep}">Likely next step</h1>
 				<p class="lede" th:text="${result.interpretation}">Interpretation</p>
+				<div class="section-note">
+					<strong>Evidence read:</strong>
+					<span th:text="${result.evidenceSummary}">Evidence summary</span>
+				</div>
 				<div class="button-row">
 					<a class="button button-primary" th:href="${primaryCtaHref}" th:text="${result.primaryCtaLabel}"
 					   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/"
@@ -32,17 +39,43 @@
 				</div>
 			</div>
 			<div class="result-brief">
-				<span class="card-kicker">Decision memo</span>
-				<h2>Share this like a calm brief</h2>
-				<p>Designed to paste into a buyer thread, agent message, seller email, or contractor note without sounding like a diagnosis.</p>
-				<button class="button button-ghost" type="button" data-copy-summary data-event-type="summary_copy_click"
-				        data-page-slug="/estimator/results/" data-event-label="copy-summary-hero">Copy decision memo</button>
-				<ul class="clean-list">
-					<li>Risk level and next move are shown separately so urgency does not outrun evidence.</li>
-					<li>Cost bands stay broad until footage or a field quote narrows the scope.</li>
-					<li>This memo is written to travel cleanly in a tense transaction or repair decision.</li>
+				<span class="card-kicker">Why this call</span>
+				<h2>What pushed the result this way</h2>
+				<ul class="clean-list compact-list">
+					<li th:each="driver : ${result.callDrivers}" th:text="${driver}">Call driver</li>
 				</ul>
-				<p class="summary-inline" th:text="${result.summaryBlock}">Summary</p>
+				<p class="form-microcopy" th:text="${result.estimateMethodSummary}">Estimate method</p>
+				<p class="form-microcopy">Draft <span th:text="${draftId.substring(0, 8)}">draft</span> can be carried into the next form so you do not need to restate the whole situation.</p>
+				<div class="button-row">
+					<a class="button button-ghost" th:href="@{/methodology/}">Read methodology</a>
+					<a class="button button-ghost" th:href="@{/disclaimer/}">Read disclaimer</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-tight">
+		<div class="container">
+			<div class="card-grid card-grid-4">
+				<article class="section-card">
+					<span class="card-kicker">Decision memo</span>
+					<h2>Share this like a calm brief</h2>
+					<p>Designed to paste into a buyer thread, agent message, seller email, or contractor note without sounding like a diagnosis.</p>
+					<button class="button button-ghost" type="button" data-copy-summary data-event-type="summary_copy_click"
+					        data-page-slug="/estimator/results/" data-event-label="copy-summary-hero">Copy decision memo</button>
+				</article>
+				<article class="section-card">
+					<span class="card-kicker">Local context used</span>
+					<p th:text="${result.localContextSummary}">Local context summary</p>
+				</article>
+				<article class="section-card">
+					<span class="card-kicker">What this result used</span>
+					<p>Role, issue state, urgency, house-age context, and any defect or access signals you entered. It does not know footage severity, line length, depth, or exact local contractor pricing yet.</p>
+				</article>
+				<article class="section-card">
+					<span class="card-kicker">What still changes the call</span>
+					<p>Better footage, exact line condition, access constraints, and restoration scope can all move the route or widen the budget.</p>
+				</article>
 			</div>
 		</div>
 	</section>
@@ -56,7 +89,33 @@
 					<p class="result-rationale" th:text="${result.routingRationale}">Routing rationale</p>
 				</article>
 				<article class="section-card">
+					<h2>How SewerClarity read the finding</h2>
+					<div class="card-grid card-grid-2">
+						<div class="info-card">
+							<span class="card-kicker">Finding read</span>
+							<p th:text="${result.findingReadSummary}">Finding read</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">What upgrades severity</span>
+							<p th:text="${result.severityUpgradeSummary}">Upgrade signal</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">What can soften it</span>
+							<p th:text="${result.severityDowngradeSummary}">Downgrade signal</p>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">Method fit</span>
+							<p th:text="${result.methodFitSummary}">Method fit</p>
+						</div>
+						<div class="info-card" th:if="${result.materialReadSummary != null and !result.materialReadSummary.isBlank()}">
+							<span class="card-kicker">Material context</span>
+							<p th:text="${result.materialReadSummary}">Material read</p>
+						</div>
+					</div>
+				</article>
+				<article class="section-card">
 					<h2>Rough cost bands</h2>
+					<p class="form-microcopy">These ranges stay intentionally wide and should narrow only after footage, access, and local contractor assumptions are clearer.</p>
 					<div class="card-grid card-grid-2">
 						<div class="info-card" th:each="band : ${result.costBands}">
 							<span class="card-kicker" th:text="${band.label}">Band</span>
@@ -74,21 +133,31 @@
 			</div>
 			<aside class="content-rail">
 				<div class="rail-card">
-					<span class="card-kicker">What Could Change The Call</span>
+					<span class="card-kicker">Forwardable memo</span>
+					<p class="summary-inline" th:text="${result.summaryBlock}">Summary</p>
+					<button class="button button-secondary" type="button" data-copy-summary data-event-type="summary_copy_click"
+					        data-page-slug="/estimator/results/" data-event-label="copy-summary">Copy summary</button>
+				</div>
+				<div class="rail-card">
+					<span class="card-kicker">What could change the call</span>
 					<ul class="clean-list">
 						<li th:each="driver : ${result.uncertaintyDrivers}" th:text="${driver}">Driver</li>
 					</ul>
 				</div>
-				<div class="rail-card">
-					<span class="card-kicker">Forwardable Memo</span>
-					<p>Use this when an agent, seller, inspector, or contractor needs one short note with calm language and clear uncertainty.</p>
-					<button class="button button-secondary" type="button" data-copy-summary data-event-type="summary_copy_click"
-					        data-page-slug="/estimator/results/" data-event-label="copy-summary">Copy summary</button>
-					<pre class="summary-block" id="summary-block" th:text="${result.summaryBlock}">Summary</pre>
+				<div class="rail-card" th:if="${!#lists.isEmpty(resultSources)}">
+					<span class="card-kicker">Sources behind this read</span>
+					<p class="form-microcopy">These sources back the defect, method, and cost sanity checks behind this directional call.</p>
+					<ul class="link-list source-list">
+						<li th:each="source : ${resultSources}">
+							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
+							<span class="source-meta" th:text="${source.sourceClass + ' | ' + source.topicArea + ' | verified ' + source.lastVerified}">Source meta</span>
+						</li>
+					</ul>
 				</div>
 				<div class="rail-card">
 					<span class="card-kicker">Important note</span>
 					<p>This is directional guidance, not a substitute for footage, legal advice, insurance advice, or an in-person quote.</p>
+					<pre class="summary-block" id="summary-block" th:text="${result.summaryBlock}">Summary</pre>
 				</div>
 			</aside>
 		</div>

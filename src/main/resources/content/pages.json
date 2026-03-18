@@ -2,6 +2,7 @@
   {
     "slug": "/sewer-line-replacement-cost/",
     "family": "cost",
+    "clusterRole": "winner",
     "title": "Sewer Line Replacement Cost",
     "metaTitle": "Sewer Line Replacement Cost: Range and Next Step | SewerClarity",
     "metaDescription": "See realistic sewer line replacement cost ranges, what drives quotes up, and when a scope should come before repair pricing.",
@@ -77,7 +78,7 @@
           {
             "cells": [
               "Inspection only",
-              "$100-$500",
+              "$175-$800",
               "camera access, market rate, cleanout availability"
             ]
           },
@@ -130,12 +131,14 @@
     ],
     "relatedSlugs": [
       "/trenchless-sewer-replacement-cost/",
-      "/sewer-line-repair-vs-replacement/"
+      "/sewer-line-repair-vs-replacement/",
+      "/sewer-line-under-slab-repair-cost/"
     ]
   },
   {
     "slug": "/sewer-scope-before-buying-house/",
     "family": "buyer",
+    "clusterRole": "winner",
     "title": "Sewer Scope Before Buying a House",
     "metaTitle": "Sewer Scope Before Buying a House: Is It Worth It? | SewerClarity",
     "metaDescription": "See when a sewer scope is worth ordering before closing, which homes raise buried-line risk, and what buyers should do next.",
@@ -262,12 +265,15 @@
     ],
     "relatedSlugs": [
       "/sewer-scope-red-flags/",
-      "/who-pays-for-sewer-line-repair-buyer-or-seller/"
+      "/who-pays-for-sewer-line-repair-buyer-or-seller/",
+      "/is-sewer-scope-worth-it/",
+      "/sewer-scope-inspection-cost/"
     ]
   },
   {
     "slug": "/trenchless-sewer-replacement-cost/",
     "family": "cost",
+    "clusterRole": "winner",
     "title": "Trenchless Sewer Replacement Cost",
     "metaTitle": "Trenchless Sewer Replacement Cost | SewerClarity",
     "metaDescription": "Trenchless sewer replacement cost direction, when it may be possible, and why eligibility matters as much as price.",
@@ -356,6 +362,7 @@
   {
     "slug": "/trenchless-vs-traditional-sewer-line-replacement/",
     "family": "cost",
+    "clusterRole": "support",
     "title": "Trenchless vs Traditional Sewer Line Replacement",
     "metaTitle": "Trenchless vs Traditional Sewer Line Replacement | SewerClarity",
     "metaDescription": "Compare trenchless and traditional sewer replacement by disruption, eligibility, restoration, and quote logic.",
@@ -433,6 +440,7 @@
   {
     "slug": "/sewer-scope-red-flags/",
     "family": "defect",
+    "clusterRole": "winner",
     "title": "Sewer Scope Red Flags",
     "metaTitle": "Sewer Scope Red Flags: Which Findings Matter Most? | SewerClarity",
     "metaDescription": "See which sewer scope findings are watch-items, which ones push you toward quotes, and how buyers or owners should react.",
@@ -546,12 +554,17 @@
     ],
     "relatedSlugs": [
       "/sewer-scope-before-buying-house/",
-      "/who-pays-for-sewer-line-repair-buyer-or-seller/"
+      "/who-pays-for-sewer-line-repair-buyer-or-seller/",
+      "/offset-joint-sewer-line-meaning/",
+      "/sewer-belly-repair-cost/",
+      "/how-to-read-sewer-scope-report/",
+      "/cast-iron-pipe-deterioration-signs/"
     ]
   },
   {
     "slug": "/cast-iron-sewer-pipe-replacement-cost/",
     "family": "cost",
+    "clusterRole": "winner",
     "title": "Cast Iron Sewer Pipe Replacement Cost",
     "metaTitle": "Cast Iron Sewer Pipe Replacement Cost: What Changes the Quote? | SewerClarity",
     "metaDescription": "See when cast iron deterioration looks serious, why under-slab access changes cost, and when repair may still be enough.",
@@ -665,12 +678,15 @@
     ],
     "relatedSlugs": [
       "/old-house-sewer-line-risk/",
-      "/sewer-line-replacement-cost/"
+      "/sewer-line-replacement-cost/",
+      "/cast-iron-pipe-deterioration-signs/",
+      "/sewer-line-under-slab-repair-cost/"
     ]
   },
   {
     "slug": "/orangeburg-pipe-replacement-cost/",
     "family": "cost",
+    "clusterRole": "winner",
     "title": "Orangeburg Pipe Replacement Cost",
     "metaTitle": "Orangeburg Pipe Replacement Cost: Is Replacement Likely? | SewerClarity",
     "metaDescription": "See why confirmed orangeburg often becomes a replacement question, what moves cost, and when a scope should come first.",
@@ -748,6 +764,7 @@
   {
     "slug": "/who-pays-for-sewer-line-repair-buyer-or-seller/",
     "family": "buyer",
+    "clusterRole": "winner",
     "title": "Who Pays for Sewer Line Repair: Buyer or Seller?",
     "metaTitle": "Who Pays for Sewer Line Repair, Buyer or Seller? | SewerClarity",
     "metaDescription": "See what actually shapes buyer-vs-seller leverage on sewer repairs, when credits beat repairs, and what evidence matters most.",
@@ -868,6 +885,7 @@
   {
     "slug": "/root-intrusion-sewer-line-what-to-do/",
     "family": "defect",
+    "clusterRole": "winner",
     "title": "Root Intrusion in a Sewer Line: What to Do",
     "metaTitle": "Root Intrusion in a Sewer Line: What to Do | SewerClarity",
     "metaDescription": "What root intrusion usually means, when cleaning may be enough, and when a structural sewer problem becomes more likely.",
@@ -945,6 +963,7 @@
   {
     "slug": "/sewer-belly-repair-cost/",
     "family": "defect",
+    "clusterRole": "support",
     "title": "Sewer Belly Repair Cost",
     "metaTitle": "Sewer Belly Repair Cost | SewerClarity",
     "metaDescription": "Sewer belly repair cost direction, when a belly matters more, and why monitor-versus-repair is not a one-size-fits-all call.",
@@ -1022,6 +1041,7 @@
   {
     "slug": "/sewer-line-repair-vs-replacement/",
     "family": "cost",
+    "clusterRole": "support",
     "title": "Sewer Line Repair vs Replacement",
     "metaTitle": "Sewer Line Repair vs Replacement | SewerClarity",
     "metaDescription": "When sewer repair may be enough, when replacement becomes more likely, and how to compare the tradeoffs.",
@@ -1094,12 +1114,15 @@
     ],
     "relatedSlugs": [
       "/sewer-line-replacement-cost/",
-      "/trenchless-vs-traditional-sewer-line-replacement/"
+      "/trenchless-vs-traditional-sewer-line-replacement/",
+      "/orangeburg-pipe-replacement-cost/",
+      "/collapsed-sewer-line-signs/"
     ]
   },
   {
     "slug": "/old-house-sewer-line-risk/",
     "family": "buyer",
+    "clusterRole": "winner",
     "title": "Old House Sewer Line Risk",
     "metaTitle": "Old House Sewer Line Risk | SewerClarity",
     "metaDescription": "Why older homes deserve extra sewer caution, which hidden-risk patterns matter, and when buyers should scope before closing.",
@@ -1167,12 +1190,15 @@
     ],
     "relatedSlugs": [
       "/house-built-before-1970-sewer-line-risk/",
-      "/sewer-scope-before-buying-house/"
+      "/sewer-scope-before-buying-house/",
+      "/orangeburg-pipe-replacement-cost/",
+      "/cast-iron-sewer-pipe-replacement-cost/"
     ]
   },
   {
     "slug": "/house-built-before-1970-sewer-line-risk/",
     "family": "buyer",
+    "clusterRole": "support",
     "title": "House Built Before 1970 Sewer Line Risk",
     "metaTitle": "House Built Before 1970 Sewer Line Risk | SewerClarity",
     "metaDescription": "Why homes built before 1970 can carry more buried-line uncertainty and what buyers or owners should ask next.",
@@ -1236,6 +1262,7 @@
   {
     "slug": "/sewer-scope-negotiation-with-seller/",
     "family": "buyer",
+    "clusterRole": "support",
     "title": "Sewer Scope Negotiation With Seller",
     "metaTitle": "Sewer Scope Negotiation With Seller | SewerClarity",
     "metaDescription": "How to frame sewer scope findings with a seller, when credits may make more sense than repair promises, and what to document.",
@@ -1310,6 +1337,7 @@
   {
     "slug": "/offset-joint-sewer-line-meaning/",
     "family": "defect",
+    "clusterRole": "support",
     "title": "Offset Joint Sewer Line Meaning",
     "metaTitle": "Offset Joint Sewer Line Meaning | SewerClarity",
     "metaDescription": "What an offset joint may indicate, when it becomes more serious, and how to think about the next action.",
@@ -1373,6 +1401,7 @@
   {
     "slug": "/collapsed-sewer-line-signs/",
     "family": "defect",
+    "clusterRole": "support",
     "title": "Collapsed Sewer Line Signs",
     "metaTitle": "Collapsed Sewer Line Signs | SewerClarity",
     "metaDescription": "Signs that may point to a collapsed sewer line, why careful wording matters, and what urgent next steps usually make sense.",
@@ -1436,6 +1465,7 @@
   {
     "slug": "/does-home-insurance-cover-sewer-line-replacement/",
     "family": "coverage",
+    "clusterRole": "winner",
     "title": "Does Home Insurance Cover Sewer Line Replacement?",
     "metaTitle": "Does Home Insurance Cover Sewer Line Replacement? | SewerClarity",
     "metaDescription": "Whether home insurance may cover sewer line replacement, what often changes the answer, and why assumptions are risky.",
@@ -1514,6 +1544,7 @@
   {
     "slug": "/service-line-coverage-vs-home-warranty-for-sewer-lines/",
     "family": "coverage",
+    "clusterRole": "support",
     "title": "Service Line Coverage vs Home Warranty for Sewer Lines",
     "metaTitle": "Service Line Coverage vs Home Warranty for Sewer Lines | SewerClarity",
     "metaDescription": "Compare service line coverage and home warranty expectations for sewer lines without assuming either will fully protect you.",
@@ -1591,6 +1622,7 @@
   {
     "slug": "/methodology/",
     "family": "trust",
+    "clusterRole": "winner",
     "title": "Methodology",
     "metaTitle": "Methodology | SewerClarity",
     "metaDescription": "How SewerClarity estimates ranges, handles uncertainty, and decides what users should do next.",
@@ -1622,6 +1654,7 @@
   {
     "slug": "/how-we-estimate-sewer-line-costs/",
     "family": "trust",
+    "clusterRole": "support",
     "title": "How We Estimate Sewer Line Costs",
     "metaTitle": "How We Estimate Sewer Line Costs | SewerClarity",
     "metaDescription": "Plain-English explanation of cost bands, modifiers, and the limits of sewer-line price estimation.",
@@ -1653,6 +1686,7 @@
   {
     "slug": "/homeowner-vs-city-sewer-responsibility/",
     "family": "coverage",
+    "clusterRole": "winner",
     "title": "Homeowner vs City Sewer Responsibility",
     "metaTitle": "Homeowner vs City Sewer Responsibility | SewerClarity",
     "metaDescription": "How homeowner versus city sewer responsibility often depends on line location, local rules, and property layout.",
@@ -1684,6 +1718,7 @@
   {
     "slug": "/about-how-this-site-is-researched/",
     "family": "trust",
+    "clusterRole": "support",
     "title": "About How This Site Is Researched",
     "metaTitle": "About How This Site Is Researched | SewerClarity",
     "metaDescription": "See how SewerClarity uses source classes, review dates, and uncertainty handling in a trust-first workflow.",
@@ -1715,6 +1750,7 @@
   {
     "slug": "/disclaimer/",
     "family": "trust",
+    "clusterRole": "support",
     "title": "Disclaimer",
     "metaTitle": "Disclaimer | SewerClarity",
     "metaDescription": "Educational disclaimer for SewerClarity covering engineering, legal, insurance, and pricing uncertainty.",
@@ -1745,6 +1781,7 @@
   {
     "slug": "/about/",
     "family": "trust",
+    "clusterRole": "support",
     "title": "About SewerClarity",
     "metaTitle": "About SewerClarity | SewerClarity",
     "metaDescription": "Learn what SewerClarity is, who it is for, and why it is built as a buyer-first sewer risk decision utility.",
@@ -1775,6 +1812,7 @@
   {
     "slug": "/editorial-standards/",
     "family": "trust",
+    "clusterRole": "support",
     "title": "Editorial Standards",
     "metaTitle": "Editorial Standards | SewerClarity",
     "metaDescription": "See what SewerClarity will publish, what it will not claim, how pages are reviewed, and how corrections are handled.",
@@ -1866,6 +1904,7 @@
   {
     "slug": "/privacy/",
     "family": "trust",
+    "clusterRole": "support",
     "title": "Privacy and Data Handling",
     "metaTitle": "Privacy and Data Handling | SewerClarity",
     "metaDescription": "What SewerClarity collects, why lead and event data are stored, when information may be shared, and how to ask questions or corrections.",
@@ -4972,6 +5011,571 @@
       "/cities/buffalo/sewer-line-replacement-cost/",
       "/cities/buffalo/old-house-sewer-line-risk/",
       "/cities/buffalo/sewer-scope-negotiation-with-seller/"
+    ]
+  },
+  {
+    "slug": "/how-to-read-sewer-scope-report/",
+    "family": "defect",
+    "clusterRole": "support",
+    "title": "How to Read a Sewer Scope Report",
+    "metaTitle": "How to Read a Sewer Scope Report | SewerClarity",
+    "metaDescription": "Learn how to read sewer scope footage and report language without overreacting. See what terms like roots, belly, offset, cast iron, and collapse usually mean for the next step.",
+    "eyebrow": "Defect interpretation guide",
+    "summary": "A calm reading guide for buyers, sellers, and owners who already have a sewer scope report but need to separate watch-items, quote-ready issues, and things that still need better footage.",
+    "quickAnswer": "The most useful sewer scope read is not the label alone. It is what the footage shows about isolation versus systemic failure, flow impact, and whether the line still supports a realistic repair path.",
+    "seriousness": "Reports become more serious when the defect disrupts flow, repeats across multiple sections, or points to broader material failure instead of one localized issue.",
+    "nextStep": "Read the finding, check whether it is isolated or systemic, then decide whether you need an inspection-first clarification, a cost comparison, or a quote-ready repair path.",
+    "costDirection": "A sewer report does not create a price by itself. It narrows whether you are looking at cleaning, localized repair, partial replacement, trenchless rehab, or a broader excavation path.",
+    "uncertainty": "A written label can still mislead if the footage quality is weak, the run is incomplete, or the report does not show whether the surrounding pipe is still serviceable.",
+    "sourceNote": "Reviewed against Redfin buyer-facing sewer scope guidance plus current This Old House and Angi market sanity checks. This page interprets reported findings without pretending that one label alone settles the scope or quote.",
+    "sourceIds": [
+      "rdf-001",
+      "cost-002",
+      "cost-003",
+      "cost-004"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Get sewer repair or replacement quotes",
+    "secondaryCtaHref": "/get-sewer-quotes/",
+    "sections": [
+      {
+        "anchor": "what-to-pull-from-the-report",
+        "title": "What to pull from the report before you react",
+        "intro": "The label is only one part of the call. The better questions are what the footage actually shows and what it leaves unclear.",
+        "bullets": [
+          "Check whether the run was viewed clearly from house to main or only in part.",
+          "Look for whether the defect appears isolated or shows up across multiple sections.",
+          "Separate a flow problem from a cosmetic or early-stage condition note.",
+          "Check whether the inspector documented standing water, repeat root entry, cracking, offsets, or broader material deterioration."
+        ],
+        "note": "If the footage is incomplete or weak, the written report can make a small issue sound more settled than it really is."
+      },
+      {
+        "anchor": "how-to-read-common-terms",
+        "title": "How to read common sewer scope terms",
+        "intro": "Most terms are not automatically emergencies. They matter because of context and what they imply about the rest of the run.",
+        "bullets": [
+          "Roots often start as a maintenance or entry-point problem, but repeated intrusion can point to a structural opening that will not stay solved by cleaning alone.",
+          "A belly matters most when it traps solids or repeatedly affects flow. A minor sag is not the same thing as a long failing run.",
+          "Offset joints and cracks can be watch-items or early warning signs depending on flow impact, nearby defects, and repeat intrusion.",
+          "Cast iron and Orangeburg raise a bigger material story because the concern may be broader than one isolated defect.",
+          "Collapse language should push you to ask how much of the run is actually affected and whether the surrounding line still supports trenchless or repair logic."
+        ]
+      },
+      {
+        "anchor": "what-upgrades-or-softens-the-call",
+        "title": "What upgrades or softens the call",
+        "intro": "The next step changes when the footage shows the problem getting broader, not just because a scary word appears in the report.",
+        "bullets": [
+          "Upgrade urgency when backups repeat, several weak sections appear, or flow is visibly affected instead of merely noted.",
+          "Upgrade urgency when under-slab access, hardscape, or older materials make even a smaller repair disruptive.",
+          "Soften the call when the issue is short, isolated, and the rest of the line still looks serviceable.",
+          "Soften the call when cleaning, better footage, or a clearer map shows the concern is not a long or systemic failure pattern."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "How report language usually changes the next move",
+        "intro": "Use the label to choose a better next step, not to jump straight to the biggest repair assumption.",
+        "columns": [
+          "Report language",
+          "What it often means",
+          "What it usually changes next"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Roots",
+              "maintenance issue or entry-point weakness",
+              "cleaning, recheck, or localized repair question"
+            ]
+          },
+          {
+            "cells": [
+              "Belly",
+              "grade problem that may trap solids",
+              "check whether repair stays localized or becomes excavation"
+            ]
+          },
+          {
+            "cells": [
+              "Offset / crack",
+              "shifted or weakened section",
+              "clarify flow impact and whether nearby damage makes it broader"
+            ]
+          },
+          {
+            "cells": [
+              "Cast iron / Orangeburg",
+              "material story, not just one defect label",
+              "compare repair bias versus broader replacement logic"
+            ]
+          },
+          {
+            "cells": [
+              "Collapse",
+              "structural failure concern",
+              "confirm scope, access, and method fit quickly"
+            ]
+          }
+        ],
+        "note": "A label is still not a quote. Use it to narrow the path, then verify method fit, restoration scope, and whether the problem is isolated."
+      }
+    ],
+    "highlights": [
+      "A good sewer scope read separates isolated defects from broader line failure.",
+      "The same label can support very different next steps depending on footage quality and access."
+    ],
+    "questions": [
+      "Is this defect isolated, or does the footage show the same problem across multiple sections?",
+      "What part of the line still looks serviceable enough to support repair or trenchless logic?"
+    ],
+    "faq": [
+      {
+        "question": "Does a sewer scope report automatically tell me whether to repair or replace?",
+        "answer": "No. A report narrows the likely path, but repair versus replacement still depends on how isolated the issue is, what access looks like, and whether the surrounding pipe still appears serviceable."
+      },
+      {
+        "question": "What if the report sounds worse than the video looks?",
+        "answer": "Use the footage and written notes together. If the wording sounds broad but the run looks isolated, ask whether the label is being used conservatively or whether nearby defects changed the inspector's read."
+      }
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-red-flags/",
+      "/root-intrusion-sewer-line-what-to-do/",
+      "/offset-joint-sewer-line-meaning/",
+      "/collapsed-sewer-line-signs/",
+      "/estimator/"
+    ]
+  },
+  {
+    "slug": "/sewer-scope-inspection-cost/",
+    "family": "buyer",
+    "clusterRole": "support",
+    "title": "Sewer Scope Inspection Cost",
+    "metaTitle": "Sewer Scope Inspection Cost: Range and When It Is Worth It | SewerClarity",
+    "metaDescription": "See realistic sewer scope inspection cost ranges, what changes the number, and when the inspection is worth it before you jump into repair pricing.",
+    "eyebrow": "Inspection-first cost guide",
+    "summary": "A buyer-first and owner-friendly cost page for sewer scope inspections, with realistic ranges and a clearer way to judge when the inspection is worth paying for.",
+    "quickAnswer": "A sewer scope is usually a small spend compared with the cost of guessing wrong about a buried-line problem, but the exact inspection price still moves with access, line length, and how extensive the inspection needs to be.",
+    "seriousness": "Inspection cost matters most when a buyer is under contract, an owner is tempted to skip evidence, or the line risk could quickly become a five-figure repair conversation.",
+    "nextStep": "If the line is not documented yet, inspection-first is usually cleaner than jumping straight to repair quotes or negotiation language.",
+    "costDirection": "Basic sewer camera inspection ranges often stay modest, but more extensive inspections cost more when access is poor, the run is longer, or additional locating work becomes necessary.",
+    "uncertainty": "This page cannot know cleanout access, actual line length, or whether the job will stay a basic camera pass versus a more involved inspection.",
+    "sourceNote": "Reviewed against current Angi inspection-cost guidance, Redfin buyer-intent scope framing, and current This Old House sewer cost ranges. The page keeps the inspection number wide on purpose and treats it as a decision-quality expense, not a generic add-on.",
+    "sourceIds": [
+      "rdf-001",
+      "cost-002",
+      "cost-004"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Use the estimator",
+    "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "what-the-inspection-price-covers",
+        "title": "What the inspection price is really buying",
+        "intro": "Users often treat a sewer scope as a line item instead of a decision-quality tool.",
+        "bullets": [
+          "The real value is not the camera itself. It is replacing buried-line guessing with footage.",
+          "Buyers use it to avoid discovering a major line issue after closing.",
+          "Owners use it to separate a cleaning problem from a repair or replacement path.",
+          "Sellers use it to reduce negotiation drag with better documentation."
+        ]
+      },
+      {
+        "anchor": "what-moves-the-range",
+        "title": "What usually moves sewer scope inspection cost",
+        "intro": "Inspection prices widen when the run is harder to access or the scope is more involved than a simple pass.",
+        "bullets": [
+          "Cleanout availability and how easy it is to get the camera into the run.",
+          "Line length, access difficulty, and whether the inspector needs more than a basic pass.",
+          "Whether locating, repeat passes, or extra documentation becomes necessary.",
+          "Local market rates, especially in older urban housing where access is less predictable."
+        ],
+        "note": "A cheap headline number can be fine for a simple inspection, but it may not reflect the more involved scope you actually need."
+      },
+      {
+        "anchor": "when-it-is-worth-it",
+        "title": "When the inspection is worth it",
+        "intro": "The inspection is easiest to justify when the downside of not knowing is materially bigger than the inspection fee.",
+        "bullets": [
+          "Older homes and active transactions make the inspection easier to justify.",
+          "Symptoms without footage are a poor base for repair pricing or negotiation decisions.",
+          "A known scope report from another party can still justify your own clearer read if the evidence is thin or incomplete.",
+          "If a buried-line problem could materially change the deal or the repair path, the inspection cost is usually a small part of the real decision."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Directional sewer scope inspection ranges",
+        "intro": "These are wide sanity-check ranges, not promised local service prices.",
+        "columns": [
+          "Inspection path",
+          "Typical range",
+          "What usually changes it"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Basic sewer camera inspection",
+              "$175-$800",
+              "cleanout access, line length, market rate"
+            ]
+          },
+          {
+            "cells": [
+              "More extensive sewer inspection",
+              "$270-$1,730",
+              "hard access, extra locating, broader inspection scope"
+            ]
+          },
+          {
+            "cells": [
+              "If a defect is then documented",
+              "repair pricing comes later",
+              "severity, access, restoration, method fit"
+            ]
+          }
+        ],
+        "note": "The inspection range is directional. The point is to decide when evidence-first is smarter than quote-first."
+      }
+    ],
+    "highlights": [
+      "Inspection cost is usually a decision-quality expense, not the expensive part of the sewer story.",
+      "The less documented the line is, the easier it is for repair pricing to be more misleading than helpful."
+    ],
+    "questions": [
+      "Would this inspection materially improve your next decision or negotiation?",
+      "If the scope finds a problem, do you want a credit request, a quote, or more specialist detail?"
+    ],
+    "faq": [
+      {
+        "question": "Is a sewer scope usually worth the money before repair pricing?",
+        "answer": "Often yes. If the line is not documented yet, the inspection usually buys more clarity per dollar than early repair quotes built on weak assumptions."
+      },
+      {
+        "question": "Why can a sewer scope cost more than the lowest headline price?",
+        "answer": "Access difficulty, longer runs, extra locating, and more extensive inspection work can all push the price above a simple camera pass."
+      }
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-before-buying-house/",
+      "/is-sewer-scope-worth-it/",
+      "/how-to-read-sewer-scope-report/",
+      "/estimator/"
+    ]
+  },
+  {
+    "slug": "/sewer-line-under-slab-repair-cost/",
+    "family": "cost",
+    "clusterRole": "support",
+    "title": "Sewer Line Under Slab Repair Cost",
+    "metaTitle": "Sewer Line Under Slab Repair Cost: What Widens the Range | SewerClarity",
+    "metaDescription": "See what makes sewer line under slab repair cost harder to price, when the bill starts widening fast, and how to compare repair, trenchless, and replacement paths.",
+    "eyebrow": "Under-slab cost guide",
+    "summary": "A cost page for under-slab sewer repairs where restoration, access, and method fit often matter as much as the pipe defect itself.",
+    "quickAnswer": "Under-slab sewer repair costs widen fast because slab breakout, access, staging, and finish restoration can dominate the project long before the pipe work is the only variable.",
+    "seriousness": "This becomes a serious money decision when the defect is confirmed under slab, the run is longer than a short isolated section, or method fit is weaker than the first quote suggests.",
+    "nextStep": "Confirm the defect, ask whether the issue is truly localized, and compare under-slab repair, trenchless, and broader replacement assumptions before committing.",
+    "costDirection": "Short under-slab repairs can still be expensive, while longer under-slab failures can push the job toward broader replacement or trenchless comparison because restoration burden grows quickly.",
+    "uncertainty": "This page cannot know slab thickness, actual line route, restoration expectations, or whether trenchless is truly viable on the documented run.",
+    "sourceNote": "Reviewed against current This Old House under-slab cost guidance and current trenchless method ranges in Angi. This page avoids fake precision because slab breakout and restoration can move the real project harder than the defect label alone.",
+    "sourceIds": [
+      "cost-002",
+      "cost-003"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Use the estimator",
+    "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "why-under-slab-is-different",
+        "title": "Why under-slab sewer work gets expensive fast",
+        "intro": "Under-slab jobs stop looking like ordinary repair quotes because access and restoration become part of the core scope.",
+        "bullets": [
+          "Slab breakout, staging, dust control, and finish restoration can dominate the job.",
+          "A small buried defect can still be a large project when the access path is disruptive.",
+          "Method fit matters more under slab because a repair path that looks cheap on paper may create much heavier restoration in practice."
+        ]
+      },
+      {
+        "anchor": "repair-vs-broader-work",
+        "title": "When it stays a short repair versus when it starts looking broader",
+        "intro": "Under slab, the line between targeted repair and broader work can move quickly.",
+        "bullets": [
+          "A short isolated defect can still support a targeted repair path if the rest of the run looks sound.",
+          "Longer damaged sections or broader material deterioration can make repeated slab disruption hard to justify.",
+          "If the defect sits in cast iron or another weakening material story, the whole run matters more than the one bad spot.",
+          "The larger the restoration burden, the more often users compare trenchless or broader replacement instead of one isolated dig."
+        ]
+      },
+      {
+        "anchor": "how-to-compare-quotes",
+        "title": "How to compare under-slab quotes honestly",
+        "intro": "The cheapest under-slab quote can be the one that leaves the hardest part out.",
+        "bullets": [
+          "Ask what demolition, patch-back, flooring, and cleanup are included.",
+          "Ask whether the quote assumes a short repair, longer partial replacement, or a broader material problem.",
+          "Check whether trenchless is truly eligible or only being used as a softer sales headline.",
+          "Make the contractor explain what would move the number higher once the line is opened or better documented."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Directional under-slab work paths",
+        "intro": "These ranges are wide because access and restoration move under-slab jobs sharply.",
+        "columns": [
+          "Scenario",
+          "Typical range",
+          "What usually drives it"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Short under-slab repair or short-run replacement",
+              "$6,500-$18,000",
+              "slab breakout, restoration, localized failure"
+            ]
+          },
+          {
+            "cells": [
+              "Partial replacement / broader under-slab section",
+              "$4,000-$12,000+ before full restoration is clearer",
+              "longer damaged run, access, restoration"
+            ]
+          },
+          {
+            "cells": [
+              "Trenchless comparison path",
+              "$60-$250+ per linear ft",
+              "layout, entry/exit access, host-pipe condition"
+            ]
+          }
+        ],
+        "note": "Under slab, no method headline is reliable until the access path and restoration burden are actually part of the conversation."
+      }
+    ],
+    "highlights": [
+      "Under-slab jobs often get expensive because of access and restoration, not because the defect word sounds dramatic.",
+      "Method fit matters more than users expect when opening the slab is on the table."
+    ],
+    "questions": [
+      "What part of this quote is pipe work versus demolition and restoration?",
+      "If the rest of the line is also weak, would one isolated under-slab repair really be the cleaner path?"
+    ],
+    "faq": [
+      {
+        "question": "Does under-slab automatically mean full replacement?",
+        "answer": "No. Some under-slab issues are still localized, but the restoration burden often makes broader options worth comparing earlier than users expect."
+      },
+      {
+        "question": "Is trenchless always the best answer under slab?",
+        "answer": "No. Trenchless can reduce disruption in the right layout, but it still depends on access, line condition, and whether the surrounding pipe supports the method."
+      }
+    ],
+    "relatedSlugs": [
+      "/sewer-line-replacement-cost/",
+      "/trenchless-sewer-replacement-cost/",
+      "/cast-iron-sewer-pipe-replacement-cost/",
+      "/get-sewer-quotes/"
+    ]
+  },
+  {
+    "slug": "/cast-iron-pipe-deterioration-signs/",
+    "family": "defect",
+    "clusterRole": "support",
+    "title": "Cast Iron Pipe Deterioration Signs",
+    "metaTitle": "Cast Iron Pipe Deterioration Signs: What Matters and What Does Not | SewerClarity",
+    "metaDescription": "See which cast iron sewer pipe deterioration signs actually matter, what makes the issue more serious, and when the next step should be inspection-first versus quote-ready.",
+    "eyebrow": "Cast iron warning signs",
+    "summary": "A defect interpretation page for cast iron sewer concerns that separates mild warning signs from a broader deterioration story.",
+    "quickAnswer": "Cast iron concerns matter most when repeated backups, scaling, rough interior condition, offsets, or under-slab access suggest the problem is broader than one isolated spot.",
+    "seriousness": "The call gets more serious when deterioration appears in multiple sections, the line sits under slab, or the footage suggests broader material failure rather than one repairable defect.",
+    "nextStep": "If the line is not scoped yet, inspection-first is still the clean move. If the deterioration is documented and the access is bad, compare method fit and quote paths quickly.",
+    "costDirection": "Cast iron costs widen when the problem is systemic, the run is under slab, or the restoration burden makes even a smaller repair disruptive.",
+    "uncertainty": "Cast iron age alone does not prove failure. The footage still has to show whether the problem is mostly rough but serviceable or meaningfully deteriorated.",
+    "sourceNote": "Reviewed against current This Old House and Angi material and method-cost guidance. This page does not pretend every cast iron line is already a full replacement project.",
+    "sourceIds": [
+      "cost-002",
+      "cost-003"
+    ],
+    "primaryCtaLabel": "Use the estimator",
+    "primaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Get sewer repair or replacement quotes",
+    "secondaryCtaHref": "/get-sewer-quotes/",
+    "sections": [
+      {
+        "anchor": "what-counts-as-a-real-sign",
+        "title": "What counts as a real cast iron deterioration sign",
+        "intro": "Users often overread age and underread the actual footage pattern.",
+        "bullets": [
+          "Repeated backups, scaling, rough interior walls, and multiple weak sections matter more than age alone.",
+          "Offsets, standing water, or cracking near cast iron sections can make the material story more serious.",
+          "Under-slab access is not a deterioration sign by itself, but it can make even a confirmed smaller issue much more consequential."
+        ]
+      },
+      {
+        "anchor": "when-the-story-gets-broader",
+        "title": "When cast iron starts looking like a broader line story",
+        "intro": "A broader cast iron problem is less about one bad spot and more about whether the rest of the run still looks reliable.",
+        "bullets": [
+          "The story gets broader when multiple sections look rough or weakened instead of one short area.",
+          "Repeated backups and several weak points matter more than a single scary phrase in a report.",
+          "If the line is under slab, repeated small repairs can stop looking clean much faster."
+        ]
+      },
+      {
+        "anchor": "repair-vs-replacement-vs-lining",
+        "title": "Repair versus replacement versus lining in cast iron",
+        "intro": "Cast iron is where users most often get sold a method before the line story is actually clear.",
+        "bullets": [
+          "A localized defect can still support repair if the rest of the run looks sound.",
+          "Lining can be plausible in some cast iron runs, but only when the host pipe is still intact enough to rehabilitate.",
+          "Broader deterioration, hard access, or under-slab risk can make quote comparison more honest than another vague wait-and-see answer."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Cast iron sign versus what it changes",
+        "intro": "Not every sign means the same thing for the next step.",
+        "columns": [
+          "Sign",
+          "What it often suggests",
+          "What it changes next"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Minor roughness or scaling",
+              "watch-item or early deterioration",
+              "inspection quality and maintenance matter more than quotes"
+            ]
+          },
+          {
+            "cells": [
+              "Repeated backups plus rough cast iron",
+              "broader performance issue",
+              "upgrade from watch-item to method comparison"
+            ]
+          },
+          {
+            "cells": [
+              "Multiple weak sections",
+              "systemic deterioration risk",
+              "repair-only logic gets weaker"
+            ]
+          },
+          {
+            "cells": [
+              "Documented cast iron issue under slab",
+              "expensive access story",
+              "quote-ready comparison becomes more plausible"
+            ]
+          }
+        ],
+        "note": "Cast iron age is context, not proof. The footage still decides whether the concern is mostly local or materially broader."
+      }
+    ],
+    "highlights": [
+      "Age alone is not the same thing as documented cast iron failure.",
+      "Under-slab access can matter almost as much as the defect itself."
+    ],
+    "questions": [
+      "Does the footage show one bad cast iron section or a broader weakening pattern?",
+      "If lining is being proposed, what evidence says the host pipe is still sound enough for it?"
+    ],
+    "faq": [
+      {
+        "question": "Does cast iron automatically mean replacement?",
+        "answer": "No. Some cast iron lines are rough but still functioning, while others show broader deterioration. The honest call depends on the footage, repeat symptoms, and access."
+      },
+      {
+        "question": "When does cast iron become quote-ready instead of inspection-first?",
+        "answer": "When deterioration is documented, especially with multiple weak sections or under-slab access, quote comparison becomes more useful than generic caution alone."
+      }
+    ],
+    "relatedSlugs": [
+      "/cast-iron-sewer-pipe-replacement-cost/",
+      "/old-house-sewer-line-risk/",
+      "/sewer-line-under-slab-repair-cost/",
+      "/estimator/"
+    ]
+  },
+  {
+    "slug": "/is-sewer-scope-worth-it/",
+    "family": "buyer",
+    "clusterRole": "support",
+    "title": "Is a Sewer Scope Worth It?",
+    "metaTitle": "Is a Sewer Scope Worth It? How to Decide | SewerClarity",
+    "metaDescription": "See when a sewer scope is worth paying for, when it is probably not, and why buyers and owners often get more value from evidence-first inspection than early repair pricing.",
+    "eyebrow": "Buyer decision guide",
+    "summary": "A decision page for buyers and owners asking the simpler question behind the whole topic: is the sewer scope worth doing at all?",
+    "quickAnswer": "A sewer scope is usually worth it when buried-line uncertainty could materially change your next decision, but it is not automatically necessary in every home or every transaction.",
+    "seriousness": "The value goes up when the home is older, the transaction is active, the downside is expensive, or the line concern is strong enough that guessing becomes risky.",
+    "nextStep": "If the downside of being wrong is meaningful, inspection-first is usually the cleaner move. If the line is already well documented, move to the next decision instead of paying for duplicate evidence.",
+    "costDirection": "The inspection itself is typically modest compared with the cost of missing a buried-line problem, but the number still depends on how extensive the inspection has to be.",
+    "uncertainty": "This page cannot tell every buyer or owner to scope. It helps decide when the scope changes decision quality enough to justify the cost and time.",
+    "sourceNote": "Reviewed against current Redfin buyer-intent sewer scope guidance and current inspection-cost sanity checks. The page stays practical and avoids claiming that every property needs a sewer scope.",
+    "sourceIds": [
+      "rdf-001",
+      "cost-004"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Use the estimator",
+    "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "when-it-is-worth-it",
+        "title": "When a sewer scope is worth it",
+        "intro": "The inspection is worth it when uncertainty is expensive, not just when the topic feels scary.",
+        "bullets": [
+          "Older homes, mature trees, or unclear maintenance history make the scope easier to justify.",
+          "A live contract raises the value because the scope can change negotiation, credits, or peace of mind before closing.",
+          "Owners dealing with symptoms often get more value from footage than from early quote noise."
+        ]
+      },
+      {
+        "anchor": "when-it-might-not-be",
+        "title": "When it may not change enough",
+        "intro": "Not every property needs the extra step.",
+        "bullets": [
+          "If the home is newer, the buried-line risk looks low, and nothing else is pushing the decision, the scope may not materially change the call.",
+          "If recent, credible footage already documents the line well, paying again may add less value than acting on the evidence you already have."
+        ]
+      }
+    ],
+    "highlights": [
+      "The best reason to scope is not fear. It is decision quality.",
+      "Duplicate evidence is not always worth paying for twice."
+    ],
+    "questions": [
+      "Would the scope materially change what you do next?",
+      "If the line is already documented, are you paying for clarity or for duplicate reassurance?"
+    ],
+    "faq": [
+      {
+        "question": "Is a sewer scope worth it for most older homes?",
+        "answer": "Often yes, especially when the downside of a hidden buried-line issue would be meaningful to the deal or to the owner's budget."
+      },
+      {
+        "question": "If I already have a quote, is a scope still worth it?",
+        "answer": "Often yes if the quote is based on weak evidence. A scope can make the next decision more reliable than pricing built on assumptions."
+      }
+    ],
+    "relatedSlugs": [
+      "/sewer-scope-before-buying-house/",
+      "/sewer-scope-inspection-cost/",
+      "/how-to-read-sewer-scope-report/",
+      "/estimator/"
     ]
   }
 ]

@@ -10,6 +10,7 @@ public class SitePage {
 
 	private String slug;
 	private String family;
+	private String clusterRole;
 	private String title;
 	private String metaTitle;
 	private String metaDescription;
@@ -54,6 +55,14 @@ public class SitePage {
 
 	public String getTitle() {
 		return title;
+	}
+
+	public String getClusterRole() {
+		return clusterRole;
+	}
+
+	public void setClusterRole(String clusterRole) {
+		this.clusterRole = clusterRole;
 	}
 
 	public void setTitle(String title) {
@@ -274,6 +283,30 @@ public class SitePage {
 
 	public boolean isGeoPage() {
 		return slug != null && slug.startsWith("/cities/");
+	}
+
+	public boolean isClusterWinner() {
+		return "winner".equalsIgnoreCase(clusterRole);
+	}
+
+	public String getClusterRoleLabel() {
+		if (isClusterWinner()) {
+			return "Primary page";
+		}
+		if ("support".equalsIgnoreCase(clusterRole)) {
+			return "Support page";
+		}
+		return "Topic page";
+	}
+
+	public int getClusterRolePriority() {
+		if (isClusterWinner()) {
+			return 0;
+		}
+		if ("support".equalsIgnoreCase(clusterRole)) {
+			return 1;
+		}
+		return 2;
 	}
 
 	public String getTrackingFamily() {

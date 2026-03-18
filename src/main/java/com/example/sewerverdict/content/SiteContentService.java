@@ -3,6 +3,7 @@ package com.example.sewerverdict.content;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.util.LinkedHashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,9 +48,18 @@ public class SiteContentService {
 	}
 
 	public List<SitePage> getRelatedPages(SitePage page) {
-		return page.getRelatedSlugs().stream()
+		LinkedHashSet<SitePage> related = new LinkedHashSet<>();
+		page.getRelatedSlugs().stream()
 			.map(this::getPage)
 			.filter(Objects::nonNull)
+			.filter(candidate -> !page.getSlug().equals(candidate.getSlug()))
+			.forEach(related::add);
+		pages.stream()
+			.filter(candidate -> !page.getSlug().equals(candidate.getSlug()))
+			.filter(candidate -> candidate.getRelatedSlugs().contains(page.getSlug()))
+			.forEach(related::add);
+		return related.stream()
+			.limit(4)
 			.toList();
 	}
 
@@ -88,6 +98,9 @@ public class SiteContentService {
 				}
 				if (!StringUtils.hasText(page.getSourceNote())) {
 					page.setSourceNote("Reviewed against the SewerClarity source registry and range-based methodology.");
+				}
+				if (!page.isGeoPage() && StringUtils.hasText(page.getFamily()) && !StringUtils.hasText(page.getClusterRole())) {
+					page.setClusterRole("support");
 				}
 			});
 			return loadedPages;

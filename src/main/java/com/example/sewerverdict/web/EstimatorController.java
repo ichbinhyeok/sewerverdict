@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.example.sewerverdict.estimator.EstimatorForm;
 import com.example.sewerverdict.estimator.EstimatorResult;
 import com.example.sewerverdict.estimator.EstimatorService;
+import com.example.sewerverdict.content.SourceRegistryService;
 import com.example.sewerverdict.telemetry.StorageService;
 
 @Controller
@@ -25,27 +27,21 @@ public class EstimatorController {
 
 	private final EstimatorService estimatorService;
 	private final StorageService storageService;
+	private final SourceRegistryService sourceRegistryService;
 	private final SeoMetadataService seoMetadataService;
 
 	public EstimatorController(EstimatorService estimatorService, StorageService storageService,
-		SeoMetadataService seoMetadataService) {
+		SourceRegistryService sourceRegistryService, SeoMetadataService seoMetadataService) {
 		this.estimatorService = estimatorService;
 		this.storageService = storageService;
+		this.sourceRegistryService = sourceRegistryService;
 		this.seoMetadataService = seoMetadataService;
 	}
 
 	@GetMapping({"/estimator", "/estimator/"})
 	public String estimator(@ModelAttribute("form") EstimatorForm form, HttpServletRequest request, Model model) {
-		model.addAttribute("pageTitle", "Estimator | SewerClarity");
-		model.addAttribute("metaDescription",
-			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.");
-		seoMetadataService.apply(model, request,
-			"Estimator | SewerClarity",
-			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.",
-			"website",
-			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Estimator", "/estimator/")),
-			List.of(),
-			false);
+		applyEstimatorDefaults(form);
+		populateEstimatorModel(model, request);
 		return "estimator";
 	}
 
@@ -57,6 +53,15 @@ public class EstimatorController {
 	@PostMapping({"/estimator/results", "/estimator/results/"})
 	public String estimatorResults(@ModelAttribute("form") EstimatorForm form, HttpServletRequest request,
 		HttpServletResponse response, Model model) {
+		applyEstimatorDefaults(form);
+		List<String> validationErrors = validateEstimatorForm(form);
+		if (!validationErrors.isEmpty()) {
+			populateEstimatorModel(model, request);
+			model.addAttribute("estimatorError", "Finish the missing steps before SewerClarity builds a directional call.");
+			model.addAttribute("estimatorErrorDetails", validationErrors);
+			return "estimator";
+		}
+
 		EstimatorResult result = estimatorService.evaluate(form);
 		HttpSession session = request.getSession(true);
 		String sessionId = session.getId();
@@ -78,10 +83,54 @@ public class EstimatorController {
 		model.addAttribute("metaDescription", "Educational next-step estimate for sewer scope and sewer line risk.");
 		model.addAttribute("noindex", true);
 		model.addAttribute("result", result);
+		model.addAttribute("resultSources", sourceRegistryService.getSourcesByIds(result.sourceIds()));
+		model.addAttribute("form", form);
 		model.addAttribute("draftId", draftId);
 		model.addAttribute("primaryCtaHref", buildLeadHref(result.primaryCtaHref(), result.primaryServiceNeeded(), draftId, form));
 		model.addAttribute("secondaryCtaHref", buildLeadHref(result.secondaryCtaHref(), result.secondaryServiceNeeded(), draftId, form));
 		return "result";
+	}
+
+	private void populateEstimatorModel(Model model, HttpServletRequest request) {
+		model.addAttribute("pageTitle", "Estimator | SewerClarity");
+		model.addAttribute("metaDescription",
+			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.");
+		seoMetadataService.apply(model, request,
+			"Estimator | SewerClarity",
+			"Estimate sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.",
+			"website",
+			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Estimator", "/estimator/")),
+			List.of(),
+			false);
+	}
+
+	private void applyEstimatorDefaults(EstimatorForm form) {
+		if (!StringUtils.hasText(form.getDefectType())) {
+			form.setDefectType("unknown");
+		}
+		if (!StringUtils.hasText(form.getAccessType())) {
+			form.setAccessType("unknown");
+		}
+	}
+
+	private List<String> validateEstimatorForm(EstimatorForm form) {
+		List<String> errors = new java.util.ArrayList<>();
+		if (!StringUtils.hasText(form.getRole())) {
+			errors.add("Choose whether you are the buyer, seller, or owner.");
+		}
+		if (!StringUtils.hasText(form.getLocation())) {
+			errors.add("Add the ZIP code or city so the result anchors to a real market.");
+		}
+		if (!StringUtils.hasText(form.getHouseAgeBand())) {
+			errors.add("Choose the house age band so the buried-line risk is not too generic.");
+		}
+		if (!StringUtils.hasText(form.getIssueState())) {
+			errors.add("Choose whether you have no scope yet, symptoms only, or a scope finding.");
+		}
+		if (!StringUtils.hasText(form.getUrgency())) {
+			errors.add("Choose whether this is research, an active transaction decision, or an urgent repair problem.");
+		}
+		return errors;
 	}
 
 	private String buildLeadHref(String basePath, String serviceNeeded, String draftId, EstimatorForm form) {

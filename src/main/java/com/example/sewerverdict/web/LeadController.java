@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.sewerverdict.content.PageFaq;
+import com.example.sewerverdict.telemetry.EstimatorDraftSnapshot;
 import com.example.sewerverdict.telemetry.LeadForm;
 import com.example.sewerverdict.telemetry.StorageService;
 
@@ -36,6 +38,7 @@ public class LeadController {
 		if (!StringUtils.hasText(leadForm.getRecommendedServicePath())) {
 			leadForm.setRecommendedServicePath("inspection");
 		}
+		hydrateLeadFormFromDraft(leadForm);
 		HttpSession session = request.getSession(true);
 		storageService.logEvent("lead_form_view", "/find-sewer-scope/", request.getHeader("Referer"), session.getId(),
 			buildLeadViewPayload(leadForm));
@@ -47,7 +50,8 @@ public class LeadController {
 				"Useful when the next smart move is clarity, not a rushed repair commitment.",
 				"Short form only asks for details that improve routing."
 			),
-			"/find-sewer-scope/"
+			"/find-sewer-scope/",
+			leadForm
 		);
 		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerClarity",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
@@ -65,6 +69,7 @@ public class LeadController {
 		leadForm.setRecommendedServicePath(StringUtils.hasText(leadForm.getRecommendedServicePath())
 			? leadForm.getRecommendedServicePath()
 			: "inspection");
+		hydrateLeadFormFromDraft(leadForm);
 		submitLead(leadForm, "/find-sewer-scope/", request, model);
 		populateLeadModel(model,
 			"Find sewer camera inspection options",
@@ -74,7 +79,8 @@ public class LeadController {
 				"Useful when the next smart move is clarity, not a rushed repair commitment.",
 				"Short form only asks for details that improve routing."
 			),
-			"/find-sewer-scope/"
+			"/find-sewer-scope/",
+			leadForm
 		);
 		seoMetadataService.apply(model, request, "Find sewer camera inspection options | SewerClarity",
 			"Inspection-first guidance for buyers, sellers, and owners who need a scope before making a bigger call.",
@@ -93,6 +99,7 @@ public class LeadController {
 		if (!StringUtils.hasText(leadForm.getRecommendedServicePath())) {
 			leadForm.setRecommendedServicePath("replacement");
 		}
+		hydrateLeadFormFromDraft(leadForm);
 		HttpSession session = request.getSession(true);
 		storageService.logEvent("lead_form_view", "/get-sewer-quotes/", request.getHeader("Referer"), session.getId(),
 			buildLeadViewPayload(leadForm));
@@ -104,7 +111,8 @@ public class LeadController {
 				"Useful for comparing spot repair, trenchless, and excavation logic.",
 				"Keep the form short so qualified users actually submit it."
 			),
-			"/get-sewer-quotes/"
+			"/get-sewer-quotes/",
+			leadForm
 		);
 		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerClarity",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
@@ -122,6 +130,7 @@ public class LeadController {
 		leadForm.setRecommendedServicePath(StringUtils.hasText(leadForm.getRecommendedServicePath())
 			? leadForm.getRecommendedServicePath()
 			: "replacement");
+		hydrateLeadFormFromDraft(leadForm);
 		submitLead(leadForm, "/get-sewer-quotes/", request, model);
 		populateLeadModel(model,
 			"Get sewer repair or replacement quotes",
@@ -131,7 +140,8 @@ public class LeadController {
 				"Useful for comparing spot repair, trenchless, and excavation logic.",
 				"Keep the form short so qualified users actually submit it."
 			),
-			"/get-sewer-quotes/"
+			"/get-sewer-quotes/",
+			leadForm
 		);
 		seoMetadataService.apply(model, request, "Get sewer repair or replacement quotes | SewerClarity",
 			"Quote-first guidance for confirmed issues, higher-risk findings, or owners comparing repair paths.",
@@ -167,7 +177,7 @@ public class LeadController {
 		payload.put("issueState", leadForm.getIssueState());
 		storageService.logEvent("lead_submit", pageSlug, request.getHeader("Referer"), sessionId, payload);
 		model.addAttribute("successMessage",
-			"Thanks. Your details were saved for the next routing step. A real quote or inspection path still depends on scope, access, and local fit.");
+			"Thanks. Your details were saved for routing. A real inspection or quote path still depends on scope, access, local fit, and what the evidence can honestly support.");
 		LeadForm blankForm = new LeadForm();
 		blankForm.setServiceNeeded(leadForm.getServiceNeeded());
 		blankForm.setRecommendedServicePath(leadForm.getRecommendedServicePath());
@@ -175,14 +185,93 @@ public class LeadController {
 		model.addAttribute("fieldErrors", Map.of());
 	}
 
-	private void populateLeadModel(Model model, String title, String summary, List<String> highlights, String formAction) {
+	private void populateLeadModel(Model model, String title, String summary, List<String> highlights, String formAction,
+		LeadForm leadForm) {
 		model.addAttribute("pageTitle", title + " | SewerClarity");
 		model.addAttribute("metaDescription", summary);
 		model.addAttribute("leadTitle", title);
 		model.addAttribute("leadSummary", summary);
 		model.addAttribute("leadHighlights", highlights);
+		model.addAttribute("leadTrustPoints", buildLeadTrustPoints(formAction));
+		model.addAttribute("leadExpectationTitle", "What happens after you submit");
+		model.addAttribute("leadExpectationSummary", "/find-sewer-scope/".equals(formAction)
+			? "This form is for routing and triage, not for pushing you straight into a repair pitch."
+			: "This form is for comparing repair paths honestly and routing the next quote conversation, not for pretending every concern is already a full replacement project.");
+		model.addAttribute("leadGuideLinks", buildLeadGuideLinks(formAction));
+		model.addAttribute("leadFaq", buildLeadFaq(formAction));
 		model.addAttribute("formAction", formAction);
 		model.asMap().putIfAbsent("fieldErrors", Map.of());
+		storageService.getEstimatorDraft(leadForm.getDraftId())
+			.ifPresent(draft -> model.addAttribute("draftSummary", draft));
+	}
+
+	private void hydrateLeadFormFromDraft(LeadForm leadForm) {
+		storageService.getEstimatorDraft(leadForm.getDraftId()).ifPresent(draft -> {
+			if (!StringUtils.hasText(leadForm.getZipOrCity()) && StringUtils.hasText(draft.location())) {
+				leadForm.setZipOrCity(draft.location());
+			}
+		});
+	}
+
+	private List<LeadGuideLink> buildLeadGuideLinks(String formAction) {
+		if ("/find-sewer-scope/".equals(formAction)) {
+			return List.of(
+				new LeadGuideLink("/sewer-scope-before-buying-house/", "Sewer Scope Before Buying a House",
+					"When buried-line uncertainty is worth reducing before closing."),
+				new LeadGuideLink("/old-house-sewer-line-risk/", "Old House Sewer Line Risk",
+					"Why older homes deserve more sewer caution before pricing repairs."),
+				new LeadGuideLink("/sewer-scope-red-flags/", "Sewer Scope Red Flags",
+					"Which findings change the next move once footage exists.")
+			);
+		}
+		return List.of(
+			new LeadGuideLink("/sewer-line-repair-vs-replacement/", "Sewer Line Repair vs Replacement",
+				"How to compare isolated repair logic against broader replacement logic."),
+			new LeadGuideLink("/sewer-line-replacement-cost/", "Sewer Line Replacement Cost",
+				"What usually moves sewer replacement pricing up or down."),
+			new LeadGuideLink("/trenchless-vs-traditional-sewer-line-replacement/", "Trenchless vs Traditional Sewer Line Replacement",
+				"When trenchless is viable and when excavation is still more honest.")
+		);
+	}
+
+	private List<PageFaq> buildLeadFaq(String formAction) {
+		if ("/find-sewer-scope/".equals(formAction)) {
+			return List.of(
+				faq("Is this a repair quote request?", "No. This page is for inspection-first routing when the evidence is still thin or the transaction risk is still unclear."),
+				faq("Will submitting this form lock me into a vendor?", "No. The point is to start the right inspection or triage path, not to trap you in a rushed repair commitment."),
+				faq("Why does the form still ask for location?", "Location is used as a market anchor and context check. It is not used to invent a fake precise local sewer quote.")
+			);
+		}
+		return List.of(
+			faq("Should I use this page if I only have symptoms?", "Usually no. If the evidence is still thin, inspection-first is a more honest route than forcing quote comparison too early."),
+			faq("Does a quote-ready route mean full replacement is certain?", "No. Quote-ready means the problem looks serious enough to compare repair paths, not that the answer is automatically full replacement."),
+			faq("What usually changes the quote most?", "Line length, depth, access, restoration, and whether the issue is isolated or systemic usually move sewer quotes the most.")
+		);
+	}
+
+	private PageFaq faq(String question, String answer) {
+		PageFaq item = new PageFaq();
+		item.setQuestion(question);
+		item.setAnswer(answer);
+		return item;
+	}
+
+	private record LeadGuideLink(String href, String label, String summary) {
+	}
+
+	private List<String> buildLeadTrustPoints(String formAction) {
+		if ("/find-sewer-scope/".equals(formAction)) {
+			return List.of(
+				"Best for buyers, sellers, and owners who still need better evidence before pricing repairs.",
+				"Submitting does not commit you to a repair quote or a marketplace blast.",
+				"If your notes already show a confirmed severe issue, the next step can still change after review."
+			);
+		}
+		return List.of(
+			"Best for confirmed findings or situations that already look serious enough to compare repair paths.",
+			"Quote-ready routing still depends on footage, access, and whether the issue is isolated or systemic.",
+			"If the evidence is still too thin, the honest next recommendation may still be inspection or footage clarification first."
+		);
 	}
 
 	private Map<String, Object> buildLeadViewPayload(LeadForm leadForm) {

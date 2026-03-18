@@ -17,6 +17,7 @@ import java.util.Objects;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,6 +52,21 @@ public class GeoProfileService {
 			return null;
 		}
 		return profilesByCity.get(citySlug);
+	}
+
+	public GeoProfile findProfileForLocation(String location) {
+		if (!StringUtils.hasText(location)) {
+			return null;
+		}
+		String normalized = normalizeLocation(location);
+		GeoProfile direct = profilesByCity.get(normalized);
+		if (direct != null) {
+			return direct;
+		}
+		return profilesByCity.values().stream()
+			.filter(profile -> matchesLocation(normalized, profile))
+			.findFirst()
+			.orElse(null);
 	}
 
 	public List<SourceReference> getProfileSources(SitePage page) {
@@ -231,6 +247,26 @@ public class GeoProfileService {
 		catch (IOException exception) {
 			throw new UncheckedIOException("Failed to load geo profiles from " + GEO_PROFILE_PATH, exception);
 		}
+	}
+
+	private boolean matchesLocation(String normalizedLocation, GeoProfile profile) {
+		String cityName = normalizeLocation(profile.getCityName());
+		String citySlug = normalizeLocation(profile.getCitySlug());
+		String cityWithState = normalizeLocation(profile.getCityName() + ", " + profile.getStateCode());
+		String cityWithStateSpaced = normalizeLocation(profile.getCityName() + " " + profile.getStateCode());
+		return normalizedLocation.equals(cityName)
+			|| normalizedLocation.equals(citySlug)
+			|| normalizedLocation.equals(cityWithState)
+			|| normalizedLocation.equals(cityWithStateSpaced)
+			|| normalizedLocation.contains(cityName)
+			|| normalizedLocation.contains(citySlug.replace("-", " "));
+	}
+
+	private String normalizeLocation(String value) {
+		if (!StringUtils.hasText(value)) {
+			return "";
+		}
+		return value.trim().toLowerCase();
 	}
 
 	private Map<String, List<ResponsibilityRule>> loadResponsibilityRules() {

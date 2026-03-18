@@ -2,14 +2,14 @@
   {
     "profileId": "inspection-camera",
     "category": "inspection",
-    "nationalRangeLow": 100,
-    "nationalRangeHigh": 500,
+    "nationalRangeLow": 175,
+    "nationalRangeHigh": 800,
     "accessModifiers": ["cleanout-availability", "line-length", "market-rate"],
     "materialModifiers": [],
     "severityModifiers": [],
     "notes": "Directional camera inspection range based on market sanity-check sources.",
-    "sourceRefs": ["cost-002"],
-    "lastVerified": "2026-03-16"
+    "sourceRefs": ["cost-002", "cost-004"],
+    "lastVerified": "2026-03-18"
   },
   {
     "profileId": "root-treatment-cleaning",
@@ -21,19 +21,19 @@
     "severityModifiers": ["root-density", "backup-history"],
     "notes": "Cleaning or hydro-jet style range for early-stage root or clog scenarios.",
     "sourceRefs": ["cost-001"],
-    "lastVerified": "2026-03-16"
+    "lastVerified": "2026-03-18"
   },
   {
     "profileId": "spot-repair-national",
     "category": "spot-repair",
     "nationalRangeLow": 1100,
-    "nationalRangeHigh": 4000,
+    "nationalRangeHigh": 4500,
     "accessModifiers": ["yard-obstructions", "depth", "under-hardscape"],
     "materialModifiers": ["cast-iron", "clay"],
     "severityModifiers": ["break-crack", "localized-failure"],
     "notes": "Directional spot-repair range for localized cracks or break repairs.",
     "sourceRefs": ["cost-001"],
-    "lastVerified": "2026-03-16"
+    "lastVerified": "2026-03-18"
   },
   {
     "profileId": "trenchless-national",
@@ -45,7 +45,55 @@
     "severityModifiers": ["eligible-layout", "systemic-deterioration"],
     "notes": "Per-linear-foot directional trenchless range. Eligibility matters more than headline price.",
     "sourceRefs": ["cost-002", "cost-001"],
-    "lastVerified": "2026-03-16"
+    "lastVerified": "2026-03-18"
+  },
+  {
+    "profileId": "partial-replacement-national",
+    "category": "partial-replacement",
+    "nationalRangeLow": 4000,
+    "nationalRangeHigh": 12000,
+    "accessModifiers": ["depth", "restoration", "isolated-section-length"],
+    "materialModifiers": ["cast-iron", "orangeburg"],
+    "severityModifiers": ["broader-failure", "longer-damaged-run"],
+    "notes": "Directional partial-replacement band when the line problem looks bigger than a spot repair but not yet like a full run replacement.",
+    "sourceRefs": ["cost-001", "cost-002"],
+    "lastVerified": "2026-03-18"
+  },
+  {
+    "profileId": "lining-cipp-national",
+    "category": "trenchless-lining",
+    "nationalRangeLow": 80,
+    "nationalRangeHigh": 250,
+    "accessModifiers": ["layout", "entry-point", "host-pipe-condition"],
+    "materialModifiers": ["cast-iron"],
+    "severityModifiers": ["rehab-eligible", "not-fully-collapsed"],
+    "notes": "Per-linear-foot directional CIPP lining range. Good host-pipe condition still matters more than the headline price.",
+    "sourceRefs": ["cost-002", "cost-003"],
+    "lastVerified": "2026-03-18"
+  },
+  {
+    "profileId": "pipe-bursting-national",
+    "category": "trenchless-bursting",
+    "nationalRangeLow": 60,
+    "nationalRangeHigh": 250,
+    "accessModifiers": ["entry-pit", "exit-pit", "layout"],
+    "materialModifiers": ["cast-iron", "orangeburg"],
+    "severityModifiers": ["replacement-bias", "bursting-eligible"],
+    "notes": "Per-linear-foot directional pipe-bursting range. It can reduce restoration compared with excavation, but only in runs that actually qualify.",
+    "sourceRefs": ["cost-002", "cost-003"],
+    "lastVerified": "2026-03-18"
+  },
+  {
+    "profileId": "under-slab-repair-national",
+    "category": "under-slab-repair",
+    "nationalRangeLow": 6500,
+    "nationalRangeHigh": 18000,
+    "accessModifiers": ["slab-breakout", "restoration", "limited-access"],
+    "materialModifiers": ["cast-iron"],
+    "severityModifiers": ["under-slab-failure", "systemic-deterioration"],
+    "notes": "Directional under-slab repair or short-run replacement band. Slab breakout and restoration can dominate the job even before footage changes the scope.",
+    "sourceRefs": ["cost-002"],
+    "lastVerified": "2026-03-18"
   },
   {
     "profileId": "replacement-national",
@@ -57,6 +105,6 @@
     "severityModifiers": ["collapse", "systemic-deterioration"],
     "notes": "Broad national replacement band anchored by market sanity checks and intentionally kept wide to avoid false precision.",
     "sourceRefs": ["cost-001", "cost-002"],
-    "lastVerified": "2026-03-16"
+    "lastVerified": "2026-03-18"
   }
 ]

@@ -4,15 +4,19 @@
     "commonRiskNarrative": "Older cast iron can range from rough but serviceable to materially deteriorated.",
     "commonIssues": ["scaling", "deterioration", "access complexity"],
     "typicalAgeAssociations": ["older-home"],
-    "cautionNotes": "Condition matters more than age alone.",
-    "sourceRefs": ["cost-002"]
+    "cautionNotes": "Condition matters more than age alone, and under-slab access can matter as much as the pipe itself.",
+    "trenchlessNotes": "Lining or bursting can be plausible in some cast-iron runs, but method fit depends on how intact the host pipe still is.",
+    "sourceRefs": ["cost-002", "cost-003"],
+    "lastVerified": "2026-03-18"
   },
   {
     "material": "orangeburg",
     "commonRiskNarrative": "Orangeburg questions often lean toward replacement and reliability risk.",
     "commonIssues": ["deformation", "collapse risk", "replacement bias"],
     "typicalAgeAssociations": ["mid-century"],
-    "cautionNotes": "Confirm actual material before escalating cost assumptions.",
-    "sourceRefs": ["cost-002"]
+    "cautionNotes": "Confirm actual material before escalating cost assumptions or assuming the whole run is already a full replacement project.",
+    "trenchlessNotes": "Pipe bursting can make more sense than lining when the host material is too deformed to trust as a rehabilitation shell.",
+    "sourceRefs": ["cost-002", "cost-003"],
+    "lastVerified": "2026-03-18"
   }
 ]

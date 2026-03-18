@@ -34,6 +34,27 @@
 					<span class="card-kicker">Routing note</span>
 					<p>These details are used to match the next inspection or quote path more credibly. The form is intentionally short.</p>
 				</div>
+				<div class="section-note" th:if="${draftSummary}">
+					<strong>Estimator carry-forward</strong>
+					<p>
+						<span th:text="${draftSummary.evidenceState}">Evidence state</span>
+						<span>:</span>
+						<span th:text="${draftSummary.riskTier}">Risk tier</span>
+					</p>
+					<p th:text="${draftSummary.likelyNextStep}">Likely next step</p>
+					<p class="form-microcopy" th:text="${draftSummary.evidenceSummary}">Evidence summary</p>
+					<p class="form-microcopy" th:text="${draftSummary.localContextSummary}">Local context</p>
+					<ul class="clean-list compact-list" th:if="${!#lists.isEmpty(draftSummary.callDrivers)}">
+						<li th:each="item : ${draftSummary.callDrivers}" th:text="${item}">Call driver</li>
+					</ul>
+				</div>
+				<div class="section-note">
+					<strong th:text="${leadExpectationTitle}">What happens after you submit</strong>
+					<p th:text="${leadExpectationSummary}">Expectation summary</p>
+					<ul class="clean-list compact-list">
+						<li th:each="item : ${leadTrustPoints}" th:text="${item}">Trust point</li>
+					</ul>
+				</div>
 				<div class="form-success"
 					 th:if="${successMessage}"
 					 data-ga-event="lead_submit"
@@ -153,6 +174,39 @@
 					<button class="button button-primary button-block" type="submit">Submit details</button>
 				</form>
 			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container content-grid">
+			<div class="content-main">
+				<article class="section-card">
+					<span class="card-kicker">Before you submit</span>
+					<h2>Use the shortest path that still keeps the call honest</h2>
+					<p th:text="${leadSummary}">Lead summary</p>
+					<p class="form-microcopy">These pages are meant to convert uncertainty into the next credible action, not to pad the site with generic service copy.</p>
+				</article>
+				<article class="section-card" th:if="${!#lists.isEmpty(leadFaq)}">
+					<h2>FAQ</h2>
+					<div class="faq-list">
+						<details th:each="item, stat : ${leadFaq}" th:open="${stat.first}">
+							<summary th:text="${item.question}">Question</summary>
+							<p th:text="${item.answer}">Answer</p>
+						</details>
+					</div>
+				</article>
+			</div>
+			<aside class="content-rail">
+				<div class="rail-card" th:if="${!#lists.isEmpty(leadGuideLinks)}">
+					<span class="card-kicker">Relevant guides</span>
+					<ul class="link-list">
+						<li th:each="item : ${leadGuideLinks}">
+							<a class="text-link" th:href="${item.href}" th:text="${item.label}">Guide</a>
+							<p th:text="${item.summary}">Guide summary</p>
+						</li>
+					</ul>
+				</div>
+			</aside>
 		</div>
 	</section>
 </main>

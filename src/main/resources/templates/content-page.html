@@ -54,6 +54,12 @@
 				<div class="answer-card">
 					<span class="card-kicker">Quick answer</span>
 					<p th:text="${page.quickAnswer}">Quick answer</p>
+					<p class="form-microcopy" th:if="${!#lists.isEmpty(relatedPages)}">
+						Most readers follow this page with
+						<span th:each="related, stat : ${relatedPages}">
+							<a class="text-link" th:href="${related.slug}" th:text="${related.title}">Related page</a><span th:if="${!stat.last}" th:text="${stat.index == #lists.size(relatedPages) - 2 ? ', and ' : ', '}">, </span>
+						</span>.
+					</p>
 				</div>
 				<div class="card-grid card-grid-2">
 					<article class="info-card">
@@ -132,6 +138,7 @@
 				<article class="section-card" th:each="table : ${page.tables}">
 					<h2 th:text="${table.title}">Table title</h2>
 					<p th:if="${table.intro}" th:text="${table.intro}">Table intro</p>
+					<p class="table-scroll-note">On smaller screens, swipe sideways to compare the columns.</p>
 					<div class="table-shell">
 						<table class="comparison-table">
 							<thead>
@@ -224,6 +231,17 @@
 						</a>
 					</div>
 				</article>
+				<article class="section-card" th:if="${!#lists.isEmpty(familyClusterPages)}">
+					<h2>More in this topic</h2>
+					<p>Use this topic cluster when you want the wider buyer, defect, cost, coverage, or trust context instead of only the next follow-up page.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="clusterPage : ${familyClusterPages}" th:href="${clusterPage.slug}">
+							<span class="card-kicker" th:text="${clusterPage.clusterRoleLabel + ' - ' + clusterPage.eyebrow}">Topic page</span>
+							<strong th:text="${clusterPage.title}">Cluster title</strong>
+							<span class="related-page-card-text" th:text="${clusterPage.summary}">Cluster summary</span>
+						</a>
+					</div>
+				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(page.faq)}">
 					<h2>FAQ</h2>
 					<div class="faq-list">
@@ -304,7 +322,7 @@
 					<ul class="link-list source-list">
 						<li th:each="source : ${pageSources}">
 							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
-							<span class="source-meta" th:text="${source.sourceClass + ' Â· ' + source.jurisdiction + ' Â· verified ' + source.lastVerified}">Source meta</span>
+							<span class="source-meta" th:text="${source.sourceClass + ' | ' + source.jurisdiction + ' | verified ' + source.lastVerified}">Source meta</span>
 						</li>
 					</ul>
 				</div>
@@ -313,7 +331,7 @@
 					<ul class="link-list source-list">
 						<li th:each="source : ${geoProfileSources}">
 							<a class="source-link" th:href="${source.url}" target="_blank" rel="noreferrer" th:text="${source.title}">Source title</a>
-							<span class="source-meta" th:text="${source.sourceClass + ' ì¨?' + source.jurisdiction + ' ì¨?verified ' + source.lastVerified}">Source meta</span>
+							<span class="source-meta" th:text="${source.sourceClass + ' | ' + source.jurisdiction + ' | verified ' + source.lastVerified}">Source meta</span>
 						</li>
 					</ul>
 				</div>
@@ -333,6 +351,15 @@
 						</li>
 					</ul>
 				</div>
+				<div class="rail-card" th:if="${!#lists.isEmpty(familyClusterPages)}">
+					<span class="card-kicker">Topic cluster</span>
+					<ul class="link-list">
+						<li th:each="clusterPage : ${familyClusterPages}">
+							<a th:href="${clusterPage.slug}" th:text="${clusterPage.title}">Topic page</a>
+							<p th:text="${clusterPage.clusterRoleLabel}">Topic role</p>
+						</li>
+					</ul>
+				</div>
 			</aside>
 		</div>
 	</section>
@@ -341,4 +368,5 @@
 <footer th:replace="~{fragments :: footer}"></footer>
 </body>
 </html>
+
 

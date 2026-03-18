@@ -197,5 +197,68 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("When information may be shared")))
 			.andExpect(content().string(containsString("mailto:contact@sewerclarity.com")));
 	}
+
+	@Test
+	void nationalPagesExposeInlineRelatedLinksAndCleanSourceMeta() throws Exception {
+		mockMvc.perform(get("/sewer-scope-red-flags/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Most readers follow this page with")))
+			.andExpect(content().string(containsString("Offset Joint Sewer Line Meaning")))
+			.andExpect(content().string(containsString("Sewer Belly Repair Cost")))
+			.andExpect(content().string(containsString("More in this topic")))
+			.andExpect(content().string(containsString("Primary page")))
+			.andExpect(content().string(containsString("Support page")))
+			.andExpect(content().string(containsString("Collapsed Sewer Line Signs")))
+			.andExpect(content().string(containsString("Root Intrusion in a Sewer Line: What to Do")))
+			.andExpect(content().string(containsString("| verified ")));
+	}
+
+	@Test
+	void trustTopicClustersSurfaceWinnerBeforeSupportPages() throws Exception {
+		mockMvc.perform(get("/privacy/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("More in this topic")))
+			.andExpect(content().string(containsString("Methodology")))
+			.andExpect(content().string(containsString("Primary page")))
+			.andExpect(content().string(containsString("Support page")));
+	}
+
+	@Test
+	void articlePagesExposeOgImageAndArticleDates() throws Exception {
+		mockMvc.perform(get("/sewer-line-replacement-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("/og-default.svg")))
+			.andExpect(content().string(containsString("\"datePublished\"")))
+			.andExpect(content().string(containsString("\"dateModified\"")))
+			.andExpect(content().string(containsString("\"image\"")));
+	}
+
+	@Test
+	void newWinnerSupportPagesRenderSuccessfully() throws Exception {
+		mockMvc.perform(get("/how-to-read-sewer-scope-report/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("How to Read a Sewer Scope Report")))
+			.andExpect(content().string(containsString("How report language usually changes the next move")));
+
+		mockMvc.perform(get("/sewer-scope-inspection-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Sewer Scope Inspection Cost")))
+			.andExpect(content().string(containsString("$175-$800")));
+
+		mockMvc.perform(get("/sewer-line-under-slab-repair-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Sewer Line Under Slab Repair Cost")))
+			.andExpect(content().string(containsString("Short under-slab repair or short-run replacement")));
+
+		mockMvc.perform(get("/cast-iron-pipe-deterioration-signs/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Cast Iron Pipe Deterioration Signs")))
+			.andExpect(content().string(containsString("Cast iron sign versus what it changes")));
+
+		mockMvc.perform(get("/is-sewer-scope-worth-it/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Is a Sewer Scope Worth It?")))
+			.andExpect(content().string(containsString("When a sewer scope is worth it")));
+	}
 }
 
