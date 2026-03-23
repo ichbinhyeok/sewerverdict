@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.sewerverdict.content.PageFaq;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,9 +22,12 @@ public class SeoMetadataService {
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	private final String contactEmail;
+	private final String baseUrl;
 
-	public SeoMetadataService(@Value("${app.contact-email}") String contactEmail) {
+	public SeoMetadataService(@Value("${app.contact-email}") String contactEmail,
+		@Value("${app.base-url}") String baseUrl) {
 		this.contactEmail = contactEmail;
+		this.baseUrl = trimTrailingSlash(baseUrl);
 	}
 
 	public void apply(Model model, HttpServletRequest request, String title, String description, String ogType,
@@ -35,10 +37,7 @@ public class SeoMetadataService {
 
 	public void apply(Model model, HttpServletRequest request, String title, String description, String ogType,
 		List<SiteController.Breadcrumb> breadcrumbs, List<PageFaq> faq, boolean includeOrganization, String articleDate) {
-		String canonicalUrl = ServletUriComponentsBuilder.fromRequestUri(request)
-			.replaceQuery(null)
-			.build()
-			.toUriString();
+		String canonicalUrl = buildCanonicalUrl(request);
 		String defaultImageUrl = extractOrigin(canonicalUrl) + "/og-default.svg";
 
 		model.addAttribute("canonicalUrl", canonicalUrl);
@@ -140,6 +139,18 @@ public class SeoMetadataService {
 
 	private String extractOrigin(String canonicalUrl) {
 		return canonicalUrl.replaceFirst("^(https?://[^/]+).*$", "$1");
+	}
+
+	private String buildCanonicalUrl(HttpServletRequest request) {
+		String requestUri = request.getRequestURI();
+		if (!StringUtils.hasText(requestUri) || "/".equals(requestUri)) {
+			return baseUrl + "/";
+		}
+		return baseUrl + requestUri;
+	}
+
+	private String trimTrailingSlash(String value) {
+		return value != null && value.endsWith("/") ? value.substring(0, value.length() - 1) : value;
 	}
 }
 

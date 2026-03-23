@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.sewerverdict.content.GeoProfileService;
 import com.example.sewerverdict.content.SiteContentService;
@@ -22,18 +21,20 @@ public class SeoController {
 	private final SiteContentService siteContentService;
 	private final GeoProfileService geoProfileService;
 	private final String reviewDate;
+	private final String baseUrl;
 
 	public SeoController(SiteContentService siteContentService, GeoProfileService geoProfileService,
-			@Value("${app.review-date}") String reviewDate) {
+			@Value("${app.review-date}") String reviewDate,
+			@Value("${app.base-url}") String baseUrl) {
 		this.siteContentService = siteContentService;
 		this.geoProfileService = geoProfileService;
 		this.reviewDate = reviewDate;
+		this.baseUrl = trimTrailingSlash(baseUrl);
 	}
 
 	@GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
 	public String robots(HttpServletRequest request) {
-		String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
 		return """
 			User-agent: *
 			Allow: /
@@ -46,7 +47,6 @@ public class SeoController {
 	@GetMapping(value = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
 	public String sitemap(HttpServletRequest request) {
-		String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
 		List<SitemapUrl> urls = new ArrayList<>();
 		urls.add(new SitemapUrl(baseUrl + "/", reviewDate));
 		urls.add(new SitemapUrl(baseUrl + "/estimator/", reviewDate));
@@ -79,6 +79,10 @@ public class SeoController {
 			.replace(">", "&gt;")
 			.replace("\"", "&quot;")
 			.replace("'", "&apos;");
+	}
+
+	private String trimTrailingSlash(String value) {
+		return value != null && value.endsWith("/") ? value.substring(0, value.length() - 1) : value;
 	}
 
 	private record SitemapUrl(String loc, String lastmod) {

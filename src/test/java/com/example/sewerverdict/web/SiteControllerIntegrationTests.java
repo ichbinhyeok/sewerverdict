@@ -227,10 +227,19 @@ class SiteControllerIntegrationTests {
 	void articlePagesExposeOgImageAndArticleDates() throws Exception {
 		mockMvc.perform(get("/sewer-line-replacement-cost/"))
 			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"https://sewerclarity.com/sewer-line-replacement-cost/\"")))
 			.andExpect(content().string(containsString("/og-default.svg")))
 			.andExpect(content().string(containsString("\"datePublished\"")))
 			.andExpect(content().string(containsString("\"dateModified\"")))
 			.andExpect(content().string(containsString("\"image\"")));
+	}
+
+	@Test
+	void canonicalRemainsHttpsNonWwwWhenRequestHostIsHttpOrWww() throws Exception {
+		mockMvc.perform(get("/sewer-line-replacement-cost/").secure(false).header("Host", "www.sewerclarity.com"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"https://sewerclarity.com/sewer-line-replacement-cost/\"")))
+			.andExpect(content().string(containsString("\"url\":\"https://sewerclarity.com/sewer-line-replacement-cost/\"")));
 	}
 
 	@Test
