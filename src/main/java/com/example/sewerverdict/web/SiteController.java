@@ -45,22 +45,22 @@ public class SiteController {
 			"/who-pays-for-sewer-line-repair-buyer-or-seller/",
 			"/homeowner-vs-city-sewer-responsibility/",
 			"/sewer-lateral-repair-cost/",
-			"/how-to-read-sewer-scope-report/",
+			"/sewer-scope-red-flags/",
 			"/sewer-scope-inspection-cost/"
 		)));
 		model.addAttribute("issuePages", siteContentService.getFeaturedPages(List.of(
+			"/sewer-scope-red-flags/",
 			"/cast-iron-sewer-pipe-replacement-cost/",
 			"/orangeburg-pipe-replacement-cost/",
 			"/cast-iron-pipe-deterioration-signs/",
-			"/root-intrusion-sewer-line-what-to-do/",
-			"/sewer-line-under-slab-repair-cost/"
+			"/root-intrusion-sewer-line-what-to-do/"
 		)));
 		model.addAttribute("geoPages", siteContentService.getFeaturedPages(List.of(
 			"/cities/philadelphia/homeowner-vs-city-sewer-responsibility/",
 			"/cities/pittsburgh/sewer-scope-before-buying-house/",
 			"/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
 			"/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
-			"/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
+			"/cities/detroit/sewer-scope-before-buying-house/",
 			"/cities/washington-dc/homeowner-vs-city-sewer-responsibility/"
 		)));
 		List<PageFaq> homeFaq = List.of(

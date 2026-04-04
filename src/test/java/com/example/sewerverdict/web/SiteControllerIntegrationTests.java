@@ -44,10 +44,12 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Decide the next move on sewer lateral risk before closing, before quotes, or before blaming the city.")))
 			.andExpect(content().string(containsString("Private lateral or city boundary")))
 			.andExpect(content().string(containsString("Homeowner vs City Sewer Responsibility")))
+			.andExpect(content().string(containsString("Sewer Scope Red Flags")))
 			.andExpect(content().string(containsString("Sewer Lateral Repair Cost")))
 			.andExpect(content().string(containsString("Documented defects and quote-ready follow-up")))
 			.andExpect(content().string(containsString("Who Pays")))
-			.andExpect(content().string(containsString("Scope Findings")));
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\">Scope Findings")))
+			.andExpect(content().string(containsString("Detroit Sewer Scope Before Buying a House")));
 	}
 
 	@Test
@@ -296,17 +298,38 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/sewer-scope-before-buying-house/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("buyer-paid repair")))
-			.andExpect(content().string(containsString("get a scope before you start arguing over credits, repair bids, or who should pay")));
+			.andExpect(content().string(containsString("get a scope before you start arguing over credits, repair bids, or who should pay")))
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
 
 		mockMvc.perform(get("/who-pays-for-sewer-line-repair-buyer-or-seller/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("seller credit")))
-			.andExpect(content().string(containsString("private-lateral repair or broader replacement")));
+			.andExpect(content().string(containsString("private-lateral repair or broader replacement")))
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
 
 		mockMvc.perform(get("/homeowner-vs-city-sewer-responsibility/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("City examples that show why the answer changes")))
 			.andExpect(content().string(containsString("See sewer lateral repair cost")));
+	}
+
+	@Test
+	void redFlagsStaysVisibleOnNationalAndGeoFollowUpPaths() throws Exception {
+		mockMvc.perform(get("/sewer-scope-inspection-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
+
+		mockMvc.perform(get("/is-sewer-scope-worth-it/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
+
+		mockMvc.perform(get("/cities/milwaukee/homeowner-vs-city-sewer-responsibility/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
+
+		mockMvc.perform(get("/cities/detroit/sewer-scope-before-buying-house/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
 	}
 }
 
