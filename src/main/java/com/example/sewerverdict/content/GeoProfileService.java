@@ -196,9 +196,9 @@ public class GeoProfileService {
 		}
 		return switch (family.toLowerCase()) {
 			case "buyer" -> 0;
-			case "cost" -> 1;
+			case "coverage" -> 1;
 			case "defect" -> 2;
-			case "coverage" -> 3;
+			case "cost" -> 3;
 			default -> 9;
 		};
 	}
@@ -208,29 +208,32 @@ public class GeoProfileService {
 		if (slug.contains("before-buying-house")) {
 			return 0;
 		}
-		if (slug.contains("homeowner-vs-city") || slug.contains("who-pays")) {
+		if (slug.contains("point-of-sale") || slug.contains("certificate") || slug.contains("compliance")) {
 			return 1;
 		}
-		if (slug.contains("repair-vs-replacement")) {
+		if (slug.contains("homeowner-vs-city") || slug.contains("who-pays")) {
 			return 2;
 		}
-		if (slug.contains("replacement-cost")) {
+		if (slug.contains("negotiation-with-seller")) {
 			return 3;
 		}
-		if (slug.contains("negotiation-with-seller")) {
+		if (slug.contains("repair-vs-replacement")) {
 			return 4;
 		}
-		if (page.isBuyerPage()) {
+		if (slug.contains("replacement-cost")) {
 			return 5;
 		}
-		if (page.isCoveragePage()) {
+		if (page.isBuyerPage()) {
 			return 6;
 		}
-		if (page.isCostPage()) {
+		if (page.isCoveragePage()) {
 			return 7;
 		}
 		if (page.isDefectPage()) {
 			return 8;
+		}
+		if (page.isCostPage()) {
+			return 9;
 		}
 		return 9;
 	}

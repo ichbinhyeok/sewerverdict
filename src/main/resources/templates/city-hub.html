@@ -15,12 +15,12 @@
 			</nav>
 			<div class="hero-shell">
 				<div>
-					<span class="eyebrow" th:text="${cityEntry.profile.priorityTier + ' city hub'}">City hub</span>
+					<span class="eyebrow" th:text="${cityEntry.profile.priorityTier + ' lateral-risk hub'}">City hub</span>
 					<h1 th:text="${cityEntry.profile.cityName + ', ' + cityEntry.profile.stateCode + ' Sewer Pages'}">City pages</h1>
 					<p class="lede" th:text="${cityEntry.profile.marketReason}">Market reason</p>
 					<div class="trust-strip trust-strip-compact">
 						<div th:text="${#lists.size(cityEntry.pages) + ' city pages'}">City pages</div>
-						<div>Local signal only</div>
+						<div>Private-lateral focus</div>
 						<div th:text="${#lists.size(geoProfileSources) + ' sources linked'}">Sources linked</div>
 					</div>
 				</div>
@@ -46,7 +46,7 @@
 			<div class="content-main">
 				<article class="section-card section-card-accent" th:if="${!#lists.isEmpty(starterPages)}">
 					<h2 th:text="${'Start Here in ' + cityEntry.profile.cityName}">Start here</h2>
-					<p>These are the best entry pages if you want the fastest path from city context to a real next decision.</p>
+					<p>These are the best entry pages if you want the fastest local path from buyer diligence or private-lateral responsibility to a real next decision.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${starterPages}" th:href="${page.slug}"
 						   data-event-type="page_cta_click"
@@ -72,7 +72,7 @@
 						<a class="related-page-card" th:if="${coverageStarter != null}" th:href="${coverageStarter.slug}"
 						   data-event-type="page_cta_click"
 						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:trust:' + coverageStarter.title},data-event-city=${coverageStarter.geoCitySlug},data-event-geo-page=${coverageStarter.geoPage},data-event-geo-family=${coverageStarter.trackingFamily},data-event-placement='city-scenario-trust'">
-							<span class="card-kicker">If the first question is who owns the line</span>
+							<span class="card-kicker">If the first question is who owns the lateral</span>
 							<strong th:text="${coverageStarter.title}">Coverage starter</strong>
 							<span class="related-page-card-text" th:text="${coverageStarter.summary}">Coverage summary</span>
 						</a>

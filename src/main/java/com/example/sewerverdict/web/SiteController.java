@@ -36,42 +36,43 @@ public class SiteController {
 
 	@GetMapping("/")
 	public String home(HttpServletRequest request, Model model) {
-		model.addAttribute("pageTitle", "SewerClarity | Sewer scope risk and next-step estimator");
+		model.addAttribute("pageTitle", "SewerClarity | Sewer lateral risk and next-step estimator");
 		model.addAttribute("metaDescription",
-			"Calm, buyer-first sewer scope risk guidance for buyers, sellers, and owners. Estimate the next step, understand cost direction, and find inspection or quote paths.");
+			"Calm, buyer-first sewer lateral risk guidance for buyers, sellers, and owners. Clarify the next step, understand private-lateral responsibility, and know when inspection should come before quotes.");
 		model.addAttribute("featuredPages", siteContentService.getFeaturedPages(List.of(
-			"/sewer-scope-red-flags/",
-			"/sewer-scope-inspection-cost/",
+			"/sewer-scope-before-buying-house/",
 			"/is-sewer-scope-worth-it/",
-			"/orangeburg-pipe-replacement-cost/",
+			"/who-pays-for-sewer-line-repair-buyer-or-seller/",
+			"/homeowner-vs-city-sewer-responsibility/",
+			"/sewer-lateral-repair-cost/",
 			"/how-to-read-sewer-scope-report/",
-			"/cast-iron-sewer-pipe-replacement-cost/",
-			"/sewer-line-under-slab-repair-cost/"
+			"/sewer-scope-inspection-cost/"
 		)));
 		model.addAttribute("issuePages", siteContentService.getFeaturedPages(List.of(
-			"/sewer-scope-red-flags/",
-			"/how-to-read-sewer-scope-report/",
+			"/cast-iron-sewer-pipe-replacement-cost/",
+			"/orangeburg-pipe-replacement-cost/",
 			"/cast-iron-pipe-deterioration-signs/",
 			"/root-intrusion-sewer-line-what-to-do/",
-			"/trenchless-sewer-replacement-cost/"
+			"/sewer-line-under-slab-repair-cost/"
 		)));
 		model.addAttribute("geoPages", siteContentService.getFeaturedPages(List.of(
 			"/cities/philadelphia/homeowner-vs-city-sewer-responsibility/",
 			"/cities/pittsburgh/sewer-scope-before-buying-house/",
-			"/cities/cleveland/old-house-sewer-line-risk/",
-			"/cities/chicago/cast-iron-sewer-line-risk/",
-			"/cities/buffalo/old-house-sewer-line-risk/",
+			"/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
+			"/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
+			"/cities/cincinnati/homeowner-vs-city-sewer-responsibility/",
 			"/cities/washington-dc/homeowner-vs-city-sewer-responsibility/"
 		)));
 		List<PageFaq> homeFaq = List.of(
-			faq("What can the estimator do?", "It narrows the likely next step, rough cost direction, and biggest uncertainty drivers for buyers, sellers, and owners."),
+			faq("What can the estimator do?", "It narrows the likely next step, rough cost direction, private-lateral responsibility questions, and biggest uncertainty drivers for buyers, sellers, and owners."),
 			faq("Does it replace a sewer scope?", "No. It is an educational next-step tool, not a substitute for a sewer camera inspection or an in-person quote."),
-			faq("Does seller responsibility always work the same way?", "No. Responsibility and leverage vary by evidence, contract stage, local practice, and line-location rules.")
+			faq("Does the city usually pay for the lateral?", "No. Responsibility often depends on where the line sits, local utility rules, and whether the problem is on the private lateral or public side."),
+			faq("Should buyers get quotes before they get better evidence?", "Usually not. Buyers often need clearer footage and a cleaner responsibility story before repair pricing becomes trustworthy.")
 		);
 		model.addAttribute("homeFaq", homeFaq);
 		seoMetadataService.apply(model, request,
-			"SewerClarity | Sewer scope risk and next-step estimator",
-			"Calm, buyer-first sewer scope risk guidance for buyers, sellers, and owners. Estimate the next step, understand cost direction, and find inspection or quote paths.",
+			"SewerClarity | Sewer lateral risk and next-step estimator",
+			"Calm, buyer-first sewer lateral risk guidance for buyers, sellers, and owners. Clarify the next step, understand private-lateral responsibility, and know when inspection should come before quotes.",
 			"website",
 			List.of(new Breadcrumb("Home", "/")),
 			homeFaq,
@@ -132,11 +133,11 @@ public class SiteController {
 			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerClarity");
 		model.addAttribute("metaDescription",
 			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
-				+ ", from buyer-first inspection pages to responsibility, backup, and quote-ready comparison guides.");
+				+ ", from buyer-first inspection pages to private-lateral responsibility, backup, and quote-ready comparison guides.");
 		seoMetadataService.apply(model, request,
 			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerClarity",
 			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
-				+ ", from buyer-first inspection pages to responsibility, backup, and quote-ready comparison guides.",
+				+ ", from buyer-first inspection pages to private-lateral responsibility, backup, and quote-ready comparison guides.",
 			"website",
 			List.of(
 				new Breadcrumb("Home", "/"),

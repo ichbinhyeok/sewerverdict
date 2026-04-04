@@ -147,101 +147,107 @@
     "family": "buyer",
     "clusterRole": "winner",
     "title": "Sewer Scope Before Buying a House",
-    "metaTitle": "Sewer Scope Before Buying a House: Is It Worth It? | SewerClarity",
-    "metaDescription": "See when a sewer scope is worth ordering before closing, which homes raise buried-line risk, and what buyers should do next.",
+    "metaTitle": "Sewer Scope Before Buying a House: Before Closing, Credit, or Surprise Repair | SewerClarity",
+    "metaDescription": "See when a sewer scope is worth ordering before closing, why private-lateral exposure changes the decision, and what buyers should do before quotes or credits.",
     "eyebrow": "Buyer guide",
-    "summary": "A buyer-first decision page for whether a sewer scope is worth ordering before closing and how it changes negotiation risk.",
-    "quickAnswer": "A sewer scope is most worth it when buried-line uncertainty could change the deal, the credit request, or your confidence before closing.",
-    "seriousness": "Risk becomes more meaningful when age, older materials, trees, symptoms, or negotiation timing stack together.",
-    "nextStep": "If the property is older or the transaction is live, inspection-first is usually calmer than hoping the line is fine.",
-    "costDirection": "The scope itself is usually modest compared with the downside of discovering a buried problem after closing.",
-    "uncertainty": "This page cannot tell you that every buyer needs a scope. It helps narrow when the decision is sensible.",
-    "sourceNote": "Reviewed against buyer-intent sewer scope patterns and source-backed cost/responsibility pages in the current registry. The page stays evidence-first and avoids claiming that every buyer needs a scope.",
+    "summary": "A buyer-first winner page for the real purchase question: should you get footage before closing, before credits, and before inheriting a private-lateral surprise?",
+    "quickAnswer": "A sewer scope is most worth it before closing when buried-line uncertainty could turn into a buyer-paid repair, a credit fight, or a private-lateral problem you would rather discover before the keys change hands.",
+    "seriousness": "The risk rises when the home is older, the sewer history is unclear, roots or drainage clues already exist, or owner-side lateral responsibility could land on the buyer quickly after closing.",
+    "nextStep": "If the line is not documented yet, get a scope before you start arguing over credits, repair bids, or who should pay. Evidence usually matters more than early pricing noise.",
+    "costDirection": "The scope fee is usually the small number in the transaction. The expensive mistake is inheriting an owner-side sewer lateral problem after closing without enough footage to negotiate cleanly.",
+    "uncertainty": "This page cannot tell every buyer to scope, and it cannot promise what any seller, city, or inspector will require. It helps decide when the inspection materially improves the purchase decision.",
+    "sourceNote": "Reviewed against Redfin buyer-intent scope guidance, current inspection-cost sanity checks, and official utility examples showing that owner-side lateral responsibility is real in many older-city markets. The page stays inspection-first and avoids claiming every buyer needs a scope.",
+    "sourceIds": [
+      "rdf-001",
+      "cost-004",
+      "pit-001"
+    ],
     "primaryCtaLabel": "Find sewer camera inspection options",
     "primaryCtaHref": "/find-sewer-scope/",
     "secondaryCtaLabel": "Use the estimator",
     "secondaryCtaHref": "/estimator/",
     "sections": [
       {
-        "anchor": "when-worth-it",
-        "title": "When a sewer scope is most worth ordering",
-        "intro": "The best trigger is not fear. It is whether buried-line uncertainty could materially change the purchase decision.",
+        "anchor": "before-closing-triggers",
+        "title": "When a sewer scope changes the purchase decision most",
+        "intro": "The best trigger is not fear. It is whether buried-line uncertainty could still change the deal before closing.",
         "bullets": [
-          "Older housing stock usually raises the value of a sewer scope.",
-          "A live contract makes hidden sewer risk more commercial because timing and leverage matter now.",
-          "Large trees, older materials, or unexplained drainage clues can justify checking before closing.",
-          "A scope is often easiest to justify when the downside of being wrong is expensive."
+          "Older housing stock usually raises the value of a sewer scope because clay, cast iron, Orangeburg, and old repairs can stay invisible in a normal walkthrough.",
+          "A live contract makes the risk more commercial because timing, credits, and contingency decisions matter now.",
+          "Large trees, additions, older hardscape, or unclear sewer history make buried-line guessing more expensive.",
+          "If owner-side lateral responsibility is common in the market, the downside of missing a problem after closing gets sharper."
         ]
       },
       {
-        "anchor": "older-home-risk",
-        "title": "Homes that deserve extra sewer caution",
-        "intro": "Some houses create more buried-line uncertainty even when the rest of the inspection feels clean.",
+        "anchor": "sequence-the-decision",
+        "title": "The buyer mistake: asking who pays before you know what the footage shows",
+        "intro": "Buyers often jump to quotes, credits, or blame before the line is documented clearly enough to justify any of those moves.",
         "bullets": [
-          "Older homes can hide clay, cast iron, or orangeburg risk that never shows up in a generic walkthrough.",
-          "Mature roots, additions, older hardscape, and unclear maintenance history all raise buried-line uncertainty.",
-          "The house age is only one clue, but it often changes whether inspection-first is worth the extra step."
+          "A quote before footage can be little more than a guess with a sales angle attached.",
+          "A credit request is stronger when the video shows whether the issue looks isolated, systemic, or still too unclear to price honestly.",
+          "A seller disclosure or old scope clip can help, but it may still be incomplete, low-quality, or too dated to support the real decision.",
+          "A clean general home inspection does not rule out buried private-lateral risk."
         ]
       },
       {
-        "anchor": "if-problem-found",
-        "title": "What happens if the scope finds a problem",
-        "intro": "A bad scope does not automatically kill the deal. It changes the conversation.",
+        "anchor": "if-scope-finds-something",
+        "title": "What the scope changes if it finds a problem",
+        "intro": "A bad scope does not automatically kill the deal. It changes what the next conversation should be about.",
         "bullets": [
-          "Some findings are watch-items, not quote-now emergencies.",
-          "More serious defects can support a credit request, more specialist review, or repair-path comparison.",
-          "The key is good documentation, not panic language.",
-          "Buyers often need video, severity detail, and likely next-step logic more than a vague warning."
+          "Some findings stay in watch-item or localized repair territory rather than quote-now emergency territory.",
+          "Broader material failure, repeated root entry, collapse language, or owner-side lateral exposure can support a stronger credit or repair conversation.",
+          "The key is documentation, not panic wording.",
+          "Buyers usually need video, severity detail, and a cleaner next-step read more than one big scary number."
         ]
       },
       {
         "anchor": "buyer-checklist",
-        "title": "What to ask the inspector, seller, or plumber next",
+        "title": "What to ask before you waive, negotiate, or close",
         "intro": "A stronger buyer outcome usually comes from sharper questions, not louder ones.",
         "bullets": [
-          "Was the full run viewed clearly, and is the issue isolated or systemic?",
-          "Would a specialist quote materially change negotiation leverage or only add noise?",
-          "If repair is needed, is a credit cleaner than a seller-managed fix before closing?",
-          "What part of the risk is still unknown even after the scope?"
+          "Was the full run viewed clearly to the main, and does the footage really show where the problem sits?",
+          "Does the issue look isolated enough for repair, or broad enough to change the ownership risk of the house?",
+          "Would a specialist quote actually strengthen leverage, or only add pricing noise before the line is understood better?",
+          "If repair is needed, is a credit cleaner than a seller-managed fix before closing?"
         ]
       }
     ],
     "tables": [
       {
-        "title": "When a sewer scope makes the most sense",
+        "title": "When a sewer scope changes the deal most",
         "intro": "The strongest buyer pages help people decide when sewer uncertainty is actually worth paying to reduce.",
         "columns": [
-          "Situation",
-          "Why buyers scope",
+          "Purchase situation",
+          "Why the scope matters",
           "Likely next move"
         ],
         "rows": [
           {
             "cells": [
               "Older home under contract",
-              "buried-line uncertainty can change negotiation",
+              "buried-line uncertainty can still change the deal",
               "scope before closing"
             ]
           },
           {
             "cells": [
-              "Older home plus trees or symptoms",
-              "higher hidden-risk pattern",
-              "scope now"
+              "Older home plus likely owner-side lateral exposure",
+              "the post-closing downside can land on the buyer fast",
+              "scope before you argue over credits"
+            ]
+          },
+          {
+            "cells": [
+              "Seller has vague disclosure or incomplete footage",
+              "documentation may be too thin to support pricing or negotiation",
+              "get clearer footage first"
             ]
           },
           {
             "cells": [
               "Newer home with no clues",
-              "uncertainty may be lower",
+              "the scope may change less",
               "context-based call, not automatic"
-            ]
-          },
-          {
-            "cells": [
-              "Known bad scope from another party",
-              "documentation may be incomplete or biased",
-              "clarify footage and next-step evidence"
             ]
           }
         ],
@@ -249,32 +255,32 @@
       }
     ],
     "highlights": [
-      "Older housing stock usually raises the value of a scope.",
-      "A clean general inspection does not rule out buried-line issues."
+      "A clean general inspection does not rule out buried-line issues.",
+      "The cost of the scope is often smaller than the cost of learning too late that the lateral is your problem."
     ],
     "questions": [
-      "Would a scope materially reduce the chance of buying into a hidden repair bill?",
-      "If a problem is found, do you want credits, repair, or more specialist detail?"
+      "Would footage change your decision or your leverage before closing?",
+      "Are you asking who pays before you know what the video actually shows?"
     ],
     "faq": [
       {
         "question": "Does every buyer need a sewer scope?",
-        "answer": "No. The point is not universal fear. The point is whether buried-line uncertainty is high enough that checking changes the confidence of the purchase."
+        "answer": "No. The point is not universal fear. The point is whether buried-line uncertainty is high enough that checking materially changes the confidence of the purchase."
       },
       {
-        "question": "Is a sewer scope usually worth the cost before closing?",
-        "answer": "Often yes when the home is older, the transaction is active, or the downside of discovering a major buried issue after closing would be meaningful."
+        "question": "Should I get quotes before the scope?",
+        "answer": "Usually not. Quotes get more useful after the line is documented well enough to show whether the issue is isolated, broad, or still too uncertain to price honestly."
       },
       {
-        "question": "If the scope finds something, should I walk away?",
-        "answer": "Not automatically. The next move depends on severity, repair path, negotiation leverage, and whether the finding looks isolated or systemic."
+        "question": "What if the seller already has footage?",
+        "answer": "Use it as a clue, not a final answer. Buyers still need to know whether the run was complete, recent, and clear enough to support a credit or repair decision."
       }
     ],
     "relatedSlugs": [
-      "/sewer-scope-red-flags/",
-      "/who-pays-for-sewer-line-repair-buyer-or-seller/",
       "/is-sewer-scope-worth-it/",
-      "/sewer-scope-inspection-cost/"
+      "/sewer-scope-inspection-cost/",
+      "/who-pays-for-sewer-line-repair-buyer-or-seller/",
+      "/homeowner-vs-city-sewer-responsibility/"
     ]
   },
   {
@@ -837,89 +843,108 @@
     "family": "buyer",
     "clusterRole": "winner",
     "title": "Who Pays for Sewer Line Repair: Buyer or Seller?",
-    "metaTitle": "Who Pays for Sewer Line Repair, Buyer or Seller? | SewerClarity",
-    "metaDescription": "See what actually shapes buyer-vs-seller leverage on sewer repairs, when credits beat repairs, and what evidence matters most.",
+    "metaTitle": "Who Pays for Sewer Line Repair, Buyer or Seller? Evidence, Credits, and Lateral Risk | SewerClarity",
+    "metaDescription": "See what actually shapes buyer-vs-seller leverage on sewer repairs, when a credit beats a seller fix, and why private-lateral responsibility changes the negotiation.",
     "eyebrow": "Negotiation guide",
-    "summary": "A buyer-seller decision page focused on leverage, documentation, and the cleanest next move, not fake legal certainty.",
-    "quickAnswer": "The useful answer is rarely just 'buyer' or 'seller'. It is which evidence, timing, and repair uncertainty give either side leverage.",
-    "seriousness": "This becomes more serious when the issue is confirmed, costly enough to change deal economics, or discovered late in the process.",
-    "nextStep": "Gather evidence first, then decide whether a specialist quote, seller credit, or more inspection creates the cleanest path forward.",
-    "costDirection": "The larger and more documented the issue looks, the more likely it becomes a real negotiation item rather than a minor note.",
-    "uncertainty": "This page cannot determine your legal rights, contract language, or exact local custom.",
-    "sourceNote": "Reviewed against source-backed responsibility pages and transaction-oriented scope logic. The page explains leverage patterns rather than legal certainty.",
-    "primaryCtaLabel": "Use the estimator",
-    "primaryCtaHref": "/estimator/",
-    "secondaryCtaLabel": "Find sewer camera inspection options",
-    "secondaryCtaHref": "/find-sewer-scope/",
+    "summary": "A negotiation winner page for the real question behind the search: what evidence, timing, and private-lateral exposure make a buyer credit, seller repair, or walk-away threat credible?",
+    "quickAnswer": "It is rarely automatic. The answer usually turns on what the footage shows, whether the likely repair burden is owner-side, how late the issue surfaced, and whether a credit is cleaner than a seller-managed fix.",
+    "seriousness": "This matters most when the problem could land on the buyer after closing, the line may be privately owned, or the repair path is too uncertain for a casual seller promise.",
+    "nextStep": "Get clear footage first. Then decide whether the strongest ask is a scope contingency, a specialist quote, a seller credit, or a repair request narrow enough to survive escrow.",
+    "costDirection": "The more the problem looks like private-lateral repair or broader replacement instead of a minor cleanup, the more likely it becomes a real deal term instead of a small inspection note.",
+    "uncertainty": "This page cannot determine your legal rights, contract language, inspection contingency, or exact local custom.",
+    "sourceNote": "Reviewed against buyer-intent sewer scope framing plus official utility examples showing that private-lateral rules vary by city. The page explains negotiation leverage, not legal certainty.",
+    "sourceIds": [
+      "rdf-001",
+      "phl-001",
+      "pit-001",
+      "pdx-001"
+    ],
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "Use the estimator",
+    "secondaryCtaHref": "/estimator/",
     "sections": [
       {
-        "anchor": "what-shapes-leverage",
-        "title": "What usually shapes buyer versus seller leverage",
-        "intro": "This is not a page for fake certainty. It is a page for practical leverage patterns.",
+        "anchor": "what-actually-decides-it",
+        "title": "What actually decides who pays in real deals",
+        "intro": "This is not a page for fake certainty. It is a page for practical leverage patterns that survive escrow.",
         "bullets": [
-          "How late the issue appears in the transaction matters.",
-          "Video evidence and scope detail usually matter more than a general concern.",
-          "The larger and more documented the likely repair burden looks, the more serious the conversation becomes.",
+          "How late the issue appears in the transaction matters because timing changes leverage and urgency.",
+          "Video evidence and scope detail usually matter more than a general concern or a vague plumbing comment.",
+          "If the likely problem is on a private lateral, the buyer's post-closing downside gets more concrete.",
           "Local custom may influence expectations, but it does not erase the need for evidence."
         ]
       },
       {
-        "anchor": "credit-vs-repair",
-        "title": "Seller credit versus seller-managed repair",
+        "anchor": "credit-vs-repair-vs-price",
+        "title": "Seller credit versus seller-managed repair versus price adjustment",
         "intro": "Many buyers care more about clean execution than winning the argument.",
         "bullets": [
-          "A credit can be cleaner when buyers want control over the contractor or method.",
-          "A seller-managed repair may sound attractive but can create scope, timing, or workmanship uncertainty.",
-          "The best choice often depends on urgency and how clearly the work can be defined."
+          "A seller credit can be cleaner when buyers want control over the contractor, method, and timing.",
+          "A seller-managed repair may sound attractive but can create scope, workmanship, or permit uncertainty.",
+          "A narrower repair request can work when the footage supports one localized fix instead of an open-ended sewer problem.",
+          "If the issue is broad enough, the conversation may shift from a small repair note to a real deal-term decision."
         ]
       },
       {
-        "anchor": "documentation",
-        "title": "What documentation usually helps most",
-        "intro": "Negotiation pages win when they tell users what to gather next.",
+        "anchor": "when-boundary-changes-the-conversation",
+        "title": "Why private-lateral responsibility changes the conversation",
+        "intro": "Negotiations get sharper when the likely repair burden is not theoretical and not obviously city-side.",
         "bullets": [
-          "Scope footage, severity language, and likely next-step framing help more than general alarm.",
-          "A specialist quote can be useful when it defines the issue better, not just when it produces a big number.",
-          "Buyers usually want something specific enough to justify a request without overclaiming certainty."
+          "If the footage points to an owner-side lateral problem, the buyer has a stronger reason to care before closing.",
+          "Responsibility pages help frame the risk, but footage still matters more than a city rumor.",
+          "Even when a city may own part of the system, that does not mean a buyer can treat every buried-line issue as public responsibility.",
+          "The more uncertain the boundary is, the more valuable inspection-first or official clarification becomes."
+        ]
+      },
+      {
+        "anchor": "what-to-bring-to-the-negotiation",
+        "title": "What to bring into the negotiation",
+        "intro": "Negotiation pages win when they tell users what to gather next, not when they promise a guaranteed outcome.",
+        "bullets": [
+          "Bring scope footage, severity language, and a practical next-step framing rather than only a scary defect label.",
+          "Use a specialist quote when it clarifies the path, not just when it produces the biggest number.",
+          "If the seller offers to 'take care of it,' ask what exact work, method, and warranty are actually being offered.",
+          "If the line is still too unclear, your best move may be better footage instead of a bigger argument."
         ]
       }
     ],
     "tables": [
       {
-        "title": "What usually changes leverage",
-        "intro": "This page wins when it helps buyers ask for the right thing, not when it promises a guaranteed outcome.",
+        "title": "What usually makes the strongest ask",
+        "intro": "The point is to ask for the right thing, not the loudest thing.",
         "columns": [
-          "Factor",
-          "Why it matters",
-          "What buyers often do next"
+          "Deal situation",
+          "Strongest ask",
+          "Why it usually works best"
         ],
         "rows": [
           {
             "cells": [
-              "Clear scope evidence",
-              "supports a specific request",
-              "credit or repair discussion"
+              "Vague finding or weak footage",
+              "get better inspection evidence first",
+              "hard to justify credits or repairs without a clearer problem statement"
             ]
           },
           {
             "cells": [
-              "Late deal timing",
-              "changes urgency and leverage",
-              "focus on practical resolution"
+              "Clear private-lateral defect",
+              "seller credit or narrow repair request",
+              "buyer can point to a more concrete post-closing burden"
             ]
           },
           {
             "cells": [
-              "Vague or weak evidence",
-              "harder to justify a strong ask",
-              "get better documentation first"
+              "Late deal timing and broad repair uncertainty",
+              "practical credit or escrow-style resolution",
+              "clean execution often matters more than a rushed seller fix"
             ]
           },
           {
             "cells": [
-              "High repair uncertainty",
-              "parties may fear open-ended exposure",
-              "specialist review or credit framing"
+              "Seller offers to 'handle it'",
+              "require scope, method, and warranty clarity",
+              "seller repair and seller credit are not interchangeable"
             ]
           }
         ],
@@ -927,12 +952,12 @@
       }
     ],
     "highlights": [
-      "Credits, repair, and more specialist review are different negotiation tools.",
-      "Documentation beats vague concern."
+      "Evidence beats outrage in sewer negotiations.",
+      "A seller credit and a seller-managed repair are not the same thing."
     ],
     "questions": [
-      "Is the finding documented well enough to support a request?",
-      "Would a quote strengthen the conversation more than argument alone?"
+      "Is the finding documented well enough to support a specific request?",
+      "Would a credit solve the problem more cleanly than a rushed seller repair?"
     ],
     "faq": [
       {
@@ -940,17 +965,19 @@
         "answer": "No. That depends on evidence, contract stage, leverage, and local practice. This page is meant to help with patterns, not guarantee outcomes."
       },
       {
-        "question": "Is a credit usually better than a seller repair?",
-        "answer": "Sometimes yes, especially when buyers want control over contractor choice, timing, or repair scope. But it depends on the deal."
+        "question": "Does city responsibility mean the seller is off the hook?",
+        "answer": "Not automatically. The first step is still figuring out where the problem likely sits and whether the issue actually looks public-side, private-side, or still too unclear to assume."
       },
       {
-        "question": "What helps a sewer request look more credible?",
-        "answer": "Clear scope documentation, severity detail, and a practical next-step request usually help more than general pressure."
+        "question": "Should I get a quote before I ask for a credit?",
+        "answer": "Sometimes yes, but only if the quote clarifies the path. A big number based on weak footage can create more noise than leverage."
       }
     ],
     "relatedSlugs": [
       "/sewer-scope-before-buying-house/",
-      "/sewer-scope-red-flags/"
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/how-to-read-sewer-scope-report/",
+      "/sewer-lateral-repair-cost/"
     ]
   },
   {
@@ -1759,31 +1786,142 @@
     "family": "coverage",
     "clusterRole": "winner",
     "title": "Homeowner vs City Sewer Responsibility",
-    "metaTitle": "Homeowner vs City Sewer Responsibility | SewerClarity",
-    "metaDescription": "How homeowner versus city sewer responsibility often depends on line location, local rules, and property layout.",
+    "metaTitle": "Homeowner vs City Sewer Responsibility: Private Lateral, Property Line, and Next Step | SewerClarity",
+    "metaDescription": "See how homeowner versus city sewer responsibility often depends on the private lateral, property line, curb, and local utility rules.",
     "eyebrow": "Responsibility guide",
-    "summary": "A trust-heavy support page that avoids fake city certainty while still explaining the decision frame users need.",
-    "quickAnswer": "Responsibility often depends on line location, local utility rules, and property layout. It is not safe to assume one universal answer.",
-    "seriousness": "This matters because users often delay the right next step while hoping the city will automatically own the problem.",
-    "nextStep": "Use this page to frame the questions to ask your utility or local authority before relying on a responsibility assumption.",
-    "costDirection": "The financial impact can be large, but the first task is usually clarifying where responsibility likely starts and ends.",
-    "uncertainty": "This page does not claim a universal rule for every city or utility system.",
-    "sourceNote": "Reviewed against official Philadelphia Water, City of Philadelphia, Portland BES/BDS, and NYC DEP materials showing that service-line responsibility boundaries vary by city and line location.",
+    "summary": "A winner page for the first sewer question many users actually have: is this likely a private-lateral problem, a city problem, or a boundary question that needs local verification?",
+    "quickAnswer": "In many cities the homeowner is responsible for the private sewer lateral or building sewer serving the property, while the city owns the main and sometimes only part of the public-side lateral. The exact boundary varies, so you should not assume.",
+    "seriousness": "This matters because users lose time, money, and negotiation leverage when they treat a private-lateral repair like an automatic city problem.",
+    "nextStep": "Find the likely line boundary, ask the utility where owner responsibility starts and ends, and only then decide whether you need inspection, a claim, or quote comparison.",
+    "costDirection": "Once the line is likely on the private side, even a 'small' defect can become a real cost event because permits, access, and restoration travel with the owner's line rather than the city's main.",
+    "uncertainty": "This page uses city examples, not a universal rule. Property lines, curb lines, public rights-of-way, and local programs vary.",
+    "sourceNote": "Reviewed against official Philadelphia, Portland, New York City, and Pittsburgh utility or city pages showing that sewer responsibility can shift at the house, property line, curb, or main depending on the local system.",
+    "sourceIds": [
+      "phl-001",
+      "pdx-001",
+      "pdx-002",
+      "nyc-001",
+      "pit-001"
+    ],
     "primaryCtaLabel": "Use the estimator",
     "primaryCtaHref": "/estimator/",
-    "secondaryCtaLabel": "Read disclaimer",
-    "secondaryCtaHref": "/disclaimer/",
+    "secondaryCtaLabel": "See sewer lateral repair cost",
+    "secondaryCtaHref": "/sewer-lateral-repair-cost/",
+    "sections": [
+      {
+        "anchor": "where-the-boundary-often-sits",
+        "title": "Where the responsibility boundary often sits",
+        "intro": "The practical question is not whether the city ever touches sewers. It is where the owner-side line stops and the public system begins.",
+        "bullets": [
+          "Many utilities treat the private sewer lateral or building sewer serving the property as owner-side infrastructure.",
+          "The city usually owns the main, but some cities also own only a portion of the public-side lateral beyond a curb or property-line boundary.",
+          "The same phrase, such as 'line to the main,' can mean different things in different jurisdictions.",
+          "That is why line location matters more than a generic assumption that the city pays."
+        ]
+      },
+      {
+        "anchor": "why-the-answer-changes-by-city",
+        "title": "City examples that show why the answer changes",
+        "intro": "Responsibility pages are most useful when they make the variation concrete instead of pretending there is one national rule.",
+        "bullets": [
+          "Philadelphia and Pittsburgh both use owner-side wording for laterals, but the exact framing still comes from their own utility language.",
+          "Portland splits some responsibilities at the curb line, which is different from simply saying 'house versus city main.'",
+          "New York City ties owner responsibility to service lines reaching the main and then separates optional protection from base ownership.",
+          "These examples are meant to show variation, not to prove what your property map says."
+        ]
+      },
+      {
+        "anchor": "what-to-verify-first",
+        "title": "What to verify before you assume the city pays",
+        "intro": "The right next step is often a source check before it is a claim or quote.",
+        "bullets": [
+          "Ask the utility or public works department where owner responsibility begins and ends on your property.",
+          "Check whether the relevant boundary is the house, property line, curb, or main.",
+          "If the line runs under a sidewalk or right-of-way, verify whether access and permit rules change cost without changing ownership.",
+          "If a reimbursement or repair program exists, verify eligibility separately from the base responsibility rule."
+        ]
+      },
+      {
+        "anchor": "why-it-matters-in-deals-and-backups",
+        "title": "Why this matters in deals, backups, and repair decisions",
+        "intro": "Responsibility is not a trivia question. It changes the next move.",
+        "bullets": [
+          "Buyers need the boundary question answered before they assume the city will reduce the risk after closing.",
+          "Owners need to know whether they are dealing with a private-lateral repair, a public-sewer complaint, or both.",
+          "Backup claims can involve both public and private factors, which is why cause-finding still matters.",
+          "A private-side defect often justifies inspection-first or quote comparison faster than a vague hope that the city owns it."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "City examples that show the boundary can move",
+        "intro": "These are source-backed examples, not a universal template for every city.",
+        "columns": [
+          "City example",
+          "Owner-side wording",
+          "Public-side wording or caveat"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Philadelphia",
+              "owners maintain and repair laterals serving the property",
+              "city main remains separate from the owner-side lateral"
+            ]
+          },
+          {
+            "cells": [
+              "Pittsburgh",
+              "owner responsibility runs from the building to the sewer main",
+              "utility wording makes the owner-side burden unusually direct"
+            ]
+          },
+          {
+            "cells": [
+              "Portland",
+              "owner handles the private side from house toward street or curb",
+              "city maintains some public-side lateral infrastructure from main to curb line"
+            ]
+          },
+          {
+            "cells": [
+              "New York City",
+              "owners are responsible for service lines to the mains",
+              "optional protection does not erase the base ownership rule"
+            ]
+          }
+        ],
+        "note": "Use these examples to understand the pattern of variation. Always verify the rule that applies to your property and utility."
+      }
+    ],
     "highlights": [
-      "Line location matters.",
-      "Local utility rules matter."
+      "Private lateral is often the financially important phrase.",
+      "City programs and reimbursement rules do not erase the need to locate the actual boundary."
     ],
     "questions": [
-      "Where does private responsibility end on this property?",
-      "What documents or maps would clarify the answer?"
+      "Where does owner responsibility likely stop on this property?",
+      "Which utility map, permit page, or official rule would confirm it?"
+    ],
+    "faq": [
+      {
+        "question": "Does the city usually pay if the line is in the street?",
+        "answer": "Not automatically. Some cities still make the owner responsible for a lateral or building sewer segment that extends farther than users expect. The exact boundary has to be verified locally."
+      },
+      {
+        "question": "What if the line runs under a sidewalk or right-of-way?",
+        "answer": "Access and permit rules can change the cost and process even if they do not change who owns the line. That is why boundary and permit questions should be checked separately."
+      },
+      {
+        "question": "Does service line coverage change who owns the pipe?",
+        "answer": "No. Coverage may help with cost, but it does not change the underlying responsibility boundary."
+      }
     ],
     "relatedSlugs": [
+      "/who-pays-for-sewer-line-repair-buyer-or-seller/",
+      "/sewer-lateral-repair-cost/",
       "/does-home-insurance-cover-sewer-line-replacement/",
-      "/disclaimer/"
+      "/service-line-coverage-vs-home-warranty-for-sewer-lines/"
     ]
   },
   {
@@ -5218,7 +5356,7 @@
       "/root-intrusion-sewer-line-what-to-do/",
       "/offset-joint-sewer-line-meaning/",
       "/collapsed-sewer-line-signs/",
-      "/estimator/"
+      "/sewer-lateral-repair-cost/"
     ]
   },
   {
@@ -5338,7 +5476,7 @@
       "/sewer-scope-before-buying-house/",
       "/is-sewer-scope-worth-it/",
       "/how-to-read-sewer-scope-report/",
-      "/estimator/"
+      "/homeowner-vs-city-sewer-responsibility/"
     ]
   },
   {
@@ -5646,7 +5784,150 @@
       "/sewer-scope-before-buying-house/",
       "/sewer-scope-inspection-cost/",
       "/how-to-read-sewer-scope-report/",
-      "/estimator/"
+      "/homeowner-vs-city-sewer-responsibility/"
+    ]
+  },
+  {
+    "slug": "/sewer-lateral-repair-cost/",
+    "family": "cost",
+    "clusterRole": "support",
+    "title": "Sewer Lateral Repair Cost",
+    "metaTitle": "Sewer Lateral Repair Cost: Private Line Range and Next Step | SewerClarity",
+    "metaDescription": "See what private sewer lateral repair cost often looks like, what moves the range, and when lateral responsibility should be clarified before you compare quotes.",
+    "eyebrow": "Private lateral cost guide",
+    "summary": "A narrower cost page for users who already suspect the issue is on the private sewer lateral and need a calmer repair-versus-replacement frame.",
+    "quickAnswer": "Private sewer lateral repair costs can stay in the lower thousands for isolated accessible work, but rise fast with depth, length, right-of-way access, or footage that points to broader replacement instead of one repairable section.",
+    "seriousness": "This becomes more financially real when the private lateral is owner-side, the transaction is live, or permits and restoration under driveways, sidewalks, or slabs may be involved.",
+    "nextStep": "First confirm that the problem is actually on the private lateral and whether it looks isolated enough for repair. Then compare repair, replacement, and if appropriate trenchless paths.",
+    "costDirection": "Localized accessible lateral repairs may stay below full replacement ranges, while deeper runs, public right-of-way access, and broader deterioration push the same 'lateral repair' question much higher.",
+    "uncertainty": "This page cannot know footage, depth, street or sidewalk restoration, permit scope, or whether the honest answer is repair, lining, bursting, or full replacement.",
+    "sourceNote": "Reviewed against national sewer cost ranges plus official city utility guidance showing that private lateral boundaries and permit context vary by jurisdiction. The page keeps lateral repair ranges wide on purpose because the line boundary and access story change the number fast.",
+    "sourceIds": [
+      "cost-001",
+      "cost-002",
+      "phl-001",
+      "pit-001",
+      "pdx-002"
+    ],
+    "primaryCtaLabel": "Get sewer repair or replacement quotes",
+    "primaryCtaHref": "/get-sewer-quotes/",
+    "secondaryCtaLabel": "Use the estimator",
+    "secondaryCtaHref": "/estimator/",
+    "sections": [
+      {
+        "anchor": "why-lateral-cost-feels-different",
+        "title": "Why sewer lateral repair cost feels different from generic sewer cost pages",
+        "intro": "Once the issue is likely on the private lateral, the question gets more specific and more commercial.",
+        "bullets": [
+          "The owner-side line can carry the repair burden even when part of the run crosses awkward access or right-of-way areas.",
+          "The quote is often driven as much by access, permits, and restoration as by the pipe defect itself.",
+          "A lateral question usually means the user is past generic curiosity and closer to a real decision.",
+          "It also means responsibility has to be clearer before the quote comparison feels trustworthy."
+        ]
+      },
+      {
+        "anchor": "what-usually-moves-the-range",
+        "title": "What usually moves private lateral repair cost",
+        "intro": "The difference between a manageable repair and a five-figure project is often the access story, not just the defect label.",
+        "bullets": [
+          "How much of the lateral is affected, how deep it sits, and whether the defect still looks localized.",
+          "Sidewalk, driveway, landscaping, slab, or right-of-way restoration that rides with the repair.",
+          "Permit requirements, traffic control, or excavation rules where the run crosses public-facing areas.",
+          "Whether the footage still supports repair or has already drifted into replacement or trenchless comparison territory."
+        ]
+      },
+      {
+        "anchor": "when-repair-stays-repair",
+        "title": "When a lateral issue still looks repairable",
+        "intro": "Repair deserves a fair look when the evidence still points to one bad section rather than a broader old-line story.",
+        "bullets": [
+          "A short isolated crack, offset, or root entry point may still justify repair-first logic.",
+          "Repair gets harder to defend when repeat problems, multiple weak points, or broader material failure appear across the run.",
+          "The more the lateral looks broadly tired, the more a 'repair cost' search is really a replacement decision in disguise.",
+          "If the line is not fully scoped, pricing the repair path too early can create false confidence."
+        ]
+      },
+      {
+        "anchor": "quote-checklist",
+        "title": "What to check before comparing lateral repair quotes",
+        "intro": "The best quote is not simply the lowest number.",
+        "bullets": [
+          "Confirm the quote assumes the problem is truly on the private lateral and not somewhere else in the system.",
+          "Ask how much of the number is actual line work versus excavation, permits, and restoration.",
+          "Check whether the contractor is pricing an isolated repair, a larger rebuild, or a fallback replacement path.",
+          "If the line is older or broadly compromised, ask whether the repair only delays a bigger decision the footage already points toward."
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Typical private-lateral work paths",
+        "intro": "Users searching lateral repair cost are often comparing very different project types under one phrase.",
+        "columns": [
+          "Private-lateral scenario",
+          "Typical directional range",
+          "What usually drives it"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "Inspection only",
+              "$175-$800",
+              "camera access, line length, market rate"
+            ]
+          },
+          {
+            "cells": [
+              "Localized private-lateral repair",
+              "$1,100-$6,000+",
+              "depth, access, whether the defect is truly isolated"
+            ]
+          },
+          {
+            "cells": [
+              "Deeper or right-of-way lateral repair",
+              "$4,000-$12,000+",
+              "permits, sidewalk or driveway restoration, traffic or access complexity"
+            ]
+          },
+          {
+            "cells": [
+              "Broader lateral replacement",
+              "$3,000-$25,000+",
+              "length, depth, restoration, method fit"
+            ]
+          }
+        ],
+        "note": "These are directional ranges, not promised local prices. The line boundary and access story often stretch the quote faster than users expect."
+      }
+    ],
+    "highlights": [
+      "Private-lateral cost questions are usually closer to a real decision than generic sewer curiosity.",
+      "A repair number can be misleading if the footage already points to broader replacement logic."
+    ],
+    "questions": [
+      "Is the issue actually isolated enough to price as a repair?",
+      "How much of the quote is line work versus permits, access, and restoration?"
+    ],
+    "faq": [
+      {
+        "question": "Is sewer lateral repair usually cheaper than full replacement?",
+        "answer": "Often yes when the defect is isolated and access is reasonable, but not always. Hard access and restoration can push a lateral repair much closer to replacement-level pricing."
+      },
+      {
+        "question": "Does the city ever cover private lateral repairs?",
+        "answer": "Sometimes local programs or reimbursements exist, but they do not make private-side responsibility disappear. Verify eligibility separately from the ownership rule."
+      },
+      {
+        "question": "Can you price a lateral repair without footage?",
+        "answer": "Only directionally. A quote gets much more trustworthy once the line is scoped clearly enough to show whether the problem is isolated, broad, shallow, deep, or crossing awkward access."
+      }
+    ],
+    "relatedSlugs": [
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/who-pays-for-sewer-line-repair-buyer-or-seller/",
+      "/sewer-line-repair-vs-replacement/",
+      "/sewer-line-replacement-cost/"
     ]
   }
 ]

@@ -39,4 +39,14 @@ class GeoProfileServiceTests {
 		assertFalse(ruleViews.isEmpty());
 		assertNotNull(ruleViews.get(0).source());
 	}
+
+	@Test
+	void cityHubStartersPrioritizeBuyerAndResponsibilityBeforeRepairComparisons() {
+		CityHubEntry entry = geoProfileService.getCityHubEntry("philadelphia", siteContentService.getAllPages());
+
+		assertNotNull(entry);
+		assertEquals("/cities/philadelphia/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
+		assertEquals("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
+		assertEquals("/cities/philadelphia/who-pays-for-sewer-line-repair-buyer-or-seller/", entry.starterPages().get(2).getSlug());
+	}
 }

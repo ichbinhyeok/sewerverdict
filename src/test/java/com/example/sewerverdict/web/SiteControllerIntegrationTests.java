@@ -37,11 +37,27 @@ class SiteControllerIntegrationTests {
 	}
 
 	@Test
+	void homePageHighlightsBuyerLateralAndResponsibilityWedge() throws Exception {
+		mockMvc.perform(get("/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Before you waive, negotiate, or assume the city pays")))
+			.andExpect(content().string(containsString("Decide the next move on sewer lateral risk before closing, before quotes, or before blaming the city.")))
+			.andExpect(content().string(containsString("Private lateral or city boundary")))
+			.andExpect(content().string(containsString("Homeowner vs City Sewer Responsibility")))
+			.andExpect(content().string(containsString("Sewer Lateral Repair Cost")))
+			.andExpect(content().string(containsString("Documented defects and quote-ready follow-up")))
+			.andExpect(content().string(containsString("Who Pays")))
+			.andExpect(content().string(containsString("Scope Findings")));
+	}
+
+	@Test
 	void cityHubRendersStarterPagesAndSources() throws Exception {
 		mockMvc.perform(get("/cities/philadelphia/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Philadelphia, PA Sewer Pages")))
+			.andExpect(content().string(containsString("tier-1 lateral-risk hub")))
 			.andExpect(content().string(containsString("Start Here in Philadelphia")))
+			.andExpect(content().string(containsString("private-lateral responsibility")))
 			.andExpect(content().string(containsString("Pick the path that matches the situation")))
 			.andExpect(content().string(containsString("Responsibility and trust pages")))
 			.andExpect(content().string(containsString("Sources used for this city hub")));
@@ -268,6 +284,29 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Is a Sewer Scope Worth It?")))
 			.andExpect(content().string(containsString("When a sewer scope is worth it")));
+
+		mockMvc.perform(get("/sewer-lateral-repair-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Sewer Lateral Repair Cost")))
+			.andExpect(content().string(containsString("Typical private-lateral work paths")));
+	}
+
+	@Test
+	void sharpenedWinnerPagesReflectBuyerAndResponsibilityWedge() throws Exception {
+		mockMvc.perform(get("/sewer-scope-before-buying-house/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("buyer-paid repair")))
+			.andExpect(content().string(containsString("get a scope before you start arguing over credits, repair bids, or who should pay")));
+
+		mockMvc.perform(get("/who-pays-for-sewer-line-repair-buyer-or-seller/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("seller credit")))
+			.andExpect(content().string(containsString("private-lateral repair or broader replacement")));
+
+		mockMvc.perform(get("/homeowner-vs-city-sewer-responsibility/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("City examples that show why the answer changes")))
+			.andExpect(content().string(containsString("See sewer lateral repair cost")));
 	}
 }
 
