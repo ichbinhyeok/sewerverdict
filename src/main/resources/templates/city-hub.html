@@ -18,6 +18,11 @@
 					<span class="eyebrow" th:text="${cityEntry.profile.priorityTier + ' lateral-risk hub'}">City hub</span>
 					<h1 th:text="${cityEntry.profile.cityName + ', ' + cityEntry.profile.stateCode + ' Sewer Pages'}">City pages</h1>
 					<p class="lede" th:text="${cityEntry.profile.marketReason}">Market reason</p>
+					<ul class="decision-list">
+						<li><strong>No footage yet -> inspection first</strong> Start with the buyer or transfer page when the next decision still depends on inspection evidence.</li>
+						<li><strong>Boundary or ownership unclear -> responsibility first</strong> Start with the responsibility page before you assume the city, seller, or owner side pays.</li>
+						<li><strong>Report finding already exists -> interpretation first</strong> Move into defect interpretation before cost comparison, then use cost pages only when the evidence is stronger.</li>
+					</ul>
 					<div class="trust-strip trust-strip-compact">
 						<div th:text="${#lists.size(cityEntry.pages) + ' city pages'}">City pages</div>
 						<div>Private-lateral focus</div>
@@ -25,12 +30,41 @@
 					</div>
 				</div>
 				<div class="hero-actions">
-					<a class="button button-primary" href="/estimator/"
-					   data-event-type="page_cta_click"
-					   th:attr="data-page-slug=${cityHubSlug},data-event-label='Use the estimator',data-event-city=${cityEntry.profile.citySlug},data-event-geo-page='false',data-event-placement='city-hub-primary'">Use the estimator</a>
-					<a class="button button-secondary" th:if="${secondaryStarter != null}" th:href="${secondaryStarter.slug}" th:text="${secondaryStarter.title}"
-					   data-event-type="page_cta_click"
-					   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + secondaryStarter.title},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${secondaryStarter.geoPage},data-event-geo-family=${secondaryStarter.trackingFamily},data-event-placement='city-hub-secondary'">Starter page</a>
+					<div class="decision-path-stack" th:if="${primaryStarter != null}">
+						<a class="decision-path-card decision-path-card-compact" th:href="${primaryStarter.slug}"
+						   th:with="routeTitle=${primaryStarter.buyerPage ? 'No footage yet -> inspection first' : (primaryStarter.coveragePage ? 'Boundary unclear -> responsibility first' : (primaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up'))}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + primaryStarter.title},data-event-route=${primaryStarter.recommendedRouteBucket},data-event-destination=${primaryStarter.measurementDestination},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${primaryStarter.geoPage},data-event-geo-family=${primaryStarter.trackingFamily},data-event-placement='city-hub-primary'">
+							<span class="card-kicker">Fastest first step</span>
+							<h2 th:text="${routeTitle}">Route title</h2>
+							<p th:text="${primaryStarter.summary}">Primary starter summary</p>
+							<span class="decision-path-action" th:text="${primaryStarter.title}">Primary starter</span>
+						</a>
+						<a class="decision-path-card decision-path-card-compact" th:if="${secondaryStarter != null}" th:href="${secondaryStarter.slug}"
+						   th:with="routeTitle=${secondaryStarter.buyerPage ? 'No footage yet -> inspection first' : (secondaryStarter.coveragePage ? 'Boundary unclear -> responsibility first' : (secondaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up'))}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + secondaryStarter.title},data-event-route=${secondaryStarter.recommendedRouteBucket},data-event-destination=${secondaryStarter.measurementDestination},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${secondaryStarter.geoPage},data-event-geo-family=${secondaryStarter.trackingFamily},data-event-placement='city-hub-secondary'">
+							<span class="card-kicker">Next boundary check</span>
+							<h2 th:text="${routeTitle}">Route title</h2>
+							<p th:text="${secondaryStarter.summary}">Secondary starter summary</p>
+							<span class="decision-path-action" th:text="${secondaryStarter.title}">Secondary starter</span>
+						</a>
+						<a class="decision-path-card decision-path-card-compact" th:if="${tertiaryStarter != null}" th:href="${tertiaryStarter.slug}"
+						   th:with="routeTitle=${tertiaryStarter.buyerPage ? 'No footage yet -> inspection first' : (tertiaryStarter.coveragePage ? 'Boundary unclear -> responsibility first' : (tertiaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up'))}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + tertiaryStarter.title},data-event-route=${tertiaryStarter.recommendedRouteBucket},data-event-destination=${tertiaryStarter.measurementDestination},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${tertiaryStarter.geoPage},data-event-geo-family=${tertiaryStarter.trackingFamily},data-event-placement='city-hub-tertiary'">
+							<span class="card-kicker">When a finding already exists</span>
+							<h2 th:text="${routeTitle}">Route title</h2>
+							<p th:text="${tertiaryStarter.summary}">Tertiary starter summary</p>
+							<span class="decision-path-action" th:text="${tertiaryStarter.title}">Tertiary starter</span>
+						</a>
+					</div>
+					<p class="hero-support-copy">
+						Need a rough range only after the path is clearer?
+						<a class="text-link" th:href="@{/estimator/}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label='Use estimator from city hub',data-event-route='needs-clarification',data-event-destination='estimator',data-event-city=${cityEntry.profile.citySlug},data-event-placement='city-hub-estimator-support'">Use the estimator</a>.
+					</p>
 					<div class="meta-block">
 						<div><strong>Housing signal:</strong> <span th:text="${cityEntry.profile.housingAgeSignal}">Housing signal</span></div>
 						<div><strong>Local system:</strong> <span th:text="${cityEntry.profile.systemContext}">System context</span></div>
@@ -46,11 +80,11 @@
 			<div class="content-main">
 				<article class="section-card section-card-accent" th:if="${!#lists.isEmpty(starterPages)}">
 					<h2 th:text="${'Start Here in ' + cityEntry.profile.cityName}">Start here</h2>
-					<p>These are the best entry pages if you want the fastest local path from buyer diligence or private-lateral responsibility to a real next decision.</p>
+					<p>These are the clearest local entry pages in evidence order: buyer diligence first, responsibility next, defect interpretation after that, and cost pages only when the line story is stronger.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${starterPages}" th:href="${page.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-starter:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-starter'">
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-starter:' + page.title},data-event-route=${page.recommendedRouteBucket},data-event-destination=${page.measurementDestination},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-starter'">
 							<span class="card-kicker">Start here</span>
 							<strong th:text="${page.title}">Page title</strong>
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
@@ -64,31 +98,31 @@
 					<div class="related-card-grid">
 						<a class="related-page-card" th:if="${buyerStarter != null}" th:href="${buyerStarter.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:buyer:' + buyerStarter.title},data-event-city=${buyerStarter.geoCitySlug},data-event-geo-page=${buyerStarter.geoPage},data-event-geo-family=${buyerStarter.trackingFamily},data-event-placement='city-scenario-buyer'">
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:buyer:' + buyerStarter.title},data-event-route=${buyerStarter.recommendedRouteBucket},data-event-destination=${buyerStarter.measurementDestination},data-event-city=${buyerStarter.geoCitySlug},data-event-geo-page=${buyerStarter.geoPage},data-event-geo-family=${buyerStarter.trackingFamily},data-event-placement='city-scenario-buyer'">
 							<span class="card-kicker">If you are buying or negotiating</span>
 							<strong th:text="${buyerStarter.title}">Buyer starter</strong>
 							<span class="related-page-card-text" th:text="${buyerStarter.summary}">Buyer summary</span>
 						</a>
 						<a class="related-page-card" th:if="${coverageStarter != null}" th:href="${coverageStarter.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:trust:' + coverageStarter.title},data-event-city=${coverageStarter.geoCitySlug},data-event-geo-page=${coverageStarter.geoPage},data-event-geo-family=${coverageStarter.trackingFamily},data-event-placement='city-scenario-trust'">
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:trust:' + coverageStarter.title},data-event-route=${coverageStarter.recommendedRouteBucket},data-event-destination=${coverageStarter.measurementDestination},data-event-city=${coverageStarter.geoCitySlug},data-event-geo-page=${coverageStarter.geoPage},data-event-geo-family=${coverageStarter.trackingFamily},data-event-placement='city-scenario-trust'">
 							<span class="card-kicker">If the first question is who owns the lateral</span>
 							<strong th:text="${coverageStarter.title}">Coverage starter</strong>
 							<span class="related-page-card-text" th:text="${coverageStarter.summary}">Coverage summary</span>
 						</a>
-						<a class="related-page-card" th:if="${costStarter != null}" th:href="${costStarter.slug}"
-						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:cost:' + costStarter.title},data-event-city=${costStarter.geoCitySlug},data-event-geo-page=${costStarter.geoPage},data-event-geo-family=${costStarter.trackingFamily},data-event-placement='city-scenario-cost'">
-							<span class="card-kicker">If you are comparing repair or replacement paths</span>
-							<strong th:text="${costStarter.title}">Cost starter</strong>
-							<span class="related-page-card-text" th:text="${costStarter.summary}">Cost summary</span>
-						</a>
 						<a class="related-page-card" th:if="${defectStarter != null}" th:href="${defectStarter.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:defect:' + defectStarter.title},data-event-city=${defectStarter.geoCitySlug},data-event-geo-page=${defectStarter.geoPage},data-event-geo-family=${defectStarter.trackingFamily},data-event-placement='city-scenario-defect'">
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:defect:' + defectStarter.title},data-event-route=${defectStarter.recommendedRouteBucket},data-event-destination=${defectStarter.measurementDestination},data-event-city=${defectStarter.geoCitySlug},data-event-geo-page=${defectStarter.geoPage},data-event-geo-family=${defectStarter.trackingFamily},data-event-placement='city-scenario-defect'">
 							<span class="card-kicker">If you already have a backup or finding</span>
 							<strong th:text="${defectStarter.title}">Defect starter</strong>
 							<span class="related-page-card-text" th:text="${defectStarter.summary}">Defect summary</span>
+						</a>
+						<a class="related-page-card" th:if="${costStarter != null}" th:href="${costStarter.slug}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:cost:' + costStarter.title},data-event-route=${costStarter.recommendedRouteBucket},data-event-destination=${costStarter.measurementDestination},data-event-city=${costStarter.geoCitySlug},data-event-geo-page=${costStarter.geoPage},data-event-geo-family=${costStarter.trackingFamily},data-event-placement='city-scenario-cost'">
+							<span class="card-kicker">If you are comparing repair or replacement paths</span>
+							<strong th:text="${costStarter.title}">Cost starter</strong>
+							<span class="related-page-card-text" th:text="${costStarter.summary}">Cost summary</span>
 						</a>
 					</div>
 				</article>
@@ -123,6 +157,21 @@
 					</div>
 				</details>
 
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(defectPages)}">
+					<summary>
+						<span class="card-kicker">Browse the full defect cluster</span>
+						<strong class="city-hub-disclosure-title">Defect and report interpretation pages</strong>
+					</summary>
+					<p>Use these when the user already has a symptom, report finding, or backup pattern and needs calmer interpretation before the next spend.</p>
+					<div class="related-card-grid">
+						<a class="related-page-card" th:each="page : ${defectPages}" th:href="${page.slug}">
+							<span class="card-kicker">Defect path</span>
+							<strong th:text="${page.title}">Page title</strong>
+							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
+						</a>
+					</div>
+				</details>
+
 				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(costPages)}">
 					<summary>
 						<span class="card-kicker">Browse the full quote cluster</span>
@@ -132,21 +181,6 @@
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="page : ${costPages}" th:href="${page.slug}">
 							<span class="card-kicker">Quote-ready</span>
-							<strong th:text="${page.title}">Page title</strong>
-							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
-						</a>
-					</div>
-				</details>
-
-				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(defectPages)}">
-					<summary>
-						<span class="card-kicker">Browse the full defect cluster</span>
-						<strong class="city-hub-disclosure-title">Defect and backup pages</strong>
-					</summary>
-					<p>Use these when the user already has a symptom, report finding, or backup pattern and needs calmer interpretation before the next spend.</p>
-					<div class="related-card-grid">
-						<a class="related-page-card" th:each="page : ${defectPages}" th:href="${page.slug}">
-							<span class="card-kicker">Defect path</span>
 							<strong th:text="${page.title}">Page title</strong>
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>

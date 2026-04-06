@@ -10,16 +10,27 @@
 			<div class="hero-copy">
 				<span class="eyebrow">Before you waive, negotiate, or assume the city pays</span>
 				<h1>Decide the next move on sewer lateral risk before closing, before quotes, or before blaming the city.</h1>
-				<p class="lede">SewerClarity helps buyers, sellers, and owners turn private-lateral uncertainty into the next practical move: inspection first, responsibility first, or quote-ready follow-up. The point is not a fake diagnosis. The point is a calmer decision.</p>
-				<ul class="decision-list">
-					<li><strong>Buying or transfer</strong> Know whether a sewer scope is worth doing before closing and what it could change in the deal.</li>
-					<li><strong>Responsibility</strong> Check whether the real question is private-lateral responsibility, seller leverage, or a city-boundary assumption that needs verification.</li>
-					<li><strong>Documented findings</strong> Turn roots, cast iron, orangeburg, bellies, or backup clues into an inspection-first or quote-ready next step you can actually explain.</li>
-				</ul>
-				<div class="button-row">
-					<a class="button button-primary" th:href="@{/estimator/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="hero-estimator">Start the estimator</a>
-					<a class="button button-secondary" th:href="@{/find-sewer-scope/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="hero-scope">Find sewer camera inspection options</a>
+				<p class="lede">SewerClarity helps buyers, sellers, and owners turn private-lateral uncertainty into the next practical move: inspection first, responsibility first, or interpretation first before quotes. The point is not a fake diagnosis. The point is a calmer decision.</p>
+				<div class="decision-path-grid">
+					<a class="decision-path-card" th:each="path : ${homeDecisionPaths}" th:href="${path.href}"
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug='/',data-event-label=${path.ctaLabel},data-event-route=${path.route},data-event-destination=${path.target},data-event-placement=${'home-hero:' + path.route}">
+						<span class="card-kicker" th:text="${path.eyebrow}">Path eyebrow</span>
+						<h2 th:text="${path.title}">Path title</h2>
+						<p th:text="${path.summary}">Path summary</p>
+						<span class="decision-path-action" th:text="${path.ctaLabel}">Open path</span>
+					</a>
 				</div>
+				<p class="hero-support-copy">
+					Need a planning range only after the evidence is stronger?
+					<a class="text-link" th:href="@{/estimator/}"
+					   data-event-type="page_cta_click"
+					   data-page-slug="/"
+					   data-event-label="Use the estimator after evidence"
+					   data-event-route="needs-clarification"
+					   data-event-destination="estimator"
+					   data-event-placement="home-hero:estimator-support">Use the estimator</a>.
+				</p>
 				<div class="trust-strip">
 					<div>Decision utility, not plumber hype</div>
 					<div>Ranges, not fake certainty</div>
@@ -41,7 +52,7 @@
 						<li>Responsibility read: verify private versus public boundary before assuming who pays</li>
 					</ul>
 					<div class="button-row">
-						<a class="button button-secondary" th:href="@{/estimator/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="home-sample-estimator">See your version</a>
+						<a class="button button-secondary" th:href="@{/estimator/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="home-sample-estimator" data-event-route="needs-clarification" data-event-destination="estimator" data-event-placement="home-sample-estimator">See your version</a>
 					</div>
 				</div>
 				<div class="artifact-grid">
@@ -65,7 +76,7 @@
 				<h2>Three high-value paths into SewerClarity</h2>
 			</div>
 			<div class="card-grid card-grid-3">
-				<a class="info-card" th:href="@{/estimator(role=buyer,urgency=active-decision)}">
+				<a class="info-card" th:href="@{/sewer-scope-before-buying-house/}">
 					<span class="card-kicker">Buyer under contract or transfer</span>
 					<h3>Decide whether you need a scope before closing.</h3>
 					<p>Best for hidden-risk questions, negotiation preparation, older homes, and private-lateral exposure that could land on the buyer.</p>
@@ -75,10 +86,10 @@
 					<h3>Figure out whether the real problem is who owns the line.</h3>
 					<p>Best for homeowner-versus-city questions, line-boundary confusion, and situations where responsibility has to be clearer before the next call makes sense.</p>
 				</a>
-				<a class="info-card" th:href="@{/estimator(role=owner)}">
+				<a class="info-card" th:href="@{/how-to-read-sewer-scope-report/}">
 					<span class="card-kicker">Known defect or cost question</span>
-					<h3>Separate watch-items from quote-ready situations.</h3>
-					<p>Best for cast iron, roots, orangeburg, bellies, under-slab access, and situations where you already have stronger evidence.</p>
+					<h3>Interpret the finding before you go quote-first.</h3>
+					<p>Best for cast iron, roots, orangeburg, bellies, under-slab access, and situations where you already have stronger evidence but still need a calmer read.</p>
 				</a>
 			</div>
 		</div>
@@ -130,7 +141,7 @@
 		<div class="container">
 			<div class="section-heading">
 				<span class="eyebrow">Once the issue is more documented</span>
-				<h2>Documented defects and quote-ready follow-up</h2>
+				<h2>Report findings, defect interpretation, and quote-ready follow-up</h2>
 			</div>
 			<div class="card-grid card-grid-2">
 				<a class="info-card" th:each="page : ${issuePages}" th:href="${page.slug}">
@@ -160,7 +171,7 @@
 					<li th:each="page : ${geoPages}">
 						<a th:href="${page.slug}" th:text="${page.title}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug='/',data-event-label=${'home-geo:' + page.title},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='home-geo-callout'">Geo page</a>
+						   th:attr="data-page-slug='/',data-event-label=${'home-geo:' + page.title},data-event-route=${page.recommendedRouteBucket},data-event-destination=${page.measurementDestination},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='home-geo-callout'">Geo page</a>
 					</li>
 				</ul>
 			</div>

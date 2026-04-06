@@ -147,8 +147,8 @@
     "family": "buyer",
     "clusterRole": "winner",
     "title": "Sewer Scope Before Buying a House",
-    "metaTitle": "Sewer Scope Before Buying a House: Before Closing, Credit, or Surprise Repair | SewerClarity",
-    "metaDescription": "See when a sewer scope is worth ordering before closing, why private-lateral exposure changes the decision, and what buyers should do before quotes or credits.",
+    "metaTitle": "Sewer Scope Before Buying a House: Inspection First, Then Credits or Quotes | SewerClarity",
+    "metaDescription": "See when buyers should get sewer footage before closing, when private-lateral responsibility changes the deal, and why quotes usually come after inspection.",
     "eyebrow": "Buyer guide",
     "summary": "A buyer-first winner page for the real purchase question: should you get footage before closing, before credits, and before inheriting a private-lateral surprise?",
     "quickAnswer": "A sewer scope is most worth it before closing when buried-line uncertainty could turn into a buyer-paid repair, a credit fight, or a private-lateral problem you would rather discover before the keys change hands.",
@@ -164,8 +164,8 @@
     ],
     "primaryCtaLabel": "Find sewer camera inspection options",
     "primaryCtaHref": "/find-sewer-scope/",
-    "secondaryCtaLabel": "Use the estimator",
-    "secondaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "See buyer vs seller sewer responsibility",
+    "secondaryCtaHref": "/who-pays-for-sewer-line-repair-buyer-or-seller/",
     "sections": [
       {
         "anchor": "before-closing-triggers",
@@ -277,10 +277,10 @@
       }
     ],
     "relatedSlugs": [
-      "/sewer-scope-red-flags/",
-      "/sewer-scope-inspection-cost/",
       "/who-pays-for-sewer-line-repair-buyer-or-seller/",
-      "/homeowner-vs-city-sewer-responsibility/"
+      "/homeowner-vs-city-sewer-responsibility/",
+      "/sewer-scope-red-flags/",
+      "/how-to-read-sewer-scope-report/"
     ]
   },
   {
@@ -455,20 +455,20 @@
     "family": "defect",
     "clusterRole": "winner",
     "title": "Sewer Scope Red Flags",
-    "metaTitle": "Sewer Scope Red Flags: Which Findings Matter Most? | SewerClarity",
-    "metaDescription": "See which sewer scope findings are watch-items, which ones push you toward quotes, and how buyers or owners should react.",
+    "metaTitle": "Sewer Scope Red Flags: Monitor, Clarify, or Quote Now? | SewerClarity",
+    "metaDescription": "Interpret sewer scope findings calmly. See which findings to monitor, which need clearer footage, and when quote-ready follow-up is actually warranted.",
     "eyebrow": "Finding guide",
     "summary": "A decision page for ranking sewer scope findings without treating every scary phrase like a replacement verdict.",
     "quickAnswer": "The most useful red-flag question is not just 'is this bad?' but whether it is a monitor, document-more, or quote-now finding.",
     "seriousness": "Roots, offset joints, bellies, cracks, collapse, heavy cast iron scaling, and orangeburg each carry different urgency.",
-    "nextStep": "Use the finding to decide whether the right move is monitor, scope deeper, negotiate, or get repair quotes now.",
+    "nextStep": "Use the finding to decide whether the right move is monitor, clarify with better footage, negotiate, or get repair quotes now.",
     "costDirection": "The cost story changes based on whether the defect looks isolated, recurring, material-wide, or structurally severe.",
     "uncertainty": "A label in a report is not the same thing as a full repair scope or a final quote.",
     "sourceNote": "Reviewed against source-backed cost and material pages in the SewerClarity registry. Report labels are interpreted as next-step signals, not standalone diagnoses.",
-    "primaryCtaLabel": "Use the estimator",
-    "primaryCtaHref": "/estimator/",
-    "secondaryCtaLabel": "Find sewer camera inspection options",
-    "secondaryCtaHref": "/find-sewer-scope/",
+    "primaryCtaLabel": "Read sewer scope report language",
+    "primaryCtaHref": "/how-to-read-sewer-scope-report/",
+    "secondaryCtaLabel": "Get sewer repair or replacement quotes",
+    "secondaryCtaHref": "/get-sewer-quotes/",
     "sections": [
       {
         "anchor": "seriousness-ladder",
@@ -566,11 +566,10 @@
       }
     ],
     "relatedSlugs": [
+      "/how-to-read-sewer-scope-report/",
       "/sewer-scope-before-buying-house/",
       "/who-pays-for-sewer-line-repair-buyer-or-seller/",
       "/offset-joint-sewer-line-meaning/",
-      "/sewer-belly-repair-cost/",
-      "/how-to-read-sewer-scope-report/",
       "/cast-iron-pipe-deterioration-signs/"
     ]
   },
@@ -843,8 +842,8 @@
     "family": "buyer",
     "clusterRole": "winner",
     "title": "Who Pays for Sewer Line Repair: Buyer or Seller?",
-    "metaTitle": "Who Pays for Sewer Line Repair, Buyer or Seller? Evidence, Credits, and Lateral Risk | SewerClarity",
-    "metaDescription": "See what actually shapes buyer-vs-seller leverage on sewer repairs, when a credit beats a seller fix, and why private-lateral responsibility changes the negotiation.",
+    "metaTitle": "Who Pays for Sewer Line Repair, Buyer or Seller? Evidence Before Credits | SewerClarity",
+    "metaDescription": "See what shapes buyer-versus-seller leverage on sewer repairs, when better footage matters more than early bids, and why private-lateral responsibility changes the negotiation.",
     "eyebrow": "Negotiation guide",
     "summary": "A negotiation winner page for the real question behind the search: what evidence, timing, and private-lateral exposure make a buyer credit, seller repair, or walk-away threat credible?",
     "quickAnswer": "It is rarely automatic. The answer usually turns on what the footage shows, whether the likely repair burden is owner-side, how late the issue surfaced, and whether a credit is cleaner than a seller-managed fix.",
@@ -861,8 +860,8 @@
     ],
     "primaryCtaLabel": "Find sewer camera inspection options",
     "primaryCtaHref": "/find-sewer-scope/",
-    "secondaryCtaLabel": "Use the estimator",
-    "secondaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Clarify homeowner vs city responsibility",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
     "sections": [
       {
         "anchor": "what-actually-decides-it",
@@ -975,8 +974,8 @@
     ],
     "relatedSlugs": [
       "/sewer-scope-before-buying-house/",
-      "/sewer-scope-red-flags/",
       "/homeowner-vs-city-sewer-responsibility/",
+      "/how-to-read-sewer-scope-report/",
       "/sewer-lateral-repair-cost/"
     ]
   },
@@ -1786,8 +1785,8 @@
     "family": "coverage",
     "clusterRole": "winner",
     "title": "Homeowner vs City Sewer Responsibility",
-    "metaTitle": "Homeowner vs City Sewer Responsibility: Private Lateral, Property Line, and Next Step | SewerClarity",
-    "metaDescription": "See how homeowner versus city sewer responsibility often depends on the private lateral, property line, curb, and local utility rules.",
+    "metaTitle": "Homeowner vs City Sewer Responsibility: Boundary First, Cost Later | SewerClarity",
+    "metaDescription": "See how private-lateral ownership, property-line or curb boundaries, and local utility rules shape the next step before quotes or blame.",
     "eyebrow": "Responsibility guide",
     "summary": "A winner page for the first sewer question many users actually have: is this likely a private-lateral problem, a city problem, or a boundary question that needs local verification?",
     "quickAnswer": "In many cities the homeowner is responsible for the private sewer lateral or building sewer serving the property, while the city owns the main and sometimes only part of the public-side lateral. The exact boundary varies, so you should not assume.",
@@ -1803,9 +1802,9 @@
       "nyc-001",
       "pit-001"
     ],
-    "primaryCtaLabel": "Use the estimator",
-    "primaryCtaHref": "/estimator/",
-    "secondaryCtaLabel": "See sewer lateral repair cost",
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
+    "secondaryCtaLabel": "See private lateral repair cost",
     "secondaryCtaHref": "/sewer-lateral-repair-cost/",
     "sections": [
       {
@@ -5226,8 +5225,8 @@
     "family": "defect",
     "clusterRole": "support",
     "title": "How to Read a Sewer Scope Report",
-    "metaTitle": "How to Read a Sewer Scope Report | SewerClarity",
-    "metaDescription": "Learn how to read sewer scope footage and report language without overreacting. See what terms like roots, belly, offset, cast iron, and collapse usually mean for the next step.",
+    "metaTitle": "How to Read a Sewer Scope Report: Monitor, Clarify, or Quote? | SewerClarity",
+    "metaDescription": "Interpret sewer scope footage calmly. Learn which report terms suggest monitoring, clearer footage, or quote-ready follow-up.",
     "eyebrow": "Defect interpretation guide",
     "summary": "A calm reading guide for buyers, sellers, and owners who already have a sewer scope report but need to separate watch-items, quote-ready issues, and things that still need better footage.",
     "quickAnswer": "The most useful sewer scope read is not the label alone. It is what the footage shows about isolation versus systemic failure, flow impact, and whether the line still supports a realistic repair path.",
@@ -5242,8 +5241,8 @@
       "cost-003",
       "cost-004"
     ],
-    "primaryCtaLabel": "Use the estimator",
-    "primaryCtaHref": "/estimator/",
+    "primaryCtaLabel": "Find sewer camera inspection options",
+    "primaryCtaHref": "/find-sewer-scope/",
     "secondaryCtaLabel": "Get sewer repair or replacement quotes",
     "secondaryCtaHref": "/get-sewer-quotes/",
     "sections": [
@@ -5791,13 +5790,13 @@
     "family": "cost",
     "clusterRole": "support",
     "title": "Sewer Lateral Repair Cost",
-    "metaTitle": "Sewer Lateral Repair Cost: Private Line Range and Next Step | SewerClarity",
-    "metaDescription": "See what private sewer lateral repair cost often looks like, what moves the range, and when lateral responsibility should be clarified before you compare quotes.",
+    "metaTitle": "Sewer Lateral Repair Cost: When Owner-Side Quotes Are Worth Comparing | SewerClarity",
+    "metaDescription": "See what private sewer lateral repair cost often looks like once owner-side responsibility is clearer, and when inspection or boundary checks should come first.",
     "eyebrow": "Private lateral cost guide",
     "summary": "A narrower cost page for users who already suspect the issue is on the private sewer lateral and need a calmer repair-versus-replacement frame.",
     "quickAnswer": "Private sewer lateral repair costs can stay in the lower thousands for isolated accessible work, but rise fast with depth, length, right-of-way access, or footage that points to broader replacement instead of one repairable section.",
     "seriousness": "This becomes more financially real when the private lateral is owner-side, the transaction is live, or permits and restoration under driveways, sidewalks, or slabs may be involved.",
-    "nextStep": "First confirm that the problem is actually on the private lateral and whether it looks isolated enough for repair. Then compare repair, replacement, and if appropriate trenchless paths.",
+    "nextStep": "First confirm that the problem is actually on the private lateral, that owner-side responsibility is real, and that the defect still looks isolated enough for repair. Then compare repair, replacement, and if appropriate trenchless paths.",
     "costDirection": "Localized accessible lateral repairs may stay below full replacement ranges, while deeper runs, public right-of-way access, and broader deterioration push the same 'lateral repair' question much higher.",
     "uncertainty": "This page cannot know footage, depth, street or sidewalk restoration, permit scope, or whether the honest answer is repair, lining, bursting, or full replacement.",
     "sourceNote": "Reviewed against national sewer cost ranges plus official city utility guidance showing that private lateral boundaries and permit context vary by jurisdiction. The page keeps lateral repair ranges wide on purpose because the line boundary and access story change the number fast.",
@@ -5810,8 +5809,8 @@
     ],
     "primaryCtaLabel": "Get sewer repair or replacement quotes",
     "primaryCtaHref": "/get-sewer-quotes/",
-    "secondaryCtaLabel": "Use the estimator",
-    "secondaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Clarify who owns the line",
+    "secondaryCtaHref": "/homeowner-vs-city-sewer-responsibility/",
     "sections": [
       {
         "anchor": "why-lateral-cost-feels-different",
@@ -5925,8 +5924,8 @@
     "relatedSlugs": [
       "/homeowner-vs-city-sewer-responsibility/",
       "/who-pays-for-sewer-line-repair-buyer-or-seller/",
-      "/sewer-line-repair-vs-replacement/",
-      "/sewer-line-replacement-cost/"
+      "/how-to-read-sewer-scope-report/",
+      "/sewer-line-repair-vs-replacement/"
     ]
   }
 ]

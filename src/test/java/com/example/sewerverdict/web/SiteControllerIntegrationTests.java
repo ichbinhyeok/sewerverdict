@@ -1,6 +1,7 @@
 package com.example.sewerverdict.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,11 +43,16 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Before you waive, negotiate, or assume the city pays")))
 			.andExpect(content().string(containsString("Decide the next move on sewer lateral risk before closing, before quotes, or before blaming the city.")))
-			.andExpect(content().string(containsString("Private lateral or city boundary")))
+			.andExpect(content().string(containsString("No footage yet")))
+			.andExpect(content().string(containsString("Boundary or ownership unclear")))
+			.andExpect(content().string(containsString("Report finding or known defect")))
+			.andExpect(content().string(containsString("Interpret the finding before you go quote-first.")))
+			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")))
+			.andExpect(content().string(containsString("data-event-route=\"inspection-first\"")))
 			.andExpect(content().string(containsString("Homeowner vs City Sewer Responsibility")))
 			.andExpect(content().string(containsString("Sewer Scope Red Flags")))
-			.andExpect(content().string(containsString("Sewer Lateral Repair Cost")))
-			.andExpect(content().string(containsString("Documented defects and quote-ready follow-up")))
+			.andExpect(content().string(containsString("How to Read a Sewer Scope Report")))
+			.andExpect(content().string(containsString("Report findings, defect interpretation, and quote-ready follow-up")))
 			.andExpect(content().string(containsString("Who Pays")))
 			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\">Scope Findings")))
 			.andExpect(content().string(containsString("Detroit Sewer Scope Before Buying a House")));
@@ -59,15 +65,21 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Philadelphia, PA Sewer Pages")))
 			.andExpect(content().string(containsString("tier-1 lateral-risk hub")))
 			.andExpect(content().string(containsString("Start Here in Philadelphia")))
-			.andExpect(content().string(containsString("private-lateral responsibility")))
+			.andExpect(content().string(containsString("Boundary or ownership unclear -> responsibility first")))
+			.andExpect(content().string(containsString("buyer diligence first, responsibility next, defect interpretation after that")))
 			.andExpect(content().string(containsString("Pick the path that matches the situation")))
+			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")))
+			.andExpect(content().string(containsString("Philadelphia Who Pays for Sewer Line Repair: Buyer or Seller")))
+			.andExpect(content().string(containsString("Philadelphia Sewer Line Repair vs Replacement")))
 			.andExpect(content().string(containsString("Responsibility and trust pages")))
+			.andExpect(content().string(containsString("Use estimator from city hub")))
 			.andExpect(content().string(containsString("Sources used for this city hub")));
 
 		mockMvc.perform(get("/cities/milwaukee/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Milwaukee, WI Sewer Pages")))
 			.andExpect(content().string(containsString("Milwaukee Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Milwaukee Sewer Backup Risk")))
 			.andExpect(content().string(containsString("Cost and quote-ready pages")));
 	}
 
@@ -222,7 +234,7 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Most readers follow this page with")))
 			.andExpect(content().string(containsString("Offset Joint Sewer Line Meaning")))
-			.andExpect(content().string(containsString("Sewer Belly Repair Cost")))
+			.andExpect(content().string(containsString("How to Read a Sewer Scope Report")))
 			.andExpect(content().string(containsString("More in this topic")))
 			.andExpect(content().string(containsString("Primary page")))
 			.andExpect(content().string(containsString("Support page")))
@@ -299,18 +311,40 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("buyer-paid repair")))
 			.andExpect(content().string(containsString("get a scope before you start arguing over credits, repair bids, or who should pay")))
-			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
+			.andExpect(content().string(containsString("No footage yet")))
+			.andExpect(content().string(containsString("See buyer vs seller sewer responsibility")))
+			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")));
 
 		mockMvc.perform(get("/who-pays-for-sewer-line-repair-buyer-or-seller/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("seller credit")))
 			.andExpect(content().string(containsString("private-lateral repair or broader replacement")))
-			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\"")));
+			.andExpect(content().string(containsString("Clarify homeowner vs city responsibility")))
+			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")));
 
 		mockMvc.perform(get("/homeowner-vs-city-sewer-responsibility/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("City examples that show why the answer changes")))
-			.andExpect(content().string(containsString("See sewer lateral repair cost")));
+			.andExpect(content().string(containsString("See city responsibility pages")))
+			.andExpect(content().string(containsString("Boundary still unclear")))
+			.andExpect(content().string(containsString("See private lateral repair cost")));
+	}
+
+	@Test
+	void defectAndCostPagesExposeInterpretationAndLeadRoutingChoices() throws Exception {
+		mockMvc.perform(get("/sewer-scope-red-flags/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Read sewer scope report language")))
+			.andExpect(content().string(containsString("Quote-ready defect")))
+			.andExpect(content().string(containsString("Move into quote-ready follow-up")))
+			.andExpect(content().string(containsString("data-event-route=\"quote-ready\"")))
+			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")));
+
+		mockMvc.perform(get("/sewer-lateral-repair-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Clarify who owns the line")))
+			.andExpect(content().string(containsString("Private lateral confirmed")))
+			.andExpect(content().string(containsString("data-event-destination=\"lead-route\"")));
 	}
 
 	@Test

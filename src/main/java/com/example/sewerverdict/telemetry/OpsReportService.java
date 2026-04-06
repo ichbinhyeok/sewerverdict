@@ -56,11 +56,14 @@ public class OpsReportService {
 			.filter(record -> "quote-ready".equals(asString(record.get("routingBucket"))))
 			.count();
 		long pageCtaClicks30d = recentEvents.stream()
-			.filter(record -> "page_cta_click".equals(asString(record.get("eventType"))))
+			.filter(this::isMeasuredPathClick)
 			.count();
 		long resultPrimaryClicks30d = recentEvents.stream()
 			.filter(record -> "result_primary_cta_click".equals(asString(record.get("eventType"))))
 			.count();
+		List<Map<String, Object>> measuredPathClicks = recentEvents.stream()
+			.filter(this::isMeasuredPathClick)
+			.toList();
 
 		return new OpsReport(
 			now,
@@ -75,9 +78,10 @@ public class OpsReportService {
 			topRowsWithFallback(recentLeads, "utmSource", "(direct / unknown)", 6, "Lead source"),
 			topRowsWithFallback(merge(recentLeads, recentDrafts), "utmCampaign", "(no campaign)", 6, "Campaign"),
 			topRowsWithFallback(recentLeads, "routingBucket", "(unset)", 4, "Lead routing"),
-			topRowsWithFallback(recentEvents.stream()
-				.filter(record -> "page_cta_click".equals(asString(record.get("eventType"))))
-				.toList(), "pageSlug", "(unknown page)", 6, "CTA page")
+			topRowsWithFallback(measuredPathClicks, "pageSlug", "(unknown page)", 6, "CTA page"),
+			topRowsWithFallback(measuredPathClicks, "payload.placement", "(unset placement)", 8, "CTA placement"),
+			topRowsWithFallback(measuredPathClicks, "payload.route", "(unset route)", 8, "CTA route"),
+			topRowsWithFallback(measuredPathClicks, "payload.destination", "(unset destination)", 8, "CTA destination")
 		);
 	}
 
@@ -93,7 +97,7 @@ public class OpsReportService {
 		String note) {
 		Map<String, Long> counts = new LinkedHashMap<>();
 		for (Map<String, Object> record : records) {
-			String value = asString(record.get(key));
+			String value = readValue(record, key);
 			if (!StringUtils.hasText(value)) {
 				value = fallback;
 			}
@@ -107,6 +111,21 @@ public class OpsReportService {
 			.limit(limit)
 			.map(entry -> new OpsReportRow(entry.getKey(), entry.getValue(), note))
 			.toList();
+	}
+
+	private String readValue(Map<String, Object> record, String key) {
+		if (!StringUtils.hasText(key)) {
+			return null;
+		}
+		String[] parts = key.split("\\.");
+		Object current = record;
+		for (String part : parts) {
+			if (!(current instanceof Map<?, ?> currentMap)) {
+				return null;
+			}
+			current = currentMap.get(part);
+		}
+		return asString(current);
 	}
 
 	private List<Map<String, Object>> readJsonLines(Path file) {
@@ -145,6 +164,16 @@ public class OpsReportService {
 		catch (Exception exception) {
 			return false;
 		}
+	}
+
+	private boolean isMeasuredPathClick(Map<String, Object> record) {
+		String eventType = asString(record.get("eventType"));
+		return "page_cta_click".equals(eventType)
+			|| "home_path_click".equals(eventType)
+			|| "winner_path_click".equals(eventType)
+			|| "winner_primary_cta_click".equals(eventType)
+			|| "winner_secondary_cta_click".equals(eventType)
+			|| "city_hub_starter_click".equals(eventType);
 	}
 
 	private String formatLeadRate(long leads, long estimatorCompletes) {

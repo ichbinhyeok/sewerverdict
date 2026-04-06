@@ -49,9 +49,10 @@ class OpsReportIntegrationTests {
 			""".formatted(now, now));
 		Files.writeString(EVENTS_FILE, """
 			{"timestamp":"%s","eventType":"estimator_complete","pageSlug":"/estimator/results/"}
-			{"timestamp":"%s","eventType":"page_cta_click","pageSlug":"/sewer-scope-before-buying-house/"}
+			{"timestamp":"%s","eventType":"page_cta_click","pageSlug":"/","payload":{"label":"Start with buyer diligence","placement":"home-hero:inspection-first","route":"inspection-first","destination":"buyer-page"}}
+			{"timestamp":"%s","eventType":"page_cta_click","pageSlug":"/cities/milwaukee/","payload":{"label":"city-hub:Milwaukee Sewer Backup Risk","placement":"city-hub-tertiary","route":"interpretation-first","destination":"defect-page"}}
 			{"timestamp":"%s","eventType":"result_primary_cta_click","pageSlug":"/estimator/results/"}
-			""".formatted(now, now, now));
+			""".formatted(now, now, now, now));
 		Files.writeString(DRAFTS_FILE, """
 			{"timestamp":"%s","utmCampaign":"buyers"}
 			{"timestamp":"%s","utmCampaign":"repair"}
@@ -67,6 +68,9 @@ class OpsReportIntegrationTests {
 			.andExpect(content().string(containsString("/sewer-scope-before-buying-house/")))
 			.andExpect(content().string(containsString("google")))
 			.andExpect(content().string(containsString("inspection-first")))
+			.andExpect(content().string(containsString("home-hero:inspection-first")))
+			.andExpect(content().string(containsString("city-hub-tertiary")))
+			.andExpect(content().string(containsString("defect-page")))
 			.andExpect(content().string(containsString("Search Console")))
 			.andExpect(content().string(containsString("Noindex internal view")));
 	}

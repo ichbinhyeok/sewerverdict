@@ -19,6 +19,8 @@ const ANALYTICS_PARAM_ALIASES = {
 	geoPage: "geo_page",
 	geoFamily: "geo_family",
 	placement: "placement",
+	destination: "destination",
+	target: "target_type",
 	serviceNeeded: "service_needed",
 	riskTier: "risk_tier"
 };
@@ -154,7 +156,9 @@ document.addEventListener("click", (event) => {
 		city: target.dataset.eventCity || "",
 		geoPage: target.dataset.eventGeoPage || "",
 		geoFamily: target.dataset.eventGeoFamily || "",
-		placement: target.dataset.eventPlacement || ""
+		placement: target.dataset.eventPlacement || "",
+		destination: target.dataset.eventDestination || "",
+		target: target.dataset.eventTarget || ""
 	});
 });
 

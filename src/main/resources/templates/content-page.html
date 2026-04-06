@@ -16,6 +16,16 @@
 					<span class="eyebrow" th:text="${page.eyebrow}">Guide</span>
 					<h1 th:text="${page.title}">Title</h1>
 					<p class="lede" th:text="${page.summary}">Summary</p>
+					<div class="decision-path-grid decision-path-grid-compact" th:if="${!#lists.isEmpty(heroDecisionPaths)}">
+						<a class="decision-path-card decision-path-card-compact" th:each="path : ${heroDecisionPaths}" th:href="${path.href}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${path.ctaLabel},data-event-route=${path.route},data-event-destination=${path.target},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement=${'hero-path:' + path.route}">
+							<span class="card-kicker" th:text="${path.eyebrow}">Path eyebrow</span>
+							<h2 th:text="${path.title}">Path title</h2>
+							<p th:text="${path.summary}">Path summary</p>
+							<span class="decision-path-action" th:text="${path.ctaLabel}">Take this path</span>
+						</a>
+					</div>
 					<div class="trust-strip trust-strip-compact">
 						<div th:text="${'Last reviewed ' + page.lastReviewed}">Last reviewed</div>
 						<div>Source-backed page</div>
@@ -25,10 +35,10 @@
 				<div class="hero-actions">
 					<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
 					   data-event-type="page_cta_click"
-					   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='hero-primary'">Primary CTA</a>
+					   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel},data-event-route=${primaryCtaRoute},data-event-destination=${primaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='hero-primary'">Primary CTA</a>
 					<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
 					   data-event-type="page_cta_click"
-					   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='hero-secondary'">Secondary CTA</a>
+					   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel},data-event-route=${secondaryCtaRoute},data-event-destination=${secondaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='hero-secondary'">Secondary CTA</a>
 					<div class="meta-block">
 						<div><strong>Author role:</strong> <span th:text="${page.authorRole}">Author</span></div>
 						<div><strong>Reviewer role:</strong> <span th:text="${page.reviewerRole}">Reviewer</span></div>
@@ -168,15 +178,15 @@
 					</ol>
 				</article>
 				<article class="section-card section-card-accent">
-					<h2>Choose the next move</h2>
-					<p>Use this page to decide whether you should estimate the situation first, line up inspection options, or move into quote comparison now.</p>
+					<h2 th:text="${pageActionHeading}">Choose the next move</h2>
+					<p th:text="${pageActionSummary}">Use this page to decide whether you should estimate the situation first, line up inspection options, or move into quote comparison now.</p>
 					<div class="inline-cta-group">
 						<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-primary'">Primary CTA</a>
+						   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'},data-event-route=${primaryCtaRoute},data-event-destination=${primaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-primary'">Primary CTA</a>
 						<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-secondary'">Secondary CTA</a>
+						   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'},data-event-route=${secondaryCtaRoute},data-event-destination=${secondaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-secondary'">Secondary CTA</a>
 					</div>
 				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(geoCompanionPages)}">
@@ -185,7 +195,7 @@
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="geoPage : ${geoCompanionPages}" th:href="${geoPage.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${'geo-companion:' + geoPage.title},data-event-city=${geoPage.geoCitySlug},data-event-geo-page=${geoPage.geoPage},data-event-geo-family=${geoPage.trackingFamily},data-event-placement='geo-companion'">
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'geo-companion:' + geoPage.title},data-event-route=${geoPage.recommendedRouteBucket},data-event-destination=${geoPage.measurementDestination},data-event-city=${geoPage.geoCitySlug},data-event-geo-page=${geoPage.geoPage},data-event-geo-family=${geoPage.trackingFamily},data-event-placement='geo-companion'">
 							<span class="card-kicker">Local angle</span>
 							<strong th:text="${geoPage.title}">Geo title</strong>
 							<span class="related-page-card-text" th:text="${geoPage.summary}">Geo summary</span>
@@ -198,13 +208,13 @@
 					<div class="inline-cta-group">
 						<a class="button button-secondary" th:href="${cityHubSlug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-hub:' + cityHubEntry.profile.cityName},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-hub-main'"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-hub:' + cityHubEntry.profile.cityName},data-event-route='needs-clarification',data-event-destination='city-hub',data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='city-hub-main'"
 						   th:text="${'Open ' + cityHubEntry.profile.cityName + ' city hub'}">Open city hub</a>
 					</div>
 					<div class="related-card-grid" th:if="${!#lists.isEmpty(cityStarterPages)}">
 						<a class="related-page-card" th:each="starter : ${cityStarterPages}" th:href="${starter.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-starter:' + starter.title},data-event-city=${starter.geoCitySlug},data-event-geo-page=${starter.geoPage},data-event-geo-family=${starter.trackingFamily},data-event-placement='city-starter-main'">
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'city-starter:' + starter.title},data-event-route=${starter.recommendedRouteBucket},data-event-destination=${starter.measurementDestination},data-event-city=${starter.geoCitySlug},data-event-geo-page=${starter.geoPage},data-event-geo-family=${starter.trackingFamily},data-event-placement='city-starter-main'">
 							<span class="card-kicker">Same city starter</span>
 							<strong th:text="${starter.title}">Starter title</strong>
 							<span class="related-page-card-text" th:text="${starter.summary}">Starter summary</span>
@@ -213,7 +223,7 @@
 					<div class="related-card-grid" th:if="${#lists.isEmpty(cityStarterPages) and !#lists.isEmpty(sameCityFamilyPages)}">
 						<a class="related-page-card" th:each="localPage : ${sameCityFamilyPages}" th:href="${localPage.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${'same-city:' + localPage.title},data-event-city=${localPage.geoCitySlug},data-event-geo-page=${localPage.geoPage},data-event-geo-family=${localPage.trackingFamily},data-event-placement='same-city-main'">
+						   th:attr="data-page-slug=${page.slug},data-event-label=${'same-city:' + localPage.title},data-event-route=${localPage.recommendedRouteBucket},data-event-destination=${localPage.measurementDestination},data-event-city=${localPage.geoCitySlug},data-event-geo-page=${localPage.geoPage},data-event-geo-family=${localPage.trackingFamily},data-event-placement='same-city-main'">
 							<span class="card-kicker">Same city follow-up</span>
 							<strong th:text="${localPage.title}">Local title</strong>
 							<span class="related-page-card-text" th:text="${localPage.summary}">Local summary</span>

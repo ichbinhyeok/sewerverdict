@@ -41,12 +41,24 @@ class GeoProfileServiceTests {
 	}
 
 	@Test
-	void cityHubStartersPrioritizeBuyerAndResponsibilityBeforeRepairComparisons() {
+	void cityHubStartersPrioritizeBuyerResponsibilityThenCostWhenNoDefectPageExists() {
 		CityHubEntry entry = geoProfileService.getCityHubEntry("philadelphia", siteContentService.getAllPages());
 
 		assertNotNull(entry);
 		assertEquals("/cities/philadelphia/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
 		assertEquals("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
 		assertEquals("/cities/philadelphia/who-pays-for-sewer-line-repair-buyer-or-seller/", entry.starterPages().get(2).getSlug());
+		assertEquals("/cities/philadelphia/sewer-line-repair-vs-replacement/", entry.starterPages().get(3).getSlug());
+		assertEquals(4, entry.starterPages().size());
+	}
+
+	@Test
+	void cityHubStartersPreferDefectInterpretationBeforeCostWhenAvailable() {
+		CityHubEntry entry = geoProfileService.getCityHubEntry("milwaukee", siteContentService.getAllPages());
+
+		assertNotNull(entry);
+		assertEquals("/cities/milwaukee/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
+		assertEquals("/cities/milwaukee/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
+		assertEquals("/cities/milwaukee/sewer-backup-risk/", entry.starterPages().get(2).getSlug());
 	}
 }

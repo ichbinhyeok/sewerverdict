@@ -16,6 +16,9 @@ public record OpsReport(
 	List<OpsReportRow> topLeadSources,
 	List<OpsReportRow> topLeadCampaigns,
 	List<OpsReportRow> topLeadRoutingBuckets,
-	List<OpsReportRow> topPageCtaPages
+	List<OpsReportRow> topPageCtaPages,
+	List<OpsReportRow> topPageCtaPlacements,
+	List<OpsReportRow> topPageCtaRoutes,
+	List<OpsReportRow> topPageCtaDestinations
 ) {
 }

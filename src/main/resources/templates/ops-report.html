@@ -114,6 +114,32 @@
 						</table>
 					</div>
 				</article>
+				<article class="section-card">
+					<h2>CTA path measurement</h2>
+					<div class="card-grid card-grid-3">
+						<div class="info-card">
+							<span class="card-kicker">Placements</span>
+							<ul class="clean-list">
+								<li th:each="row : ${report.topPageCtaPlacements}" th:text="${row.label + ' ??' + row.count}">hero-primary ??4</li>
+								<li th:if="${#lists.isEmpty(report.topPageCtaPlacements)}">No CTA placement data yet.</li>
+							</ul>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">Routes</span>
+							<ul class="clean-list">
+								<li th:each="row : ${report.topPageCtaRoutes}" th:text="${row.label + ' ??' + row.count}">inspection-first ??3</li>
+								<li th:if="${#lists.isEmpty(report.topPageCtaRoutes)}">No CTA route data yet.</li>
+							</ul>
+						</div>
+						<div class="info-card">
+							<span class="card-kicker">Destinations</span>
+							<ul class="clean-list">
+								<li th:each="row : ${report.topPageCtaDestinations}" th:text="${row.label + ' ??' + row.count}">estimator ??2</li>
+								<li th:if="${#lists.isEmpty(report.topPageCtaDestinations)}">No CTA destination data yet.</li>
+							</ul>
+						</div>
+					</div>
+				</article>
 			</div>
 			<aside class="content-rail">
 				<div class="rail-card">

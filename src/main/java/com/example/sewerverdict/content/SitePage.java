@@ -329,6 +329,41 @@ public class SitePage {
 		return segments.length > 3 ? segments[3] : null;
 	}
 
+	public String getRecommendedRouteBucket() {
+		if (isBuyerPage()) {
+			return "inspection-first";
+		}
+		if (isCoveragePage()) {
+			return "responsibility-first";
+		}
+		if (isDefectPage()) {
+			return "interpretation-first";
+		}
+		if (isCostPage()) {
+			return "quote-ready";
+		}
+		return "needs-clarification";
+	}
+
+	public String getMeasurementDestination() {
+		if (isBuyerPage()) {
+			return "buyer-page";
+		}
+		if (isCoveragePage()) {
+			return "responsibility-page";
+		}
+		if (isDefectPage()) {
+			return "defect-page";
+		}
+		if (isCostPage()) {
+			return "quote-page";
+		}
+		if (isGeoPage()) {
+			return "city-page";
+		}
+		return "page";
+	}
+
 	private boolean matchesFamily(String expectedFamily) {
 		if (expectedFamily.equalsIgnoreCase(family)) {
 			return true;

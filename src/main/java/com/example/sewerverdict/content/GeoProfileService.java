@@ -174,7 +174,7 @@ public class GeoProfileService {
 			.sorted(Comparator
 				.comparingInt(this::starterRank)
 				.thenComparing(SitePage::getTitle))
-			.limit(3)
+			.limit(4)
 			.toList();
 	}
 
@@ -214,28 +214,32 @@ public class GeoProfileService {
 		if (slug.contains("homeowner-vs-city") || slug.contains("who-pays")) {
 			return 2;
 		}
-		if (slug.contains("negotiation-with-seller")) {
+		if (slug.contains("red-flags") || slug.contains("scope-report") || slug.contains("backup-risk")
+			|| slug.contains("signs") || slug.contains("meaning") || slug.contains("what-to-do")) {
 			return 3;
 		}
 		if (slug.contains("repair-vs-replacement")) {
 			return 4;
 		}
-		if (slug.contains("replacement-cost")) {
+		if (slug.contains("negotiation-with-seller")) {
 			return 5;
 		}
-		if (page.isBuyerPage()) {
+		if (slug.contains("replacement-cost")) {
 			return 6;
 		}
-		if (page.isCoveragePage()) {
+		if (page.isBuyerPage()) {
 			return 7;
 		}
-		if (page.isDefectPage()) {
+		if (page.isCoveragePage()) {
 			return 8;
 		}
-		if (page.isCostPage()) {
+		if (page.isDefectPage()) {
 			return 9;
 		}
-		return 9;
+		if (page.isCostPage()) {
+			return 10;
+		}
+		return 11;
 	}
 
 	private Map<String, GeoProfile> loadProfiles() {
