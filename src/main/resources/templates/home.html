@@ -8,9 +8,9 @@
 	<section class="hero">
 		<div class="container hero-grid home-hero-grid">
 			<div class="hero-copy">
-				<span class="eyebrow">Before you waive, negotiate, or assume the city pays</span>
-				<h1>Decide the next move on sewer lateral risk before closing, before quotes, or before blaming the city.</h1>
-				<p class="lede">SewerClarity helps buyers, sellers, and owners turn private-lateral uncertainty into the next practical move: inspection first, responsibility first, or interpretation first before quotes. The point is not a fake diagnosis. The point is a calmer decision.</p>
+				<span class="eyebrow">Before transfer, closing, or city-boundary assumptions harden</span>
+				<h1>Use city sewer lateral transfer and compliance signals before you negotiate, quote, or guess who owns the problem.</h1>
+				<p class="lede">SewerClarity helps buyers, sellers, and owners move from local transfer or responsibility uncertainty into the next practical step: city path first when the local signal is real, inspection first when evidence is missing, and report interpretation first when a finding already exists.</p>
 				<div class="decision-path-grid">
 					<a class="decision-path-card" th:each="path : ${homeDecisionPaths}" th:href="${path.href}"
 					   data-event-type="page_cta_click"
@@ -22,7 +22,7 @@
 					</a>
 				</div>
 				<p class="hero-support-copy">
-					Need a planning range only after the evidence is stronger?
+					Need a planning range only after the city path and evidence are clearer?
 					<a class="text-link" th:href="@{/estimator/}"
 					   data-event-type="page_cta_click"
 					   data-page-slug="/"
@@ -44,12 +44,12 @@
 						<span>Risk tier</span>
 						<strong>Meaningful uncertainty. Transaction-sensitive.</strong>
 					</div>
-					<h2>Buyer under contract + private lateral exposure -> scope before pricing or credits</h2>
-					<p class="form-microcopy">Why this call: no footage yet, older-home context, and possible owner-side lateral exposure all raise the value of evidence before repair pricing.</p>
+					<h2>Active transfer + unclear owner-side exposure -> check city signals, then scope before pricing or credits</h2>
+					<p class="form-microcopy">Why this call: official local context can change the next move, but no footage yet still means the safest ask is evidence before repair pricing.</p>
 					<ul class="clean-list compact-list">
-						<li>Route: inspection-first</li>
+						<li>Route: city path first, then inspection-first</li>
 						<li>Evidence read: incomplete, not diagnostic</li>
-						<li>Responsibility read: verify private versus public boundary before assuming who pays</li>
+						<li>Responsibility read: verify private versus public boundary before assuming who pays or what the sale requires</li>
 					</ul>
 					<div class="button-row">
 						<a class="button button-secondary" th:href="@{/estimator/}" data-event-type="page_cta_click" data-page-slug="/" data-event-label="home-sample-estimator" data-event-route="needs-clarification" data-event-destination="estimator" data-event-placement="home-sample-estimator">See your version</a>
@@ -57,12 +57,12 @@
 				</div>
 				<div class="artifact-grid">
 					<div class="artifact-mini">
-						<span class="mini-label">Owner example</span>
-						<strong>City boundary unclear -> verify owner-side lateral first, then compare repair paths</strong>
+						<span class="mini-label">City-rule example</span>
+						<strong>Official local boundary or program signal -> clarify compliance and responsibility before you price the line</strong>
 					</div>
 					<div class="artifact-mini">
 						<span class="mini-label">Transfer example</span>
-						<strong>Point-of-sale friction or older-home uncertainty -> get evidence first so closing does not stall on guesses</strong>
+						<strong>Transfer friction or older-home uncertainty -> get evidence first so closing does not stall on guesses</strong>
 					</div>
 				</div>
 			</div>
@@ -76,20 +76,20 @@
 				<h2>Three high-value paths into SewerClarity</h2>
 			</div>
 			<div class="card-grid card-grid-3">
-				<a class="info-card" th:href="@{/sewer-scope-before-buying-house/}">
-					<span class="card-kicker">Buyer under contract or transfer</span>
-					<h3>Decide whether you need a scope before closing.</h3>
-					<p>Best for hidden-risk questions, negotiation preparation, older homes, and private-lateral exposure that could land on the buyer.</p>
+				<a class="info-card" th:href="@{/cities/}">
+					<span class="card-kicker">City-specific transfer or compliance</span>
+					<h3>Start with the local rule, program, or responsibility signal.</h3>
+					<p>Best when the real question is whether a city-specific requirement, ownership boundary, or program note changes what has to happen next.</p>
 				</a>
-				<a class="info-card" th:href="@{/homeowner-vs-city-sewer-responsibility/}">
-					<span class="card-kicker">Private lateral or city boundary</span>
-					<h3>Figure out whether the real problem is who owns the line.</h3>
-					<p>Best for homeowner-versus-city questions, line-boundary confusion, and situations where responsibility has to be clearer before the next call makes sense.</p>
+				<a class="info-card" th:href="@{/sewer-scope-before-buying-house/}">
+					<span class="card-kicker">Transfer, buyer, or seller pressure</span>
+					<h3>Decide whether you need inspection evidence before closing.</h3>
+					<p>Best for hidden-risk questions, negotiation preparation, older homes, and owner-side lateral exposure that could transfer after closing.</p>
 				</a>
 				<a class="info-card" th:href="@{/how-to-read-sewer-scope-report/}">
-					<span class="card-kicker">Known defect or cost question</span>
-					<h3>Interpret the finding before you go quote-first.</h3>
-					<p>Best for cast iron, roots, orangeburg, bellies, under-slab access, and situations where you already have stronger evidence but still need a calmer read.</p>
+					<span class="card-kicker">Known finding or report language</span>
+					<h3>Interpret the finding before you turn it into a transfer or quote ask.</h3>
+					<p>Best for cast iron, roots, orangeburg, bellies, under-slab access, and situations where stronger evidence exists but the wording still needs a calmer read.</p>
 				</a>
 			</div>
 		</div>
@@ -99,13 +99,13 @@
 		<div class="container">
 			<div class="section-heading">
 				<span class="eyebrow">How it works</span>
-				<h2>One calm path from lateral uncertainty to action</h2>
+				<h2>One calm path from city signal to next action</h2>
 			</div>
 			<div class="steps-grid">
 				<div class="step-card">
 					<span>01</span>
-					<h3>Answer a few context questions</h3>
-					<p>Role, house age, issue state, local context, access, and urgency are enough to guide the next step.</p>
+					<h3>Start with city context and transfer pressure</h3>
+					<p>Role, house age, issue state, local context, access, and urgency are enough to guide the next step without pretending every city works the same way.</p>
 				</div>
 				<div class="step-card">
 					<span>02</span>
@@ -115,7 +115,7 @@
 				<div class="step-card">
 					<span>03</span>
 					<h3>Move into the right commercial path</h3>
-					<p>Inspection-first when certainty is missing. Responsibility-first when boundary assumptions are fuzzy. Quote-first when the issue already looks real.</p>
+					<p>City path first when official local signals matter. Inspection-first when certainty is missing. Responsibility-first when boundary assumptions are fuzzy. Quote-first when the issue already looks real.</p>
 				</div>
 			</div>
 		</div>
@@ -125,10 +125,12 @@
 		<div class="container">
 			<div class="section-heading">
 				<span class="eyebrow">Featured guides</span>
-				<h2>Start with buyer, lateral, and responsibility decisions</h2>
+				<h2>Start with transfer, compliance, and report-first decisions</h2>
 			</div>
 			<div class="card-grid card-grid-3">
-				<a class="info-card" th:each="page : ${featuredPages}" th:href="${page.slug}">
+				<a class="info-card" th:each="page : ${featuredPages}" th:href="${page.slug}"
+				   data-event-type="page_cta_click"
+				   th:attr="data-page-slug='/',data-event-label=${'home-featured:' + page.title},data-event-route=${page.recommendedRouteBucket},data-event-destination=${page.measurementDestination},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='home-featured'">
 					<span class="card-kicker" th:text="${page.eyebrow}">Guide</span>
 					<h3 th:text="${page.title}">Page title</h3>
 					<p th:text="${page.summary}">Summary</p>
@@ -141,10 +143,12 @@
 		<div class="container">
 			<div class="section-heading">
 				<span class="eyebrow">Once the issue is more documented</span>
-				<h2>Report findings, defect interpretation, and quote-ready follow-up</h2>
+				<h2>Report, material, and defect paths once the transfer story has real evidence</h2>
 			</div>
 			<div class="card-grid card-grid-2">
-				<a class="info-card" th:each="page : ${issuePages}" th:href="${page.slug}">
+				<a class="info-card" th:each="page : ${issuePages}" th:href="${page.slug}"
+				   data-event-type="page_cta_click"
+				   th:attr="data-page-slug='/',data-event-label=${'home-issue:' + page.title},data-event-route=${page.recommendedRouteBucket},data-event-destination=${page.measurementDestination},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='home-issue'">
 					<span class="card-kicker" th:text="${page.eyebrow}">Guide</span>
 					<h3 th:text="${page.title}">Page title</h3>
 					<p th:text="${page.summary}">Summary</p>
@@ -166,7 +170,7 @@
 			</div>
 			<div class="callout">
 				<span class="eyebrow">Geo anchors</span>
-				<h2>Local pages where private-lateral rules sharpen the decision</h2>
+				<h2>Local pages where official transfer, ownership, or program signals sharpen the decision</h2>
 				<ul class="link-list">
 					<li th:each="page : ${geoPages}">
 						<a th:href="${page.slug}" th:text="${page.title}"

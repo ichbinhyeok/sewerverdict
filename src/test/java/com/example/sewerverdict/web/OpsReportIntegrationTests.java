@@ -35,6 +35,8 @@ class OpsReportIntegrationTests {
 	@DynamicPropertySource
 	static void registerProperties(DynamicPropertyRegistry registry) {
 		registry.add("app.storage.root", () -> TEST_STORAGE_ROOT.toString());
+		registry.add("app.ops.report.enabled", () -> "true");
+		registry.add("app.ops.report.token", () -> "test-ops-token");
 	}
 
 	@BeforeEach
@@ -61,7 +63,7 @@ class OpsReportIntegrationTests {
 
 	@Test
 	void opsReportRendersTelemetrySummary() throws Exception {
-		mockMvc.perform(get("/ops/report/"))
+		mockMvc.perform(get("/ops/report/").header("X-Ops-Token", "test-ops-token"))
 			.andExpect(status().isOk())
 			.andExpect(header().string("X-Robots-Tag", "noindex, nofollow"))
 			.andExpect(content().string(containsString("Revenue-spine telemetry snapshot")))
@@ -73,6 +75,12 @@ class OpsReportIntegrationTests {
 			.andExpect(content().string(containsString("defect-page")))
 			.andExpect(content().string(containsString("Search Console")))
 			.andExpect(content().string(containsString("Noindex internal view")));
+	}
+
+	@Test
+	void opsReportReturnsNotFoundWithoutToken() throws Exception {
+		mockMvc.perform(get("/ops/report/"))
+			.andExpect(status().isNotFound());
 	}
 
 	private static Path createTempStorageRoot() {

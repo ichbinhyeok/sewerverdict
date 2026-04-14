@@ -50,6 +50,133 @@ Copy this block for the next review:
 
 ---
 
+## 2026-04-14
+
+### Data
+- No fresh Search Console export was pulled during this code pass.
+- This entry tracks structural changes only and does not replace the `2026-04-12` performance read.
+
+### Changes
+- Default-closed `/ops/report` behind an explicit enable flag and token check, then blocked `/ops/` in `robots.txt`.
+- Added a USPS-backed ZIP delivery-market JSON so supported ZIP-only inputs can anchor to covered city markets without pretending that a ZIP proves a municipal transfer or compliance boundary.
+- Added explicit `city confirmation still needed` guardrails to estimator results and lead handoff so ZIP-anchored matches no longer read like settled municipal compliance or certificate matches.
+- Added an optional street-address municipality lookup path using the official U.S. Census geocoder so ZIP-only users can upgrade into an exact municipality match without inventing new city rules or unsupported compliance pages.
+- Narrowed Philadelphia further by surfacing the city's property sales certification on the city hub and treating supported `191xx` ZIPs as a stronger municipal-safe city anchor rather than a generic delivery-market guess.
+- Reduced lead-form friction by making phone optional while keeping consent, service, and contact routing fields intact.
+- Narrowed homepage, city hubs, page routing, and decision-path logic toward transfer, certificate, compliance, and owner-boundary questions instead of generic sewer-risk framing.
+- Promoted transfer and compliance families in page classification without inventing new city compliance pages where no official local signal exists, and added Philadelphia's official property sales certification as a first-class local source.
+
+### Insights
+- The wedge-narrowing direction is correct for launch: local transfer and responsibility pages are more defensible than broad cost expansion on a young domain.
+- This pass fixed a classification leak where CTA links were causing buyer and cost pages to masquerade as compliance pages, which weakened the intended IA.
+- ZIP support is now real for covered USPS delivery markets, but it stays intentionally conservative: a ZIP can anchor the market, not certify the municipal rule.
+
+### Next Check
+- After deploy, inspect Search Console impressions and CTR for `/`, `/cities/`, `/sewer-scope-before-buying-house/`, `/who-pays-for-sewer-line-repair-buyer-or-seller/`, and official-signal city pages only.
+- Confirm that no external crawler is hitting `/ops/report` and that no staging workflow depends on the old open route.
+- Decide next whether to tighten delivery-market ZIPs into stricter municipal ZIP subsets for the strongest compliance cities.
+
+### Decision
+- Fix technical and tighten winners
+
+## 2026-04-12
+
+### Data
+- Final GSC summary available at review time ran through `2026-04-09`.
+- `2026-03-12` to `2026-04-09`: `1 click / 706 impressions / 0.14% CTR / avg position 40.92`.
+- Compared with the `2026-04-01` read (`1 click / 400 impressions / avg position 46.96`), impressions increased by roughly `76.5%` while average position improved by about `6` spots.
+- US search impressions rose from `287` to `473`, with the single recorded click still coming from US traffic.
+- Device split remained desktop-heavy:
+  - `MOBILE`: `1 click / 76 impressions / 1.32% CTR / avg position 43.09`
+  - `DESKTOP`: `0 clicks / 630 impressions / 0% CTR / avg position 40.66`
+- Sitemap status in GSC still showed only `https://www.sewerclarity.com/sitemap.xml`, last downloaded on `2026-04-10`, with `submitted 100 / indexed 0`.
+
+### Top Pages
+- `/cast-iron-sewer-pipe-replacement-cost/`: `247 impressions / avg position 37.78`
+- `/cities/philadelphia/`: `102 impressions / avg position 46.97`
+- `/sewer-scope-red-flags/`: `94 impressions / 1 click / avg position 5.18`
+- `/cities/milwaukee/homeowner-vs-city-sewer-responsibility/`: `65 impressions / avg position 6.78`
+- `/cities/`: `62 impressions / avg position 4.76`
+- `/`: `54 impressions / avg position 2.81`
+
+### Watchlist Pages
+- `/cast-iron-sewer-pipe-replacement-cost/`: `247 impressions / avg position 37.78`
+- `/orangeburg-pipe-replacement-cost/`: `166 impressions / avg position 33.90`
+- `/sewer-line-replacement-cost/`: `162 impressions / avg position 54.84`
+- `/cities/philadelphia/`: `102 impressions / avg position 46.97`
+- `/sewer-scope-red-flags/`: `94 impressions / 1 click / avg position 5.18`
+- `/`: `54 impressions / avg position 2.81`
+- No measurable GSC row yet for:
+  - `/sewer-scope-before-buying-house/`
+  - `/who-pays-for-sewer-line-repair-buyer-or-seller/`
+  - `/homeowner-vs-city-sewer-responsibility/`
+  - `/sewer-lateral-repair-cost/`
+
+### Top Queries
+- `cost of replacing cast iron pipes`: `23 impressions / avg position 47.09`
+- `cast iron pipes replacement cost`: `10 impressions / avg position 67`
+- `cast iron plumbing replacement cost`: `9 impressions / avg position 47.89`
+- `cast iron sewer pipe replacement cost`: `7 impressions / avg position 50.29`
+- `"who pays for sewer line repair buyer or seller"`: `3 impressions / avg position 2`
+- `"sewer scope before buying house"`: `2 impressions / avg position 2`
+
+### Technical Findings
+- Homepage inspection remains clean:
+  - `https://sewerclarity.com/` -> `Submitted and indexed`
+  - `http://sewerclarity.com/` -> `Page with redirect`
+  - both homepage canonical values point to `https://sewerclarity.com/`
+- Live responses on `2026-04-12` returned `200` with self-canonical tags for:
+  - `/sewer-scope-before-buying-house/`
+  - `/who-pays-for-sewer-line-repair-buyer-or-seller/`
+  - `/homeowner-vs-city-sewer-responsibility/`
+  - `/sewer-lateral-repair-cost/`
+- Those same URLs are also present in the live sitemap.
+- However, URL Inspection currently shows:
+  - `/sewer-scope-before-buying-house/` -> `Discovered - currently not indexed`
+  - `/sewer-lateral-repair-cost/` -> `Discovered - currently not indexed`
+  - `/who-pays-for-sewer-line-repair-buyer-or-seller/` -> `URL is unknown to Google`
+  - `/homeowner-vs-city-sewer-responsibility/` -> `URL is unknown to Google`
+- `/cities/philadelphia/` still shows `https://www.sewerclarity.com/sitemap.xml` as a referring URL, so old discovery traces have not fully cleared.
+
+### Changes
+- No new code changes were made during this review.
+- This review measured the first post-`2026-04-04` and post-`2026-04-06` Search Console response to the narrower buyer / responsibility / scope wedge.
+
+### Insights
+- The site is still growing, and this time the growth is better quality than the `2026-04-01` read because impressions increased while average position also improved.
+- The main commercial winners are still `cast iron` and `orangeburg`. Their impression growth is real:
+  - cast iron: `150 -> 247`
+  - orangeburg: `94 -> 166`
+- `/sewer-line-replacement-cost/` is still weaker than the two material pages and now lags them more clearly on rank quality.
+- The geo layer is still present, but Philadelphia remains a weak commercial closer. It grew only slightly (`90 -> 102`) and still ranks too low for its core local-replacement terms.
+- `/sewer-scope-red-flags/` remains the only page with a recorded click and continues to act like the easiest page for Google to trust quickly.
+- The new wedge is not disproven, but the national pages carrying it are not yet eligible for a fair verdict because several are not indexed.
+- The most important negative signal in this review is not weak CTR. It is that exact-match wedge queries are already appearing, but the wrong URLs are collecting them:
+  - `"who pays for sewer line repair buyer or seller"` is showing the homepage, `/cities/`, and `/sewer-scope-red-flags/`, not the dedicated national page
+  - `"sewer scope before buying house"` is showing city pages, not the national winner page
+- That means the current site architecture may be producing the right query signals before Google has accepted the intended winner URLs.
+
+### Next Check
+- In GSC, manually inspect and request indexing for:
+  - `/sewer-scope-before-buying-house/`
+  - `/who-pays-for-sewer-line-repair-buyer-or-seller/`
+  - `/homeowner-vs-city-sewer-responsibility/`
+  - `/sewer-lateral-repair-cost/`
+- Keep watching whether those four URLs move from `unknown` / `discovered` into `Submitted and indexed`.
+- On the next review, verify whether exact-match buyer and responsibility queries begin resolving to the intended national pages instead of the homepage or city pages.
+- Keep watching:
+  - `cast iron`
+  - `orangeburg`
+  - `sewer-scope-red-flags`
+- Do not treat the new wedge as a failure until the intended national pages are indexed and have had time to compete.
+
+### Decision
+- Hold broad expansion.
+- Do not judge the `buyer / responsibility / scope` repositioning by CTR yet.
+- First fix the indexation gap on the intended winner pages, then re-evaluate query-page matching.
+
+---
+
 ## 2026-04-06
 
 ### Data
@@ -371,3 +498,9 @@ Copy this block for the next review:
 ### Decision
 - Hold page expansion.
 - Tighten and observe the current winner set first.
+
+### 2026-04-14 Note
+- Closed the expert-review follow-up on transfer/compliance IA and locality certainty.
+- `pages.json` now promotes transfer and compliance as first-class families instead of relying on overlapping slug inference.
+- City hubs now render transfer and compliance clusters directly, so crawlable city IA matches the intended wedge.
+- ZIP or Census county-subdivision matches now stay cautious: they can anchor to a covered market, but they no longer get exact-city pricing lift or municipality certainty language before confirmation.

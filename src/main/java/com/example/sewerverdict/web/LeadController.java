@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.sewerverdict.content.MunicipalityResolution;
+import com.example.sewerverdict.content.MunicipalityResolver;
 import com.example.sewerverdict.content.PageFaq;
 import com.example.sewerverdict.telemetry.EstimatorDraftSnapshot;
 import com.example.sewerverdict.telemetry.LeadForm;
@@ -24,10 +26,13 @@ public class LeadController {
 
 	private final StorageService storageService;
 	private final SeoMetadataService seoMetadataService;
+	private final MunicipalityResolver municipalityResolver;
 
-	public LeadController(StorageService storageService, SeoMetadataService seoMetadataService) {
+	public LeadController(StorageService storageService, SeoMetadataService seoMetadataService,
+		MunicipalityResolver municipalityResolver) {
 		this.storageService = storageService;
 		this.seoMetadataService = seoMetadataService;
+		this.municipalityResolver = municipalityResolver;
 	}
 
 	@GetMapping({"/find-sewer-scope", "/find-sewer-scope/"})
@@ -48,7 +53,7 @@ public class LeadController {
 			List.of(
 				"Best for buyers under contract, sellers pre-listing, and owners with symptoms but no confirmation.",
 				"Useful when the next smart move is clarity, not a rushed repair commitment.",
-				"Short form only asks for details that improve routing."
+				"Short form only asks for details that improve routing. Phone is optional."
 			),
 			"/find-sewer-scope/",
 			leadForm
@@ -77,7 +82,7 @@ public class LeadController {
 			List.of(
 				"Best for buyers under contract, sellers pre-listing, and owners with symptoms but no confirmation.",
 				"Useful when the next smart move is clarity, not a rushed repair commitment.",
-				"Short form only asks for details that improve routing."
+				"Short form only asks for details that improve routing. Phone is optional."
 			),
 			"/find-sewer-scope/",
 			leadForm
@@ -109,7 +114,7 @@ public class LeadController {
 			List.of(
 				"Best when the line has already been scoped or there is strong evidence of a serious issue.",
 				"Useful for comparing spot repair, trenchless, and excavation logic.",
-				"Keep the form short so qualified users actually submit it."
+				"Keep the form short so qualified users actually submit it. Phone is optional."
 			),
 			"/get-sewer-quotes/",
 			leadForm
@@ -138,7 +143,7 @@ public class LeadController {
 			List.of(
 				"Best when the line has already been scoped or there is strong evidence of a serious issue.",
 				"Useful for comparing spot repair, trenchless, and excavation logic.",
-				"Keep the form short so qualified users actually submit it."
+				"Keep the form short so qualified users actually submit it. Phone is optional."
 			),
 			"/get-sewer-quotes/",
 			leadForm
@@ -201,14 +206,48 @@ public class LeadController {
 		model.addAttribute("leadFaq", buildLeadFaq(formAction));
 		model.addAttribute("formAction", formAction);
 		model.asMap().putIfAbsent("fieldErrors", Map.of());
-		storageService.getEstimatorDraft(leadForm.getDraftId())
-			.ifPresent(draft -> model.addAttribute("draftSummary", draft));
+		EstimatorDraftSnapshot draftSummary = storageService.getEstimatorDraft(leadForm.getDraftId()).orElse(null);
+		if (draftSummary != null) {
+			model.addAttribute("draftSummary", draftSummary);
+		}
+		MunicipalityResolution municipalityResolution = municipalityResolver.resolve(leadForm.getStreetAddress(),
+			leadForm.getZipOrCity()).orElse(null);
+		if (municipalityResolution != null) {
+			model.addAttribute("leadMunicipalitySummary", buildLeadMunicipalitySummary(municipalityResolution));
+		}
+		boolean cityConfirmationNeeded = municipalityResolution == null
+			? looksLikeZipOnly(leadForm.getZipOrCity())
+				|| (!StringUtils.hasText(leadForm.getZipOrCity()) && draftSummary != null && draftSummary.cityConfirmationNeeded())
+			: !municipalityResolution.exactMunicipalityMatch();
+		model.addAttribute("cityConfirmationNeeded", cityConfirmationNeeded);
+	}
+
+	private String buildLeadMunicipalitySummary(MunicipalityResolution municipalityResolution) {
+		if (municipalityResolution.matchedCoveredProfile() && municipalityResolution.exactMunicipalityMatch()) {
+			return "Street address matched " + municipalityResolution.coveredLabel()
+				+ " through the U.S. Census geocoder, so this no longer depends on ZIP-only city guessing.";
+		}
+		if (municipalityResolution.matchedCoveredProfile()) {
+			return "Street address resolved to a Census county subdivision signal consistent with "
+				+ municipalityResolution.coveredLabel()
+				+ ". That is better than ZIP-only guessing, but it does not prove the exact municipality or city-rule boundary yet.";
+		}
+		if (municipalityResolution.exactMunicipalityMatch()) {
+			return "Street address matched " + municipalityResolution.municipalityLabel()
+				+ " through the U.S. Census geocoder, which is better than ZIP-only guessing even though SewerClarity does not yet have a stored local profile for that municipality.";
+		}
+		return "Street address resolved to a Census county subdivision signal for "
+			+ municipalityResolution.municipalityLabel()
+			+ ". That is still better than ZIP-only guessing, but it does not prove exact municipality or city-rule certainty.";
 	}
 
 	private void hydrateLeadFormFromDraft(LeadForm leadForm) {
 		storageService.getEstimatorDraft(leadForm.getDraftId()).ifPresent(draft -> {
 			if (!StringUtils.hasText(leadForm.getZipOrCity()) && StringUtils.hasText(draft.location())) {
 				leadForm.setZipOrCity(draft.location());
+			}
+			if (!StringUtils.hasText(leadForm.getStreetAddress()) && StringUtils.hasText(draft.streetAddress())) {
+				leadForm.setStreetAddress(draft.streetAddress());
 			}
 		});
 	}
@@ -218,10 +257,10 @@ public class LeadController {
 			return List.of(
 				new LeadGuideLink("/sewer-scope-before-buying-house/", "Sewer Scope Before Buying a House",
 					"When buried-line uncertainty is worth reducing before closing."),
-				new LeadGuideLink("/old-house-sewer-line-risk/", "Old House Sewer Line Risk",
-					"Why older homes deserve more sewer caution before pricing repairs."),
-				new LeadGuideLink("/sewer-scope-red-flags/", "Sewer Scope Red Flags",
-					"Which findings change the next move once footage exists.")
+				new LeadGuideLink("/sewer-scope-negotiation-with-seller/", "Sewer Scope Negotiation With Seller",
+					"How better evidence can lead to a cleaner seller conversation."),
+				new LeadGuideLink("/homeowner-vs-city-sewer-responsibility/", "Homeowner vs City Sewer Responsibility",
+					"When the real question is city boundary, ownership, or local program fit.")
 			);
 		}
 		return List.of(
@@ -239,7 +278,7 @@ public class LeadController {
 			return List.of(
 				faq("Is this a repair quote request?", "No. This page is for inspection-first routing when the evidence is still thin or the transaction risk is still unclear."),
 				faq("Will submitting this form lock me into a vendor?", "No. The point is to start the right inspection or triage path, not to trap you in a rushed repair commitment."),
-				faq("Why does the form still ask for location?", "Location is used as a market anchor and context check. It is not used to invent a fake precise local sewer quote.")
+				faq("Why does the form still ask for location?", "City is the cleanest local match. Supported ZIPs can still anchor to a covered city profile or delivery market, but ZIP alone does not prove a parcel-specific transfer or compliance rule.")
 			);
 		}
 		return List.of(
@@ -264,7 +303,7 @@ public class LeadController {
 			return List.of(
 				"Best for buyers, sellers, and owners who still need better evidence before pricing repairs.",
 				"Submitting does not commit you to a repair quote or a marketplace blast.",
-				"If your notes already show a confirmed severe issue, the next step can still change after review."
+				"City still gives the cleanest local fit, supported ZIPs can anchor to a covered city profile or delivery market, and phone is optional if email is easier."
 			);
 		}
 		return List.of(
@@ -272,6 +311,10 @@ public class LeadController {
 			"Quote-ready routing still depends on footage, access, and whether the issue is isolated or systemic.",
 			"If the evidence is still too thin, the honest next recommendation may still be inspection or footage clarification first."
 		);
+	}
+
+	private boolean looksLikeZipOnly(String value) {
+		return StringUtils.hasText(value) && value.trim().matches("^\\d{5}(?:-\\d{4})?$");
 	}
 
 	private Map<String, Object> buildLeadViewPayload(LeadForm leadForm) {

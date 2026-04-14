@@ -107,13 +107,17 @@
 							<label class="choice-card"><input type="radio" th:field="*{urgency}" value="urgent-repair"><span>Urgent repair needed</span></label>
 						</div>
 					</section>
-					<section class="wizard-step" data-step hidden data-step-message="Add the ZIP code or city so the result can use a real market anchor instead of staying purely national.">
+					<section class="wizard-step" data-step hidden data-step-message="Add the property city or ZIP so the result can use a real covered market anchor instead of staying purely national.">
 						<span class="card-kicker">Step 7</span>
 						<h2>Where is the property?</h2>
-						<p class="form-microcopy">Used as a market anchor and local-context check, not as a fake precise city quote.</p>
-						<label class="field-label">ZIP or city
-							<input th:field="*{location}" type="text" placeholder="ZIP or city">
+						<p class="form-microcopy">City gives the cleanest local match. Supported ZIPs can still anchor to a covered city profile or delivery market, but ZIP alone does not prove a parcel-specific transfer or compliance rule. If transfer or compliance is the main question, use the exact city whenever possible.</p>
+						<label class="field-label">Property city or ZIP
+							<input th:field="*{location}" type="text" placeholder="Philadelphia, PA or 19147">
 						</label>
+						<label class="field-label">Street address (optional for exact city match)
+							<input th:field="*{streetAddress}" type="text" placeholder="121 N LaSalle St">
+						</label>
+						<p class="form-microcopy">Street address is optional. When provided, SewerClarity can try an official U.S. Census municipality lookup so ZIP-only entries do not overstate city-rule certainty.</p>
 					</section>
 					<p class="wizard-error" data-step-error role="alert" aria-live="polite" hidden>Please complete this step before continuing.</p>
 					<div class="wizard-actions">

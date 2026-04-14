@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			},
 			phone: {
-				validate: (field) => field.value.trim() ? "" : "Enter the best phone number for a reply."
+				validate: () => ""
 			},
 			consentGiven: {
 				validate: (field) => field.checked ? "" : "Consent is required before the form can be submitted."

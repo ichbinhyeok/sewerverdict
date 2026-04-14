@@ -29,6 +29,10 @@
 					<strong>Evidence read:</strong>
 					<span th:text="${result.evidenceSummary}">Evidence summary</span>
 				</div>
+				<div class="section-note" th:if="${result.cityConfirmationNeeded}">
+					<strong>City confirmation still needed</strong>
+					<span>ZIP-only input can anchor SewerClarity to a covered market, but do not treat it as proof of a transfer, certificate, or compliance rule. Confirm the exact city or municipality before relying on city-rule pages.</span>
+				</div>
 				<div class="button-row">
 					<a class="button button-primary" th:href="${primaryCtaHref}" th:text="${result.primaryCtaLabel}"
 					   data-event-type="result_primary_cta_click" data-page-slug="/estimator/results/"

@@ -39,6 +39,7 @@ public class SeoController {
 			User-agent: *
 			Allow: /
 			Disallow: /estimator/results/
+			Disallow: /ops/
 
 			Sitemap: %s/sitemap.xml
 			""".formatted(baseUrl);

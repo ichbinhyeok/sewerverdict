@@ -13,6 +13,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -26,17 +28,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class GeoProfileService {
 
 	private static final String GEO_PROFILE_PATH = "data/geo/geo_profiles.json";
+	private static final String ZIP_CITY_MARKET_PATH = "data/geo/zip_city_markets.json";
 	private static final String RESPONSIBILITY_REGISTRY_PATH = "data/raw/responsibility_registry.csv";
 	private static final String CSV_SPLIT_REGEX = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
+	private static final Pattern ZIP_PATTERN = Pattern.compile("\\b(\\d{5})(?:-\\d{4})?\\b");
 
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	private final SourceRegistryService sourceRegistryService;
 	private final Map<String, GeoProfile> profilesByCity;
+	private final Map<String, ZipCityMarket> zipMarketsByZip;
 	private final Map<String, List<ResponsibilityRule>> rulesByCity;
 
 	public GeoProfileService(SourceRegistryService sourceRegistryService) {
 		this.sourceRegistryService = sourceRegistryService;
 		this.profilesByCity = loadProfiles();
+		this.zipMarketsByZip = loadZipMarkets();
 		this.rulesByCity = loadResponsibilityRules();
 	}
 
@@ -55,18 +61,42 @@ public class GeoProfileService {
 	}
 
 	public GeoProfile findProfileForLocation(String location) {
+		GeoLocationMatch match = resolveLocationMatch(location);
+		return match == null ? null : match.profile();
+	}
+
+	public GeoLocationMatch resolveLocationMatch(String location) {
 		if (!StringUtils.hasText(location)) {
 			return null;
 		}
 		String normalized = normalizeLocation(location);
 		GeoProfile direct = profilesByCity.get(normalized);
 		if (direct != null) {
-			return direct;
+			return new GeoLocationMatch(direct, direct.getCityName() + ", " + direct.getStateCode(), false, null, "city",
+				"City-name matching uses the stored local profile directly.", false);
 		}
-		return profilesByCity.values().stream()
-			.filter(profile -> matchesLocation(normalized, profile))
+		GeoProfile profile = profilesByCity.values().stream()
+			.filter(candidate -> matchesLocation(normalized, candidate))
 			.findFirst()
 			.orElse(null);
+		if (profile != null) {
+			return new GeoLocationMatch(profile, profile.getCityName() + ", " + profile.getStateCode(), false, null, "city",
+				"City-name matching uses the stored local profile directly.", false);
+		}
+		String zipCode = extractZip(location);
+		if (zipCode == null) {
+			return null;
+		}
+		ZipCityMarket market = zipMarketsByZip.get(zipCode);
+		if (market == null) {
+			return null;
+		}
+		GeoProfile zipProfile = profilesByCity.get(market.getCitySlug());
+		if (zipProfile == null) {
+			return null;
+		}
+		return new GeoLocationMatch(zipProfile, zipProfile.getCityName() + ", " + zipProfile.getStateCode(), true, zipCode,
+			market.getMatchScope(), market.getMatchCaution(), true);
 	}
 
 	public List<SourceReference> getProfileSources(SitePage page) {
@@ -164,7 +194,7 @@ public class GeoProfileService {
 			.filter(SitePage::isGeoPage)
 			.filter(page -> citySlug.equals(page.getGeoCitySlug()))
 			.sorted(Comparator
-				.comparingInt((SitePage page) -> familyRank(page.getTrackingFamily()))
+				.comparingInt(this::familyRank)
 				.thenComparing(SitePage::getTitle))
 			.toList();
 	}
@@ -190,17 +220,26 @@ public class GeoProfileService {
 		};
 	}
 
-	private int familyRank(String family) {
-		if (family == null) {
+	private int familyRank(SitePage page) {
+		if (page == null) {
 			return 9;
 		}
-		return switch (family.toLowerCase()) {
-			case "buyer" -> 0;
-			case "coverage" -> 1;
-			case "defect" -> 2;
-			case "cost" -> 3;
-			default -> 9;
-		};
+		if (page.isTransferPage()) {
+			return 0;
+		}
+		if (page.isCompliancePage()) {
+			return 1;
+		}
+		if (page.isDefectPage()) {
+			return 2;
+		}
+		if (page.isCostPage()) {
+			return 3;
+		}
+		if (page.isBuyerPage()) {
+			return 4;
+		}
+		return 9;
 	}
 
 	private int starterRank(SitePage page) {
@@ -218,10 +257,10 @@ public class GeoProfileService {
 			|| slug.contains("signs") || slug.contains("meaning") || slug.contains("what-to-do")) {
 			return 3;
 		}
-		if (slug.contains("repair-vs-replacement")) {
+		if (slug.contains("negotiation-with-seller")) {
 			return 4;
 		}
-		if (slug.contains("negotiation-with-seller")) {
+		if (slug.contains("repair-vs-replacement")) {
 			return 5;
 		}
 		if (slug.contains("replacement-cost")) {
@@ -256,6 +295,21 @@ public class GeoProfileService {
 		}
 	}
 
+	private Map<String, ZipCityMarket> loadZipMarkets() {
+		Resource resource = new ClassPathResource(ZIP_CITY_MARKET_PATH);
+		try (InputStream inputStream = resource.getInputStream()) {
+			List<ZipCityMarket> loadedMarkets = objectMapper.readValue(inputStream,
+				new TypeReference<List<ZipCityMarket>>() {
+				});
+			Map<String, ZipCityMarket> loaded = new LinkedHashMap<>();
+			loadedMarkets.forEach(market -> market.getZipCodes().forEach(zipCode -> loaded.put(zipCode, market)));
+			return loaded;
+		}
+		catch (IOException exception) {
+			throw new UncheckedIOException("Failed to load ZIP city markets from " + ZIP_CITY_MARKET_PATH, exception);
+		}
+	}
+
 	private boolean matchesLocation(String normalizedLocation, GeoProfile profile) {
 		String cityName = normalizeLocation(profile.getCityName());
 		String citySlug = normalizeLocation(profile.getCitySlug());
@@ -274,6 +328,17 @@ public class GeoProfileService {
 			return "";
 		}
 		return value.trim().toLowerCase();
+	}
+
+	private String extractZip(String value) {
+		if (!StringUtils.hasText(value)) {
+			return null;
+		}
+		Matcher matcher = ZIP_PATTERN.matcher(value.trim());
+		if (!matcher.find()) {
+			return null;
+		}
+		return matcher.group(1);
 	}
 
 	private Map<String, List<ResponsibilityRule>> loadResponsibilityRules() {

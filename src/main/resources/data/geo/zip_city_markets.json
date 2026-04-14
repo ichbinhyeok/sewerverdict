@@ -1,0 +1,112 @@
+[
+  {
+    "citySlug": "philadelphia",
+    "cityName": "Philadelphia",
+    "stateCode": "PA",
+    "matchLabel": "Philadelphia covered city profile",
+    "matchScope": "municipal-safe",
+    "matchCaution": "ZIP-only matching uses a narrowed USPS-backed Philadelphia ZIP subset as a city anchor. It still does not prove a parcel-specific transfer, certificate, or compliance requirement on its own.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["19101", "19102", "19103", "19104", "19105", "19106", "19107", "19110", "19111", "19112", "19114", "19115", "19116", "19118", "19119", "19120", "19121", "19122", "19123", "19124", "19125", "19126", "19127", "19128", "19129", "19130", "19131", "19132", "19133", "19134", "19135", "19136", "19137", "19138", "19139", "19140", "19141", "19142", "19143", "19144", "19145", "19146", "19147", "19148", "19149", "19150", "19151", "19152", "19153", "19154", "19155"]
+  },
+  {
+    "citySlug": "pittsburgh",
+    "cityName": "Pittsburgh",
+    "stateCode": "PA",
+    "matchLabel": "Pittsburgh delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["15045", "15106", "15122", "15129", "15201", "15202", "15203", "15204", "15205", "15206", "15207", "15208", "15209", "15210", "15211", "15212", "15213", "15214", "15215", "15216", "15217", "15218", "15219", "15220", "15221", "15222", "15223", "15224", "15225", "15226", "15227", "15228", "15229", "15230", "15231", "15232", "15233", "15234", "15235", "15236", "15237", "15238", "15239", "15241", "15242", "15243", "15253", "15275"]
+  },
+  {
+    "citySlug": "cleveland",
+    "cityName": "Cleveland",
+    "stateCode": "OH",
+    "matchLabel": "Cleveland delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["44101", "44102", "44103", "44104", "44105", "44106", "44108", "44109", "44110", "44111", "44112", "44113", "44114", "44115", "44117", "44119", "44120", "44121", "44124", "44125", "44126", "44127", "44128", "44129", "44130", "44134", "44135", "44142", "44143", "44144", "44181", "44199"]
+  },
+  {
+    "citySlug": "chicago",
+    "cityName": "Chicago",
+    "stateCode": "IL",
+    "matchLabel": "Chicago delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["60601", "60602", "60603", "60604", "60605", "60606", "60607", "60608", "60609", "60610", "60611", "60612", "60613", "60614", "60615", "60616", "60617", "60618", "60619", "60620", "60621", "60622", "60623", "60624", "60625", "60626", "60628", "60629", "60630", "60631", "60632", "60633", "60634", "60636", "60637", "60638", "60639", "60640", "60641", "60642", "60643", "60644", "60645", "60646", "60647", "60649", "60651", "60652", "60653", "60654", "60655", "60657", "60659", "60660", "60661", "60664", "60666", "60680", "60690", "60691"]
+  },
+  {
+    "citySlug": "buffalo",
+    "cityName": "Buffalo",
+    "stateCode": "NY",
+    "matchLabel": "Buffalo delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["14201", "14202", "14203", "14204", "14205", "14206", "14207", "14208", "14209", "14210", "14211", "14212", "14213", "14214", "14215", "14216", "14217", "14218", "14219", "14220", "14221", "14222", "14223", "14224", "14225", "14226", "14227", "14228", "14231", "14240"]
+  },
+  {
+    "citySlug": "st-louis",
+    "cityName": "St. Louis",
+    "stateCode": "MO",
+    "matchLabel": "St. Louis delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["63101", "63102", "63103", "63104", "63105", "63106", "63107", "63108", "63109", "63110", "63111", "63112", "63113", "63114", "63115", "63116", "63117", "63118", "63119", "63120", "63121", "63122", "63123", "63124", "63125", "63126", "63127", "63128", "63129", "63130", "63131", "63132", "63133", "63134", "63135", "63136", "63137", "63138", "63139", "63141", "63143", "63144", "63145", "63146", "63147", "63151", "63156", "63157", "63158", "63163", "63166", "63169", "63177", "63178", "63179", "63188"]
+  },
+  {
+    "citySlug": "washington-dc",
+    "cityName": "Washington, DC",
+    "stateCode": "DC",
+    "matchLabel": "Washington, DC delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["20001", "20002", "20003", "20004", "20005", "20006", "20007", "20008", "20009", "20010", "20011", "20012", "20013", "20015", "20016", "20017", "20018", "20019", "20020", "20024", "20026", "20027", "20029", "20030", "20032", "20033", "20035", "20036", "20037", "20038", "20039", "20040", "20043", "20044", "20045", "20056", "20090", "20091"]
+  },
+  {
+    "citySlug": "milwaukee",
+    "cityName": "Milwaukee",
+    "stateCode": "WI",
+    "matchLabel": "Milwaukee delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["53201", "53202", "53203", "53204", "53205", "53206", "53207", "53208", "53209", "53210", "53211", "53212", "53213", "53214", "53215", "53216", "53218", "53219", "53220", "53221", "53222", "53223", "53224", "53225", "53226", "53227", "53228", "53233", "53234", "53235", "53237"]
+  },
+  {
+    "citySlug": "cincinnati",
+    "cityName": "Cincinnati",
+    "stateCode": "OH",
+    "matchLabel": "Cincinnati delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["45201", "45202", "45203", "45204", "45205", "45206", "45207", "45208", "45209", "45211", "45212", "45213", "45214", "45215", "45216", "45217", "45218", "45219", "45220", "45222", "45223", "45224", "45225", "45226", "45227", "45229", "45230", "45231", "45232", "45233", "45236", "45237", "45238", "45239", "45240", "45241", "45242", "45243", "45244", "45245", "45246", "45247", "45248", "45249", "45250", "45251", "45252", "45253", "45254", "45255", "45258", "45262", "45280"]
+  },
+  {
+    "citySlug": "baltimore",
+    "cityName": "Baltimore",
+    "stateCode": "MD",
+    "matchLabel": "Baltimore delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["21201", "21202", "21203", "21205", "21206", "21209", "21210", "21211", "21212", "21213", "21214", "21215", "21216", "21217", "21218", "21223", "21224", "21229", "21230", "21231", "21239", "21270", "21281", "21297"]
+  },
+  {
+    "citySlug": "detroit",
+    "cityName": "Detroit",
+    "stateCode": "MI",
+    "matchLabel": "Detroit delivery market",
+    "matchScope": "delivery-market",
+    "matchCaution": "ZIP-only matching uses USPS delivery-city data as a local market anchor. It does not prove the property sits inside a specific municipal transfer, certificate, or compliance boundary.",
+    "sourceIds": ["usps-001"],
+    "zipCodes": ["48201", "48202", "48203", "48204", "48205", "48206", "48207", "48208", "48209", "48210", "48211", "48212", "48213", "48214", "48215", "48216", "48219", "48220", "48221", "48223", "48224", "48225", "48226", "48227", "48228", "48230", "48231", "48232", "48234", "48235", "48238", "48243", "48244"]
+  }
+]

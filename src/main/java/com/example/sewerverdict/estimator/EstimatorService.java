@@ -7,8 +7,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.example.sewerverdict.content.GeoLocationMatch;
 import com.example.sewerverdict.content.GeoProfile;
 import com.example.sewerverdict.content.GeoProfileService;
+import com.example.sewerverdict.content.MunicipalityResolution;
+import com.example.sewerverdict.content.MunicipalityResolver;
 
 @Service
 public class EstimatorService {
@@ -17,13 +20,16 @@ public class EstimatorService {
 	private final DefectProfileService defectProfileService;
 	private final MaterialProfileService materialProfileService;
 	private final GeoProfileService geoProfileService;
+	private final MunicipalityResolver municipalityResolver;
 
 	public EstimatorService(CostProfileService costProfileService, DefectProfileService defectProfileService,
-		MaterialProfileService materialProfileService, GeoProfileService geoProfileService) {
+		MaterialProfileService materialProfileService, GeoProfileService geoProfileService,
+		MunicipalityResolver municipalityResolver) {
 		this.costProfileService = costProfileService;
 		this.defectProfileService = defectProfileService;
 		this.materialProfileService = materialProfileService;
 		this.geoProfileService = geoProfileService;
+		this.municipalityResolver = municipalityResolver;
 	}
 
 	public EstimatorResult evaluate(EstimatorForm form) {
@@ -33,7 +39,7 @@ public class EstimatorService {
 		String defectType = value(form.getDefectType(), "unknown");
 		String accessType = value(form.getAccessType(), "unknown");
 		String urgency = value(form.getUrgency(), "researching");
-		LocationContext locationContext = resolveLocationContext(form.getLocation());
+		LocationContext locationContext = resolveLocationContext(form.getStreetAddress(), form.getLocation());
 		DefectProfile defectProfile = defectProfileService.getProfile(defectType);
 		MaterialProfile materialProfile = materialProfileService.getProfile(defectType);
 
@@ -77,6 +83,7 @@ public class EstimatorService {
 			estimateMethodSummary,
 			sourceIds,
 			locationContext.summary(),
+			locationContext.cityConfirmationNeeded(),
 			decision.likelyNextStep(),
 			decision.primaryCtaLabel(),
 			decision.primaryCtaHref(),
@@ -334,7 +341,14 @@ public class EstimatorService {
 			drivers.add("No confirmed scope footage keeps the honest next move closer to evidence gathering than fixed repair pricing.");
 		}
 
-		if (locationContext.matched()) {
+		if (locationContext.cityConfirmationNeeded() && locationContext.matched()) {
+			drivers.add(partialMarketAnchorLead(locationContext) + " only anchored this to the " + locationContext.label()
+				+ " market profile. Confirm the exact city or municipality before treating any transfer, certificate, or compliance rule as settled.");
+		}
+		else if (locationContext.cityConfirmationNeeded()) {
+			drivers.add("The current inputs still need the exact city or municipality before this can lean on a covered market, transfer rule, or compliance assumption.");
+		}
+		else if (locationContext.matched()) {
 			drivers.add("The location matched a stored " + locationContext.label()
 				+ " market profile, so the call is anchored to real local housing and sewer context instead of a generic national read.");
 		}
@@ -360,8 +374,8 @@ public class EstimatorService {
 		String defectType, String accessType, String urgency, LocationContext locationContext) {
 		List<String> summary = new ArrayList<>();
 		summary.add(displayRole(role));
-		if (locationContext.matched()) {
-			summary.add(locationContext.label());
+		if (locationContext.matched() || locationContext.cityConfirmationNeeded()) {
+			summary.add(displayLocationLabel(locationContext));
 		}
 		else if (StringUtils.hasText(form.getLocation())) {
 			summary.add(form.getLocation().trim());
@@ -393,8 +407,14 @@ public class EstimatorService {
 		if ("pre-1950".equals(ageBand) || "1950-1969".equals(ageBand)) {
 			drivers.add("Older material assumptions versus actual field condition");
 		}
-		if (locationContext.matched()) {
+		if (locationContext.cityConfirmationNeeded()) {
+			drivers.add("Exact municipality, utility boundary, or parcel context behind the current market anchor");
+		}
+		if (locationContext.matched() && !locationContext.cityConfirmationNeeded()) {
 			drivers.add(locationContext.label() + " contractor pricing and restoration conditions");
+		}
+		else if (locationContext.matched()) {
+			drivers.add("Local contractor pricing and restoration conditions once the exact municipality is confirmed");
 		}
 		else {
 			drivers.add("Local labor, permit, and restoration pricing");
@@ -460,9 +480,18 @@ public class EstimatorService {
 			case "basement-crawlspace" -> " Basement or crawlspace access can keep some repairs more inspectable.";
 			default -> "";
 		};
-		String locationPhrase = locationContext.matched()
-			? " A stored local profile for " + locationContext.label() + " also keeps the call grounded in a real market context."
-			: "";
+		String locationPhrase = "";
+		if (locationContext.cityConfirmationNeeded() && locationContext.matched()) {
+			locationPhrase = " The current inputs only anchor this to the " + locationContext.label()
+				+ " market profile, so transfer or compliance calls still need the exact municipality.";
+		}
+		else if (locationContext.cityConfirmationNeeded()) {
+			locationPhrase = " The current inputs still need the exact city or municipality before transfer or compliance calls should be treated as settled.";
+		}
+		else if (locationContext.matched()) {
+			locationPhrase = " A stored local profile for " + locationContext.label()
+				+ " also keeps the call grounded in a real market context.";
+		}
 		String defectPhrase = "unknown".equals(defectType) ? "" : " " + defectProfile.whatItOftenMeans();
 		String materialPhrase = materialProfile == null ? "" : " " + materialProfile.cautionNotes();
 		return "%s With a %s, a %s, and %s, %s%s%s".formatted(
@@ -524,9 +553,20 @@ public class EstimatorService {
 		String accessNote = "slab".equals(accessType)
 			? " Under-slab access keeps the upper range wider because restoration and staging get harder."
 			: " Replacement and trenchless headlines move quickly once line length and restoration scope are clearer.";
-		String locationNote = locationContext.matched()
-			? " " + locationContext.summary()
-			: " The location is still used as a market anchor, but SewerClarity does not invent a city-specific contractor rate.";
+		String locationNote;
+		if (locationContext.cityConfirmationNeeded() && locationContext.matched()) {
+			locationNote = " The current inputs keep this inside the " + locationContext.label()
+				+ " market profile, but SewerClarity still needs the exact city or municipality before leaning on transfer or compliance rules.";
+		}
+		else if (locationContext.cityConfirmationNeeded()) {
+			locationNote = " The current inputs still need the exact city or municipality before SewerClarity can lean on transfer or compliance rules.";
+		}
+		else if (locationContext.matched()) {
+			locationNote = " " + locationContext.summary();
+		}
+		else {
+			locationNote = " The location is still used as a market anchor, but SewerClarity does not invent a city-specific contractor rate.";
+		}
 		if ("inspection-first".equals(decision.routingBucket())) {
 			return base + " It does not assume a repair scope until footage, access, and severity are better documented."
 				+ accessNote + locationNote;
@@ -561,8 +601,8 @@ public class EstimatorService {
 	private String buildSummary(EstimatorForm form, DecisionProfile decision, DefectProfile defectProfile, List<String> callDrivers,
 		List<String> uncertaintyDrivers, LocationContext locationContext) {
 		String role = displayRole(value(form.getRole(), "owner"));
-		String location = locationContext.matched()
-			? locationContext.label()
+		String location = locationContext.matched() || locationContext.cityConfirmationNeeded()
+			? displayLocationLabel(locationContext)
 			: value(form.getLocation(), "Location not provided");
 		String issueState = displayIssueState(value(form.getIssueState(), "no-scope-yet"));
 		String defectType = value(form.getDefectType(), "unknown");
@@ -599,27 +639,105 @@ public class EstimatorService {
 		).trim();
 	}
 
-	private LocationContext resolveLocationContext(String location) {
+	private LocationContext resolveLocationContext(String streetAddress, String location) {
 		String normalizedLocation = trimToNull(location);
+		String normalizedStreetAddress = trimToNull(streetAddress);
 		if (normalizedLocation == null) {
 			return new LocationContext("Unspecified market",
-				"No market anchor was added, so this stays on national ranges and generic uncertainty only.", false, 1.0);
+				"No market anchor was added, so this stays on national ranges and generic uncertainty only.", false, 1.0, false,
+				null);
 		}
-		GeoProfile profile = geoProfileService.findProfileForLocation(normalizedLocation);
-		if (profile == null) {
+		MunicipalityResolution municipalityResolution = municipalityResolver.resolve(normalizedStreetAddress, normalizedLocation)
+			.orElse(null);
+		if (municipalityResolution != null) {
+			if (municipalityResolution.matchedCoveredProfile()) {
+				GeoProfile profile = municipalityResolution.profile();
+				String label = profile.getCityName() + ", " + profile.getStateCode();
+				double upperRangeFactor = "tier-1".equalsIgnoreCase(profile.getPriorityTier()) ? 1.06 : 1.04;
+				String localSignal = firstSentence(value(profile.getHousingAgeSignal(), profile.getMarketReason()));
+				if (municipalityResolution.exactMunicipalityMatch()) {
+					return new LocationContext(label,
+						"Street address matched " + label + " through the U.S. Census geocoder. " + localSignal
+							+ " This is a stronger municipality match than ZIP-only anchoring for city-rule questions, but it still does not create parcel-specific legal or utility certainty on its own.",
+						true,
+						upperRangeFactor,
+						false,
+						normalizedLocation);
+				}
+				return new LocationContext(label,
+					"Street address resolved to a Census county subdivision signal consistent with " + label
+						+ ". " + localSignal
+						+ " County subdivision geography is still weaker than an exact incorporated-place match, so transfer or compliance calls should stay cautious until the municipality or utility boundary is confirmed.",
+					true,
+					1.0,
+					true,
+					normalizedLocation);
+			}
+			if (municipalityResolution.exactMunicipalityMatch()) {
+				return new LocationContext(municipalityResolution.municipalityLabel(),
+					"Street address matched " + municipalityResolution.municipalityLabel()
+						+ " through the U.S. Census geocoder, but SewerClarity does not yet have a stored local profile for that municipality. This avoids pretending the city match itself proves a covered city rule and keeps the estimate on broader market assumptions.",
+					false,
+					1.0,
+					false,
+					normalizedLocation);
+			}
+			return new LocationContext(municipalityResolution.municipalityLabel(),
+				"Street address resolved to a Census county subdivision signal for " + municipalityResolution.municipalityLabel()
+					+ ", but SewerClarity does not yet have a stored local profile for that geography. This is still better than raw ZIP guessing, but it does not prove an exact municipality match.",
+				false,
+				1.0,
+				true,
+				normalizedLocation);
+		}
+		GeoLocationMatch locationMatch = geoProfileService.resolveLocationMatch(normalizedLocation);
+		if (locationMatch == null && looksLikeZipOnly(normalizedLocation)) {
+			return new LocationContext(normalizedLocation,
+				"ZIP-only entry saved for follow-up, but SewerClarity does not yet have a covered USPS delivery-market match for it. This stays on national ranges until a covered city or delivery market is known, and it should not be used like settled transfer or compliance proof.",
+				false,
+				1.0,
+				true,
+				normalizedLocation);
+		}
+		if (locationMatch == null) {
 			return new LocationContext(normalizedLocation,
 				"Location is used as a market anchor, but SewerClarity does not yet have a stored local profile for it. Exact pricing still depends on local labor, permits, and restoration.",
 				false,
-				1.0);
+				1.0,
+				false,
+				normalizedLocation);
 		}
+		GeoProfile profile = locationMatch.profile();
 		String label = profile.getCityName() + ", " + profile.getStateCode();
 		double upperRangeFactor = "tier-1".equalsIgnoreCase(profile.getPriorityTier()) ? 1.06 : 1.04;
 		String localSignal = firstSentence(value(profile.getHousingAgeSignal(), profile.getMarketReason()));
+		if (locationMatch.zipBased()) {
+			if ("municipal-safe".equalsIgnoreCase(locationMatch.matchScope())) {
+				return new LocationContext(label,
+					"ZIP " + locationMatch.zipCode() + " anchored this to the " + label + " covered-market profile using a narrowed municipal-safe ZIP subset. "
+						+ locationMatch.matchCaution() + " " + localSignal
+						+ " This is stronger than a raw delivery-market guess, but it still does not confirm the exact municipality, utility boundary, or parcel-level transfer requirement.",
+					true,
+					1.0,
+					true,
+					locationMatch.zipCode());
+			}
+			return new LocationContext(label,
+				"ZIP " + locationMatch.zipCode() + " anchored this to the " + label + " covered delivery market using USPS delivery-city data. "
+					+ locationMatch.matchCaution() + " " + localSignal
+					+ " This still grounds the range in a real covered market, but it does not prove the actual municipality, utility boundary, or parcel-level transfer rule.",
+				true,
+				1.0,
+				true,
+				locationMatch.zipCode());
+		}
 		return new LocationContext(label,
 			"Matched " + label + ". " + localSignal
 				+ " This does not create a local quote, but it keeps the upper range and routing logic grounded in a real market profile.",
 			true,
-			upperRangeFactor);
+			upperRangeFactor,
+			false,
+			normalizedLocation);
 	}
 
 	private RangeFactors rangeFactors(String accessType, boolean oldHome, boolean repairScope, LocationContext locationContext,
@@ -635,7 +753,7 @@ public class EstimatorService {
 		if (oldHome && repairScope) {
 			highFactor += 0.06;
 		}
-		if (locationContext.matched() && repairScope) {
+		if (locationContext.matched() && !locationContext.cityConfirmationNeeded() && repairScope) {
 			highFactor *= locationContext.upperRangeFactor();
 		}
 		return new RangeFactors(lowFactor, highFactor);
@@ -673,7 +791,7 @@ public class EstimatorService {
 		String accessNote = "slab".equals(accessType)
 			? " Slab access is one of the cleaner reasons the upper end stays wide."
 			: " Long exterior runs and restoration scope are usually what push the upper end fast.";
-		String localNote = locationContext.matched()
+		String localNote = locationContext.matched() && !locationContext.cityConfirmationNeeded()
 			? " " + locationContext.label() + " is also being treated as a real market anchor rather than a generic national placeholder."
 			: "";
 		return accessNote + localNote;
@@ -748,6 +866,37 @@ public class EstimatorService {
 
 	private String trimToNull(String value) {
 		return StringUtils.hasText(value) ? value.trim() : null;
+	}
+
+	private String partialMarketAnchorLead(LocationContext locationContext) {
+		return looksLikeZipOnly(locationContext.rawLocation()) ? "The ZIP entry" : "The current inputs";
+	}
+
+	private String displayLocationLabel(LocationContext locationContext) {
+		if (locationContext.cityConfirmationNeeded()) {
+			String zipCode = displayZip(locationContext.rawLocation());
+			if (StringUtils.hasText(zipCode) && locationContext.matched()) {
+				return "ZIP " + zipCode + " (" + locationContext.label() + " anchor only)";
+			}
+			if (StringUtils.hasText(zipCode)) {
+				return "ZIP " + zipCode + " (city still needed)";
+			}
+			return locationContext.label() + " (municipality still confirming)";
+		}
+		return locationContext.label();
+	}
+
+	private boolean looksLikeZipOnly(String value) {
+		return value != null && value.matches("^\\d{5}(?:-\\d{4})?$");
+	}
+
+	private String displayZip(String value) {
+		String trimmed = trimToNull(value);
+		if (trimmed == null) {
+			return null;
+		}
+		int dashIndex = trimmed.indexOf('-');
+		return dashIndex >= 0 ? trimmed.substring(0, dashIndex) : trimmed;
 	}
 
 	private String firstSentence(String value) {
@@ -828,7 +977,8 @@ public class EstimatorService {
 	) {
 	}
 
-	private record LocationContext(String label, String summary, boolean matched, double upperRangeFactor) {
+	private record LocationContext(String label, String summary, boolean matched, double upperRangeFactor,
+		boolean cityConfirmationNeeded, String rawLocation) {
 	}
 
 	private record RangeFactors(double lowFactor, double highFactor) {

@@ -25,14 +25,22 @@
 				</ul>
 				<div class="trust-strip">
 					<div>Short form, routing only</div>
-					<div>Reviewed guidance</div>
+					<div>City-first local fit</div>
 					<div>No scare tactics</div>
 				</div>
 			</div>
 			<div class="form-shell">
 				<div class="form-prelude">
 					<span class="card-kicker">Routing note</span>
-					<p>These details are used to match the next inspection or quote path more credibly. The form is intentionally short.</p>
+					<p>These details are used to match the next inspection or quote path more credibly. City gives the cleanest local fit. Supported ZIPs can still anchor to a covered city profile or delivery market, but ZIP alone does not prove a parcel-specific transfer or compliance rule.</p>
+				</div>
+				<div class="section-note" th:if="${cityConfirmationNeeded}">
+					<strong>City confirmation still needed</strong>
+					<p>ZIP-only input can anchor SewerClarity to a covered market, but do not treat it as proof of a transfer, certificate, or compliance rule. Confirm the exact city or municipality before relying on city-rule pages.</p>
+				</div>
+				<div class="section-note" th:if="${leadMunicipalitySummary}">
+					<strong th:text="${cityConfirmationNeeded ? 'Street address locality signal' : 'Street address municipality match'}">Street address municipality match</strong>
+					<p th:text="${leadMunicipalitySummary}">Municipality summary</p>
 				</div>
 				<div class="section-note" th:if="${draftSummary}">
 					<strong>Estimator carry-forward</strong>
@@ -85,10 +93,14 @@
 					</label>
 					<p class="field-error" data-error-for="serviceNeeded" th:text="${fieldErrors['serviceNeeded']} ?: ''">Service needed error</p>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('zipOrCity')} ? ' has-error'">
-						ZIP or city
-						<input th:field="*{zipOrCity}" type="text" placeholder="ZIP or city" th:attr="aria-invalid=${fieldErrors.containsKey('zipOrCity')}">
+						Property city or ZIP
+						<input th:field="*{zipOrCity}" type="text" placeholder="Philadelphia, PA or 19147" th:attr="aria-invalid=${fieldErrors.containsKey('zipOrCity')}">
 					</label>
-					<p class="field-error" data-error-for="zipOrCity" th:text="${fieldErrors['zipOrCity']} ?: ''">ZIP or city error</p>
+					<p class="field-error" data-error-for="zipOrCity" th:text="${fieldErrors['zipOrCity']} ?: ''">Location error</p>
+					<label class="field-label">
+						Street address (optional for exact city match)
+						<input th:field="*{streetAddress}" type="text" placeholder="121 N LaSalle St">
+					</label>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('name')} ? ' has-error'">
 						Name
 						<input th:field="*{name}" type="text" placeholder="Your name" th:attr="aria-invalid=${fieldErrors.containsKey('name')}">
@@ -100,8 +112,8 @@
 					</label>
 					<p class="field-error" data-error-for="email" th:text="${fieldErrors['email']} ?: ''">Email error</p>
 					<label class="field-label" th:classappend="${fieldErrors.containsKey('phone')} ? ' has-error'">
-						Phone
-						<input th:field="*{phone}" type="tel" placeholder="Best number" th:attr="aria-invalid=${fieldErrors.containsKey('phone')}">
+						Phone (optional)
+						<input th:field="*{phone}" type="tel" placeholder="Best number if call or text is easier" th:attr="aria-invalid=${fieldErrors.containsKey('phone')}">
 					</label>
 					<p class="field-error" data-error-for="phone" th:text="${fieldErrors['phone']} ?: ''">Phone error</p>
 					<details class="form-details">
@@ -170,7 +182,7 @@
 							<a th:href="${contactMailto}" th:text="${contactEmail}">contact@sewerclarity.com</a>.
 						</span>
 					</p>
-					<p class="form-microcopy">Start with the basics. Extra routing detail helps, but the first goal is getting a credible response path started.</p>
+					<p class="form-microcopy">Start with the basics. City is still best, supported ZIPs can anchor to a covered city profile or delivery market, street address can help confirm the municipality, phone is optional, and the first goal is getting a credible response path started.</p>
 					<button class="button button-primary button-block" type="submit">Submit details</button>
 				</form>
 			</div>

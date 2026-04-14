@@ -16,6 +16,7 @@ public class GeoProfile {
 	private String housingAgeSignal;
 	private String systemContext;
 	private String responsibilitySummary;
+	private String transferSignalSummary;
 	private String programSummary;
 	private String ctaBias;
 	private List<String> sourceIds = new ArrayList<>();
@@ -82,6 +83,14 @@ public class GeoProfile {
 
 	public void setResponsibilitySummary(String responsibilitySummary) {
 		this.responsibilitySummary = responsibilitySummary;
+	}
+
+	public String getTransferSignalSummary() {
+		return transferSignalSummary;
+	}
+
+	public void setTransferSignalSummary(String transferSignalSummary) {
+		this.transferSignalSummary = transferSignalSummary;
 	}
 
 	public String getProgramSummary() {

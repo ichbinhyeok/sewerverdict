@@ -32,6 +32,7 @@ class SeoControllerIntegrationTests {
 	void robotsUsesCanonicalBaseUrlEvenWhenRequestHostDiffers() throws Exception {
 		mockMvc.perform(get("/robots.txt").header("Host", "www.sewerclarity.com"))
 			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Disallow: /ops/")))
 			.andExpect(content().string(containsString("Sitemap: https://sewerclarity.com/sitemap.xml")));
 	}
 }

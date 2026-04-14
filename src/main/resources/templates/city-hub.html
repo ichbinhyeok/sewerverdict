@@ -19,8 +19,8 @@
 					<h1 th:text="${cityEntry.profile.cityName + ', ' + cityEntry.profile.stateCode + ' Sewer Pages'}">City pages</h1>
 					<p class="lede" th:text="${cityEntry.profile.marketReason}">Market reason</p>
 					<ul class="decision-list">
-						<li><strong>No footage yet -> inspection first</strong> Start with the buyer or transfer page when the next decision still depends on inspection evidence.</li>
-						<li><strong>Boundary or ownership unclear -> responsibility first</strong> Start with the responsibility page before you assume the city, seller, or owner side pays.</li>
+						<li><strong>Transfer or closing pressure -> local transfer path first</strong> Start with the transfer page when the next move still depends on city signal, inspection evidence, or what may transfer after closing.</li>
+						<li><strong>Boundary, program, or ownership unclear -> compliance first</strong> Start with the responsibility page before you assume the city, seller, or owner side pays or owes a next step.</li>
 						<li><strong>Report finding already exists -> interpretation first</strong> Move into defect interpretation before cost comparison, then use cost pages only when the evidence is stronger.</li>
 					</ul>
 					<div class="trust-strip trust-strip-compact">
@@ -32,7 +32,7 @@
 				<div class="hero-actions">
 					<div class="decision-path-stack" th:if="${primaryStarter != null}">
 						<a class="decision-path-card decision-path-card-compact" th:href="${primaryStarter.slug}"
-						   th:with="routeTitle=${primaryStarter.buyerPage ? 'No footage yet -> inspection first' : (primaryStarter.coveragePage ? 'Boundary unclear -> responsibility first' : (primaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up'))}"
+						   th:with="routeTitle=${primaryStarter.transferPage ? 'No footage yet -> inspection first' : (primaryStarter.compliancePage ? 'Boundary unclear -> responsibility first' : (primaryStarter.buyerPage ? 'Buyer diligence -> inspection first' : (primaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up')))}"
 						   data-event-type="page_cta_click"
 						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + primaryStarter.title},data-event-route=${primaryStarter.recommendedRouteBucket},data-event-destination=${primaryStarter.measurementDestination},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${primaryStarter.geoPage},data-event-geo-family=${primaryStarter.trackingFamily},data-event-placement='city-hub-primary'">
 							<span class="card-kicker">Fastest first step</span>
@@ -41,7 +41,7 @@
 							<span class="decision-path-action" th:text="${primaryStarter.title}">Primary starter</span>
 						</a>
 						<a class="decision-path-card decision-path-card-compact" th:if="${secondaryStarter != null}" th:href="${secondaryStarter.slug}"
-						   th:with="routeTitle=${secondaryStarter.buyerPage ? 'No footage yet -> inspection first' : (secondaryStarter.coveragePage ? 'Boundary unclear -> responsibility first' : (secondaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up'))}"
+						   th:with="routeTitle=${secondaryStarter.transferPage ? 'No footage yet -> inspection first' : (secondaryStarter.compliancePage ? 'Boundary unclear -> responsibility first' : (secondaryStarter.buyerPage ? 'Buyer diligence -> inspection first' : (secondaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up')))}"
 						   data-event-type="page_cta_click"
 						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + secondaryStarter.title},data-event-route=${secondaryStarter.recommendedRouteBucket},data-event-destination=${secondaryStarter.measurementDestination},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${secondaryStarter.geoPage},data-event-geo-family=${secondaryStarter.trackingFamily},data-event-placement='city-hub-secondary'">
 							<span class="card-kicker">Next boundary check</span>
@@ -50,7 +50,7 @@
 							<span class="decision-path-action" th:text="${secondaryStarter.title}">Secondary starter</span>
 						</a>
 						<a class="decision-path-card decision-path-card-compact" th:if="${tertiaryStarter != null}" th:href="${tertiaryStarter.slug}"
-						   th:with="routeTitle=${tertiaryStarter.buyerPage ? 'No footage yet -> inspection first' : (tertiaryStarter.coveragePage ? 'Boundary unclear -> responsibility first' : (tertiaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up'))}"
+						   th:with="routeTitle=${tertiaryStarter.transferPage ? 'No footage yet -> inspection first' : (tertiaryStarter.compliancePage ? 'Boundary unclear -> responsibility first' : (tertiaryStarter.buyerPage ? 'Buyer diligence -> inspection first' : (tertiaryStarter.defectPage ? 'Finding in hand -> interpretation first' : 'Evidence stronger -> quote-ready follow-up')))}"
 						   data-event-type="page_cta_click"
 						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-hub:' + tertiaryStarter.title},data-event-route=${tertiaryStarter.recommendedRouteBucket},data-event-destination=${tertiaryStarter.measurementDestination},data-event-city=${cityEntry.profile.citySlug},data-event-geo-page=${tertiaryStarter.geoPage},data-event-geo-family=${tertiaryStarter.trackingFamily},data-event-placement='city-hub-tertiary'">
 							<span class="card-kicker">When a finding already exists</span>
@@ -92,23 +92,23 @@
 					</div>
 				</article>
 
-				<article class="section-card" th:if="${buyerStarter != null or coverageStarter != null or costStarter != null or defectStarter != null}">
+				<article class="section-card" th:if="${transferStarter != null or complianceStarter != null or costStarter != null or defectStarter != null}">
 					<h2>Pick the path that matches the situation</h2>
 					<p>Use these starting points when you need to share one city page with a buyer, seller, owner, or agent without sending them through the whole cluster first.</p>
 					<div class="related-card-grid">
-						<a class="related-page-card" th:if="${buyerStarter != null}" th:href="${buyerStarter.slug}"
+						<a class="related-page-card" th:if="${transferStarter != null}" th:href="${transferStarter.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:buyer:' + buyerStarter.title},data-event-route=${buyerStarter.recommendedRouteBucket},data-event-destination=${buyerStarter.measurementDestination},data-event-city=${buyerStarter.geoCitySlug},data-event-geo-page=${buyerStarter.geoPage},data-event-geo-family=${buyerStarter.trackingFamily},data-event-placement='city-scenario-buyer'">
-							<span class="card-kicker">If you are buying or negotiating</span>
-							<strong th:text="${buyerStarter.title}">Buyer starter</strong>
-							<span class="related-page-card-text" th:text="${buyerStarter.summary}">Buyer summary</span>
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:transfer:' + transferStarter.title},data-event-route=${transferStarter.recommendedRouteBucket},data-event-destination=${transferStarter.measurementDestination},data-event-city=${transferStarter.geoCitySlug},data-event-geo-page=${transferStarter.geoPage},data-event-geo-family=${transferStarter.trackingFamily},data-event-placement='city-scenario-transfer'">
+							<span class="card-kicker">If this is a transfer or closing decision</span>
+							<strong th:text="${transferStarter.title}">Transfer starter</strong>
+							<span class="related-page-card-text" th:text="${transferStarter.summary}">Transfer summary</span>
 						</a>
-						<a class="related-page-card" th:if="${coverageStarter != null}" th:href="${coverageStarter.slug}"
+						<a class="related-page-card" th:if="${complianceStarter != null}" th:href="${complianceStarter.slug}"
 						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:trust:' + coverageStarter.title},data-event-route=${coverageStarter.recommendedRouteBucket},data-event-destination=${coverageStarter.measurementDestination},data-event-city=${coverageStarter.geoCitySlug},data-event-geo-page=${coverageStarter.geoPage},data-event-geo-family=${coverageStarter.trackingFamily},data-event-placement='city-scenario-trust'">
-							<span class="card-kicker">If the first question is who owns the lateral</span>
-							<strong th:text="${coverageStarter.title}">Coverage starter</strong>
-							<span class="related-page-card-text" th:text="${coverageStarter.summary}">Coverage summary</span>
+						   th:attr="data-page-slug=${cityHubSlug},data-event-label=${'city-scenario:compliance:' + complianceStarter.title},data-event-route=${complianceStarter.recommendedRouteBucket},data-event-destination=${complianceStarter.measurementDestination},data-event-city=${complianceStarter.geoCitySlug},data-event-geo-page=${complianceStarter.geoPage},data-event-geo-family=${complianceStarter.trackingFamily},data-event-placement='city-scenario-compliance'">
+							<span class="card-kicker">If the first question is compliance, ownership, or program fit</span>
+							<strong th:text="${complianceStarter.title}">Compliance starter</strong>
+							<span class="related-page-card-text" th:text="${complianceStarter.summary}">Compliance summary</span>
 						</a>
 						<a class="related-page-card" th:if="${defectStarter != null}" th:href="${defectStarter.slug}"
 						   data-event-type="page_cta_click"
@@ -127,30 +127,30 @@
 					</div>
 				</article>
 
-				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(buyerPages)}">
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(transferPages)}">
 					<summary>
-						<span class="card-kicker">Browse the full buyer cluster</span>
-						<strong class="city-hub-disclosure-title">Buyer and negotiation pages</strong>
+						<span class="card-kicker">Browse the full transfer cluster</span>
+						<strong class="city-hub-disclosure-title">Transfer, buyer, and negotiation pages</strong>
 					</summary>
-					<p>Use these when the property is under contract, the sewer history is unclear, or the next move depends on better inspection evidence.</p>
+					<p>Use these when the property is under contract, the sewer history is unclear, or the next move depends on better inspection evidence before closing or before a seller ask.</p>
 					<div class="related-card-grid">
-						<a class="related-page-card" th:each="page : ${buyerPages}" th:href="${page.slug}">
-							<span class="card-kicker">Buyer path</span>
+						<a class="related-page-card" th:each="page : ${transferPages}" th:href="${page.slug}">
+							<span class="card-kicker">Transfer path</span>
 							<strong th:text="${page.title}">Page title</strong>
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>
 					</div>
 				</details>
 
-				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(coveragePages)}">
+				<details class="section-card city-hub-disclosure" th:if="${!#lists.isEmpty(compliancePages)}">
 					<summary>
-						<span class="card-kicker">Browse the full trust cluster</span>
-						<strong class="city-hub-disclosure-title">Responsibility and trust pages</strong>
+						<span class="card-kicker">Browse the full compliance cluster</span>
+						<strong class="city-hub-disclosure-title">Compliance, responsibility, and program pages</strong>
 					</summary>
-					<p>Use these when the first question is who likely owns the problem, where the boundary sits, or whether local support changes the next move.</p>
+					<p>Use these when the first question is who likely owns the problem, what local rules or programs change the next move, or whether the city signal is strong enough to matter.</p>
 					<div class="related-card-grid">
-						<a class="related-page-card" th:each="page : ${coveragePages}" th:href="${page.slug}">
-							<span class="card-kicker">Trust path</span>
+						<a class="related-page-card" th:each="page : ${compliancePages}" th:href="${page.slug}">
+							<span class="card-kicker">Compliance path</span>
 							<strong th:text="${page.title}">Page title</strong>
 							<span class="related-page-card-text" th:text="${page.summary}">Page summary</span>
 						</a>
@@ -203,6 +203,11 @@
 				<div class="rail-card" th:if="${cityEntry.profile.responsibilitySummary}">
 					<span class="card-kicker">Responsibility summary</span>
 					<p th:text="${cityEntry.profile.responsibilitySummary}">Responsibility summary</p>
+				</div>
+				<div class="rail-card" th:if="${cityEntry.profile.transferSignalSummary}">
+					<span class="card-kicker">Official transfer or certificate signal</span>
+					<p th:text="${cityEntry.profile.transferSignalSummary}">Transfer signal summary</p>
+					<a class="text-link" th:if="${transferSignalSource != null}" th:href="${transferSignalSource.url}" target="_blank" rel="noreferrer" th:text="${transferSignalSource.title}">Transfer signal source</a>
 				</div>
 				<div class="rail-card" th:if="${cityEntry.profile.programSummary}">
 					<span class="card-kicker">Program or caveat</span>

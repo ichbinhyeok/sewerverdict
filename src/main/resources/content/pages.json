@@ -22,8 +22,8 @@
     ],
     "primaryCtaLabel": "Get sewer repair or replacement quotes",
     "primaryCtaHref": "/get-sewer-quotes/",
-    "secondaryCtaLabel": "Use the estimator",
-    "secondaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Find sewer camera inspection options",
+    "secondaryCtaHref": "/find-sewer-scope/",
     "sections": [
       {
         "anchor": "price-drivers",
@@ -144,7 +144,7 @@
   },
   {
     "slug": "/sewer-scope-before-buying-house/",
-    "family": "buyer",
+    "family": "transfer",
     "clusterRole": "winner",
     "title": "Sewer Scope Before Buying a House",
     "metaTitle": "Sewer Scope Before Buying a House: Inspection First, Then Credits or Quotes | SewerClarity",
@@ -594,8 +594,8 @@
     ],
     "primaryCtaLabel": "Get sewer repair or replacement quotes",
     "primaryCtaHref": "/get-sewer-quotes/",
-    "secondaryCtaLabel": "Use the estimator",
-    "secondaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Find sewer camera inspection options",
+    "secondaryCtaHref": "/find-sewer-scope/",
     "sections": [
       {
         "anchor": "what-deterioration-looks-like",
@@ -694,9 +694,9 @@
       }
     ],
     "relatedSlugs": [
-      "/old-house-sewer-line-risk/",
-      "/sewer-line-replacement-cost/",
       "/cast-iron-pipe-deterioration-signs/",
+      "/sewer-scope-red-flags/",
+      "/how-to-read-sewer-scope-report/",
       "/sewer-line-under-slab-repair-cost/"
     ]
   },
@@ -721,8 +721,8 @@
     ],
     "primaryCtaLabel": "Get sewer repair or replacement quotes",
     "primaryCtaHref": "/get-sewer-quotes/",
-    "secondaryCtaLabel": "Use the estimator",
-    "secondaryCtaHref": "/estimator/",
+    "secondaryCtaLabel": "Find sewer camera inspection options",
+    "secondaryCtaHref": "/find-sewer-scope/",
     "sections": [
       {
         "anchor": "what-orangeburg-is",
@@ -831,15 +831,15 @@
       }
     ],
     "relatedSlugs": [
-      "/sewer-line-replacement-cost/",
-      "/old-house-sewer-line-risk/",
+      "/sewer-scope-red-flags/",
+      "/how-to-read-sewer-scope-report/",
       "/sewer-line-repair-vs-replacement/",
       "/trenchless-sewer-replacement-cost/"
     ]
   },
   {
     "slug": "/who-pays-for-sewer-line-repair-buyer-or-seller/",
-    "family": "buyer",
+    "family": "transfer",
     "clusterRole": "winner",
     "title": "Who Pays for Sewer Line Repair: Buyer or Seller?",
     "metaTitle": "Who Pays for Sewer Line Repair, Buyer or Seller? Evidence Before Credits | SewerClarity",
@@ -1358,7 +1358,7 @@
   },
   {
     "slug": "/sewer-scope-negotiation-with-seller/",
-    "family": "buyer",
+    "family": "transfer",
     "clusterRole": "support",
     "title": "Sewer Scope Negotiation With Seller",
     "metaTitle": "Sewer Scope Negotiation With Seller | SewerClarity",
@@ -1782,7 +1782,7 @@
   },
   {
     "slug": "/homeowner-vs-city-sewer-responsibility/",
-    "family": "coverage",
+    "family": "compliance",
     "clusterRole": "winner",
     "title": "Homeowner vs City Sewer Responsibility",
     "metaTitle": "Homeowner vs City Sewer Responsibility: Boundary First, Cost Later | SewerClarity",
@@ -1804,8 +1804,8 @@
     ],
     "primaryCtaLabel": "Find sewer camera inspection options",
     "primaryCtaHref": "/find-sewer-scope/",
-    "secondaryCtaLabel": "See private lateral repair cost",
-    "secondaryCtaHref": "/sewer-lateral-repair-cost/",
+    "secondaryCtaLabel": "See city responsibility pages",
+    "secondaryCtaHref": "/cities/",
     "sections": [
       {
         "anchor": "where-the-boundary-often-sits",
@@ -1918,9 +1918,9 @@
     ],
     "relatedSlugs": [
       "/who-pays-for-sewer-line-repair-buyer-or-seller/",
+      "/sewer-scope-before-buying-house/",
       "/sewer-lateral-repair-cost/",
-      "/does-home-insurance-cover-sewer-line-replacement/",
-      "/service-line-coverage-vs-home-warranty-for-sewer-lines/"
+      "/how-to-read-sewer-scope-report/"
     ]
   },
   {

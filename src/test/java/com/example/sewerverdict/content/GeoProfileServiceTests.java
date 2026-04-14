@@ -3,6 +3,7 @@ package com.example.sewerverdict.content;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -41,14 +42,14 @@ class GeoProfileServiceTests {
 	}
 
 	@Test
-	void cityHubStartersPrioritizeBuyerResponsibilityThenCostWhenNoDefectPageExists() {
+	void cityHubStartersKeepBuyerAndNegotiationAheadOfCostWhenNoDefectPageExists() {
 		CityHubEntry entry = geoProfileService.getCityHubEntry("philadelphia", siteContentService.getAllPages());
 
 		assertNotNull(entry);
 		assertEquals("/cities/philadelphia/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
 		assertEquals("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
 		assertEquals("/cities/philadelphia/who-pays-for-sewer-line-repair-buyer-or-seller/", entry.starterPages().get(2).getSlug());
-		assertEquals("/cities/philadelphia/sewer-line-repair-vs-replacement/", entry.starterPages().get(3).getSlug());
+		assertEquals("/cities/philadelphia/sewer-scope-negotiation-with-seller/", entry.starterPages().get(3).getSlug());
 		assertEquals(4, entry.starterPages().size());
 	}
 
@@ -60,5 +61,46 @@ class GeoProfileServiceTests {
 		assertEquals("/cities/milwaukee/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
 		assertEquals("/cities/milwaukee/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
 		assertEquals("/cities/milwaukee/sewer-backup-risk/", entry.starterPages().get(2).getSlug());
+	}
+
+	@Test
+	void zipOnlyLocationCanAnchorToCoveredDeliveryMarket() {
+		GeoLocationMatch match = geoProfileService.resolveLocationMatch("19147");
+
+		assertNotNull(match);
+		assertEquals("philadelphia", match.profile().getCitySlug());
+		assertTrue(match.zipBased());
+		assertEquals("19147", match.zipCode());
+		assertEquals("municipal-safe", match.matchScope());
+		assertTrue(match.cityConfirmationNeeded());
+	}
+
+	@Test
+	void zipPlusFourAlsoMatchesCoveredDeliveryMarket() {
+		GeoLocationMatch match = geoProfileService.resolveLocationMatch("60614");
+
+		assertNotNull(match);
+		assertEquals("chicago", match.profile().getCitySlug());
+		assertTrue(match.zipBased());
+		assertEquals("60614", match.zipCode());
+		assertEquals("delivery-market", match.matchScope());
+		assertTrue(match.cityConfirmationNeeded());
+	}
+
+	@Test
+	void directCityMatchDoesNotRequireCityConfirmation() {
+		GeoLocationMatch match = geoProfileService.resolveLocationMatch("Philadelphia, PA");
+
+		assertNotNull(match);
+		assertEquals("philadelphia", match.profile().getCitySlug());
+		assertFalse(match.zipBased());
+		assertFalse(match.cityConfirmationNeeded());
+	}
+
+	@Test
+	void unsupportedZipDoesNotPretendToMatchACoveredCity() {
+		GeoLocationMatch match = geoProfileService.resolveLocationMatch("99999");
+
+		assertNull(match);
 	}
 }

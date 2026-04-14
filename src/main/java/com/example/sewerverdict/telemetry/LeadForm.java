@@ -4,6 +4,7 @@ public class LeadForm {
 
 	private String serviceNeeded;
 	private String zipOrCity;
+	private String streetAddress;
 	private String role;
 	private String houseAgeBand;
 	private String issueState;
@@ -39,6 +40,14 @@ public class LeadForm {
 
 	public void setZipOrCity(String zipOrCity) {
 		this.zipOrCity = zipOrCity;
+	}
+
+	public String getStreetAddress() {
+		return streetAddress;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
 	public String getRole() {

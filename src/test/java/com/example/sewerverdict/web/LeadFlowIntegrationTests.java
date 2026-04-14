@@ -1,6 +1,7 @@
 package com.example.sewerverdict.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -54,6 +55,7 @@ class LeadFlowIntegrationTests {
 		mockMvc.perform(post("/estimator/results/")
 				.param("role", "buyer")
 				.param("location", "19103")
+				.param("streetAddress", "121 N LaSalle St")
 				.param("houseAgeBand", "pre-1950")
 				.param("issueState", "no-scope-yet")
 				.param("defectType", "unknown")
@@ -67,10 +69,13 @@ class LeadFlowIntegrationTests {
 			.andExpect(content().string(containsString("/find-sewer-scope/?")))
 			.andExpect(content().string(containsString("draftId=")))
 			.andExpect(content().string(containsString("utmSource=google")))
+			.andExpect(content().string(containsString("streetAddress=121%20N%20LaSalle%20St")))
 			.andExpect(content().string(containsString("How SewerClarity read the finding")))
 			.andExpect(content().string(containsString("What upgrades severity")))
 			.andExpect(content().string(containsString("Sources behind this read")))
-			.andExpect(content().string(containsString("Sewer Camera Inspection Cost")));
+			.andExpect(content().string(containsString("Sewer Camera Inspection Cost")))
+			.andExpect(content().string(containsString("City confirmation still needed")))
+			.andExpect(content().string(containsString("ZIP-only input can anchor SewerClarity to a covered market")));
 
 		String drafts = Files.readString(DRAFTS_FILE);
 		String events = Files.readString(EVENTS_FILE);
@@ -85,7 +90,7 @@ class LeadFlowIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Finish the missing steps before SewerClarity builds a directional call.")))
 			.andExpect(content().string(containsString("Choose whether you are the buyer, seller, or owner.")))
-			.andExpect(content().string(containsString("Add the ZIP code or city so the result anchors to a real market.")));
+			.andExpect(content().string(containsString("Add the property city or ZIP so the result anchors to a real covered market.")));
 
 		String drafts = Files.readString(DRAFTS_FILE);
 		org.junit.jupiter.api.Assertions.assertEquals("", drafts);
@@ -162,7 +167,34 @@ class LeadFlowIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Estimator carry-forward")))
 			.andExpect(content().string(containsString("Matched Philadelphia, PA.")))
-			.andExpect(content().string(containsString("Transaction risk with incomplete evidence")));
+			.andExpect(content().string(containsString("Transaction risk with incomplete evidence")))
+			.andExpect(content().string(containsString("Street address (optional for exact city match)")));
+	}
+
+	@Test
+	void leadPageShowsZipGuardrailWhenDraftUsedZipOnlyInput() throws Exception {
+		mockMvc.perform(post("/estimator/results/")
+				.param("role", "buyer")
+				.param("location", "19103")
+				.param("houseAgeBand", "pre-1950")
+				.param("issueState", "no-scope-yet")
+				.param("defectType", "unknown")
+				.param("accessType", "unknown")
+				.param("urgency", "active-decision"))
+			.andExpect(status().isOk());
+
+		String drafts = Files.readString(DRAFTS_FILE).trim();
+		String draftId = drafts.substring(drafts.indexOf("\"draftId\":\"") + 11);
+		draftId = draftId.substring(0, draftId.indexOf('"'));
+
+		mockMvc.perform(get("/find-sewer-scope/")
+				.param("draftId", draftId)
+				.param("recommendedServicePath", "inspection")
+				.param("serviceNeeded", "inspection"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("City confirmation still needed")))
+			.andExpect(content().string(containsString("ZIP-only input can anchor SewerClarity to a covered market")))
+			.andExpect(content().string(containsString("ZIP 19103 anchored this to the Philadelphia, PA covered-market profile using a narrowed municipal-safe ZIP subset")));
 	}
 
 	@Test
@@ -208,11 +240,41 @@ class LeadFlowIntegrationTests {
 	}
 
 	@Test
+	void leadSubmitAllowsMissingPhoneToReduceFriction() throws Exception {
+		mockMvc.perform(post("/find-sewer-scope/")
+				.param("serviceNeeded", "inspection")
+				.param("recommendedServicePath", "inspection")
+				.param("zipOrCity", "Philadelphia, PA")
+				.param("role", "buyer")
+				.param("houseAgeBand", "pre-1950")
+				.param("issueState", "no-scope-yet")
+				.param("defectType", "unknown")
+				.param("urgency", "active-decision")
+				.param("name", "No Phone Buyer")
+				.param("email", "nophone@example.com")
+				.param("consentGiven", "true"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Thanks. Your details were saved")));
+
+		String leads = Files.readString(LEADS_FILE);
+		org.junit.jupiter.api.Assertions.assertTrue(leads.contains("\"email\":\"nophone@example.com\""));
+	}
+
+	@Test
+	void leadValidationScriptDoesNotRequirePhoneField() throws Exception {
+		mockMvc.perform(get("/site.js"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("phone: {")))
+			.andExpect(content().string(containsString("validate: () => \"\"")))
+			.andExpect(content().string(not(containsString("Enter the best phone number for a reply."))));
+	}
+
+	@Test
 	void invalidLeadSubmitShowsFieldLevelErrors() throws Exception {
 		mockMvc.perform(post("/find-sewer-scope/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Please check the highlighted fields and consent box before submitting.")))
-			.andExpect(content().string(containsString("Add the ZIP or city so the request anchors to a real market.")))
+			.andExpect(content().string(containsString("Add the property city or ZIP so routing does not stay generic.")))
 			.andExpect(content().string(containsString("Consent is required before SewerClarity can pass this request forward.")));
 
 		String events = Files.readString(EVENTS_FILE);
@@ -235,6 +297,7 @@ class LeadFlowIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Relevant guides")))
 			.andExpect(content().string(containsString("Sewer Scope Before Buying a House")))
+			.andExpect(content().string(containsString("Sewer Scope Negotiation With Seller")))
 			.andExpect(content().string(containsString("Why does the form still ask for location?")));
 
 		mockMvc.perform(get("/get-sewer-quotes/"))

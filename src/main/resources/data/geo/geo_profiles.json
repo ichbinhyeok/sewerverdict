@@ -4,13 +4,14 @@
     "cityName": "Philadelphia",
     "stateCode": "PA",
     "priorityTier": "tier-1",
-    "marketReason": "Older sold-home stock, explicit lateral responsibility language, and a real repair-loan program make Philadelphia a strong buyer and owner wedge.",
+    "marketReason": "Older sold-home stock, owner-side lateral responsibility, Philadelphia's property sales certification, and a real repair-loan program make Philadelphia the strongest transfer-compliance wedge in the current city set.",
     "housingAgeSignal": "Philadelphia-area sales skew old enough that buried-line diligence is commercially relevant rather than theoretical.",
     "systemContext": "Philadelphia's official water and city pages both describe sewer laterals as customer-maintained lines connecting the home to the main.",
     "responsibilitySummary": "Owner-side responsibility is a practical part of both buyer diligence and owner-side repair planning in Philadelphia.",
-    "programSummary": "The City's HELP program can cover eligible owner-occupied water and sewer lateral repairs with zero-interest financing.",
+    "transferSignalSummary": "Philadelphia's property sales certification makes sewer lateral questions part of a real closing-time compliance workflow, not just a generic repair conversation.",
+    "programSummary": "Philadelphia's property sales certification creates a real transfer-compliance trigger, and the City's HELP program can cover eligible owner-occupied water and sewer lateral repairs with zero-interest financing.",
     "ctaBias": "Push inspection-first for active buyers, then move to quote or financing conversations only once the line condition is documented.",
-    "sourceIds": ["red-001", "phl-001", "pwd-001", "phl-002", "phl-003"]
+    "sourceIds": ["red-001", "phl-001", "pwd-001", "phl-002", "phl-003", "phl-004"]
   },
   {
     "citySlug": "pittsburgh",

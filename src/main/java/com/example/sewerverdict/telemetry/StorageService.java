@@ -79,16 +79,13 @@ public class StorageService {
 			errors.put("serviceNeeded", "Choose the service path so routing does not stay generic.");
 		}
 		if (!StringUtils.hasText(form.getZipOrCity())) {
-			errors.put("zipOrCity", "Add the ZIP or city so the request anchors to a real market.");
+			errors.put("zipOrCity", "Add the property city or ZIP so routing does not stay generic.");
 		}
 		if (!StringUtils.hasText(form.getName())) {
 			errors.put("name", "Add your name so the next contact step is usable.");
 		}
 		if (!StringUtils.hasText(form.getEmail())) {
 			errors.put("email", "Add an email address for the next routing step.");
-		}
-		if (!StringUtils.hasText(form.getPhone())) {
-			errors.put("phone", "Add a phone number so inspection or quote follow-up is possible.");
 		}
 		if (!form.isConsentGiven()) {
 			errors.put("consentGiven", "Consent is required before SewerClarity can pass this request forward.");
@@ -108,6 +105,7 @@ public class StorageService {
 		payload.putAll(buildGeoContext(pageSlug, referrer));
 		payload.put("role", form.getRole());
 		payload.put("location", form.getLocation());
+		payload.put("streetAddress", form.getStreetAddress());
 		payload.put("locationNormalized", normalizeLocation(form.getLocation()));
 		payload.put("houseAgeBand", form.getHouseAgeBand());
 		payload.put("issueState", form.getIssueState());
@@ -121,6 +119,7 @@ public class StorageService {
 		payload.put("evidenceSummary", result.evidenceSummary());
 		payload.put("estimateMethodSummary", result.estimateMethodSummary());
 		payload.put("localContextSummary", result.localContextSummary());
+		payload.put("cityConfirmationNeeded", result.cityConfirmationNeeded());
 		payload.put("callDrivers", result.callDrivers());
 		payload.put("summaryBlock", result.summaryBlock());
 		payload.put("primaryServiceNeeded", result.primaryServiceNeeded());
@@ -158,6 +157,7 @@ public class StorageService {
 				return Optional.of(new EstimatorDraftSnapshot(
 					asString(payload.get("draftId")),
 					asString(payload.get("location")),
+					asString(payload.get("streetAddress")),
 					asString(payload.get("riskTier")),
 					asString(payload.get("likelyNextStep")),
 					asString(payload.get("routingBucket")),
@@ -165,6 +165,7 @@ public class StorageService {
 					asString(payload.get("evidenceSummary")),
 					asString(payload.get("estimateMethodSummary")),
 					asString(payload.get("localContextSummary")),
+					asBoolean(payload.get("cityConfirmationNeeded")),
 					asString(payload.get("summaryBlock")),
 					asStringList(payload.get("callDrivers"))
 				));
@@ -190,6 +191,7 @@ public class StorageService {
 		payload.put("opsStatus", "new");
 		payload.put("role", form.getRole());
 		payload.put("zipOrCity", form.getZipOrCity());
+		payload.put("streetAddress", form.getStreetAddress());
 		payload.put("locationNormalized", normalizeLocation(form.getZipOrCity()));
 		payload.put("houseAgeBand", form.getHouseAgeBand());
 		payload.put("issueState", form.getIssueState());
@@ -342,6 +344,16 @@ public class StorageService {
 			.map(this::asString)
 			.filter(StringUtils::hasText)
 			.toList();
+	}
+
+	private boolean asBoolean(Object value) {
+		if (value instanceof Boolean booleanValue) {
+			return booleanValue;
+		}
+		if (value instanceof String stringValue) {
+			return Boolean.parseBoolean(stringValue);
+		}
+		return false;
 	}
 
 	private void initializeFile(Path file) throws IOException {

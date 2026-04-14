@@ -4,6 +4,7 @@ public class EstimatorForm {
 
 	private String role;
 	private String location;
+	private String streetAddress;
 	private String houseAgeBand;
 	private String issueState;
 	private String defectType;
@@ -32,6 +33,14 @@ public class EstimatorForm {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public String getStreetAddress() {
+		return streetAddress;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
 	}
 
 	public String getHouseAgeBand() {

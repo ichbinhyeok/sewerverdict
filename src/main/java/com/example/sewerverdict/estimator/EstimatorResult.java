@@ -18,6 +18,7 @@ public record EstimatorResult(
 	String estimateMethodSummary,
 	List<String> sourceIds,
 	String localContextSummary,
+	boolean cityConfirmationNeeded,
 	String likelyNextStep,
 	String primaryCtaLabel,
 	String primaryCtaHref,

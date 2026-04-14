@@ -41,20 +41,25 @@ class SiteControllerIntegrationTests {
 	void homePageHighlightsBuyerLateralAndResponsibilityWedge() throws Exception {
 		mockMvc.perform(get("/"))
 			.andExpect(status().isOk())
-			.andExpect(content().string(containsString("Before you waive, negotiate, or assume the city pays")))
-			.andExpect(content().string(containsString("Decide the next move on sewer lateral risk before closing, before quotes, or before blaming the city.")))
-			.andExpect(content().string(containsString("No footage yet")))
-			.andExpect(content().string(containsString("Boundary or ownership unclear")))
+			.andExpect(content().string(containsString("Before transfer, closing, or city-boundary assumptions harden")))
+			.andExpect(content().string(containsString("Use city sewer lateral transfer and compliance signals before you negotiate, quote, or guess who owns the problem.")))
+			.andExpect(content().string(containsString("Transfer or closing pressure")))
+			.andExpect(content().string(containsString("Buyer, seller, or owner exposure unclear")))
 			.andExpect(content().string(containsString("Report finding or known defect")))
-			.andExpect(content().string(containsString("Interpret the finding before you go quote-first.")))
+			.andExpect(content().string(containsString("Interpret the finding before you turn it into a transfer or quote ask.")))
 			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")))
-			.andExpect(content().string(containsString("data-event-route=\"inspection-first\"")))
+			.andExpect(content().string(containsString("data-event-route=\"responsibility-first\"")))
 			.andExpect(content().string(containsString("Homeowner vs City Sewer Responsibility")))
-			.andExpect(content().string(containsString("Sewer Scope Red Flags")))
+			.andExpect(content().string(containsString("Sewer Scope Negotiation With Seller")))
 			.andExpect(content().string(containsString("How to Read a Sewer Scope Report")))
-			.andExpect(content().string(containsString("Report findings, defect interpretation, and quote-ready follow-up")))
+			.andExpect(content().string(containsString("Cast Iron Sewer Pipe Replacement Cost")))
+			.andExpect(content().string(containsString("Orangeburg Pipe Replacement Cost")))
+			.andExpect(content().string(containsString("Start with transfer, compliance, and report-first decisions")))
+			.andExpect(content().string(containsString("Report, material, and defect paths once the transfer story has real evidence")))
+			.andExpect(content().string(containsString("data-event-placement=\"home-featured\"")))
+			.andExpect(content().string(containsString("data-event-placement=\"home-issue\"")))
 			.andExpect(content().string(containsString("Who Pays")))
-			.andExpect(content().string(containsString("href=\"/sewer-scope-red-flags/\">Scope Findings")))
+			.andExpect(content().string(containsString("Read the scope calmly")))
 			.andExpect(content().string(containsString("Detroit Sewer Scope Before Buying a House")));
 	}
 
@@ -65,13 +70,17 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Philadelphia, PA Sewer Pages")))
 			.andExpect(content().string(containsString("tier-1 lateral-risk hub")))
 			.andExpect(content().string(containsString("Start Here in Philadelphia")))
-			.andExpect(content().string(containsString("Boundary or ownership unclear -> responsibility first")))
-			.andExpect(content().string(containsString("buyer diligence first, responsibility next, defect interpretation after that")))
+			.andExpect(content().string(containsString("Boundary, program, or ownership unclear -> compliance first")))
+			.andExpect(content().string(containsString("transfer and closing pages first, official responsibility or program context next")))
 			.andExpect(content().string(containsString("Pick the path that matches the situation")))
 			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")))
 			.andExpect(content().string(containsString("Philadelphia Who Pays for Sewer Line Repair: Buyer or Seller")))
 			.andExpect(content().string(containsString("Philadelphia Sewer Line Repair vs Replacement")))
-			.andExpect(content().string(containsString("Responsibility and trust pages")))
+			.andExpect(content().string(containsString("Transfer path")))
+			.andExpect(content().string(containsString("Compliance path")))
+			.andExpect(content().string(containsString("Compliance, responsibility, and program pages")))
+			.andExpect(content().string(containsString("Official transfer or certificate signal")))
+			.andExpect(content().string(containsString("property sales certification")))
 			.andExpect(content().string(containsString("Use estimator from city hub")))
 			.andExpect(content().string(containsString("Sources used for this city hub")));
 
@@ -129,7 +138,7 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/cities/milwaukee/sewer-scope-negotiation-with-seller/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Milwaukee Sewer Scope Negotiation With Seller")))
-			.andExpect(content().string(containsString("Buyer decision lens")));
+			.andExpect(content().string(containsString("Transfer and closing lens")));
 
 		mockMvc.perform(get("/cities/baltimore/sewer-scope-before-buying-house/"))
 			.andExpect(status().isOk())
@@ -147,7 +156,7 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/cities/cincinnati/sewer-scope-negotiation-with-seller/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Cincinnati Sewer Scope Negotiation With Seller")))
-			.andExpect(content().string(containsString("Buyer decision lens")));
+			.andExpect(content().string(containsString("Transfer and closing lens")));
 
 		mockMvc.perform(get("/cities/baltimore/sewer-scope-negotiation-with-seller/"))
 			.andExpect(status().isOk())
@@ -157,7 +166,7 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/cities/detroit/sewer-scope-negotiation-with-seller/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Detroit Sewer Scope Negotiation With Seller")))
-			.andExpect(content().string(containsString("Buyer decision lens")));
+			.andExpect(content().string(containsString("Transfer and closing lens")));
 	}
 
 	@Test
@@ -244,6 +253,14 @@ class SiteControllerIntegrationTests {
 	}
 
 	@Test
+	void coveragePagesKeepCoverageLensInsteadOfComplianceLens() throws Exception {
+		mockMvc.perform(get("/does-home-insurance-cover-sewer-line-replacement/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Coverage and responsibility lens")))
+			.andExpect(content().string(not(containsString("Compliance and responsibility lens"))));
+	}
+
+	@Test
 	void trustTopicClustersSurfaceWinnerBeforeSupportPages() throws Exception {
 		mockMvc.perform(get("/privacy/"))
 			.andExpect(status().isOk())
@@ -311,8 +328,8 @@ class SiteControllerIntegrationTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("buyer-paid repair")))
 			.andExpect(content().string(containsString("get a scope before you start arguing over credits, repair bids, or who should pay")))
-			.andExpect(content().string(containsString("No footage yet")))
-			.andExpect(content().string(containsString("See buyer vs seller sewer responsibility")))
+			.andExpect(content().string(containsString("City rule may change the ask")))
+			.andExpect(content().string(containsString("Open city transfer paths")))
 			.andExpect(content().string(containsString("data-event-type=\"page_cta_click\"")));
 
 		mockMvc.perform(get("/who-pays-for-sewer-line-repair-buyer-or-seller/"))
@@ -325,9 +342,9 @@ class SiteControllerIntegrationTests {
 		mockMvc.perform(get("/homeowner-vs-city-sewer-responsibility/"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("City examples that show why the answer changes")))
-			.andExpect(content().string(containsString("See city responsibility pages")))
-			.andExpect(content().string(containsString("Boundary still unclear")))
-			.andExpect(content().string(containsString("See private lateral repair cost")));
+			.andExpect(content().string(containsString("See city compliance pages")))
+			.andExpect(content().string(containsString("City rule or program still matters")))
+			.andExpect(content().string(containsString("Sewer Scope Before Buying a House")));
 	}
 
 	@Test
@@ -345,6 +362,18 @@ class SiteControllerIntegrationTests {
 			.andExpect(content().string(containsString("Clarify who owns the line")))
 			.andExpect(content().string(containsString("Private lateral confirmed")))
 			.andExpect(content().string(containsString("data-event-destination=\"lead-route\"")));
+
+		mockMvc.perform(get("/cast-iron-sewer-pipe-replacement-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Find sewer camera inspection options")))
+			.andExpect(content().string(containsString("Sewer Scope Red Flags")))
+			.andExpect(content().string(not(containsString(">Use the estimator<"))));
+
+		mockMvc.perform(get("/orangeburg-pipe-replacement-cost/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Find sewer camera inspection options")))
+			.andExpect(content().string(containsString("How to Read a Sewer Scope Report")))
+			.andExpect(content().string(not(containsString(">Use the estimator<"))));
 	}
 
 	@Test

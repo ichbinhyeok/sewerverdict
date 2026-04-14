@@ -81,15 +81,15 @@
 						<p th:text="${page.nextStep}">Next step</p>
 					</article>
 				</div>
-				<article class="section-card section-card-accent" th:if="${page.buyerPage}">
-					<h2>Buyer decision lens</h2>
+				<article class="section-card section-card-accent" th:if="${page.transferPage or page.buyerPage}">
+					<h2 th:text="${page.transferPage ? 'Transfer and closing lens' : 'Buyer decision lens'}">Buyer decision lens</h2>
 					<div class="card-grid card-grid-2">
 						<div class="info-card">
-							<span class="card-kicker">Deal impact</span>
+							<span class="card-kicker" th:text="${page.transferPage ? 'Transfer impact' : 'Deal impact'}">Deal impact</span>
 							<p th:text="${page.quickAnswer}">Quick answer</p>
 						</div>
 						<div class="info-card">
-							<span class="card-kicker">Negotiation posture</span>
+							<span class="card-kicker" th:text="${page.transferPage ? 'What to verify before credits or certificates' : 'Negotiation posture'}">Negotiation posture</span>
 							<p th:text="${page.nextStep}">Next step</p>
 						</div>
 					</div>
@@ -120,15 +120,15 @@
 						</div>
 					</div>
 				</article>
-				<article class="section-card section-card-accent" th:if="${page.coveragePage}">
-					<h2>Responsibility lens</h2>
+				<article class="section-card section-card-accent" th:if="${page.coveragePage or page.compliancePage}">
+					<h2 th:text="${page.compliancePage ? 'Compliance and responsibility lens' : 'Coverage and responsibility lens'}">Compliance and responsibility lens</h2>
 					<div class="card-grid card-grid-2">
 						<div class="info-card">
-							<span class="card-kicker">What boundary looks like</span>
+							<span class="card-kicker" th:text="${page.compliancePage ? 'What the local boundary looks like' : 'What the coverage promise really depends on'}">What the local boundary looks like</span>
 							<p th:text="${page.quickAnswer}">Quick answer</p>
 						</div>
 						<div class="info-card">
-							<span class="card-kicker">What to verify first</span>
+							<span class="card-kicker" th:text="${page.compliancePage ? 'What to verify before you ask for money, credits, or action' : 'What to verify before you count on reimbursement'}">What to verify before you ask for money, credits, or action</span>
 							<p th:text="${page.uncertainty}">Uncertainty</p>
 						</div>
 					</div>
@@ -243,7 +243,7 @@
 				</article>
 				<article class="section-card" th:if="${!#lists.isEmpty(familyClusterPages)}">
 					<h2>More in this topic</h2>
-					<p>Use this topic cluster when you want the wider buyer, defect, cost, coverage, or trust context instead of only the next follow-up page.</p>
+					<p>Use this topic cluster when you want the wider transfer, compliance, buyer, defect, cost, coverage, or trust context instead of only the next follow-up page.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="clusterPage : ${familyClusterPages}" th:href="${clusterPage.slug}">
 							<span class="card-kicker" th:text="${clusterPage.clusterRoleLabel + ' - ' + clusterPage.eyebrow}">Topic page</span>

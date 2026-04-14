@@ -281,6 +281,14 @@ public class SitePage {
 		return matchesFamily("coverage");
 	}
 
+	public boolean isTransferPage() {
+		return matchesFamily("transfer");
+	}
+
+	public boolean isCompliancePage() {
+		return matchesFamily("compliance");
+	}
+
 	public boolean isGeoPage() {
 		return slug != null && slug.startsWith("/cities/");
 	}
@@ -330,11 +338,11 @@ public class SitePage {
 	}
 
 	public String getRecommendedRouteBucket() {
-		if (isBuyerPage()) {
-			return "inspection-first";
-		}
-		if (isCoveragePage()) {
+		if (isCompliancePage()) {
 			return "responsibility-first";
+		}
+		if (isTransferPage()) {
+			return "inspection-first";
 		}
 		if (isDefectPage()) {
 			return "interpretation-first";
@@ -346,11 +354,11 @@ public class SitePage {
 	}
 
 	public String getMeasurementDestination() {
-		if (isBuyerPage()) {
-			return "buyer-page";
+		if (isCompliancePage()) {
+			return "compliance-page";
 		}
-		if (isCoveragePage()) {
-			return "responsibility-page";
+		if (isTransferPage()) {
+			return "transfer-page";
 		}
 		if (isDefectPage()) {
 			return "defect-page";
@@ -365,14 +373,12 @@ public class SitePage {
 	}
 
 	private boolean matchesFamily(String expectedFamily) {
-		if (expectedFamily.equalsIgnoreCase(family)) {
-			return true;
-		}
-		if (!isGeoPage()) {
-			return false;
-		}
-		String inferredFamily = inferGeoFamily();
-		return expectedFamily.equalsIgnoreCase(inferredFamily);
+		String trackingFamily = getTrackingFamily();
+		return expectedFamily.equalsIgnoreCase(trackingFamily);
+	}
+
+	private boolean containsToken(String value, String token) {
+		return value != null && value.toLowerCase().contains(token);
 	}
 
 	private String inferGeoFamily() {
@@ -393,17 +399,27 @@ public class SitePage {
 		if (hint == null || hint.isBlank()) {
 			return null;
 		}
-		if (hint.contains("before-buying-house") || hint.contains("buyer-or-seller")
-				|| hint.contains("old-house") || hint.contains("before-1970")
+		if (hint.contains("before-buying-house")
+				|| hint.contains("buyer-or-seller")
 				|| hint.contains("negotiation-with-seller")
+				|| hint.contains("point-of-sale")
+				|| hint.contains("certificate")
+				|| hint.contains("required-inspection")) {
+			return "transfer";
+		}
+		if (hint.contains("homeowner-vs-city")
+				|| hint.contains("wet-weather-sewer-backup-responsibility")
+				|| hint.contains("compliance")) {
+			return "compliance";
+		}
+		if (hint.contains("home-insurance-cover")
+				|| hint.contains("service-line-coverage")) {
+			return "coverage";
+		}
+		if (hint.contains("old-house") || hint.contains("before-1970")
 				|| hint.contains("scope-worth-it")
 				|| hint.contains("scope-inspection")) {
 			return "buyer";
-		}
-		if (hint.contains("homeowner-vs-city")
-				|| hint.contains("home-insurance-cover")
-				|| hint.contains("service-line-coverage")) {
-			return "coverage";
 		}
 		if (hint.contains("risk") || hint.contains("red-flags")
 				|| hint.contains("what-to-do") || hint.contains("meaning")

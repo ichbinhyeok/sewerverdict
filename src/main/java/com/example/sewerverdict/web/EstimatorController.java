@@ -119,7 +119,7 @@ public class EstimatorController {
 			errors.add("Choose whether you are the buyer, seller, or owner.");
 		}
 		if (!StringUtils.hasText(form.getLocation())) {
-			errors.add("Add the ZIP code or city so the result anchors to a real market.");
+			errors.add("Add the property city or ZIP so the result anchors to a real covered market.");
 		}
 		if (!StringUtils.hasText(form.getHouseAgeBand())) {
 			errors.add("Choose the house age band so the buried-line risk is not too generic.");
@@ -140,6 +140,7 @@ public class EstimatorController {
 			.queryParam("recommendedServicePath", serviceNeeded);
 		appendIfPresent(builder, "role", form.getRole());
 		appendIfPresent(builder, "zipOrCity", form.getLocation());
+		appendIfPresent(builder, "streetAddress", form.getStreetAddress());
 		appendIfPresent(builder, "houseAgeBand", form.getHouseAgeBand());
 		appendIfPresent(builder, "issueState", form.getIssueState());
 		appendIfPresent(builder, "defectType", form.getDefectType());
@@ -152,7 +153,7 @@ public class EstimatorController {
 		appendIfPresent(builder, "gclid", form.getGclid());
 		appendIfPresent(builder, "wbraid", form.getWbraid());
 		appendIfPresent(builder, "gbraid", form.getGbraid());
-		return builder.build().toUriString();
+		return builder.build().encode().toUriString();
 	}
 
 	private void appendIfPresent(UriComponentsBuilder builder, String key, String value) {

@@ -11,17 +11,17 @@
 				<div>
 					<span class="eyebrow">Local wedges</span>
 					<h1>City pages built only where the local signal is real.</h1>
-					<p class="lede">These pages exist because the housing stock, sewer system, responsibility boundary, or repair-program context materially changes the next decision.</p>
+					<p class="lede">These pages exist because official transfer, responsibility, wet-weather, or program context materially changes the next decision. Where the local signal is weak, SewerClarity stays conservative instead of inventing a city rule.</p>
 				</div>
 				<div class="hero-actions">
 					<div class="meta-block">
 						<div><strong>Rule:</strong> No city-swap pages</div>
-						<div><strong>Bias:</strong> Inspection-first until evidence gets stronger</div>
+						<div><strong>Bias:</strong> City path first when official local signals matter</div>
 						<div><strong>Filter:</strong> Official utility or city context where available</div>
 					</div>
 					<div class="meta-block meta-block-accent">
 						<div class="card-kicker">How to use this hub</div>
-						<p>Start with the city that matches the property or transaction, then choose the page that best matches the current problem.</p>
+						<p>Start with the city that matches the property or transfer, then choose the page that best matches the current problem: transfer, compliance, interpretation, or quote comparison.</p>
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="section-heading">
 				<span class="eyebrow">Tier 1 cities</span>
-				<h2>Highest-priority local markets for buyer, cost, and buried-line trust</h2>
+				<h2>Highest-priority local markets for transfer, responsibility, and buried-line trust</h2>
 			</div>
 			<div class="city-hub-grid">
 				<article class="section-card" th:each="entry : ${tierOneCities}">
@@ -45,7 +45,7 @@
 							<p th:text="${entry.profile.housingAgeSignal}">Housing signal</p>
 						</div>
 						<div class="rail-card">
-							<span class="card-kicker">Local system or ownership</span>
+							<span class="card-kicker">Local system, ownership, or program signal</span>
 							<p th:text="${entry.profile.systemContext}">System context</p>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 		<div class="container">
 			<div class="section-heading">
 				<span class="eyebrow">Tier 2 cities</span>
-				<h2>Support markets where responsibility language is stronger than raw volume</h2>
+				<h2>Support markets where responsibility or program language is stronger than raw volume</h2>
 			</div>
 			<div class="city-hub-grid">
 				<article class="section-card" th:each="entry : ${tierTwoCities}">
