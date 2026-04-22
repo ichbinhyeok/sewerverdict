@@ -59,6 +59,10 @@ public class SeoMetadataService {
 		model.addAttribute("schemaScripts", schemaScripts);
 	}
 
+	public void appendWebApplicationSchema(Model model, HttpServletRequest request, String name, String description) {
+		appendSchema(model, buildWebApplicationSchema(name, description, buildCanonicalUrl(request)));
+	}
+
 	private Map<String, Object> buildOrganizationSchema(String canonicalUrl) {
 		String origin = extractOrigin(canonicalUrl);
 		Map<String, Object> schema = new LinkedHashMap<>();
@@ -126,6 +130,40 @@ public class SeoMetadataService {
 		schema.put("reviewedBy", Map.of("@type", "Person", "name", "Plumbing-risk content reviewer"));
 		schema.put("publisher", Map.of("@type", "Organization", "name", "SewerClarity"));
 		return schema;
+	}
+
+	private Map<String, Object> buildWebApplicationSchema(String name, String description, String canonicalUrl) {
+		Map<String, Object> schema = new LinkedHashMap<>();
+		schema.put("@context", "https://schema.org");
+		schema.put("@type", "WebApplication");
+		schema.put("name", name);
+		schema.put("description", description);
+		schema.put("url", canonicalUrl);
+		schema.put("applicationCategory", "UtilityApplication");
+		schema.put("operatingSystem", "Any");
+		schema.put("isAccessibleForFree", true);
+		schema.put("featureList", List.of(
+			"Estimate sewer-line risk",
+			"Route inspection-first versus quote-ready next steps",
+			"Show rough cost direction and uncertainty drivers"
+		));
+		schema.put("offers", Map.of(
+			"@type", "Offer",
+			"price", "0",
+			"priceCurrency", "USD"
+		));
+		schema.put("publisher", Map.of("@type", "Organization", "name", "SewerClarity"));
+		return schema;
+	}
+
+	private void appendSchema(Model model, Map<String, Object> schema) {
+		@SuppressWarnings("unchecked")
+		List<String> schemaScripts = (List<String>) model.asMap().get("schemaScripts");
+		if (schemaScripts == null) {
+			schemaScripts = new ArrayList<>();
+			model.addAttribute("schemaScripts", schemaScripts);
+		}
+		schemaScripts.add(writeJsonLd(schema));
 	}
 
 	private String writeJsonLd(Map<String, Object> schema) {

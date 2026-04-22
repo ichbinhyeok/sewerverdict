@@ -97,6 +97,16 @@ class LeadFlowIntegrationTests {
 	}
 
 	@Test
+	void estimatorPageCarriesWebApplicationSchema() throws Exception {
+		mockMvc.perform(get("/estimator/"))
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("\"@type\":\"WebApplication\"")))
+			.andExpect(content().string(containsString("\"applicationCategory\":\"UtilityApplication\"")))
+			.andExpect(content().string(containsString("If you arrived from a winner page or route page")))
+			.andExpect(content().string(containsString("Start the tool")));
+	}
+
+	@Test
 	void leadSubmitStoresDraftAndAttribution() throws Exception {
 		MvcResult result = mockMvc.perform(post("/estimator/results/")
 				.param("role", "buyer")
@@ -295,13 +305,19 @@ class LeadFlowIntegrationTests {
 	void leadPagesExposeGuidesAndFaqContent() throws Exception {
 		mockMvc.perform(get("/find-sewer-scope/"))
 			.andExpect(status().isOk())
-			.andExpect(content().string(containsString("Relevant guides")))
+			.andExpect(content().string(containsString("Choose the route before the form")))
+			.andExpect(content().string(containsString("Switch now if this is not really an inspection-first case")))
+			.andExpect(content().string(containsString("Jump back into the estimator first")))
+			.andExpect(content().string(containsString("Use these guides after you pick the route")))
 			.andExpect(content().string(containsString("Sewer Scope Before Buying a House")))
 			.andExpect(content().string(containsString("Sewer Scope Negotiation With Seller")))
 			.andExpect(content().string(containsString("Why does the form still ask for location?")));
 
 		mockMvc.perform(get("/get-sewer-quotes/"))
 			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("Switch now if this is not really a quote-ready case")))
+			.andExpect(content().string(containsString("Go back to the estimator before you compare bids")))
+			.andExpect(content().string(containsString("Use quote routing")))
 			.andExpect(content().string(containsString("Sewer Line Repair vs Replacement")))
 			.andExpect(content().string(containsString("Does a quote-ready route mean full replacement is certain?")));
 	}

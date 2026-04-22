@@ -50,6 +50,166 @@ Copy this block for the next review:
 
 ---
 
+## 2026-04-22
+
+### Data
+- No fresh Search Console export was pulled during this follow-up pass.
+- This entry records a third same-day surface correction. The remaining weak point after the prior two passes was that some content pages still ended with always-open browse modules, which could keep the page reading like a topic library even after the tool-first front half was fixed.
+
+### Changes
+- Demoted lower-page browse modules on content pages into disclosures:
+  - local companion pages
+  - city-hub follow-up blocks
+  - related-page modules
+  - family/topic cluster modules
+- Kept the wide indexed surface intact while reducing the default visual weight of browse-first navigation after the main answer and route sections.
+
+### Insights
+- This is a `browse demotion` pass, not a query-expansion pass.
+- The page can still be broad and indexable while behaving less like a directory if the follow-up map is present but not the default main action.
+- The intended read is now:
+  - answer
+  - tool / route
+  - explanation
+  - optional follow-up browsing
+
+### Next Check
+- In the next GSC review, watch whether winner pages still collect broad informational impressions without better decision-intent alignment.
+- If broad informational patterns still dominate, the next step should be more aggressive merge or noindex decisions on selected support surfaces rather than further layout tuning alone.
+
+### Decision
+- Keep broad entry coverage, but keep demoting browse-first defaults.
+
+## 2026-04-22
+
+### Data
+- No fresh Search Console export was pulled during this follow-up pass.
+- This entry records a second same-day surface correction after the first `product-surface correction` pass. The remaining weak point was that lead pages could still read like transactional landing pages with supporting guides attached, rather than route-switching product surfaces.
+
+### Changes
+- Added route-switch cards near the top of:
+  - `/find-sewer-scope/`
+  - `/get-sewer-quotes/`
+  so users can switch between inspection-first, estimator-first, and quote-ready paths before filling the form.
+- Rebuilt the lead-page support layer so guide links and FAQs are now demoted into disclosures instead of sitting as always-open browse modules.
+- Tightened `/estimator/` copy so it reads more explicitly like the product core rather than a long form preceded by general explanation.
+- Added `WebApplication` schema to `/estimator/` so the primary tool surface now carries an explicit machine-readable application signal in addition to `WebPage`.
+
+### Insights
+- This pass does not guarantee that Google will classify the site as a tool, but it reduces two remaining mismatches:
+  - transactional route pages looking like landing pages with guide rails
+  - the estimator lacking an explicit application-level schema signal
+- The indexed surface is now more consistent about the order:
+  - route
+  - input
+  - result
+  - explanation
+
+### Next Check
+- In the next GSC review, compare whether:
+  - `/find-sewer-scope/`
+  - `/get-sewer-quotes/`
+  - `/estimator/`
+  pick up cleaner decision or transactional query impressions instead of broader informational patterns.
+- If support and geo surfaces still collect winner intent after this pass, the next move should be stronger page demotion or merge work, not more explanation layering.
+
+### Decision
+- Keep tightening product-surface clarity before any further expansion.
+
+## 2026-04-22
+
+### Data
+- No fresh Search Console export was pulled during this code pass.
+- This entry records a structural surface change made after the `2026-04-22` review concluded that Google was still likely reading too much of the indexed surface as informational rather than decision-routing product UI.
+
+### Changes
+- Added a reusable `surface router` module that now appears near the top of:
+  - `/`
+  - `/cities/`
+  - `/cities/{city}/`
+  - all non-trust content pages
+- The new router starts with:
+  - issue state
+  - role
+  - city or ZIP
+  then hands the user straight into `/estimator/` with prefilled context instead of forcing a browse-first or article-first path.
+- Reordered content pages so the visible flow now moves closer to:
+  - quick answer
+  - tool start
+  - next move
+  - deeper explanation
+  instead of long explanation before action.
+- Removed `Article` schema from non-trust decision pages and kept it only on trust/editorial pages like `/methodology/`.
+- Kept trust scaffolding, source disclosure, and uncertainty language intact so longer text acts as justification for the tool path rather than replacing it.
+
+### Insights
+- This is a `product-surface correction`, not a small CTA tweak.
+- If Google was previously seeing the site as a broad guide library with a tool appended later, this pass should reduce that mismatch by making decision pages behave more like routers into the estimator.
+- The intent is not to delete explanation. The intent is to stop explanation from being the first visible product.
+
+### Next Check
+- In the next GSC review, compare impression and query fit for:
+  - `/`
+  - `/cities/`
+  - `/cities/philadelphia/`
+  - `/sewer-scope-before-buying-house/`
+  - `/sewer-scope-red-flags/`
+  - `/sewer-line-replacement-cost/`
+- Watch specifically for whether broad informational queries weaken while buyer / finding / next-step / cost-direction queries consolidate harder onto national winner pages.
+- If Google still prefers support or geo surfaces for winner intent after this pass, the next move should be stronger surface demotion or merge decisions rather than more local CTR tuning.
+
+### Decision
+- Tighten winners and monitor query-page fit.
+
+## 2026-04-22
+
+### Data
+- Search Console property checked: `sc-domain:sewerclarity.com`.
+- This pass used live domain-property sitemap, URL Inspection, trend, quick-win, and cannibalization reads pulled on `2026-04-22`. No full aggregate clicks/impressions export was available in this MCP pass.
+- Sitemap status in GSC:
+  - `https://www.sewerclarity.com/sitemap.xml`
+  - last submitted `2026-04-14T10:38:32.683Z`
+  - last downloaded `2026-04-14T10:38:34.119Z`
+  - `submitted 100 / indexed 0 / warnings 0 / errors 0`
+- URL inspection on `2026-04-22`:
+  - `Submitted and indexed`: `/`, `/cast-iron-sewer-pipe-replacement-cost/`, `/orangeburg-pipe-replacement-cost/`, `/sewer-line-replacement-cost/`, `/sewer-scope-red-flags/`, `/cities/`, `/cities/philadelphia/`
+  - `Discovered - currently not indexed`: `/sewer-scope-before-buying-house/`, `/who-pays-for-sewer-line-repair-buyer-or-seller/`, `/homeowner-vs-city-sewer-responsibility/`
+- Exact-match query cannibalization still exists:
+  - `"sewer scope before buying house"` -> `/cities/detroit/sewer-scope-before-buying-house/` `2 impressions / avg position 4` and `/cities/milwaukee/sewer-scope-before-buying-house/` `2 impressions / avg position 2`
+  - `"who pays for sewer line repair buyer or seller"` -> `/` `4 impressions / avg position 3.5`, `/cities/` `4 impressions / avg position 5`, `/sewer-scope-red-flags/` `4 impressions / avg position 2.5`, `/cities/philadelphia/` `1 impression / avg position 3`
+- `seo_quick_wins` for the last 28 days returned no page-2 candidates.
+- Trend reads still surfaced `/`, `/cast-iron-sewer-pipe-replacement-cost/`, `/orangeburg-pipe-replacement-cost/`, `/sewer-line-replacement-cost/`, `/sewer-scope-red-flags/`, `/cities/`, and `/cities/philadelphia/` as the current active page footprint, but this pass did not include exact total page aggregates.
+- Internal storage check for the last 30 days showed only localhost QA telemetry:
+  - `17` recent events
+  - `1` recent lead
+  - `0` recent page CTA clicks
+  - the single recent lead came from `http://localhost:18097/...`, not production traffic
+
+### Changes
+- No new code changes were shipped in this review.
+- Source check confirms canonical and sitemap generation are already set to non-`www` `https://sewerclarity.com`, while GSC still holds a submitted `https://www.sewerclarity.com/sitemap.xml` entry.
+
+### Insights
+- The indexation gap logged on `2026-04-12` is still open on `2026-04-22`. This is no longer a short settling delay; the intended national winner pages remain outside the index while older cost and geo URLs stay in.
+- The problem is not simple orphaning inside the repo. These national pages are linked from the header, homepage, and multiple related national and geo pages, so discovery exists.
+- Inference: the stronger problem is URL selection dilution. Geo twins and hub pages are collecting exact-match query signals before the intended national winners are accepted.
+- The `submitted 100 / indexed 0` sitemap read conflicts with multiple inspected URLs that are clearly `Submitted and indexed`. Inference: the sitemap record itself looks stale or legacy-polluted rather than trustworthy as a page-level index count.
+- Tracking is not yet production-grade enough to judge CTR-to-lead efficiency. The stored recent telemetry is still localhost QA, so there is no clean entry-page or organic-session pairing available for this check.
+- Revenue-spine implication: do not expand new pages yet. The immediate risk is not lack of URL volume; it is that the wrong URLs are winning or the intended ones are still not indexable.
+
+### Next Check
+- In GSC, remove or replace the legacy `https://www.sewerclarity.com/sitemap.xml` submission and resubmit the canonical `https://sewerclarity.com/sitemap.xml`.
+- Manually request indexing again for:
+  - `/sewer-scope-before-buying-house/`
+  - `/who-pays-for-sewer-line-repair-buyer-or-seller/`
+  - `/homeowner-vs-city-sewer-responsibility/`
+- On the next review, confirm whether those three pages move from `Discovered - currently not indexed` into `Submitted and indexed`.
+- If they remain unindexed after the sitemap cleanup, tighten internal path control further so national winners outrank geo twins for exact-match buyer and responsibility queries before adding any new pages.
+- Start separating production telemetry from localhost QA so Search Console can be paired with real entry-page and lead-routing signals.
+
+### Decision
+- Fix technical and tighten winners. Hold expansion.
+
 ## 2026-04-14
 
 ### Data
@@ -504,3 +664,75 @@ Copy this block for the next review:
 - `pages.json` now promotes transfer and compliance as first-class families instead of relying on overlapping slug inference.
 - City hubs now render transfer and compliance clusters directly, so crawlable city IA matches the intended wedge.
 - ZIP or Census county-subdivision matches now stay cautious: they can anchor to a covered market, but they no longer get exact-city pricing lift or municipality certainty language before confirmation.
+
+---
+
+## 2026-04-22
+
+### Data
+- GSC review on `2026-04-22` still showed `submitted 100 / indexed 0` at sitemap level even though key URLs were already individually indexed.
+- Indexed at inspection time:
+  - `/`
+  - `/sewer-line-replacement-cost/`
+  - `/cast-iron-sewer-pipe-replacement-cost/`
+  - `/orangeburg-pipe-replacement-cost/`
+  - `/sewer-scope-red-flags/`
+  - `/cities/`
+  - `/cities/philadelphia/`
+- Still `Discovered - currently not indexed` at inspection time:
+  - `/sewer-scope-before-buying-house/`
+  - `/who-pays-for-sewer-line-repair-buyer-or-seller/`
+  - `/homeowner-vs-city-sewer-responsibility/`
+- Query/page fit still looked weak on generic buyer and responsibility intent. In particular, city pages and support-rail pages were still close enough to national winner intent to risk signal fragmentation.
+
+### Interpretation
+- The previous round improved the front door, but it did not fully consolidate the site-level signal.
+- The main remaining risk was not just low CTR. It was broad crawlable surface area still giving Google too many near-adjacent answers for the same decision.
+- The clearest immediate fix was to demote `generic geo duplicates` and support-rail loops before considering another expansion or a harder noindex pivot.
+
+### Changes
+- Re-ranked related-page logic so transfer and compliance pages now bias harder toward:
+  - inspection-first
+  - finding interpretation
+  - cost direction
+  before looping back into responsibility, insurance, or negotiation rails
+- Reduced city starter prominence so the default local entry set now prefers:
+  - buyer / inspection
+  - defect / report interpretation
+  - cost comparison
+  ahead of compliance pages and transaction-support pages like negotiation or buyer-vs-seller blame framing
+- Narrowed homepage local examples toward real local-signal pages:
+  - `/cities/milwaukee/sewer-backup-risk/`
+  - `/cities/philadelphia/homeowner-vs-city-sewer-responsibility/`
+  - `/cities/chicago/cast-iron-sewer-line-risk/`
+  - `/cities/buffalo/old-house-sewer-line-risk/`
+- Removed the broad deep-link lists from `/cities/` so the cities index page now acts more like a hub and less like a mass distributor of generic geo variants.
+- Filtered national-page geo companion modules so they now only surface local-signal pages instead of generic city copies of broad national intent.
+- Filtered `sitemap.xml` so deep geo URLs only stay in the sitemap when the page looks like true local context rather than a generic city duplicate.
+
+### Files Changed
+- `src/main/java/com/example/sewerverdict/content/SitePage.java`
+- `src/main/java/com/example/sewerverdict/content/GeoProfileService.java`
+- `src/main/java/com/example/sewerverdict/content/SiteContentService.java`
+- `src/main/java/com/example/sewerverdict/web/SeoController.java`
+- `src/main/java/com/example/sewerverdict/web/SiteController.java`
+- `src/main/resources/templates/cities.html`
+- `src/test/java/com/example/sewerverdict/content/GeoProfileServiceTests.java`
+- `src/test/java/com/example/sewerverdict/content/SiteContentServiceTests.java`
+- `src/test/java/com/example/sewerverdict/content/SitePageTests.java`
+- `src/test/java/com/example/sewerverdict/web/SeoControllerIntegrationTests.java`
+- `src/test/java/com/example/sewerverdict/web/SiteControllerIntegrationTests.java`
+
+### Validation
+- `./gradlew test` passed on `2026-04-22`.
+
+### Why This Matters
+- This was a `signal consolidation` move, not another cosmetic optimization pass.
+- The intended indexed identity is now more clearly:
+  - national winner pages for broad buyer / finding / cost intent
+  - city hubs for local navigation
+  - only a narrower set of geo pages as true local-context companions
+- If rankings still do not clean up after this round, the next step should be a harder decision on:
+  - geo keep-versus-noindex boundaries
+  - support-page merge candidates
+  rather than another iteration of minor CTR tuning.

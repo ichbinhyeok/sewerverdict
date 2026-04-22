@@ -36,43 +36,51 @@ public class SiteController {
 
 	@GetMapping("/")
 	public String home(HttpServletRequest request, Model model) {
-		model.addAttribute("pageTitle", "SewerClarity | City sewer lateral transfer and compliance next steps");
+		model.addAttribute("pageTitle", "SewerClarity | Sewer scope, sewer findings, and next-step cost guidance");
 		model.addAttribute("metaDescription",
-			"City-specific sewer lateral transfer, compliance, and next-step guidance for buyers, sellers, and owners. Start with official local signals, then move into inspection, responsibility, or report interpretation.");
+			"Inspection-first sewer risk guidance for buyers, sellers, and owners. Decide whether you need a sewer scope, what a finding likely means, and when a sewer issue is real enough to compare costs or quotes.");
 		model.addAttribute("featuredPages", siteContentService.getFeaturedPages(List.of(
 			"/sewer-scope-before-buying-house/",
-			"/who-pays-for-sewer-line-repair-buyer-or-seller/",
-			"/homeowner-vs-city-sewer-responsibility/",
-			"/sewer-scope-negotiation-with-seller/",
+			"/is-sewer-scope-worth-it/",
 			"/how-to-read-sewer-scope-report/",
-			"/sewer-scope-red-flags/"
+			"/sewer-scope-red-flags/",
+			"/sewer-line-replacement-cost/",
+			"/cast-iron-sewer-pipe-replacement-cost/"
 		)));
 		model.addAttribute("issuePages", siteContentService.getFeaturedPages(List.of(
-			"/sewer-scope-red-flags/",
-			"/how-to-read-sewer-scope-report/",
-			"/cast-iron-sewer-pipe-replacement-cost/",
 			"/orangeburg-pipe-replacement-cost/",
-			"/root-intrusion-sewer-line-what-to-do/"
+			"/root-intrusion-sewer-line-what-to-do/",
+			"/sewer-line-under-slab-repair-cost/",
+			"/trenchless-vs-traditional-sewer-line-replacement/"
 		)));
 		model.addAttribute("homeDecisionPaths", buildHomeDecisionPaths());
 		model.addAttribute("geoPages", siteContentService.getFeaturedPages(List.of(
+			"/cities/milwaukee/sewer-backup-risk/",
 			"/cities/philadelphia/homeowner-vs-city-sewer-responsibility/",
-			"/cities/pittsburgh/sewer-scope-before-buying-house/",
-			"/cities/milwaukee/homeowner-vs-city-sewer-responsibility/",
-			"/cities/baltimore/homeowner-vs-city-sewer-responsibility/",
-			"/cities/detroit/sewer-scope-before-buying-house/",
-			"/cities/washington-dc/homeowner-vs-city-sewer-responsibility/"
+			"/cities/chicago/cast-iron-sewer-line-risk/",
+			"/cities/buffalo/old-house-sewer-line-risk/"
 		)));
 		List<PageFaq> homeFaq = List.of(
-			faq("What can the estimator do?", "It narrows the likely next step, rough cost direction, transfer or responsibility questions, and biggest uncertainty drivers for buyers, sellers, and owners."),
+			faq("What can the estimator do?", "It narrows the likely next step, rough cost direction, and biggest uncertainty drivers for buyers, sellers, and owners without pretending to diagnose the line."),
 			faq("Does it replace a sewer scope?", "No. It is an educational next-step tool, not a substitute for a sewer camera inspection or an in-person quote."),
-			faq("Do city transfer or compliance rules matter everywhere?", "No. SewerClarity only leans hard on city-specific transfer, ownership, or program angles where the local signal is real and source-backed."),
-			faq("Should buyers get quotes before they get better evidence?", "Usually not. Buyers and sellers often need clearer footage and a cleaner responsibility story before repair pricing becomes trustworthy.")
+			faq("Does local city context matter on every sewer decision?", "No. SewerClarity only leans hard on city-specific ownership, program, or transfer angles where the local signal is real and source-backed."),
+			faq("Should buyers or owners compare quotes before they understand the finding?", "Usually not. Better footage and calmer interpretation usually improve the next decision before repair pricing becomes trustworthy.")
 		);
 		model.addAttribute("homeFaq", homeFaq);
+		configureSurfaceRouter(model,
+			"Start with the tool, not the whole guide library",
+			"Choose the situation, your role, and the property city or ZIP. SewerClarity will reopen the estimator at the first missing step instead of making you browse for the right article first.",
+			"/",
+			"home-surface-router",
+			null,
+			"Philadelphia, PA or 19147",
+			null,
+			null,
+			null,
+			"Start my next-step check");
 		seoMetadataService.apply(model, request,
-			"SewerClarity | City sewer lateral transfer and compliance next steps",
-			"City-specific sewer lateral transfer, compliance, and next-step guidance for buyers, sellers, and owners. Start with official local signals, then move into inspection, responsibility, or report interpretation.",
+			"SewerClarity | Sewer scope, sewer findings, and next-step cost guidance",
+			"Inspection-first sewer risk guidance for buyers, sellers, and owners. Decide whether you need a sewer scope, what a finding likely means, and when a sewer issue is real enough to compare costs or quotes.",
 			"website",
 			List.of(new Breadcrumb("Home", "/")),
 			homeFaq,
@@ -85,12 +93,23 @@ public class SiteController {
 		List<SitePage> allPages = siteContentService.getAllPages();
 		model.addAttribute("pageTitle", "Cities | SewerClarity");
 		model.addAttribute("metaDescription",
-			"City-specific sewer risk pages that connect national guides to local housing age, system context, and responsibility signals.");
+			"City-specific sewer pages that add local housing, system, or ownership context only where local signals materially change buyer, finding, or cost decisions.");
 		model.addAttribute("tierOneCities", geoProfileService.getCityHubEntriesByTier(allPages, "tier-1"));
 		model.addAttribute("tierTwoCities", geoProfileService.getCityHubEntriesByTier(allPages, "tier-2"));
+		configureSurfaceRouter(model,
+			"Use a city only if it changes the call",
+			"Start the estimator first when the question is still broad. Add a city or ZIP only when local housing, system, or responsibility context really changes the next move.",
+			"/cities/",
+			"cities-surface-router",
+			null,
+			"Philadelphia, PA or 19147",
+			null,
+			null,
+			null,
+			"Start with the estimator");
 		seoMetadataService.apply(model, request,
 			"Cities | SewerClarity",
-			"City-specific sewer risk pages that connect national guides to local housing age, system context, and responsibility signals.",
+			"City-specific sewer pages that add local housing, system, or ownership context only where local signals materially change buyer, finding, or cost decisions.",
 			"website",
 			List.of(
 				new Breadcrumb("Home", "/"),
@@ -153,11 +172,22 @@ public class SiteController {
 			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerClarity");
 		model.addAttribute("metaDescription",
 			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
-				+ ": transfer and closing pages first, official responsibility or program context next, defect interpretation after that, and quote-ready comparison only when the evidence is stronger.");
+				+ ": buyer diligence and inspection-first guidance first, finding interpretation next, cost comparison after that, and local responsibility context only where the city signal materially changes the call.");
+		configureSurfaceRouter(model,
+			"Get the next move with " + cityEntry.profile().getCityName() + " context already carried forward",
+			"Use the tool before you browse the whole local cluster. The estimator will start with this city context in place, then continue from the first missing step.",
+			"/cities/" + cityEntry.profile().getCitySlug() + "/",
+			"city-hub-surface-router",
+			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode(),
+			"Philadelphia, PA or 19147",
+			null,
+			null,
+			null,
+			"Start with local context");
 		seoMetadataService.apply(model, request,
 			cityEntry.profile().getCityName() + ", " + cityEntry.profile().getStateCode() + " Sewer Pages | SewerClarity",
 			"Start with the best sewer pages for " + cityEntry.profile().getCityName()
-				+ ": transfer and closing pages first, official responsibility or program context next, defect interpretation after that, and quote-ready comparison only when the evidence is stronger.",
+				+ ": buyer diligence and inspection-first guidance first, finding interpretation next, cost comparison after that, and local responsibility context only where the city signal materially changes the call.",
 			"website",
 			List.of(
 				new Breadcrumb("Home", "/"),
@@ -181,6 +211,7 @@ public class SiteController {
 		SitePage page = siteContentService.requirePage(request.getRequestURI());
 		List<Breadcrumb> breadcrumbs = buildBreadcrumbs(page);
 		var pageSources = sourceRegistryService.getSourcesForPage(page);
+		var geoProfile = geoProfileService.getProfileForPage(page);
 		var geoProfileSources = geoProfileService.getProfileSources(page).stream()
 			.filter(source -> pageSources.stream().noneMatch(existing -> existing.sourceId().equals(source.sourceId())))
 			.toList();
@@ -205,9 +236,9 @@ public class SiteController {
 		model.addAttribute("page", page);
 		model.addAttribute("relatedPages", siteContentService.getRelatedPages(page));
 		model.addAttribute("familyClusterPages", familyClusterPages);
-		model.addAttribute("geoCompanionPages", geoProfileService.getGeoCompanionPages(page, allPages, 4));
+		model.addAttribute("geoCompanionPages", geoProfileService.getGeoCompanionPages(page, allPages, 3));
 		model.addAttribute("pageSources", pageSources);
-		model.addAttribute("geoProfile", geoProfileService.getProfileForPage(page));
+		model.addAttribute("geoProfile", geoProfile);
 		model.addAttribute("geoProfileSources", geoProfileSources);
 		model.addAttribute("responsibilityRuleViews", geoProfileService.getResponsibilityRuleViews(page));
 		model.addAttribute("cityHubEntry", cityHubEntry);
@@ -224,8 +255,28 @@ public class SiteController {
 		model.addAttribute("pageTitle", page.getMetaTitle());
 		model.addAttribute("metaDescription", page.getMetaDescription());
 		model.addAttribute("breadcrumbs", breadcrumbs);
-		seoMetadataService.apply(model, request, page.getMetaTitle(), page.getMetaDescription(), "article", breadcrumbs,
-			page.getFaq(), false, page.getLastReviewed());
+		if (!page.isTrustPage()) {
+			configureSurfaceRouter(model,
+				page.isGeoPage()
+					? "Start with your case, not the whole "
+						+ (geoProfile != null ? geoProfile.getCityName() : "city")
+						+ " cluster"
+					: "Use this page as context, then start the tool",
+				page.isGeoPage()
+					? "This page already tells you the local angle. Start the estimator with that city context in place instead of reading the whole cluster before you act."
+					: "This page gives the context, but the product value is the next-step call. Start the estimator with this page's likely issue state already carried forward.",
+				page.getSlug(),
+				"page-surface-router",
+				routerLocationValue(page),
+				"Philadelphia, PA or 19147",
+				routerIssueState(page),
+				routerRole(page),
+				routerDefectType(page),
+				"Start the next-step check");
+		}
+		seoMetadataService.apply(model, request, page.getMetaTitle(), page.getMetaDescription(),
+			page.isTrustPage() ? "article" : "website", breadcrumbs,
+			page.getFaq(), false, page.isTrustPage() ? page.getLastReviewed() : null);
 		return "content-page";
 	}
 
@@ -301,8 +352,83 @@ public class SiteController {
 		return item;
 	}
 
+	private void configureSurfaceRouter(Model model, String title, String summary, String pageSlug, String placement,
+		String locationValue, String locationPlaceholder, String selectedIssueState, String selectedRole,
+		String selectedDefectType, String primaryLabel) {
+		model.addAttribute("surfaceRouterTitle", title);
+		model.addAttribute("surfaceRouterSummary", summary);
+		model.addAttribute("surfaceRouterPageSlug", pageSlug);
+		model.addAttribute("surfaceRouterPlacement", placement);
+		model.addAttribute("surfaceRouterLocationValue", locationValue);
+		model.addAttribute("surfaceRouterLocationPlaceholder", locationPlaceholder);
+		model.addAttribute("surfaceRouterSelectedIssueState", selectedIssueState);
+		model.addAttribute("surfaceRouterSelectedRole", selectedRole);
+		model.addAttribute("surfaceRouterSelectedDefectType", selectedDefectType);
+		model.addAttribute("surfaceRouterPrimaryLabel", primaryLabel);
+	}
+
 	private SitePage firstPage(List<SitePage> pages) {
 		return pages == null || pages.isEmpty() ? null : pages.get(0);
+	}
+
+	private String routerLocationValue(SitePage page) {
+		if (page == null || !page.isGeoPage()) {
+			return null;
+		}
+		var geoProfile = geoProfileService.getProfileForPage(page);
+		return geoProfile == null ? null : geoProfile.getCityName() + ", " + geoProfile.getStateCode();
+	}
+
+	private String routerIssueState(SitePage page) {
+		if (page == null) {
+			return null;
+		}
+		if (page.isTransferPage() || page.isBuyerPage()) {
+			return "no-scope-yet";
+		}
+		if (page.isDefectPage() || page.isCostPage()) {
+			return "scope-found-issue";
+		}
+		return null;
+	}
+
+	private String routerRole(SitePage page) {
+		if (page == null) {
+			return null;
+		}
+		if (page.isTransferPage() || page.isBuyerPage()) {
+			return "buyer";
+		}
+		if (page.isDefectPage() || page.isCostPage()) {
+			return "owner";
+		}
+		return null;
+	}
+
+	private String routerDefectType(SitePage page) {
+		if (page == null || page.getSlug() == null) {
+			return null;
+		}
+		String slug = page.getSlug().toLowerCase();
+		if (slug.contains("root")) {
+			return "roots";
+		}
+		if (slug.contains("cast-iron")) {
+			return "cast-iron";
+		}
+		if (slug.contains("orangeburg")) {
+			return "orangeburg";
+		}
+		if (slug.contains("belly")) {
+			return "belly";
+		}
+		if (slug.contains("offset")) {
+			return "offset-crack";
+		}
+		if (slug.contains("collapse")) {
+			return "collapse";
+		}
+		return null;
 	}
 
 	private int transferPriority(SitePage page) {
@@ -339,23 +465,23 @@ public class SiteController {
 	private List<DecisionPath> buildHomeDecisionPaths() {
 		return List.of(
 			decisionPath(
-				"Transfer or closing pressure",
-				"Start with the city path before you guess at certificates, required inspection, or seller promises",
-				"Use the city hub when official local signals may change whether the next smart move is inspection, responsibility clarification, or a narrower transaction ask.",
-				"/cities/",
-				"Open city transfer paths"),
+				"No footage yet",
+				"Start with sewer scope before you negotiate, waive, or guess.",
+				"Use the buyer and inspection path when the line has not been camera-confirmed and the next smart move is better evidence, not early pricing noise.",
+				"/sewer-scope-before-buying-house/",
+				"Start with inspection-first guidance"),
 			decisionPath(
-				"Buyer, seller, or owner exposure unclear",
-				"Clarify who is likely carrying the line risk before you negotiate or price it",
-				"Use the transaction and responsibility path when private-lateral exposure, seller leverage, or local boundary language still need a calmer read.",
-				"/who-pays-for-sewer-line-repair-buyer-or-seller/",
-				"Clarify transfer risk"),
-			decisionPath(
-				"Report finding or known defect",
-				"Read the scope language before you turn the transfer into a quote fight",
-				"Use the report-reading path when roots, cast iron, orangeburg, backup clues, or report language are already on the table and the next ask depends on what the finding really means.",
+				"Report note or finding in hand",
+				"Read the finding before you call it failure.",
+				"Use the interpretation path when roots, cast iron, orangeburg, bellies, or backup language need calmer context before you turn them into quotes or credits.",
 				"/how-to-read-sewer-scope-report/",
-				"Read the scope calmly")
+				"Interpret the finding"),
+			decisionPath(
+				"Known issue and money question",
+				"Compare cost direction only when the problem looks real.",
+				"Use the cost path once the issue is documented enough to compare repair, replacement, trenchless, or under-slab scenarios without generic guessing.",
+				"/sewer-line-replacement-cost/",
+				"See cost direction")
 		);
 	}
 
@@ -363,55 +489,56 @@ public class SiteController {
 		if (page.isCompliancePage()) {
 			return List.of(
 				decisionPath(
-					"City rule or program still matters",
-					"Use local compliance and responsibility context before you assume the transfer path",
-					"Start with city-specific ownership, program, or boundary language, then decide whether the next call is utility, inspection, seller negotiation, or quote comparison.",
-					"/cities/",
-					"See city compliance pages"),
-				decisionPath(
-					"Buying or selling the home",
-					"Switch to transfer leverage once the boundary story is clearer",
-					"Use the buyer-versus-seller page when the boundary question is tied to credits, repairs, certificates, or whether the seller has to move.",
-					"/who-pays-for-sewer-line-repair-buyer-or-seller/",
-					"See buyer vs seller leverage"),
-				decisionPath(
 					"No footage yet",
-					"Keep the next move inspection-first until the transfer story has evidence behind it",
-					"Use the buyer and inspection path when the city rule is clearer than the actual line condition and you still need better footage before asking for money or promises.",
+					"Start with inspection evidence before you lean on a local rule",
+					"Use the buyer and inspection path when a local boundary note exists but the line itself is still not documented clearly enough to price or negotiate around.",
 					"/sewer-scope-before-buying-house/",
-					"Use the transfer inspection path")
+					"Use inspection-first guidance"),
+				decisionPath(
+					"Finding already exists",
+					"Read the finding before you let ownership language do all the work",
+					"Use the interpretation path when the city rule matters less than understanding whether the footage shows a watch-item, a localized repair, or a broader failure pattern.",
+					"/how-to-read-sewer-scope-report/",
+					"Interpret the finding"),
+				decisionPath(
+					"Known issue and money question",
+					"Move into cost direction only after the owner-side issue looks real",
+					"Use the cost path when the line condition and owner-side exposure are strong enough to compare repair, replacement, or trenchless paths without generic guessing.",
+					"/sewer-line-replacement-cost/",
+					"See cost direction")
 			);
 		}
 		if (page.isTransferPage()) {
 			return List.of(
 				decisionPath(
-					"City rule may change the ask",
-					"Check the local transfer or responsibility path before you overstate the problem",
-					"Use the city hub when the real question is whether a local requirement, utility boundary, or program note changes the next step before closing.",
-					"/cities/",
-					"Open city transfer paths"),
+					"No footage yet",
+					"Inspection first before credits, waivers, or seller asks",
+					"Use the inspection path when the line is still not documented clearly enough for repair pricing, seller concessions, or closing pressure to be the main story.",
+					"/find-sewer-scope/",
+					"Find sewer camera inspection options"),
 				decisionPath(
-					"Boundary or seller leverage unclear",
-					"Use responsibility context before you push for credits or repairs",
-					"Use the homeowner-versus-city page when the transfer question still depends on who owns the lateral, where the boundary sits, or whether the city signal is even relevant.",
-					"/homeowner-vs-city-sewer-responsibility/",
-					"Clarify responsibility first"),
-				decisionPath(
-					"Scope finding already exists",
-					"Read the report before you turn it into a transfer demand",
-					"Use the report-reading path when you already have footage or a finding and the next ask depends on what the wording really supports.",
+					"Finding or report note already exists",
+					"Read the scope language before you price the problem",
+					"Use the interpretation path when the buyer or seller conversation depends on what the footage really supports, not on the scariest phrase in the report.",
 					"/how-to-read-sewer-scope-report/",
-					"Read the scope calmly")
+					"Read the scope calmly"),
+				decisionPath(
+					"Known issue and money question",
+					"Use cost guidance only when the problem looks real",
+					"Use the cost path when the line condition is documented enough to compare repair, replacement, or trenchless direction without generic transaction noise.",
+					"/sewer-line-replacement-cost/",
+					"See cost direction")
 			);
 		}
 		if (page.isDefectPage()) {
+			boolean reportPage = page.getSlug() != null && page.getSlug().contains("scope-report");
 			return List.of(
 				decisionPath(
-					"Monitor vs clarify",
-					"Interpret the wording before you call it failure",
-					"Use the report-reading path when the finding sounds scary but you still need to separate watch-items from quote-ready defects.",
-					"/how-to-read-sewer-scope-report/",
-					"Read the report calmly"),
+					"Interpret the wording",
+					"Calm the finding before you call it replacement",
+					"Use the broader interpretation path when you need to separate watch-items from truly quote-ready defects before the price discussion takes over.",
+					reportPage ? "/sewer-scope-red-flags/" : "/how-to-read-sewer-scope-report/",
+					reportPage ? "See common red flags" : "Read the scope calmly"),
 				decisionPath(
 					"Evidence still weak",
 					"Get clearer footage before you chase big numbers",
@@ -419,11 +546,11 @@ public class SiteController {
 					"/find-sewer-scope/",
 					"Find sewer camera inspection options"),
 				decisionPath(
-					"Quote-ready defect",
-					"Move into quotes only when the finding already looks real",
-					"Use the quote path when the footage points to a systemic problem, a blocked flow path, or a repair decision that now needs bids.",
-					"/get-sewer-quotes/",
-					"Move into quote-ready follow-up")
+					"Known issue and money question",
+					"Move into cost direction when the finding already looks real",
+					"Use the cost path when the footage points toward a broader problem and you need calmer repair-versus-replacement direction before quote comparison.",
+					"/sewer-line-replacement-cost/",
+					"See cost direction")
 			);
 		}
 		if (page.isCostPage()) {
@@ -435,13 +562,13 @@ public class SiteController {
 					"/find-sewer-scope/",
 					"Get inspection options first"),
 				decisionPath(
-					"Boundary still fuzzy",
-					"Clarify private-lateral responsibility before owner-side quotes",
-					"Use the responsibility path if the repair may not be yours, the city boundary is unclear, or seller leverage still matters.",
-					"/homeowner-vs-city-sewer-responsibility/",
-					"Clarify who owns the line"),
+					"Finding meaning still unclear",
+					"Read the finding before you trust the price range",
+					"Use the interpretation path when the money question is live but the footage still needs calmer context before repair-versus-replacement decisions harden.",
+					"/how-to-read-sewer-scope-report/",
+					"Read the scope calmly"),
 				decisionPath(
-					"Private lateral confirmed",
+					"Quote-ready issue",
 					"Compare quotes only when the owner-side repair path is real",
 					"Use the quote path once footage, access, and owner-side responsibility are strong enough to compare repair or replacement bids.",
 					"/get-sewer-quotes/",
@@ -451,26 +578,22 @@ public class SiteController {
 		return List.of(
 			decisionPath(
 				"No footage yet",
-				"Inspection first before credits, quotes, or repair arguments",
-				"Use the inspection path when the sewer line is still an unknown and better evidence will change what the next decision should be.",
-				"/find-sewer-scope/",
-				"Find sewer camera inspection options"),
-			decisionPath(
-				"Boundary or leverage unclear",
-				"Responsibility first before you negotiate or blame the city",
-				"Use the responsibility path when private-lateral exposure, seller leverage, or the owner-versus-city line boundary still needs a cleaner read.",
-				page.getSlug().contains("who-pays")
-					? "/homeowner-vs-city-sewer-responsibility/"
-					: "/who-pays-for-sewer-line-repair-buyer-or-seller/",
-				page.getSlug().contains("who-pays")
-					? "Clarify homeowner vs city responsibility"
-					: "See buyer vs seller leverage"),
+				"Start with inspection-first guidance before you guess",
+				"Use the buyer and inspection path when the sewer line is still an unknown and better evidence will change what the next decision should be.",
+				"/sewer-scope-before-buying-house/",
+				"Use inspection-first guidance"),
 			decisionPath(
 				"Finding already in hand",
-				"Interpret the footage before you turn it into a quote fight",
+				"Read the scope before you turn it into a quote fight",
 				"Use the interpretation path when roots, bellies, cast iron, or another finding already exists but the meaning still needs calmer context.",
-				"/sewer-scope-red-flags/",
-				"Interpret the finding")
+				"/how-to-read-sewer-scope-report/",
+				"Read the scope calmly"),
+			decisionPath(
+				"Known issue and money question",
+				"Move into cost direction only when the problem looks real",
+				"Use the cost path when the line story is strong enough to compare repair or replacement direction without relying on generic numbers too early.",
+				"/sewer-line-replacement-cost/",
+				"See cost direction")
 		);
 	}
 

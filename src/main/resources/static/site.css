@@ -337,6 +337,12 @@ h3 {
 	box-shadow: var(--shadow);
 }
 
+.decision-path-card-current {
+	background: linear-gradient(180deg, rgba(231, 241, 244, 0.98), rgba(255, 253, 248, 0.98));
+	border-color: rgba(30, 85, 99, 0.34);
+	box-shadow: inset 0 0 0 1px rgba(30, 85, 99, 0.08), 0 12px 24px rgba(20, 26, 30, 0.08);
+}
+
 .decision-path-card h2 {
 	margin: 0;
 	font-size: 1.08rem;
@@ -458,6 +464,39 @@ h3 {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
 	margin-top: 1rem;
+}
+
+.surface-router-card {
+	display: grid;
+	gap: 1.4rem;
+}
+
+.surface-router-copy {
+	max-width: 44rem;
+}
+
+.surface-router-copy p,
+.surface-router-note {
+	margin: 0;
+}
+
+.surface-router-form,
+.surface-router-group,
+.surface-router-actions,
+.surface-router-choice-grid {
+	display: grid;
+	gap: 0.95rem;
+}
+
+.surface-router-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+	gap: 1rem;
+	align-items: start;
+}
+
+.surface-router-actions {
+	align-content: start;
 }
 
 .home-hero-grid .hero-artifact {
@@ -859,7 +898,9 @@ h3 {
 	color: var(--brand-strong);
 }
 
-.city-hub-disclosure summary {
+.city-hub-disclosure summary,
+.lead-disclosure summary,
+.content-disclosure summary {
 	list-style: none;
 	cursor: pointer;
 	display: grid;
@@ -867,7 +908,9 @@ h3 {
 	color: var(--brand-strong);
 }
 
-.city-hub-disclosure summary::-webkit-details-marker {
+.city-hub-disclosure summary::-webkit-details-marker,
+.lead-disclosure summary::-webkit-details-marker,
+.content-disclosure summary::-webkit-details-marker {
 	display: none;
 }
 
@@ -876,11 +919,25 @@ h3 {
 	line-height: 1.35;
 }
 
-.city-hub-disclosure[open] summary {
+.lead-disclosure-title {
+	font-size: 1.1rem;
+	line-height: 1.35;
+}
+
+.content-disclosure-title {
+	font-size: 1.1rem;
+	line-height: 1.35;
+}
+
+.city-hub-disclosure[open] summary,
+.lead-disclosure[open] summary,
+.content-disclosure[open] summary {
 	margin-bottom: 1rem;
 }
 
-.city-hub-disclosure[open] summary .card-kicker {
+.city-hub-disclosure[open] summary .card-kicker,
+.lead-disclosure[open] summary .card-kicker,
+.content-disclosure[open] summary .card-kicker {
 	color: var(--muted);
 }
 
@@ -1201,6 +1258,10 @@ h3 {
 	.card-grid-3,
 	.card-grid-2,
 	.choice-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.surface-router-grid {
 		grid-template-columns: 1fr;
 	}
 

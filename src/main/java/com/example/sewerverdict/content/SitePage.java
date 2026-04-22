@@ -372,6 +372,30 @@ public class SitePage {
 		return "page";
 	}
 
+	public boolean isGeoLocalSignalPage() {
+		if (!isGeoPage()) {
+			return false;
+		}
+		String topicSlug = getGeoTopicSlug();
+		return containsToken(topicSlug, "homeowner-vs-city")
+			|| containsToken(topicSlug, "wet-weather")
+			|| containsToken(topicSlug, "sewer-backup-risk")
+			|| containsToken(topicSlug, "old-house")
+			|| containsToken(topicSlug, "cast-iron");
+	}
+
+	public boolean isGeoGenericIntentPage() {
+		if (!isGeoPage()) {
+			return false;
+		}
+		String topicSlug = getGeoTopicSlug();
+		return containsToken(topicSlug, "before-buying-house")
+			|| containsToken(topicSlug, "negotiation-with-seller")
+			|| containsToken(topicSlug, "buyer-or-seller")
+			|| containsToken(topicSlug, "repair-vs-replacement")
+			|| containsToken(topicSlug, "replacement-cost");
+	}
+
 	private boolean matchesFamily(String expectedFamily) {
 		String trackingFamily = getTrackingFamily();
 		return expectedFamily.equalsIgnoreCase(trackingFamily);

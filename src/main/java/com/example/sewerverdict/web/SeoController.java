@@ -57,7 +57,9 @@ public class SeoController {
 		geoProfileService.getCityHubEntries(siteContentService.getAllPages()).forEach(entry ->
 			urls.add(new SitemapUrl(baseUrl + "/cities/" + entry.profile().getCitySlug() + "/", reviewDate)));
 		for (SitePage page : siteContentService.getAllPages()) {
-			urls.add(new SitemapUrl(baseUrl + page.getSlug(), page.getLastReviewed()));
+			if (isSitemapEligible(page)) {
+				urls.add(new SitemapUrl(baseUrl + page.getSlug(), page.getLastReviewed()));
+			}
 		}
 
 		StringBuilder xml = new StringBuilder();
@@ -84,6 +86,13 @@ public class SeoController {
 
 	private String trimTrailingSlash(String value) {
 		return value != null && value.endsWith("/") ? value.substring(0, value.length() - 1) : value;
+	}
+
+	private boolean isSitemapEligible(SitePage page) {
+		if (page == null) {
+			return false;
+		}
+		return !page.isGeoPage() || page.isGeoLocalSignalPage();
 	}
 
 	private record SitemapUrl(String loc, String lastmod) {

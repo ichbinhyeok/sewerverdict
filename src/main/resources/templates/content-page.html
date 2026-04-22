@@ -71,6 +71,7 @@
 						</span>.
 					</p>
 				</div>
+				<article th:replace="~{fragments :: surfaceRouter}"></article>
 				<div class="card-grid card-grid-2">
 					<article class="info-card">
 						<span class="card-kicker">How serious it may be</span>
@@ -81,6 +82,18 @@
 						<p th:text="${page.nextStep}">Next step</p>
 					</article>
 				</div>
+				<article class="section-card section-card-accent">
+					<h2 th:text="${pageActionHeading}">Choose the next move</h2>
+					<p th:text="${pageActionSummary}">Use this page to decide whether you should estimate the situation first, line up inspection options, or move into quote comparison now.</p>
+					<div class="inline-cta-group">
+						<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'},data-event-route=${primaryCtaRoute},data-event-destination=${primaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-primary'">Primary CTA</a>
+						<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'},data-event-route=${secondaryCtaRoute},data-event-destination=${secondaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-secondary'">Secondary CTA</a>
+					</div>
+				</article>
 				<article class="section-card section-card-accent" th:if="${page.transferPage or page.buyerPage}">
 					<h2 th:text="${page.transferPage ? 'Transfer and closing lens' : 'Buyer decision lens'}">Buyer decision lens</h2>
 					<div class="card-grid card-grid-2">
@@ -177,21 +190,12 @@
 						<li th:each="item : ${page.questions}" th:text="${item}">Question</li>
 					</ol>
 				</article>
-				<article class="section-card section-card-accent">
-					<h2 th:text="${pageActionHeading}">Choose the next move</h2>
-					<p th:text="${pageActionSummary}">Use this page to decide whether you should estimate the situation first, line up inspection options, or move into quote comparison now.</p>
-					<div class="inline-cta-group">
-						<a class="button button-primary" th:href="${page.primaryCtaHref}" th:text="${page.primaryCtaLabel}"
-						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${page.primaryCtaLabel + ' bottom'},data-event-route=${primaryCtaRoute},data-event-destination=${primaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-primary'">Primary CTA</a>
-						<a class="button button-secondary" th:href="${page.secondaryCtaHref}" th:text="${page.secondaryCtaLabel}"
-						   data-event-type="page_cta_click"
-						   th:attr="data-page-slug=${page.slug},data-event-label=${page.secondaryCtaLabel + ' bottom'},data-event-route=${secondaryCtaRoute},data-event-destination=${secondaryCtaTarget},data-event-city=${page.geoCitySlug},data-event-geo-page=${page.geoPage},data-event-geo-family=${page.trackingFamily},data-event-placement='bottom-secondary'">Secondary CTA</a>
-					</div>
-				</article>
-				<article class="section-card" th:if="${!#lists.isEmpty(geoCompanionPages)}">
-					<h2>Local angles worth checking next</h2>
-					<p>These city pages connect the national intent to local housing, system, or responsibility context.</p>
+				<details class="section-card content-disclosure" th:if="${!#lists.isEmpty(geoCompanionPages)}">
+					<summary>
+						<span class="card-kicker">Only if local context really changes the answer</span>
+						<strong class="content-disclosure-title">Local context only where it changes the answer</strong>
+					</summary>
+					<p>These city pages add housing, system, or ownership context to the national decision when the local signal is real.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="geoPage : ${geoCompanionPages}" th:href="${geoPage.slug}"
 						   data-event-type="page_cta_click"
@@ -201,9 +205,12 @@
 							<span class="related-page-card-text" th:text="${geoPage.summary}">Geo summary</span>
 						</a>
 					</div>
-				</article>
-				<article class="section-card section-card-accent" th:if="${page.geoPage and cityHubEntry != null}">
-					<h2 th:text="${'Keep moving inside ' + cityHubEntry.profile.cityName}">Keep moving inside the city</h2>
+				</details>
+				<details class="section-card section-card-accent content-disclosure" th:if="${page.geoPage and cityHubEntry != null}">
+					<summary>
+						<span class="card-kicker">Only if you need another city path</span>
+						<strong class="content-disclosure-title" th:text="${'Keep moving inside ' + cityHubEntry.profile.cityName}">Keep moving inside the city</strong>
+					</summary>
 					<p>Use the city hub when you want the fastest local path for buyers, owners, agents, or quote comparison, then branch into the next page that matches the situation.</p>
 					<div class="inline-cta-group">
 						<a class="button button-secondary" th:href="${cityHubSlug}"
@@ -229,9 +236,12 @@
 							<span class="related-page-card-text" th:text="${localPage.summary}">Local summary</span>
 						</a>
 					</div>
-				</article>
-				<article class="section-card" th:if="${!#lists.isEmpty(relatedPages)}">
-					<h2>Keep moving with the right follow-up page</h2>
+				</details>
+				<details class="section-card content-disclosure" th:if="${!#lists.isEmpty(relatedPages)}">
+					<summary>
+						<span class="card-kicker">Only if you still need another page</span>
+						<strong class="content-disclosure-title">Keep moving with the right follow-up page</strong>
+					</summary>
 					<p>These pages usually answer the next decision users have after this one.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="related : ${relatedPages}" th:href="${related.slug}">
@@ -240,9 +250,12 @@
 							<span class="related-page-card-text" th:text="${related.summary}">Related summary</span>
 						</a>
 					</div>
-				</article>
-				<article class="section-card" th:if="${!#lists.isEmpty(familyClusterPages)}">
-					<h2>More in this topic</h2>
+				</details>
+				<details class="section-card content-disclosure" th:if="${!#lists.isEmpty(familyClusterPages)}">
+					<summary>
+						<span class="card-kicker">Only if you need the wider topic map</span>
+						<strong class="content-disclosure-title">More in this topic</strong>
+					</summary>
 					<p>Use this topic cluster when you want the wider transfer, compliance, buyer, defect, cost, coverage, or trust context instead of only the next follow-up page.</p>
 					<div class="related-card-grid">
 						<a class="related-page-card" th:each="clusterPage : ${familyClusterPages}" th:href="${clusterPage.slug}">
@@ -251,7 +264,7 @@
 							<span class="related-page-card-text" th:text="${clusterPage.summary}">Cluster summary</span>
 						</a>
 					</div>
-				</article>
+				</details>
 				<article class="section-card" th:if="${!#lists.isEmpty(page.faq)}">
 					<h2>FAQ</h2>
 					<div class="faq-list">

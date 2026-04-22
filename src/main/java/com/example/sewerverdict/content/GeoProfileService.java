@@ -151,6 +151,7 @@ public class GeoProfileService {
 		return allPages.stream()
 			.filter(SitePage::isGeoPage)
 			.filter(candidate -> candidate.getRelatedSlugs().contains(targetSlug))
+			.filter(SitePage::isGeoLocalSignalPage)
 			.sorted(Comparator
 				.comparingInt((SitePage candidate) -> priorityRank(candidate.getGeoCitySlug()))
 				.thenComparing(SitePage::getTitle))
@@ -195,16 +196,27 @@ public class GeoProfileService {
 			.filter(page -> citySlug.equals(page.getGeoCitySlug()))
 			.sorted(Comparator
 				.comparingInt(this::familyRank)
+				.thenComparingInt(this::starterRank)
 				.thenComparing(SitePage::getTitle))
 			.toList();
 	}
 
 	private List<SitePage> getStarterPages(List<SitePage> pagesForCity) {
+		List<SitePage> acquisitionStarters = pagesForCity.stream()
+			.filter(this::isAcquisitionStarterPage)
+			.sorted(Comparator
+				.comparingInt(this::starterRank)
+				.thenComparing(SitePage::getTitle))
+			.limit(3)
+			.toList();
+		if (!acquisitionStarters.isEmpty()) {
+			return acquisitionStarters;
+		}
 		return pagesForCity.stream()
 			.sorted(Comparator
 				.comparingInt(this::starterRank)
 				.thenComparing(SitePage::getTitle))
-			.limit(4)
+			.limit(3)
 			.toList();
 	}
 
@@ -224,20 +236,17 @@ public class GeoProfileService {
 		if (page == null) {
 			return 9;
 		}
-		if (page.isTransferPage()) {
+		if (page.isTransferPage() || page.isBuyerPage()) {
 			return 0;
 		}
-		if (page.isCompliancePage()) {
+		if (page.isDefectPage()) {
 			return 1;
 		}
-		if (page.isDefectPage()) {
+		if (page.isCostPage()) {
 			return 2;
 		}
-		if (page.isCostPage()) {
+		if (page.isCompliancePage() || page.isCoveragePage()) {
 			return 3;
-		}
-		if (page.isBuyerPage()) {
-			return 4;
 		}
 		return 9;
 	}
@@ -247,38 +256,55 @@ public class GeoProfileService {
 		if (slug.contains("before-buying-house")) {
 			return 0;
 		}
-		if (slug.contains("point-of-sale") || slug.contains("certificate") || slug.contains("compliance")) {
-			return 1;
-		}
-		if (slug.contains("homeowner-vs-city") || slug.contains("who-pays")) {
-			return 2;
-		}
 		if (slug.contains("red-flags") || slug.contains("scope-report") || slug.contains("backup-risk")
 			|| slug.contains("signs") || slug.contains("meaning") || slug.contains("what-to-do")) {
-			return 3;
-		}
-		if (slug.contains("negotiation-with-seller")) {
-			return 4;
+			return 1;
 		}
 		if (slug.contains("repair-vs-replacement")) {
-			return 5;
+			return 2;
+		}
+		if (slug.contains("old-house") || slug.contains("before-1970")
+			|| slug.contains("cast-iron")) {
+			return 3;
 		}
 		if (slug.contains("replacement-cost")) {
+			return 4;
+		}
+		if (slug.contains("point-of-sale") || slug.contains("certificate") || slug.contains("required-inspection")
+			|| slug.contains("compliance") || slug.contains("homeowner-vs-city")) {
+			return 5;
+		}
+		if (slug.contains("scope-worth-it") || slug.contains("scope-inspection")) {
 			return 6;
 		}
-		if (page.isBuyerPage()) {
+		if (slug.contains("negotiation-with-seller")) {
 			return 7;
 		}
-		if (page.isCoveragePage()) {
+		if (slug.contains("buyer-or-seller") || slug.contains("wet-weather")) {
 			return 8;
 		}
-		if (page.isDefectPage()) {
+		if (page.isBuyerPage()) {
 			return 9;
 		}
-		if (page.isCostPage()) {
+		if (page.isCoveragePage()) {
 			return 10;
 		}
-		return 11;
+		if (page.isDefectPage()) {
+			return 11;
+		}
+		if (page.isCostPage()) {
+			return 12;
+		}
+		return 13;
+	}
+
+	private boolean isAcquisitionStarterPage(SitePage page) {
+		if (page == null || page.isCompliancePage() || page.isCoveragePage()) {
+			return false;
+		}
+		String slug = page.getSlug() == null ? "" : page.getSlug().toLowerCase();
+		return !slug.contains("negotiation-with-seller")
+			&& !slug.contains("buyer-or-seller");
 	}
 
 	private Map<String, GeoProfile> loadProfiles() {

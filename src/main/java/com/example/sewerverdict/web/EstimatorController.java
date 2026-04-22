@@ -102,6 +102,9 @@ public class EstimatorController {
 			List.of(new SiteController.Breadcrumb("Home", "/"), new SiteController.Breadcrumb("Estimator", "/estimator/")),
 			List.of(),
 			false);
+		seoMetadataService.appendWebApplicationSchema(model, request,
+			"SewerClarity Estimator",
+			"Web tool for estimating sewer-line risk, likely next step, and rough cost direction for buyers, sellers, and owners.");
 	}
 
 	private void applyEstimatorDefaults(EstimatorForm form) {

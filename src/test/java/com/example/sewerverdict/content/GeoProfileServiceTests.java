@@ -17,15 +17,25 @@ class GeoProfileServiceTests {
 	private final GeoProfileService geoProfileService = new GeoProfileService(sourceRegistryService);
 
 	@Test
-	void nationalPageGetsGeoCompanionPagesFromRelatedSlugs() {
+	void genericNationalCostPageNoLongerPromotesGeoDuplicatesAsCompanions() {
 		SitePage nationalPage = siteContentService.requirePage("/sewer-line-replacement-cost/");
 
 		List<SitePage> companions = geoProfileService.getGeoCompanionPages(nationalPage, siteContentService.getAllPages(), 4);
 
 		assertFalse(companions.isEmpty());
-		assertEquals("/cities/buffalo/sewer-line-replacement-cost/", companions.get(0).getSlug());
-		assertTrue(companions.stream().anyMatch(page -> page.getSlug().equals("/cities/chicago/sewer-line-replacement-cost/")));
-		assertTrue(companions.stream().anyMatch(page -> page.getSlug().equals("/cities/cleveland/sewer-line-replacement-cost/")));
+		assertTrue(companions.stream().allMatch(SitePage::isGeoLocalSignalPage));
+		assertFalse(companions.stream().anyMatch(SitePage::isGeoGenericIntentPage));
+	}
+
+	@Test
+	void localSignalNationalPageStillGetsGeoCompanionPages() {
+		SitePage nationalPage = siteContentService.requirePage("/homeowner-vs-city-sewer-responsibility/");
+
+		List<SitePage> companions = geoProfileService.getGeoCompanionPages(nationalPage, siteContentService.getAllPages(), 4);
+
+		assertFalse(companions.isEmpty());
+		assertTrue(companions.stream().allMatch(SitePage::isGeoLocalSignalPage));
+		assertTrue(companions.stream().anyMatch(page -> page.getSlug().equals("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/")));
 	}
 
 	@Test
@@ -42,15 +52,14 @@ class GeoProfileServiceTests {
 	}
 
 	@Test
-	void cityHubStartersKeepBuyerAndNegotiationAheadOfCostWhenNoDefectPageExists() {
+	void cityHubStartersKeepBuyerAndCostAheadOfSupportRailsWhenNoDefectPageExists() {
 		CityHubEntry entry = geoProfileService.getCityHubEntry("philadelphia", siteContentService.getAllPages());
 
 		assertNotNull(entry);
 		assertEquals("/cities/philadelphia/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
-		assertEquals("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
-		assertEquals("/cities/philadelphia/who-pays-for-sewer-line-repair-buyer-or-seller/", entry.starterPages().get(2).getSlug());
-		assertEquals("/cities/philadelphia/sewer-scope-negotiation-with-seller/", entry.starterPages().get(3).getSlug());
-		assertEquals(4, entry.starterPages().size());
+		assertEquals("/cities/philadelphia/sewer-line-repair-vs-replacement/", entry.starterPages().get(1).getSlug());
+		assertEquals("/cities/philadelphia/old-house-sewer-line-risk/", entry.starterPages().get(2).getSlug());
+		assertEquals(3, entry.starterPages().size());
 	}
 
 	@Test
@@ -59,8 +68,9 @@ class GeoProfileServiceTests {
 
 		assertNotNull(entry);
 		assertEquals("/cities/milwaukee/sewer-scope-before-buying-house/", entry.starterPages().get(0).getSlug());
-		assertEquals("/cities/milwaukee/homeowner-vs-city-sewer-responsibility/", entry.starterPages().get(1).getSlug());
-		assertEquals("/cities/milwaukee/sewer-backup-risk/", entry.starterPages().get(2).getSlug());
+		assertEquals("/cities/milwaukee/sewer-backup-risk/", entry.starterPages().get(1).getSlug());
+		assertEquals("/cities/milwaukee/sewer-line-repair-vs-replacement/", entry.starterPages().get(2).getSlug());
+		assertEquals(3, entry.starterPages().size());
 	}
 
 	@Test

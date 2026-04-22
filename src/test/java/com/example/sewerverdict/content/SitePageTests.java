@@ -79,6 +79,22 @@ class SitePageTests {
 	}
 
 	@Test
+	void geoHelpersDistinguishLocalSignalPagesFromGenericCityDuplicates() {
+		SitePage localSignalPage = new SitePage();
+		localSignalPage.setSlug("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/");
+		localSignalPage.setFamily("geo");
+
+		SitePage genericIntentPage = new SitePage();
+		genericIntentPage.setSlug("/cities/chicago/sewer-line-replacement-cost/");
+		genericIntentPage.setFamily("geo");
+
+		assertTrue(localSignalPage.isGeoLocalSignalPage());
+		assertFalse(localSignalPage.isGeoGenericIntentPage());
+		assertFalse(genericIntentPage.isGeoLocalSignalPage());
+		assertTrue(genericIntentPage.isGeoGenericIntentPage());
+	}
+
+	@Test
 	void transactionPagePromotesTransferLensAheadOfGenericBuyerBucket() {
 		SitePage page = new SitePage();
 		page.setSlug("/sewer-scope-negotiation-with-seller/");

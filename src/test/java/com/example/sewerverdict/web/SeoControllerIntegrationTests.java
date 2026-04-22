@@ -1,6 +1,7 @@
 package com.example.sewerverdict.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,7 +26,9 @@ class SeoControllerIntegrationTests {
 			.andExpect(content().string(containsString("https://sewerclarity.com/")))
 			.andExpect(content().string(containsString("/cities/")))
 			.andExpect(content().string(containsString("/cities/philadelphia/")))
-			.andExpect(content().string(containsString("/cities/milwaukee/")));
+			.andExpect(content().string(containsString("/cities/milwaukee/")))
+			.andExpect(content().string(containsString("/cities/philadelphia/homeowner-vs-city-sewer-responsibility/")))
+			.andExpect(content().string(not(containsString("/cities/chicago/sewer-line-replacement-cost/"))));
 	}
 
 	@Test

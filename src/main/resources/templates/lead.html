@@ -23,6 +23,22 @@
 				<ul class="clean-list">
 					<li th:each="item : ${leadHighlights}" th:text="${item}">Highlight</li>
 				</ul>
+				<article class="section-card section-card-accent lead-route-card">
+					<span class="card-kicker">Choose the route before the form</span>
+					<h2 th:text="${formAction == '/find-sewer-scope/' ? 'Switch now if this is not really an inspection-first case' : 'Switch now if this is not really a quote-ready case'}">Choose the route before the form</h2>
+					<p th:text="${formAction == '/find-sewer-scope/' ? 'This page should behave like a decision router, not a generic service page. If the evidence is already stronger or the question is still fuzzy, use the cleaner route before you fill the form.' : 'Use this page only when the issue already looks real enough for bid comparison. If you still need interpretation or better evidence, change the route before you submit anything.'}">Route summary</p>
+					<div class="decision-path-grid decision-path-grid-compact">
+						<a class="decision-path-card decision-path-card-compact" th:each="path : ${leadDecisionPaths}" th:href="${path.href}"
+						   th:classappend="${path.current} ? ' decision-path-card-current' : ''"
+						   data-event-type="page_cta_click"
+						   th:attr="data-page-slug=${formAction},data-event-label=${path.ctaLabel},data-event-route=${path.route},data-event-destination=${path.target},data-event-placement=${'lead-router:' + path.route}">
+							<span class="card-kicker" th:text="${path.eyebrow}">Path eyebrow</span>
+							<h2 th:text="${path.title}">Path title</h2>
+							<p th:text="${path.summary}">Path summary</p>
+							<span class="decision-path-action" th:text="${path.ctaLabel}">Use this route</span>
+						</a>
+					</div>
+				</article>
 				<div class="trust-strip">
 					<div>Short form, routing only</div>
 					<div>City-first local fit</div>
@@ -189,36 +205,36 @@
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="container content-grid">
-			<div class="content-main">
-				<article class="section-card">
-					<span class="card-kicker">Before you submit</span>
-					<h2>Use the shortest path that still keeps the call honest</h2>
-					<p th:text="${leadSummary}">Lead summary</p>
-					<p class="form-microcopy">These pages are meant to convert uncertainty into the next credible action, not to pad the site with generic service copy.</p>
-				</article>
-				<article class="section-card" th:if="${!#lists.isEmpty(leadFaq)}">
-					<h2>FAQ</h2>
-					<div class="faq-list">
-						<details th:each="item, stat : ${leadFaq}" th:open="${stat.first}">
-							<summary th:text="${item.question}">Question</summary>
-							<p th:text="${item.answer}">Answer</p>
-						</details>
-					</div>
-				</article>
-			</div>
-			<aside class="content-rail">
-				<div class="rail-card" th:if="${!#lists.isEmpty(leadGuideLinks)}">
-					<span class="card-kicker">Relevant guides</span>
-					<ul class="link-list">
-						<li th:each="item : ${leadGuideLinks}">
-							<a class="text-link" th:href="${item.href}" th:text="${item.label}">Guide</a>
-							<p th:text="${item.summary}">Guide summary</p>
-						</li>
-					</ul>
+	<section class="section section-tight">
+		<div class="container">
+			<details class="section-card lead-disclosure" th:if="${!#lists.isEmpty(leadGuideLinks)}">
+				<summary>
+					<span class="card-kicker">Only if you still need context</span>
+					<strong class="lead-disclosure-title">Use these guides after you pick the route</strong>
+				</summary>
+				<p class="form-microcopy">These support pages should explain the route you already chose, not delay the choice itself.</p>
+				<div class="related-card-grid">
+					<a class="related-page-card" th:each="item : ${leadGuideLinks}" th:href="${item.href}"
+					   data-event-type="page_cta_click"
+					   th:attr="data-page-slug=${formAction},data-event-label=${'lead-guide:' + item.label},data-event-placement='lead-guide-disclosure'">
+						<span class="card-kicker">Support page</span>
+						<strong th:text="${item.label}">Guide</strong>
+						<span class="related-page-card-text" th:text="${item.summary}">Guide summary</span>
+					</a>
 				</div>
-			</aside>
+			</details>
+			<details class="section-card lead-disclosure" th:if="${!#lists.isEmpty(leadFaq)}">
+				<summary>
+					<span class="card-kicker">Questions after route choice</span>
+					<strong class="lead-disclosure-title">FAQ</strong>
+				</summary>
+				<div class="faq-list">
+					<details th:each="item, stat : ${leadFaq}" th:open="${stat.first}">
+						<summary th:text="${item.question}">Question</summary>
+						<p th:text="${item.answer}">Answer</p>
+					</details>
+				</div>
+			</details>
 		</div>
 	</section>
 </main>

@@ -34,7 +34,7 @@
 <body>
 <header class="site-header" th:fragment="header">
 	<div class="container header-meta">
-		<div class="header-meta-copy">Reviewed guidance for sewer lateral, buyer, and responsibility decisions. Educational only.</div>
+		<div class="header-meta-copy">Reviewed guidance for sewer scope, sewer findings, and next-step decisions. Educational only.</div>
 		<div class="header-meta-links">
 			<a th:href="@{/methodology/}">Methodology</a>
 			<a th:href="@{/about-how-this-site-is-researched/}">Research</a>
@@ -52,14 +52,14 @@
 		<nav class="nav-links" id="site-nav" data-nav-menu>
 			<a th:href="@{/estimator/}">Estimate Risk</a>
 			<a th:href="@{/sewer-scope-before-buying-house/}">Buying a House</a>
-			<a th:href="@{/homeowner-vs-city-sewer-responsibility/}">Who Pays</a>
 			<a th:href="@{/sewer-scope-red-flags/}">Scope Findings</a>
+			<a th:href="@{/sewer-line-replacement-cost/}">Sewer Costs</a>
 			<a th:href="@{/cities/}">Cities</a>
 			<a th:href="@{/methodology/}">Methodology</a>
 			<div class="nav-mobile-meta">
 				<a th:href="@{/about-how-this-site-is-researched/}">Research</a>
 				<a th:href="@{/privacy/}">Privacy</a>
-				<span>Reviewed guidance on private-lateral risk. Educational only.</span>
+				<span>Reviewed guidance on sewer scope, findings, and next steps. Educational only.</span>
 			</div>
 		</nav>
 	</div>
@@ -70,11 +70,82 @@
 		<a th:href="@{/privacy/}">Privacy</a>
 	</div>
 </header>
+<article class="section-card section-card-accent surface-router-card" th:fragment="surfaceRouter" th:if="${surfaceRouterTitle}">
+	<div class="surface-router-copy">
+		<span class="card-kicker">Start With the Tool</span>
+		<h2 th:text="${surfaceRouterTitle}">Start with the tool</h2>
+		<p th:text="${surfaceRouterSummary}">Start with the situation, add the city or ZIP, and continue into the estimator from the first missing step.</p>
+	</div>
+	<form class="surface-router-form" th:action="@{/estimator/}" method="get" data-preserve-attribution th:attr="data-page-slug=${surfaceRouterPageSlug}">
+		<input name="utmSource" type="hidden">
+		<input name="utmMedium" type="hidden">
+		<input name="utmCampaign" type="hidden">
+		<input name="utmTerm" type="hidden">
+		<input name="utmContent" type="hidden">
+		<input name="gclid" type="hidden">
+		<input name="wbraid" type="hidden">
+		<input name="gbraid" type="hidden">
+		<input name="defectType" type="hidden" th:if="${surfaceRouterSelectedDefectType}" th:value="${surfaceRouterSelectedDefectType}">
+		<div class="surface-router-grid">
+			<div class="surface-router-group">
+				<span class="card-kicker">1. What are you trying to decide?</span>
+				<div class="surface-router-choice-grid">
+					<label class="choice-card">
+						<input type="radio" name="issueState" value="no-scope-yet" required th:checked="${surfaceRouterSelectedIssueState == 'no-scope-yet'}">
+						<span>No scope yet</span>
+						<small>Start from inspection-first uncertainty before pricing, credits, or blame.</small>
+					</label>
+					<label class="choice-card">
+						<input type="radio" name="issueState" value="scope-found-issue" required th:checked="${surfaceRouterSelectedIssueState == 'scope-found-issue'}">
+						<span>Have a report or finding</span>
+						<small>Use the tool when wording, footage, or a flagged issue needs a calmer next-step call.</small>
+					</label>
+					<label class="choice-card">
+						<input type="radio" name="issueState" value="symptoms-only" required th:checked="${surfaceRouterSelectedIssueState == 'symptoms-only'}">
+						<span>Symptoms only</span>
+						<small>Start here when backup, slow drains, or old-line suspicion exists without clear footage yet.</small>
+					</label>
+				</div>
+			</div>
+			<div class="surface-router-group">
+				<span class="card-kicker">2. Who are you in this situation?</span>
+				<div class="surface-router-choice-grid">
+					<label class="choice-card">
+						<input type="radio" name="role" value="buyer" required th:checked="${surfaceRouterSelectedRole == 'buyer'}">
+						<span>Buyer</span>
+						<small>Under contract or deciding how much buried-line diligence you need.</small>
+					</label>
+					<label class="choice-card">
+						<input type="radio" name="role" value="seller" required th:checked="${surfaceRouterSelectedRole == 'seller'}">
+						<span>Seller</span>
+						<small>Pre-listing or trying to reduce negotiation noise before it becomes a repair fight.</small>
+					</label>
+					<label class="choice-card">
+						<input type="radio" name="role" value="owner" required th:checked="${surfaceRouterSelectedRole == 'owner'}">
+						<span>Owner</span>
+						<small>Known issue, active symptoms, or quote comparison pressure on a private lateral.</small>
+					</label>
+				</div>
+			</div>
+			<div class="surface-router-actions">
+				<label class="field-label">
+					Property city or ZIP
+					<input name="location" type="text" required th:value="${surfaceRouterLocationValue}" th:placeholder="${surfaceRouterLocationPlaceholder ?: 'Philadelphia, PA or 19147'}">
+				</label>
+				<button class="button button-primary button-block" type="submit"
+				        data-event-type="page_cta_click"
+				        th:attr="data-page-slug=${surfaceRouterPageSlug},data-event-label=${surfaceRouterPrimaryLabel},data-event-route='needs-clarification',data-event-destination='estimator',data-event-placement=${surfaceRouterPlacement}"
+				        th:text="${surfaceRouterPrimaryLabel ?: 'Start the next-step check'}">Start the next-step check</button>
+			</div>
+		</div>
+		<p class="form-microcopy surface-router-note">This opens the estimator with the context you already chose and continues from the first missing step, instead of making you read the full guide library first.</p>
+	</form>
+</article>
 <footer class="site-footer" th:fragment="footer">
 	<div class="container footer-grid">
 		<div>
 			<div class="footer-title">SewerClarity</div>
-			<p class="footer-copy">Buyer-first sewer lateral risk, sewer scope, and next-step guidance for buyers, sellers, and owners.</p>
+			<p class="footer-copy">Inspection-first sewer scope, sewer finding, and next-step cost guidance for buyers, sellers, and owners.</p>
 			<div class="footer-trust">
 				<div>Reviewed by homeowner research editor and plumbing-risk content reviewer.</div>
 				<div>Ranges are methodology-backed and kept wide on purpose.</div>
@@ -96,7 +167,8 @@
 			<div class="footer-link-group">
 				<div class="footer-link-label">Context</div>
 				<a th:href="@{/sewer-scope-before-buying-house/}">Buying a House</a>
-				<a th:href="@{/homeowner-vs-city-sewer-responsibility/}">Homeowner vs City</a>
+				<a th:href="@{/sewer-scope-red-flags/}">Scope Findings</a>
+				<a th:href="@{/sewer-line-replacement-cost/}">Sewer Costs</a>
 				<a th:href="@{/cities/}">Cities</a>
 				<a th:href="@{/about/}">About</a>
 			</div>

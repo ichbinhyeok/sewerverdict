@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.sewerverdict.content.MunicipalityResolution;
 import com.example.sewerverdict.content.MunicipalityResolver;
@@ -202,6 +203,7 @@ public class LeadController {
 		model.addAttribute("leadExpectationSummary", "/find-sewer-scope/".equals(formAction)
 			? "This form is for routing and triage, not for pushing you straight into a repair pitch."
 			: "This form is for comparing repair paths honestly and routing the next quote conversation, not for pretending every concern is already a full replacement project.");
+		model.addAttribute("leadDecisionPaths", buildLeadDecisionPaths(formAction, leadForm));
 		model.addAttribute("leadGuideLinks", buildLeadGuideLinks(formAction));
 		model.addAttribute("leadFaq", buildLeadFaq(formAction));
 		model.addAttribute("formAction", formAction);
@@ -273,6 +275,69 @@ public class LeadController {
 		);
 	}
 
+	private List<LeadDecisionPath> buildLeadDecisionPaths(String formAction, LeadForm leadForm) {
+		if ("/find-sewer-scope/".equals(formAction)) {
+			return List.of(
+				new LeadDecisionPath(
+					"No scope yet",
+					"Stay on the inspection-first path",
+					"Use this form when the next honest move is better footage, calmer triage, or a cleaner transaction read before anyone starts pricing repairs.",
+					buildLeadPageHref("/find-sewer-scope/", "inspection", "inspection", leadForm),
+					"Use inspection routing",
+					"inspection-first",
+					"inspection-route",
+					true),
+				new LeadDecisionPath(
+					"Have a report or finding",
+					"Jump back into the estimator first",
+					"Use the tool if the wording, footage, or symptoms still need a fresh next-step call before you ask for inspection routing or repair bids.",
+					buildEstimatorHref(leadForm, "scope-found-issue"),
+					"Start in the estimator",
+					"needs-clarification",
+					"estimator",
+					false),
+				new LeadDecisionPath(
+					"Known issue and money question",
+					"Switch to quote comparison only if the issue already looks real",
+					"Move to quote routing when footage or a stronger finding already supports repair-versus-replacement comparison.",
+					buildLeadPageHref("/get-sewer-quotes/", "replacement", "replacement", leadForm),
+					"Go to quote routing",
+					"quote-ready",
+					"lead-route",
+					false)
+			);
+		}
+		return List.of(
+			new LeadDecisionPath(
+				"Still not sure this is quote-ready",
+				"Go back to the estimator before you compare bids",
+				"Use the tool first if the line story is still thin, the report wording is not settled, or you need a cleaner route before you ask for pricing.",
+				buildEstimatorHref(leadForm, "scope-found-issue"),
+				"Start in the estimator",
+				"needs-clarification",
+				"estimator",
+				false),
+			new LeadDecisionPath(
+				"Need footage first",
+				"Switch to inspection-first routing",
+				"Use the scope path when the next honest move is better evidence, not a repair pitch or a replacement argument.",
+				buildLeadPageHref("/find-sewer-scope/", "inspection", "inspection", leadForm),
+				"Use inspection routing",
+				"inspection-first",
+				"inspection-route",
+				false),
+			new LeadDecisionPath(
+				"Confirmed serious issue",
+				"Stay on the quote-ready path",
+				"Use this form when footage or a high-risk finding already supports repair or replacement comparison without pretending the answer is automatic.",
+				buildLeadPageHref("/get-sewer-quotes/", "replacement", "replacement", leadForm),
+				"Use quote routing",
+				"quote-ready",
+				"lead-route",
+				true)
+		);
+	}
+
 	private List<PageFaq> buildLeadFaq(String formAction) {
 		if ("/find-sewer-scope/".equals(formAction)) {
 			return List.of(
@@ -296,6 +361,10 @@ public class LeadController {
 	}
 
 	private record LeadGuideLink(String href, String label, String summary) {
+	}
+
+	private record LeadDecisionPath(String eyebrow, String title, String summary, String href, String ctaLabel,
+								   String route, String target, boolean current) {
 	}
 
 	private List<String> buildLeadTrustPoints(String formAction) {
@@ -326,6 +395,56 @@ public class LeadController {
 		payload.put("issueState", leadForm.getIssueState());
 		payload.put("defectType", leadForm.getDefectType());
 		return payload;
+	}
+
+	private String buildLeadPageHref(String basePath, String serviceNeeded, String recommendedServicePath, LeadForm leadForm) {
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath(basePath)
+			.queryParam("serviceNeeded", serviceNeeded)
+			.queryParam("recommendedServicePath", recommendedServicePath);
+		appendIfPresent(builder, "draftId", leadForm.getDraftId());
+		appendIfPresent(builder, "zipOrCity", leadForm.getZipOrCity());
+		appendIfPresent(builder, "streetAddress", leadForm.getStreetAddress());
+		appendIfPresent(builder, "role", leadForm.getRole());
+		appendIfPresent(builder, "houseAgeBand", leadForm.getHouseAgeBand());
+		appendIfPresent(builder, "issueState", leadForm.getIssueState());
+		appendIfPresent(builder, "defectType", leadForm.getDefectType());
+		appendIfPresent(builder, "urgency", leadForm.getUrgency());
+		appendIfPresent(builder, "utmSource", leadForm.getUtmSource());
+		appendIfPresent(builder, "utmMedium", leadForm.getUtmMedium());
+		appendIfPresent(builder, "utmCampaign", leadForm.getUtmCampaign());
+		appendIfPresent(builder, "utmTerm", leadForm.getUtmTerm());
+		appendIfPresent(builder, "utmContent", leadForm.getUtmContent());
+		appendIfPresent(builder, "gclid", leadForm.getGclid());
+		appendIfPresent(builder, "wbraid", leadForm.getWbraid());
+		appendIfPresent(builder, "gbraid", leadForm.getGbraid());
+		return builder.build().encode().toUriString();
+	}
+
+	private String buildEstimatorHref(LeadForm leadForm, String defaultIssueState) {
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("/estimator/");
+		appendIfPresent(builder, "role", leadForm.getRole());
+		appendIfPresent(builder, "location", leadForm.getZipOrCity());
+		appendIfPresent(builder, "streetAddress", leadForm.getStreetAddress());
+		appendIfPresent(builder, "houseAgeBand", leadForm.getHouseAgeBand());
+		appendIfPresent(builder, "issueState",
+			StringUtils.hasText(leadForm.getIssueState()) ? leadForm.getIssueState() : defaultIssueState);
+		appendIfPresent(builder, "defectType", leadForm.getDefectType());
+		appendIfPresent(builder, "urgency", leadForm.getUrgency());
+		appendIfPresent(builder, "utmSource", leadForm.getUtmSource());
+		appendIfPresent(builder, "utmMedium", leadForm.getUtmMedium());
+		appendIfPresent(builder, "utmCampaign", leadForm.getUtmCampaign());
+		appendIfPresent(builder, "utmTerm", leadForm.getUtmTerm());
+		appendIfPresent(builder, "utmContent", leadForm.getUtmContent());
+		appendIfPresent(builder, "gclid", leadForm.getGclid());
+		appendIfPresent(builder, "wbraid", leadForm.getWbraid());
+		appendIfPresent(builder, "gbraid", leadForm.getGbraid());
+		return builder.build().encode().toUriString();
+	}
+
+	private void appendIfPresent(UriComponentsBuilder builder, String key, String value) {
+		if (StringUtils.hasText(value)) {
+			builder.queryParam(key, value);
+		}
 	}
 }
 
